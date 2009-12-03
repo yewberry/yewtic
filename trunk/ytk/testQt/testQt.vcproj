@@ -83,11 +83,23 @@
 			>
 		</Filter>
 		<File
+			RelativePath=".\log4cplus.properties"
+			>
+		</File>
+		<File
 			RelativePath=".\readme.txt"
 			>
 		</File>
 		<File
 			RelativePath=".\testQt.pro"
+			>
+		</File>
+		<File
+			RelativePath=".\testQt_cn.qm"
+			>
+		</File>
+		<File
+			RelativePath=".\testQt_cn.ts"
 			>
 		</File>
 	</Files>
