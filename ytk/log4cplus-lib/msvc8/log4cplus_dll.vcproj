@@ -245,6 +245,7 @@
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				TreatWChar_tAsBuiltInType="false"
 				PrecompiledHeaderFile=".\$(IntDir)/log4cplus_dll.pch"
 				AssemblerListingLocation=".\$(IntDir)/"
 				ObjectFile=".\$(IntDir)/"
