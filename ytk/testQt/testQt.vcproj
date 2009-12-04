@@ -24,7 +24,7 @@
 			>
 			<Tool
 				Name="VCNMakeTool"
-				BuildCommandLine="qmake &amp;&amp; nmake debug-all"
+				BuildCommandLine="nmake debug-all"
 				ReBuildCommandLine="nmake debug-clean &amp;&amp; qmake &amp;&amp; nmake debug-all"
 				CleanCommandLine="nmake debug-clean"
 				Output="../Debug/testQt.exe"

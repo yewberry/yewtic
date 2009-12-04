@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log4cplus_dll", "log4cplus-
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testLog4cplus", "testLog4cplus\testLog4cplus.vcproj", "{C640C7FF-1ACC-493A-9558-CB48C989352C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestVSQt", "TestVSQt\TestVSQt.vcproj", "{1ACDBA98-8C99-4ECD-A1F6-36C889425922}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -63,6 +65,14 @@ Global
 		{C640C7FF-1ACC-493A-9558-CB48C989352C}.Release_Unicode|Win32.Build.0 = Release|Win32
 		{C640C7FF-1ACC-493A-9558-CB48C989352C}.Release|Win32.ActiveCfg = Release|Win32
 		{C640C7FF-1ACC-493A-9558-CB48C989352C}.Release|Win32.Build.0 = Release|Win32
+		{1ACDBA98-8C99-4ECD-A1F6-36C889425922}.Debug_Unicode|Win32.ActiveCfg = Debug|Win32
+		{1ACDBA98-8C99-4ECD-A1F6-36C889425922}.Debug_Unicode|Win32.Build.0 = Debug|Win32
+		{1ACDBA98-8C99-4ECD-A1F6-36C889425922}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1ACDBA98-8C99-4ECD-A1F6-36C889425922}.Debug|Win32.Build.0 = Debug|Win32
+		{1ACDBA98-8C99-4ECD-A1F6-36C889425922}.Release_Unicode|Win32.ActiveCfg = Release|Win32
+		{1ACDBA98-8C99-4ECD-A1F6-36C889425922}.Release_Unicode|Win32.Build.0 = Release|Win32
+		{1ACDBA98-8C99-4ECD-A1F6-36C889425922}.Release|Win32.ActiveCfg = Release|Win32
+		{1ACDBA98-8C99-4ECD-A1F6-36C889425922}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
