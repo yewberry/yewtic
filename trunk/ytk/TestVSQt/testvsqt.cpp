@@ -1,15 +1,19 @@
 #include "testvsqt.h"
-
-#include <log4cplus/logger.h>
-#include <log4cplus/configurator.h>
-#include <log4cplus/helpers/loglog.h>
-using namespace log4cplus;
-using namespace log4cplus::helpers;
+#include "common.h"
+#include <QtGui/QGridLayout>
+#include <QtGui/QPushButton>
 
 TestVSQt::TestVSQt(QWidget *parent, Qt::WFlags flags)
 	: QDialog(parent, flags)
 {
 	ui.setupUi(this);
+
+	QPushButton *testLogBtn = new QPushButton(tr("Test Log"));
+
+	QGridLayout *layout = new QGridLayout;
+
+	setLayout(layout);
+	setWindowTitle(tr("Test Dialog"));
 }
 
 TestVSQt::~TestVSQt()
