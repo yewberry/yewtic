@@ -1,9 +1,8 @@
 #include "testlog.h"
 #include "common.h"
 
-TestLog::TestLog(QWidget *parent = 0, Qt::WFlags flags = 0)
+TestLog::TestLog(QWidget *parent, Qt::WFlags flags)
 {
-	QObject::
 }
 
 TestLog::~TestLog()
