@@ -43,6 +43,7 @@
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				TreatWChar_tAsBuiltInType="false"
 				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
@@ -111,6 +112,7 @@
 				EnableIntrinsicFunctions="true"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				TreatWChar_tAsBuiltInType="false"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
