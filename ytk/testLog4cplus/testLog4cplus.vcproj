@@ -44,7 +44,7 @@
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				TreatWChar_tAsBuiltInType="true"
+				TreatWChar_tAsBuiltInType="false"
 				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
@@ -115,7 +115,7 @@
 				PreprocessorDefinitions="UNICODE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				TreatWChar_tAsBuiltInType="true"
+				TreatWChar_tAsBuiltInType="false"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
