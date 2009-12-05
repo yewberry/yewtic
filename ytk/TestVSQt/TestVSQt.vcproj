@@ -339,13 +339,6 @@
 					RelativePath=".\GeneratedFiles\Release\moc_testlog.cpp"
 					>
 					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="Debug|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -385,13 +378,6 @@
 					<FileConfiguration
 						Name="Release|Win32"
 						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
