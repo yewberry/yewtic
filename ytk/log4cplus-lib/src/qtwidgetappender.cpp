@@ -5,7 +5,7 @@ using namespace std;
 using namespace log4cplus;
 using namespace log4cplus::helpers;
 
-
+extern QHash<QString, QTextEdit*> yewtic::appenders;
 
 ///////////////////////////////////////////////////////////////////////////////
 // log4cplus::QtWidgetAppender ctors and dtor
@@ -20,6 +20,7 @@ log4cplus::QtWidgetAppender::QtWidgetAppender(
     const log4cplus::helpers::Properties& properties)
     : Appender(properties)
 {
+	widgetKey = properties.getProperty( LOG4CPLUS_TEXT("WidgetKey") );
 }
 
 

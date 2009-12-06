@@ -12,6 +12,9 @@ public:
 	TestVSQt(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~TestVSQt();
 
+private slots:
+	void testLogClicked();
+
 private:
 	void testLog();
 
