@@ -7,4 +7,9 @@
 using namespace log4cplus;
 using namespace log4cplus::helpers;
 
+#include <QtGui/QTextEdit>
+
+namespace yewtic {
+	extern QHash<QString, QTextEdit*> appenders;
+}
 #endif // COMMON_H

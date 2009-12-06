@@ -30,6 +30,8 @@ namespace log4cplus {
       // Disallow copying of instances of this class
         QtWidgetAppender(const QtWidgetAppender&);
         QtWidgetAppender& operator=(const QtWidgetAppender&);
+
+		tstring widgetKey;
     };
 
 } // end namespace log4cplus
