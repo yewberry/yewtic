@@ -4,6 +4,13 @@
 #include <log4cplus/appender.h>
 #include <log4cplus/helpers/property.h>
 
+#include <QtGui/QTextEdit>
+#include <QtCore/QHash>
+
+namespace yewtic {
+	extern QHash<QString, QTextEdit*> LOG4CPLUS_EXPORT appenders;
+}
+
 namespace log4cplus {
 
     /**

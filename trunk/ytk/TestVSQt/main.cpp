@@ -4,10 +4,6 @@
 #include <QtCore/QHash>
 #include <QtGui/QTextEdit>
 
-namespace yewtic {
-	QHash<QString, QTextEdit*> appenders;
-}
-
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
