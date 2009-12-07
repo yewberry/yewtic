@@ -5,8 +5,6 @@
 #include <QtGui/QTextEdit>
 #include <QtGui/QPushButton>
 
-extern QHash<QString, QTextEdit*> yewtic::appenders;
-
 TestLog::TestLog(QWidget *parent, Qt::WFlags flags) : QDialog(parent, flags)
 {
 	dbgBtn		= new QPushButton(tr("DEBUG"));
@@ -30,8 +28,11 @@ TestLog::TestLog(QWidget *parent, Qt::WFlags flags) : QDialog(parent, flags)
 
 	text = new QTextEdit;
 	text->setReadOnly(true);
-	yewtic::appenders.insert("qtwidgetlog", text);
+	yewtic::appenders.insert(QString("qtwidgetlog"), text);
 	bool b = yewtic::appenders.contains("qtwidgetlog");
+	char* abc = "abc";
+	text->append(abc);
+	yewtic::appenders.value("qtwidgetlog");
 
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addLayout(btns);

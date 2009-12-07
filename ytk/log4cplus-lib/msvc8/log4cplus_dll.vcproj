@@ -268,7 +268,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ws2_32.lib"
+				AdditionalDependencies="ws2_32.lib QtCored4.lib QtGuid4.lib"
 				OutputFile="$(OutDir)/log4cplusUD.dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
@@ -365,7 +365,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ws2_32.lib"
+				AdditionalDependencies="ws2_32.lib QtCore4.lib QtGui4.lib"
 				OutputFile="$(OutDir)/log4cplusU.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

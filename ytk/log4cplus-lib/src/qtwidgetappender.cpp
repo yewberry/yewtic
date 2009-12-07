@@ -1,11 +1,12 @@
 #include <log4cplus/qtwidgetappender.h>
 
-
 using namespace std;
 using namespace log4cplus;
 using namespace log4cplus::helpers;
 
-extern QHash<QString, QTextEdit*> yewtic::appenders;
+namespace yewtic {
+	QHash<QString, QTextEdit*> LOG4CPLUS_EXPORT appenders;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // log4cplus::QtWidgetAppender ctors and dtor
@@ -56,6 +57,6 @@ log4cplus::QtWidgetAppender::append(const spi::InternalLoggingEvent& event)
     tostringstream buf;
     layout->formatAndAppend(buf, event);
     tstring sz = buf.str();
-    const tchar * s = sz.c_str();
-
+    QTextEdit *text = yewtic::appenders.value(QString::fromWCharArray(widgetKey.c_str()));
+	text->append(QString::fromWCharArray(sz.c_str()));
 }
