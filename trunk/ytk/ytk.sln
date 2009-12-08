@@ -11,7 +11,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testLog4cplus", "testLog4cp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestVSQt", "TestVSQt\TestVSQt.vcproj", "{1ACDBA98-8C99-4ECD-A1F6-36C889425922}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log4cplus_dll", "log4cplus_lib\msvc8\log4cplus_dll.vcproj", "{917836A4-0DDC-47BE-B930-1B3BFDF6C940}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log4cplus_dll", "log4cplus_dll\msvc8\log4cplus_dll.vcproj", "{917836A4-0DDC-47BE-B930-1B3BFDF6C940}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
