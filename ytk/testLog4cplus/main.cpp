@@ -38,15 +38,15 @@ main()
         ConfigureAndWatchThread configureThread(
             LOG4CPLUS_TEXT("log4cplus.properties"), 5 * 1000);
 
-        LOG4CPLUS_WARN(root, "Testing....");
-/*
-        for(int i=0; i<100; ++i) {
+		LOG4CPLUS_WARN(root, "Testing....ï±");
+
+        for(int i=0; i<3; ++i) {
             printMsgs(log_1);
             printMsgs(log_2);
             printMsgs(log_3);
 	        //log4cplus::helpers::sleep(1);
         }
-*/
+
     }
     catch(...) {
         cout << "Exception..." << endl;
