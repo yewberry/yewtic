@@ -57,6 +57,32 @@ log4cplus::QtWidgetAppender::append(const spi::InternalLoggingEvent& event)
     tostringstream buf;
     layout->formatAndAppend(buf, event);
     tstring sz = buf.str();
-    QTextEdit *text = yewtic::appenders.value(QString::fromWCharArray(widgetKey.c_str()));
-	text->append(QString::fromWCharArray(sz.c_str()));
+
+	QString s = QString::fromWCharArray(sz.c_str());
+	LogLevel lvl = event.getLogLevel();
+	switch(lvl){
+		case log4cplus::DEBUG_LOG_LEVEL:
+			s.prepend("<font color=\"gray\">");
+			s.append("</font>");
+			break;
+		case log4cplus::INFO_LOG_LEVEL:
+			s.prepend("<font color=\"blue\">");
+			s.append("</font>");
+			break;
+		case log4cplus::WARN_LOG_LEVEL:
+			s.prepend("<b><font color=\"orange\">");
+			s.append("</font></b>");
+			break;
+		case log4cplus::ERROR_LOG_LEVEL:
+			s.prepend("<b><font color=\"red\">");
+			s.append("</font></b>");
+			break;
+		case log4cplus::FATAL_LOG_LEVEL:
+			s.prepend("<b><font color=\"red\">");
+			s.append("</font></b>");
+			break;
+	}
+
+	QTextEdit *text = yewtic::appenders.value(QString::fromWCharArray(widgetKey.c_str()));
+	text->append( s );
 }
