@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="TestVSQt"
 	ProjectGUID="{1ACDBA98-8C99-4ECD-A1F6-36C889425922}"
+	RootNamespace="TestVSQt"
 	Keyword="Qt4VSv1.0"
 	TargetFrameworkVersion="0"
 	>
@@ -359,6 +360,13 @@
 					RelativePath=".\GeneratedFiles\Release\moc_testvsqt.cpp"
 					>
 					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
 						Name="Debug|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -403,8 +411,26 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 				</File>
 			</Filter>
+		</Filter>
+		<Filter
+			Name="Translation Files"
+			Filter="ts"
+			UniqueIdentifier="{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}"
+			ParseFiles="false"
+			>
+			<File
+				RelativePath=".\testvsqt_zh.ts"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\log4cplus.properties"

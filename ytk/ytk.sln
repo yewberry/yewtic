@@ -7,11 +7,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testQt", "testQt\testQt.vcp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testCpp", "testCpp\testCpp.vcproj", "{ABEF7E0D-3D85-4EEC-95A4-7E4E4295FA51}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log4cplus_dll", "log4cplus-lib\msvc8\log4cplus_dll.vcproj", "{917836A4-0DDC-47BE-B930-1B3BFDF6C940}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testLog4cplus", "testLog4cplus\testLog4cplus.vcproj", "{C640C7FF-1ACC-493A-9558-CB48C989352C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestVSQt", "TestVSQt\TestVSQt.vcproj", "{1ACDBA98-8C99-4ECD-A1F6-36C889425922}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log4cplus_dll", "log4cplus_lib\msvc8\log4cplus_dll.vcproj", "{917836A4-0DDC-47BE-B930-1B3BFDF6C940}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -49,14 +49,6 @@ Global
 		{ABEF7E0D-3D85-4EEC-95A4-7E4E4295FA51}.Release_Unicode|Win32.Build.0 = Release|Win32
 		{ABEF7E0D-3D85-4EEC-95A4-7E4E4295FA51}.Release|Win32.ActiveCfg = Release|Win32
 		{ABEF7E0D-3D85-4EEC-95A4-7E4E4295FA51}.Release|Win32.Build.0 = Release|Win32
-		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Debug_Unicode|Win32.ActiveCfg = Debug_Unicode|Win32
-		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Debug_Unicode|Win32.Build.0 = Debug_Unicode|Win32
-		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Debug|Win32.ActiveCfg = Debug|Win32
-		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Debug|Win32.Build.0 = Debug|Win32
-		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Release_Unicode|Win32.ActiveCfg = Release_Unicode|Win32
-		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Release_Unicode|Win32.Build.0 = Release_Unicode|Win32
-		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Release|Win32.ActiveCfg = Release|Win32
-		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Release|Win32.Build.0 = Release|Win32
 		{C640C7FF-1ACC-493A-9558-CB48C989352C}.Debug_Unicode|Win32.ActiveCfg = Debug|Win32
 		{C640C7FF-1ACC-493A-9558-CB48C989352C}.Debug_Unicode|Win32.Build.0 = Debug|Win32
 		{C640C7FF-1ACC-493A-9558-CB48C989352C}.Debug|Win32.ActiveCfg = Debug|Win32
@@ -73,6 +65,14 @@ Global
 		{1ACDBA98-8C99-4ECD-A1F6-36C889425922}.Release_Unicode|Win32.Build.0 = Release|Win32
 		{1ACDBA98-8C99-4ECD-A1F6-36C889425922}.Release|Win32.ActiveCfg = Release|Win32
 		{1ACDBA98-8C99-4ECD-A1F6-36C889425922}.Release|Win32.Build.0 = Release|Win32
+		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Debug_Unicode|Win32.ActiveCfg = Debug_Unicode|Win32
+		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Debug_Unicode|Win32.Build.0 = Debug_Unicode|Win32
+		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Debug|Win32.ActiveCfg = Debug|Win32
+		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Debug|Win32.Build.0 = Debug|Win32
+		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Release_Unicode|Win32.ActiveCfg = Release_Unicode|Win32
+		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Release_Unicode|Win32.Build.0 = Release_Unicode|Win32
+		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Release|Win32.ActiveCfg = Release|Win32
+		{917836A4-0DDC-47BE-B930-1B3BFDF6C940}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

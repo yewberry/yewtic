@@ -28,11 +28,8 @@ TestLog::TestLog(QWidget *parent, Qt::WFlags flags) : QDialog(parent, flags)
 
 	text = new QTextEdit;
 	text->setReadOnly(true);
+	text->setWordWrapMode(QTextOption::NoWrap);
 	yewtic::appenders.insert(QString("qtwidgetlog"), text);
-	bool b = yewtic::appenders.contains("qtwidgetlog");
-	char* abc = "abc";
-	text->append(abc);
-	yewtic::appenders.value("qtwidgetlog");
 
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addLayout(btns);
@@ -40,6 +37,7 @@ TestLog::TestLog(QWidget *parent, Qt::WFlags flags) : QDialog(parent, flags)
 
 	setLayout(layout);
 	setWindowTitle(tr("Test Log"));
+	resize(600, 300);
 
 	initLogger();
 }
@@ -65,22 +63,22 @@ void TestLog::initLogger()
 }
 void TestLog::dbgBtnClicked()
 {
-	LOG4CPLUS_DEBUG(logger, "print debug 打印DEBUG");
+	LOG4CPLUS_DEBUG(logger, TEXT("print debug 打印这DEBUG") );
 }
 
 void TestLog::infoBtnClicked()
 {
-    LOG4CPLUS_INFO(logger, "print info 打印INFO");
+    LOG4CPLUS_INFO(logger, TEXT("print info 打印INFO") );
 }
 
 void TestLog::warnBtnClicked()
 {
-    LOG4CPLUS_WARN(logger, "print warn 打印WARN");
+    LOG4CPLUS_WARN(logger, TEXT("print warn 打印WARN") );
 }
 
 void TestLog::errBtnClicked()
 {
-    LOG4CPLUS_ERROR(logger, "print error 打印ERROR");
+    LOG4CPLUS_ERROR(logger, TEXT("print error 打印ERROR") );
 }
 
 void TestLog::fatalBtnClicked()
