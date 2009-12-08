@@ -58,9 +58,7 @@ log4cplus::QtWidgetAppender::append(const spi::InternalLoggingEvent& event)
     layout->formatAndAppend(buf, event);
     tstring sz = buf.str();
 
-	QString::from
-	QString s = QString::fromCharArray(sz.c_str());
-	s.truncate(s.size()-1);
+	QString s = QString::fromWCharArray(sz.c_str());
 	LogLevel lvl = event.getLogLevel();
 	switch(lvl){
 		case log4cplus::DEBUG_LOG_LEVEL:
