@@ -29,23 +29,3 @@ void TestVSQt::testLogClicked()
 	TestLog *t = new TestLog(this);
 	t->show();
 }
-void TestVSQt::testLog()
-{
-    std::cout << "Entering main()..." << std::endl;
-    LogLog::getLogLog()->setInternalDebugging(true);
-    Logger root = Logger::getRoot();
-    try 
-    {
-        ConfigureAndWatchThread configureThread(LOG4CPLUS_TEXT("log4cplus.properties"), 5 * 1000);
-        LOG4CPLUS_WARN(root, "Testing....");
-
-    }
-    catch(...) {
-        std::cout << "Exception..." << std::endl;
-		LOG4CPLUS_FATAL(root, "Exception occured...");
-    }
-
-    std::cout << "Exiting main()..." << std::endl;
-	LOG4CPLUS_DEBUG(root, "Exiting main()"<<213);
-	std::cin.get();
-}
