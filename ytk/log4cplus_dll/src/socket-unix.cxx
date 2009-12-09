@@ -125,13 +125,11 @@ log4cplus::helpers::acceptSocket(SOCKET_TYPE sock, SocketState& state)
     struct sockaddr_in net_client;
     socklen_t len = sizeof(struct sockaddr);
     SOCKET_TYPE clientSock;
-//    struct hostent *hostptr;
 
     while(   (clientSock = ::accept(sock, (struct sockaddr*)&net_client, &len)) == -1
           && (errno == EINTR))
         ;
 
-//    hostptr = gethostbyaddr((char*)&(net_client.sin_addr.s_addr), 4, AF_INET);
     if(clientSock != INVALID_SOCKET) {
         state = ok;
     }
@@ -176,8 +174,7 @@ log4cplus::helpers::write(SOCKET_TYPE sock, const SocketBuffer& buffer)
 #else
     int flags = 0;
 #endif
-     return ::send( sock, buffer.getBuffer(), buffer.getSize(), flags );
-     // return ::write(sock, buffer.getBuffer(), buffer.getSize());
+    return ::send( sock, buffer.getBuffer(), buffer.getSize(), flags );
 }
 
 
@@ -190,7 +187,7 @@ log4cplus::helpers::getHostname (bool fqdn)
 
     while (true)
     {
-        ret = ::gethostname (&hn[0], hn.size () - 1);
+        ret = ::gethostname (&hn[0], static_cast<int>(hn.size ()) - 1);
         if (ret == 0)
         {
             hostname = &hn[0];

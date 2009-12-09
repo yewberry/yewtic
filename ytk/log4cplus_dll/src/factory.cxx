@@ -24,7 +24,6 @@
 #include <log4cplus/fileappender.h>
 #include <log4cplus/nullappender.h>
 #include <log4cplus/socketappender.h>
-#include <log4cplus/qtwidgetappender.h>
 #include <log4cplus/syslogappender.h>
 #include <log4cplus/helpers/loglog.h>
 #include <log4cplus/helpers/threads.h>
@@ -164,17 +163,6 @@ namespace {
         }
     };
 
-    class QtWidgetAppenderFactory : public AppenderFactory {
-    public:
-        SharedAppenderPtr createObject(const Properties& props)
-        {
-            return SharedAppenderPtr(new log4cplus::QtWidgetAppender(props));
-        }
-
-        tstring getTypeName() { 
-            return LOG4CPLUS_TEXT("log4cplus::QtWidgetAppender"); 
-        }
-    };
 
 #if defined(_WIN32)
 #  if defined (LOG4CPLUS_HAVE_NT_EVENT_LOG)
@@ -340,7 +328,6 @@ void initializeFactoryRegistry()
     reg_factory<RollingFileAppenderFactory> (reg);
     reg_factory<DailyRollingFileAppenderFactory> (reg);
     reg_factory<SocketAppenderFactory> (reg);
-	reg_factory<QtWidgetAppenderFactory> (reg);
 #if defined(_WIN32)
 #  if defined(LOG4CPLUS_HAVE_NT_EVENT_LOG)
     reg_factory<NTEventLogAppenderFactory> (reg);

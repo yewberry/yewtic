@@ -14,6 +14,7 @@ public:
 
 private slots:
 	void testLogClicked();
+	void testDbusClicked();
 
 private:
 	void testLog();
