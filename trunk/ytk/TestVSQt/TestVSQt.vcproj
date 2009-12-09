@@ -17,7 +17,7 @@
 	</ToolFiles>
 	<Configurations>
 		<Configuration
-			Name="Release|Win32"
+			Name="Release_Unicode|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
@@ -85,7 +85,7 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Debug|Win32"
+			Name="Debug_Unicode|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
@@ -188,7 +188,7 @@
 				RelativePath=".\testlog.h"
 				>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -199,7 +199,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -214,7 +214,7 @@
 				RelativePath=".\testvsqt.h"
 				>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -225,7 +225,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -246,7 +246,7 @@
 				RelativePath=".\testvsqt.ui"
 				>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -257,7 +257,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -279,7 +279,7 @@
 				RelativePath=".\testvsqt.qrc"
 				>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -290,7 +290,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -312,7 +312,7 @@
 				RelativePath=".\GeneratedFiles\qrc_testvsqt.cpp"
 				>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -320,7 +320,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -333,22 +333,22 @@
 				>
 			</File>
 			<Filter
-				Name="Release"
+				Name="Release_Unicode"
 				Filter="cpp;moc"
 				SourceControlFiles="false"
 				>
 				<File
-					RelativePath=".\GeneratedFiles\Release\moc_testlog.cpp"
+					RelativePath=".\GeneratedFiles\Release_Unicode\moc_testlog.cpp"
 					>
 					<FileConfiguration
-						Name="Release|Win32"
+						Name="Release_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32"
+						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -357,17 +357,17 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\GeneratedFiles\Release\moc_testvsqt.cpp"
+					RelativePath=".\GeneratedFiles\Release_Unicode\moc_testvsqt.cpp"
 					>
 					<FileConfiguration
-						Name="Release|Win32"
+						Name="Release_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32"
+						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -377,15 +377,15 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="Debug"
+				Name="Debug_Unicode"
 				Filter="cpp;moc"
 				SourceControlFiles="false"
 				>
 				<File
-					RelativePath=".\GeneratedFiles\Debug\moc_testlog.cpp"
+					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_testlog.cpp"
 					>
 					<FileConfiguration
-						Name="Release|Win32"
+						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -393,7 +393,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32"
+						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -401,10 +401,10 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\GeneratedFiles\Debug\moc_testvsqt.cpp"
+					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_testvsqt.cpp"
 					>
 					<FileConfiguration
-						Name="Release|Win32"
+						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -412,7 +412,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32"
+						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
