@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -25,8 +26,20 @@ void fmtFlags(){
 	cout<<i<<s;
 }
 
+void loc(){
+	locale native("");
+	locale global;
+	locale chs("chs");
+
+	cout<<"chs:"<<chs.name()<<endl;
+	cout<<"native:"<<native.name()<<endl;
+	cout<<"global:"<<global.name()<<endl;
+	cout<<"classic:"<<locale::classic().name()<<endl;
+}
+
 int main(){
-	fmtFlags();
+	//fmtFlags();
+	loc();
 	cin.get();
 	return 0;
 }

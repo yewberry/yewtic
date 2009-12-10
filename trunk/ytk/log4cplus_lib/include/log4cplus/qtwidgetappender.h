@@ -6,6 +6,9 @@
 
 #include <QtGui/QTextEdit>
 #include <QtCore/QHash>
+#include <QtCore/QTextCodec>
+#include <QtCore/QByteArray>
+
 
 namespace yewtic {
 	extern QHash<QString, QTextEdit*> LOG4CPLUS_EXPORT appenders;

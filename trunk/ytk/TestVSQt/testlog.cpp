@@ -39,6 +39,7 @@ TestLog::TestLog(QWidget *parent, Qt::WFlags flags) : QDialog(parent, flags)
 	setWindowTitle(tr("Test Log"));
 	resize(600, 300);
 
+	std::string curLocale = setlocale(LC_ALL, NULL);
 	initLogger();
 }
 
@@ -55,9 +56,6 @@ void TestLog::initLogger()
 	{
 		ConfigureAndWatchThread configureThread(LOG4CPLUS_TEXT("log4cplus.properties"), 3*1000);
 		LOG4CPLUS_DEBUG(logger, "logger conf done.");
-		LOG4CPLUS_WARN(logger, "a我的天");
-		LOG4CPLUS_WARN(logger, "b你的天");
-		LOG4CPLUS_WARN(logger, "cde");
 	}
 	catch(...) {
 		std::cout << "Exception..." << std::endl;
@@ -66,22 +64,22 @@ void TestLog::initLogger()
 }
 void TestLog::dbgBtnClicked()
 {
-	LOG4CPLUS_DEBUG(logger, "print debug 打印这DEBUG" );
+	LOG4CPLUS_DEBUG(logger, "print debug打印他" );
 }
 
 void TestLog::infoBtnClicked()
 {
-    LOG4CPLUS_INFO(logger, "print info 打印INFO" );
+    LOG4CPLUS_INFO(logger, "print infod打印INFO" );
 }
 
 void TestLog::warnBtnClicked()
 {
-    LOG4CPLUS_WARN(logger, "print warn 打印WARN" );
+    LOG4CPLUS_WARN(logger, "print warn打他" );
 }
 
 void TestLog::errBtnClicked()
 {
-    LOG4CPLUS_ERROR(logger, "print error 打印ERROR" );
+    LOG4CPLUS_ERROR(logger, "print error打" );
 }
 
 void TestLog::fatalBtnClicked()
