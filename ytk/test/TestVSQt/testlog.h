@@ -4,8 +4,10 @@
 #include "common.h"
 #include <QtGui/QDialog>
 
+QT_BEGIN_NAMESPACE
 class QPushButton;
 class QTextEdit;
+QT_END_NAMESPACE
 
 class TestLog : public QDialog
 {
