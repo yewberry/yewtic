@@ -16,6 +16,7 @@ private slots:
 	void testLogClicked();
 	void testWebKitClicked();
 	void testDbusClicked();
+	void testDataViewClicked();
 
 private:
 	void testLog();

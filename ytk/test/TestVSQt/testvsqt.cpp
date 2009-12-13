@@ -2,6 +2,7 @@
 #include "common.h"
 #include "testlog.h"
 #include "TestQtWebKit.h"
+#include "TestDataView.h"
 #include <QtGui/QGridLayout>
 #include <QtGui/QPushButton>
 
@@ -18,11 +19,15 @@ TestVSQt::TestVSQt(QWidget *parent, Qt::WFlags flags)
 	
 	QPushButton *testDbusBtn = new QPushButton(tr("D-Bus"));
 	connect( testDbusBtn, SIGNAL(clicked()), this, SLOT(testDbusClicked()) );
+	
+	QPushButton *testDataViewBtn = new QPushButton(tr("Data View"));
+	connect( testDataViewBtn, SIGNAL(clicked()), this, SLOT(testDataViewClicked()) );
 
 	QGridLayout *layout = new QGridLayout;
 	layout->addWidget(testLogBtn, 0, 0);
 	layout->addWidget(testWebBtn, 0, 1);
 	layout->addWidget(testDbusBtn, 0, 2);
+	layout->addWidget(testDataViewBtn, 1, 0);
 
 	setLayout(layout);
 	setWindowTitle(tr("Test Dialog"));
@@ -38,10 +43,16 @@ void TestVSQt::testLogClicked()
 	TestLog *t = new TestLog(this);
 	t->show();
 }
-void TestVSQt::testWebKitClicked(){
+void TestVSQt::testWebKitClicked()
+{
 	TestQtWebKit *t = new TestQtWebKit(this);
 	t->show();
 }
 void TestVSQt::testDbusClicked()
 {
+}
+void TestVSQt::testDataViewClicked()
+{
+	TestDataView *t = new TestDataView(this);
+	t->show();
 }
