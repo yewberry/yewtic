@@ -2,8 +2,8 @@
 #define BATDOWN_H
 
 #include <QtGui/QMainWindow>
-
-class QAction;
+#include "common.h"
+#include "WebBrowser.h"
 
 class BatDown : public QMainWindow
 {
@@ -16,23 +16,34 @@ public:
 protected:
 	void closeEvent(QCloseEvent *event);
 
+protected slots:
+	void analyseUrl();
+	void download();
+
 private:
 	void createActions();
 	void createMenus();
 	void createContextMenu();
 	void createToolBars();
 	void createStatusBar();
+	void createCentralArea();
+
 	void readSettings();
 	void writeSettings();
 
+	void initLogger();
 private:
-	QMenu *fileMenu; QMenu *editMenu; QMenu *toolsMenu;	QMenu *optionsMenu;
-	QMenu *helpMenu;
+	Logger logger;
+	QTextEdit *logAppender;
+	WebBrowser *webBrowser;
 
-	QToolBar *fileToolBar; QToolBar *editToolBar;
 
-	QAction *downloadAction;
-	QAction *aboutAction;
+private:
+	QMenu *fileMenu, *editMenu, *toolsMenu, *optionsMenu, *helpMenu;
+	QToolBar *fileToolBar, *editToolBar;
+
+	QAction *analyseAct, *downloadAct;
+	QAction *quitAct, *aboutAct;
 };
 
 #endif // BATDOWN_H

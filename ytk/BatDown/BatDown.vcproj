@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="BatDown"
 	ProjectGUID="{5A1DDE9E-8FC6-4754-A6CB-B4A16CB546E4}"
+	RootNamespace="BatDown"
 	Keyword="Qt4VSv1.0"
 	TargetFrameworkVersion="0"
 	>
@@ -16,7 +17,7 @@
 	</ToolFiles>
 	<Configurations>
 		<Configuration
-			Name="Release|Win32"
+			Name="Release_Unicode|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
@@ -38,7 +39,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories=".\GeneratedFiles;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWebKit;.\"
+				AdditionalIncludeDirectories=".\GeneratedFiles;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWebKit;."
 				PreprocessorDefinitions="UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_THREAD_SUPPORT,QT_NO_DEBUG,NDEBUG,QT_CORE_LIB,QT_GUI_LIB"
 				RuntimeLibrary="2"
 				TreatWChar_tAsBuiltInType="false"
@@ -55,7 +56,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies=" qtmain.lib QtCore4.lib QtGui4.lib QtWebKit4.lib"
+				AdditionalDependencies="qtmain.lib QtCore4.lib QtGui4.lib QtWebKit4.lib log4cplusU.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				AdditionalLibraryDirectories="$(QTDIR)\lib"
 				GenerateDebugInformation="false"
@@ -84,7 +85,7 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Debug|Win32"
+			Name="Debug_Unicode|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
@@ -107,7 +108,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\GeneratedFiles;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWebKit;.\"
+				AdditionalIncludeDirectories=".\GeneratedFiles;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWebKit;."
 				PreprocessorDefinitions="UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_THREAD_SUPPORT,QT_CORE_LIB,QT_GUI_LIB"
 				RuntimeLibrary="3"
 				TreatWChar_tAsBuiltInType="false"
@@ -124,7 +125,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies=" qtmaind.lib QtCored4.lib QtGuid4.lib QtWebKitd4.lib"
+				AdditionalDependencies="qtmaind.lib QtCored4.lib QtGuid4.lib QtWebKitd4.lib log4cplusUD.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				AdditionalLibraryDirectories="$(QTDIR)\lib"
 				GenerateDebugInformation="true"
@@ -169,6 +170,10 @@
 				RelativePath=".\main.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\WebBrowser.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -179,7 +184,7 @@
 				RelativePath=".\BatDown.h"
 				>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -190,7 +195,37 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug_Unicode|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing $(InputFileName)..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\QtWebKit\.&quot; -I&quot;.\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
+						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\common.h"
+				>
+			</File>
+			<File
+				RelativePath=".\WebBrowser.h"
+				>
+				<FileConfiguration
+					Name="Release_Unicode|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing $(InputFileName)..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -I&quot;$(QTDIR)\include\.&quot; -I&quot;$(QTDIR)\include\QtCore\.&quot; -I&quot;$(QTDIR)\include\QtGui\.&quot; -I&quot;$(QTDIR)\include\QtWebKit\.&quot; -I&quot;.\.&quot; -I&quot;.\GeneratedFiles\$(ConfigurationName)\.&quot; -I&quot;.\GeneratedFiles\.&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
+						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -218,7 +253,7 @@
 				RelativePath=".\BatDown.qrc"
 				>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -229,7 +264,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -251,7 +286,7 @@
 				RelativePath=".\GeneratedFiles\qrc_BatDown.cpp"
 				>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -259,7 +294,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug_Unicode|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -268,15 +303,41 @@
 				</FileConfiguration>
 			</File>
 			<Filter
-				Name="Release"
+				Name="Release_Unicode"
 				Filter="cpp;moc"
 				SourceControlFiles="false"
 				>
 				<File
-					RelativePath=".\GeneratedFiles\Release\moc_BatDown.cpp"
+					RelativePath=".\GeneratedFiles\Release_Unicode\moc_BatDown.cpp"
 					>
 					<FileConfiguration
-						Name="Debug|Win32"
+						Name="Release_Unicode|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_Unicode|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\GeneratedFiles\Release_Unicode\moc_WebBrowser.cpp"
+					>
+					<FileConfiguration
+						Name="Release_Unicode|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -286,16 +347,42 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="Debug"
+				Name="Debug_Unicode"
 				Filter="cpp;moc"
 				SourceControlFiles="false"
 				>
 				<File
-					RelativePath=".\GeneratedFiles\Debug\moc_BatDown.cpp"
+					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_BatDown.cpp"
 					>
 					<FileConfiguration
-						Name="Release|Win32"
+						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_Unicode|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_WebBrowser.cpp"
+					>
+					<FileConfiguration
+						Name="Release_Unicode|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -310,6 +397,14 @@
 		</File>
 		<File
 			RelativePath=".\BatDown.rc"
+			>
+		</File>
+		<File
+			RelativePath=".\jquery.min.js"
+			>
+		</File>
+		<File
+			RelativePath=".\log4cplus.properties"
 			>
 		</File>
 	</Files>
