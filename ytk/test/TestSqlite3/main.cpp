@@ -98,8 +98,23 @@ int main(int argc, char *argv[]){
 	//or int sqlite3_reset(sqlite3_stmt *pStmt); for future use.
 	sqlite3_finalize(stmt);
 
-	//Parameterized Queries
-
+	/* Parameterized Queries
+const char* sql = "insert into foo values(?,?,?)";
+sqlite3_prepare(db, sql, strlen(sql), &stmt, &tail);
+sqlite3_bind_int(stmt,    1, 2);
+sqlite3_bind_text(stmt,   2, "pi");
+sqlite3_bind_double(stmt, 3, 3.14);
+sqlite3_step(stmt);
+sqlite3_finalize(stmt);
+*/
+	/* Transaction
+	db = open('foods.db')
+db.exec('BEGIN')
+db.exec('SELECT * FROM episodes')
+db.exec('SELECT * FROM episodes')
+db.exec('COMMIT')
+db.close()
+	*/
 
 
 	//close db
