@@ -1,6 +1,7 @@
 #include <QtGui>
 
 #include "BatDown.h"
+#include "sqlite3.h"
 
 BatDown::BatDown(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags){
@@ -80,14 +81,10 @@ void BatDown::createCentralArea(){
 	webBrowser = new WebBrowser;
 	
 	QWidget *centralWidget = new QWidget;
-	QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
-	mainLayout->addWidget(demo, 1);
-	
-	QHBoxLayout *subLayout = new QHBoxLayout;
-	subLayout->addWidget(logAppender, 1);
-	subLayout->addWidget(webBrowser, 1);
-
-	mainLayout->addLayout(subLayout, 1);
+	QGridLayout *mainLayout = new QGridLayout(centralWidget);
+	mainLayout->addWidget(demo, 0, 0, 1, 2);
+	mainLayout->addWidget(logAppender, 1, 0);
+	mainLayout->addWidget(webBrowser, 1, 1);
 
 	setCentralWidget(centralWidget);
 

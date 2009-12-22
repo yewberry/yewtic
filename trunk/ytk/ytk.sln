@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestVSQt", "test\TestVSQt\T
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite", "sqlite\sqlite.vcproj", "{7DF8ED02-5078-4B0C-9769-8A55E73E2BAC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSqlite3", "test\TestSqlite3\TestSqlite3.vcproj", "{287CFD3B-8844-4B7A-822C-5887AA0BB30F}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -113,6 +115,14 @@ Global
 		{7DF8ED02-5078-4B0C-9769-8A55E73E2BAC}.Release_Unicode|Win32.Build.0 = Release|Win32
 		{7DF8ED02-5078-4B0C-9769-8A55E73E2BAC}.Release|Win32.ActiveCfg = Release|Win32
 		{7DF8ED02-5078-4B0C-9769-8A55E73E2BAC}.Release|Win32.Build.0 = Release|Win32
+		{287CFD3B-8844-4B7A-822C-5887AA0BB30F}.Debug_Unicode|Win32.ActiveCfg = Debug|Win32
+		{287CFD3B-8844-4B7A-822C-5887AA0BB30F}.Debug_Unicode|Win32.Build.0 = Debug|Win32
+		{287CFD3B-8844-4B7A-822C-5887AA0BB30F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{287CFD3B-8844-4B7A-822C-5887AA0BB30F}.Debug|Win32.Build.0 = Debug|Win32
+		{287CFD3B-8844-4B7A-822C-5887AA0BB30F}.Release_Unicode|Win32.ActiveCfg = Release|Win32
+		{287CFD3B-8844-4B7A-822C-5887AA0BB30F}.Release_Unicode|Win32.Build.0 = Release|Win32
+		{287CFD3B-8844-4B7A-822C-5887AA0BB30F}.Release|Win32.ActiveCfg = Release|Win32
+		{287CFD3B-8844-4B7A-822C-5887AA0BB30F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
