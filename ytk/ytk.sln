@@ -24,6 +24,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest", "UnitTest\UnitTest.vcproj", "{2021402B-E1C1-4B02-AFF4-79C5ED4A2074}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BatDown", "BatDown\BatDown.vcproj", "{5A1DDE9E-8FC6-4754-A6CB-B4A16CB546E4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2021402B-E1C1-4B02-AFF4-79C5ED4A2074} = {2021402B-E1C1-4B02-AFF4-79C5ED4A2074}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
