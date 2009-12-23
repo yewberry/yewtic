@@ -18,5 +18,6 @@ int main()
 
 	tut::runner.get().run_tests();
 
+	std::cin.get();
 	return !reporter.all_ok();
 }

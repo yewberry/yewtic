@@ -14,4 +14,5 @@ using namespace log4cplus::helpers;
 #define yWARN(msg)	LOG4CPLUS_WARN(logger, msg)
 #define yERROR(msg) LOG4CPLUS_ERROR(logger, msg)
 
+#include "exception.h"
 #endif // COMMON_H
