@@ -1,6 +1,7 @@
 #include <QtGui>
 
 #include "BatDown.h"
+#include "DBManager.h"
 #include "sqlite3/sqlite3.h"
 
 BatDown::BatDown(QWidget *parent, Qt::WFlags flags)

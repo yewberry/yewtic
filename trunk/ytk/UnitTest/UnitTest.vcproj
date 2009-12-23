@@ -59,6 +59,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="sqlite3.lib"
+				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -129,6 +131,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="sqlite3.lib"
+				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -166,15 +170,15 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\BatDownTest.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\BatDown\DBManager.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\main.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\test.cpp"
 				>
 			</File>
 		</Filter>

@@ -63,10 +63,10 @@ int main(int argc, char *argv[]){
 
 
 	char *result[];
-	int rowa;
-	int cola;
+	int row;
+	int col;
 	sql = "select * from episodes;";
-	rc = sqlite3_get_table(db, sql, &result, &rowa, &cola, &zErr);
+	rc = sqlite3_get_table(db, sql, &result, &row, &col, &zErr);
 	sqlite3_free_table(result);
 	*/
 
