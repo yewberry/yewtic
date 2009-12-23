@@ -10,6 +10,8 @@ public:
 	DBManager(void);
 	DBManager(string);
 	~DBManager(void);
+
+	void testFunc();
 };
 
 
