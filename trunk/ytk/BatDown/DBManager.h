@@ -1,6 +1,7 @@
 #ifndef DBMANAGER_H
 #define DBMANAGER_H
 
+#include <iostream>
 using namespace std;
 
 class DBManager
