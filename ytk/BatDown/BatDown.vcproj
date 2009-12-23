@@ -363,13 +363,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_WebBrowser.cpp"
@@ -652,14 +645,6 @@
 					>
 				</File>
 			</Filter>
-		</Filter>
-		<Filter
-			Name="test"
-			>
-			<File
-				RelativePath=".\test\test.cpp"
-				>
-			</File>
 		</Filter>
 		<File
 			RelativePath=".\BatDown.ico"
