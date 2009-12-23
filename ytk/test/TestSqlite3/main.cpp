@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "sqlite3.h"
+#include "sqlite3/sqlite3.h"
 
 int callback(void* data, int ncols, char** values, char** headers);
 

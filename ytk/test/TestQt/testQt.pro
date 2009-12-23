@@ -1,14 +1,14 @@
 TEMPLATE = app
 TARGET = 
 DEPENDPATH += .
-INCLUDEPATH += .
+INCLUDEPATH += . ../../include/
 
 CONFIG(debug, debug|release) {
-	LIBS += log4cplusUD.lib
-	DESTDIR = ../Debug
+	LIBS += ../../lib/log4cplusUD.lib
+	DESTDIR = Debug
 } else {
-	LIBS += log4cplusU.lib
-	DESTDIR = ../Release
+	LIBS += ../../lib/log4cplusU.lib
+	DESTDIR = Release
 }
 
 SOURCES += main.cpp

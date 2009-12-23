@@ -245,12 +245,12 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="ws2_32.lib QtCored4.lib QtGuid4.lib"
-				OutputFile="..\..\$(ConfigurationName)\log4cplusUD.dll"
+				OutputFile="$(SolutionDir)lib\log4cplusUD.dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary=".\$(OutDir)/log4cplusUD.lib"
+				ImportLibrary="$(SolutionDir)lib/log4cplusUD.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -332,12 +332,12 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="ws2_32.lib QtCore4.lib QtGui4.lib"
-				OutputFile="..\..\$(ConfigurationName)\log4cplusU.dll"
+				OutputFile="$(SolutionDir)lib\log4cplusU.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary=".\$(OutDir)/log4cplusU.lib"
+				ImportLibrary="$(SolutionDir)lib/log4cplusU.lib"
 				TargetMachine="1"
 			/>
 			<Tool
