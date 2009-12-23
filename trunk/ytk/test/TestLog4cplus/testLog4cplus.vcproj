@@ -40,6 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="$(SolutionDir)include"
 				PreprocessorDefinitions="UNICODE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -60,6 +61,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="log4cplusUD.lib"
+				AdditionalLibraryDirectories="$(SolutionDir)lib"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -112,6 +114,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="$(SolutionDir)include"
 				PreprocessorDefinitions="UNICODE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -131,6 +134,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="log4cplus.lib"
+				AdditionalLibraryDirectories="$(SolutionDir)lib"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
