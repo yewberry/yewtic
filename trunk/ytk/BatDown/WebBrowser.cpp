@@ -20,7 +20,7 @@ WebBrowser::WebBrowser(QWidget *parent, Qt::WFlags flags) : QWidget(parent, flag
 	btns->addWidget(gooBtn);
 
 	view = new QWebView;
-	view->load(QUrl("http://www.google.com/ncr"));
+	view->load( QUrl("http://www.sina.com.cn") );
 	connect(view, SIGNAL(loadFinished(bool)), this, SLOT(finishLoading(bool)));
 	
 	locationEdit = new QLineEdit;
