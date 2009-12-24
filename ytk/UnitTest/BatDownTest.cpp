@@ -1,7 +1,10 @@
 #include "DBManager.h"
 #include "exception.h"
+#include <vector>
 
 #include <tut/tut.hpp> 
+using namespace std;
+
 namespace tut 
 { 
 	struct data
@@ -47,15 +50,18 @@ namespace tut
 			int row;
 			int col;
 			dbMgr.queryAsArray("select * from test", &result, &row, &col);
-			result[0];
-			result[1];
-			result[2];
-			result[3];
-			result[4];
-			result[5];
-			std::cerr<<row<<" "<<col;
-			int a = 0;
+			std::cerr<<row<<" "<<col<<std::endl;
 			dbMgr.freeQueryArray(result);
+
+			vector< vector<string> > vec;
+			vector<string> colNms;
+			colNms = dbMgr.queryAsVector("select * from test", vec);
+			cout<<colNms.at(0)<<","<<colNms.at(1)<<endl;
+			for(int i=0, len=vec.size(); i<len; ++i){
+				vector<string> v = vec.at(i);
+				cout<<v.at(0)<<","<<v.at(1)<<endl;
+			}
+			
 
 		} catch(ytk::SqlException e) {
 			std::cerr<< e.what();

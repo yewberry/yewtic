@@ -30,12 +30,47 @@ void DBManager::exec(const char *sql) throw(ytk::SqlException){
 	}
 }
 
+std::vector<std::string> DBManager::queryAsVector(
+	std::string sql,
+	std::vector<std::vector<std::string> >& vec) throw(ytk::SqlException)
+{
+	int nRow;
+	int nCol;
+	char **result;
+	char *zErr;
+
+	int rc = sqlite3_get_table(db, sql.c_str(), &result, &nRow, &nCol, &zErr);
+	if(rc != SQLITE_OK) {
+		if (zErr != NULL) {
+			std::string es(zErr);
+			sqlite3_free(zErr);
+			throw ytk::SqlException(es);
+		}
+	}
+
+	std::vector<std::string> colNms;
+	for(int i=0; i<nCol; ++i){
+		colNms.push_back(result[i]);
+	}
+
+	for(int i=1; i<nRow+1; ++i){
+		std::vector<std::string> arr;
+		for(int j=0; j<nCol; ++j){
+			arr.push_back(result[i*nCol+j]);
+		}
+		vec.push_back(arr);
+	}
+	sqlite3_free_table(result);
+
+	return colNms;
+}
+
 void DBManager::queryAsArray(
 	char *sql,
 	char ***result,
 	int *pnRow,
 	int *pnColumn
-){
+) throw(ytk::SqlException) {
 	char *zErr;
 	int rc = sqlite3_get_table(db, sql, result, pnRow, pnColumn, &zErr);
 	if(rc != SQLITE_OK) {
