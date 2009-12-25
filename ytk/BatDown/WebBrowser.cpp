@@ -7,6 +7,7 @@
 
 WebBrowser::WebBrowser(QWidget *parent, Qt::WFlags flags) : QWidget(parent, flags)
 {
+	logger = Logger::getRoot();
 	QFile file;
 	file.setFileName(":/BatDown/jquery.min.js");
 	file.open(QIODevice::ReadOnly);
@@ -18,22 +19,24 @@ WebBrowser::WebBrowser(QWidget *parent, Qt::WFlags flags) : QWidget(parent, flag
 
 	QHBoxLayout *btns = new QHBoxLayout;
 	btns->addWidget(gooBtn);
-
+	
 	view = new QWebView;
-	view->load( QUrl("http://www.sina.com.cn") );
+	view->load( QUrl("http://www.baidu.com") );
 	connect(view, SIGNAL(loadFinished(bool)), this, SLOT(finishLoading(bool)));
 	
 	locationEdit = new QLineEdit;
 
 	QVBoxLayout *lay = new QVBoxLayout;
 	//lay->addLayout(btns);
-	//lay->addWidget(locationEdit);
+	lay->addWidget(locationEdit);
 	lay->addWidget(view);
 
 	connect(view->page()->mainFrame(), SIGNAL(javaScriptWindowObjectCleared()),
 		this, SLOT(populateJavaScriptWindowObject()));
 	setLayout(lay);
 	setWindowTitle(tr("Test WebKit"));
+
+	
 }
 
 WebBrowser::~WebBrowser(void)
@@ -56,5 +59,5 @@ void WebBrowser::setValues(const QString &value)
 
 void WebBrowser::finishLoading(bool)
 {
-	view->page()->mainFrame()->evaluateJavaScript(extjs);
+	//view->page()->mainFrame()->evaluateJavaScript(extjs);
 }

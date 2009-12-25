@@ -28,7 +28,6 @@ private slots:
 	void evalJS();
 
 private:
-	void initLogger();
 	Logger logger;
 
 private:

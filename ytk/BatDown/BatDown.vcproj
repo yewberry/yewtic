@@ -323,6 +323,13 @@
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_BatDown.cpp"
 					>
 					<FileConfiguration
+						Name="Release_Unicode|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -362,6 +369,13 @@
 					<FileConfiguration
 						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"

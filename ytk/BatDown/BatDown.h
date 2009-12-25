@@ -19,6 +19,7 @@ protected:
 protected slots:
 	void analyseUrl();
 	void download();
+	void about();
 
 private:
 	void createActions();
@@ -31,7 +32,7 @@ private:
 	void readSettings();
 	void writeSettings();
 
-	void initLogger();
+	void initLogger(QTextEdit*);
 private:
 	Logger logger;
 	QTextEdit *logAppender;

@@ -28,6 +28,9 @@ void BatDown::analyseUrl(){
 void BatDown::download(){
 }
 
+void BatDown::about(){
+}
+
 void BatDown::createActions(){
 	quitAct		= new QAction(tr("&Quit"), this);
 	connect( quitAct,SIGNAL(triggered(bool)),
@@ -77,18 +80,26 @@ void BatDown::createCentralArea(){
 	logAppender = new QTextEdit;
 	logAppender->setReadOnly(true);
 	logAppender->setWordWrapMode(QTextOption::NoWrap);
-	initLogger();
+	initLogger(logAppender);
 
 	webBrowser = new WebBrowser;
 	
 	QWidget *centralWidget = new QWidget;
-	QGridLayout *mainLayout = new QGridLayout(centralWidget);
-	mainLayout->addWidget(demo, 0, 0, 1, 2);
-	mainLayout->addWidget(logAppender, 1, 0);
-	mainLayout->addWidget(webBrowser, 1, 1);
 
+	QHBoxLayout *hbLay = new QHBoxLayout;
+    hbLay->setMargin(0);
+    hbLay->setSpacing(0);
+	hbLay->addWidget(logAppender, 1);
+	hbLay->addWidget(webBrowser, 1);
+
+	QVBoxLayout *vbLay = new QVBoxLayout;
+    vbLay->setMargin(0);
+    vbLay->setSpacing(0);
+	vbLay->addWidget(demo, 1);
+	vbLay->addLayout(hbLay, 1);
+
+	centralWidget->setLayout(vbLay);
 	setCentralWidget(centralWidget);
-
 }
 
 void BatDown::readSettings(){
@@ -98,8 +109,8 @@ void BatDown::readSettings(){
 void BatDown::writeSettings(){
 }
 
-void BatDown::initLogger(){
-	yewtic::appenders.insert(QString::fromUtf8("batdown_appender"), logAppender);
+void BatDown::initLogger(QTextEdit* appender){
+	yewtic::appenders.insert(QString::fromUtf8("batdown_appender"), appender);
 
 	LogLog::getLogLog()->setInternalDebugging(true);
 	logger = Logger::getRoot();
