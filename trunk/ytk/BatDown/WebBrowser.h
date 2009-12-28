@@ -28,9 +28,6 @@ private slots:
 	void evalJS();
 
 private:
-	Logger logger;
-
-private:
 	QString extjs;
 	QWebView *view;
 	QLineEdit *locationEdit;

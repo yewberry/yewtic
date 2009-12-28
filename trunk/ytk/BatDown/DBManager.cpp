@@ -1,5 +1,6 @@
 #include "DBManager.h"
 #include "exception.h"
+#include <QtCore/QString>
 
 DBManager::DBManager(void){
 }

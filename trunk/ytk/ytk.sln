@@ -25,7 +25,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest", "UnitTest\UnitTe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BatDown", "BatDown\BatDown.vcproj", "{5A1DDE9E-8FC6-4754-A6CB-B4A16CB546E4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "surfer", "..\surfer\surfer.vcproj", "{32BE4673-6530-32D3-A79C-3022E39F8A4F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlitebrowser", "sqlitebrowser\sqlitebrowser\sqlitebrowser.vcproj", "{DBC5C383-82BA-381A-90B7-1F14DB6CE372}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -185,18 +185,18 @@ Global
 		{5A1DDE9E-8FC6-4754-A6CB-B4A16CB546E4}.Release|Win32.Build.0 = Release_Unicode|Win32
 		{5A1DDE9E-8FC6-4754-A6CB-B4A16CB546E4}.Release44|Win32.ActiveCfg = Release_Unicode|Win32
 		{5A1DDE9E-8FC6-4754-A6CB-B4A16CB546E4}.Release44|Win32.Build.0 = Release_Unicode|Win32
-		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Debug_Unicode|Win32.ActiveCfg = Debug|Win32
-		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Debug_Unicode|Win32.Build.0 = Debug|Win32
-		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Debug|Win32.ActiveCfg = Debug|Win32
-		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Debug|Win32.Build.0 = Debug|Win32
-		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Release PE|Win32.ActiveCfg = Release|Win32
-		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Release PE|Win32.Build.0 = Release|Win32
-		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Release_Unicode|Win32.ActiveCfg = Release|Win32
-		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Release_Unicode|Win32.Build.0 = Release|Win32
-		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Release|Win32.ActiveCfg = Release|Win32
-		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Release|Win32.Build.0 = Release|Win32
-		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Release44|Win32.ActiveCfg = Release|Win32
-		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Release44|Win32.Build.0 = Release|Win32
+		{DBC5C383-82BA-381A-90B7-1F14DB6CE372}.Debug_Unicode|Win32.ActiveCfg = Debug|Win32
+		{DBC5C383-82BA-381A-90B7-1F14DB6CE372}.Debug_Unicode|Win32.Build.0 = Debug|Win32
+		{DBC5C383-82BA-381A-90B7-1F14DB6CE372}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DBC5C383-82BA-381A-90B7-1F14DB6CE372}.Debug|Win32.Build.0 = Debug|Win32
+		{DBC5C383-82BA-381A-90B7-1F14DB6CE372}.Release PE|Win32.ActiveCfg = Release|Win32
+		{DBC5C383-82BA-381A-90B7-1F14DB6CE372}.Release PE|Win32.Build.0 = Release|Win32
+		{DBC5C383-82BA-381A-90B7-1F14DB6CE372}.Release_Unicode|Win32.ActiveCfg = Release|Win32
+		{DBC5C383-82BA-381A-90B7-1F14DB6CE372}.Release_Unicode|Win32.Build.0 = Release|Win32
+		{DBC5C383-82BA-381A-90B7-1F14DB6CE372}.Release|Win32.ActiveCfg = Release|Win32
+		{DBC5C383-82BA-381A-90B7-1F14DB6CE372}.Release|Win32.Build.0 = Release|Win32
+		{DBC5C383-82BA-381A-90B7-1F14DB6CE372}.Release44|Win32.ActiveCfg = Release|Win32
+		{DBC5C383-82BA-381A-90B7-1F14DB6CE372}.Release44|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

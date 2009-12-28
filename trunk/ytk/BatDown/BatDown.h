@@ -5,6 +5,10 @@
 #include "common.h"
 #include "WebBrowser.h"
 
+extern Logger g_logger;
+
+class DBManager;
+
 class BatDown : public QMainWindow
 {
 	Q_OBJECT
@@ -32,9 +36,11 @@ private:
 	void readSettings();
 	void writeSettings();
 
-	void initLogger(QTextEdit*);
+	void init();
+	void initLogger();
 private:
-	Logger logger;
+	DBManager *dbMgr;
+
 	QTextEdit *logAppender;
 	WebBrowser *webBrowser;
 
