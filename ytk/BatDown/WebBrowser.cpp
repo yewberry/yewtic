@@ -7,7 +7,6 @@
 
 WebBrowser::WebBrowser(QWidget *parent, Qt::WFlags flags) : QWidget(parent, flags)
 {
-	logger = Logger::getRoot();
 	QFile file;
 	file.setFileName(":/BatDown/jquery.min.js");
 	file.open(QIODevice::ReadOnly);
@@ -20,6 +19,7 @@ WebBrowser::WebBrowser(QWidget *parent, Qt::WFlags flags) : QWidget(parent, flag
 	QHBoxLayout *btns = new QHBoxLayout;
 	btns->addWidget(gooBtn);
 	
+	yDEBUG("bef load url");
 	view = new QWebView;
 	view->load( QUrl("http://www.baidu.com") );
 	connect(view, SIGNAL(loadFinished(bool)), this, SLOT(finishLoading(bool)));
