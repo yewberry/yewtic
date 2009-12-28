@@ -1,0 +1,38 @@
+<RCC>
+    <qresource prefix="/" >
+        <file>goBack.png</file>
+        <file>goForward.png</file>
+        <file>stop.png</file>
+        <file>surfer.png</file>
+        <file>reload.png</file>
+        <file>openTab.png</file>
+        <file>closeTab.png</file>
+        <file>restore.png</file>
+        <file>clear.png</file>
+        <file>history.png</file>
+        <file>bookmarks.png</file>
+        <file>copy.png</file>
+        <file>createBookmark.png</file>
+        <file>folder.png</file>
+        <file>createFolder.png</file>
+        <file>delete.png</file>
+        <file>settings.png</file>
+        <file>ok.png</file>
+        <file>apply.png</file>
+        <file>cancel.png</file>
+        <file>defaults.png</file>
+        <file>download.png</file>
+        <file>next.png</file>
+        <file>previous.png</file>
+        <file>close.png</file>
+        <file>zoom-in.png</file>
+        <file>zoom-original.png</file>
+        <file>zoom-out.png</file>
+        <file>download-small.png</file>
+        <file>open-remote.png</file>
+        <file>reload-small.png</file>
+        <file>folder-bookmark.png</file>
+        <file>defaultPageIcon.png</file>
+        <file>edit.png</file>
+    </qresource>
+</RCC>

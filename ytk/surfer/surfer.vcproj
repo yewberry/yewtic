@@ -1,0 +1,1775 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9.00"
+	Name="surfer"
+	ProjectGUID="{32BE4673-6530-32D3-A79C-3022E39F8A4F}"
+	Keyword="Qt4VSv1.0"
+	TargetFrameworkVersion="0"
+	>
+	<Platforms>
+		<Platform
+			Name="Win32"
+		/>
+	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="."
+			IntermediateDirectory="build\"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				WarningLevel="0"
+				DefaultCharType="0"
+				EnableErrorChecks="1"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm200 -w34100 -w34189 -w34100 -w34189"
+				Optimization="4"
+				AdditionalIncludeDirectories="&quot;e:\Qt\2009.03\qt\include\QtCore&quot;,&quot;e:\Qt\2009.03\qt\include\QtGui&quot;,&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot;,&quot;e:\Qt\2009.03\qt\include&quot;,&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot;,&quot;build&quot;,&quot;build&quot;,e:\Qt\2009.03\qt\mkspecs\default"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_WEBKIT_LIB,QT_GUI_LIB,QT_CORE_LIB,QT_THREAD_SUPPORT"
+				GeneratePreprocessedFile="0"
+				ExceptionHandling="1"
+				RuntimeLibrary="3"
+				BufferSecurityCheck="false"
+				TreatWChar_tAsBuiltInType="false"
+				RuntimeTypeInfo="true"
+				AssemblerListingLocation="build\"
+				ObjectFile="build\"
+				ProgramDataBaseFileName=".\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_WEBKIT_LIB,QT_GUI_LIB,QT_CORE_LIB,QT_THREAD_SUPPORT,_DEBUG"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				IgnoreImportLibrary="true"
+				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot; &quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
+				AdditionalDependencies="e:\Qt\2009.03\qt\lib\qtmaind.lib e:\Qt\2009.03\qt\lib\QtWebKitd4.lib e:\Qt\2009.03\qt\lib\QtGuid4.lib e:\Qt\2009.03\qt\lib\QtCored4.lib e:\Qt\2009.03\qt\lib\QtNetworkd4.lib"
+				OutputFile="debug\surfer.exe"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="e:\Qt\2009.03\qt\lib"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile=""
+				SubSystem="2"
+				LinkTimeCodeGeneration="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="."
+			IntermediateDirectory="build\"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				WarningLevel="0"
+				DefaultCharType="0"
+				EnableErrorChecks="1"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm200 -w34100 -w34189 -w34100 -w34189"
+				Optimization="2"
+				AdditionalIncludeDirectories="&quot;e:\Qt\2009.03\qt\include\QtCore&quot;,&quot;e:\Qt\2009.03\qt\include\QtGui&quot;,&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot;,&quot;e:\Qt\2009.03\qt\include&quot;,&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot;,&quot;build&quot;,&quot;build&quot;,e:\Qt\2009.03\qt\mkspecs\default"
+				PreprocessorDefinitions="QT_NO_DEBUG,NDEBUG,_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_NO_DEBUG,QT_WEBKIT_LIB,QT_GUI_LIB,QT_CORE_LIB,QT_THREAD_SUPPORT,NDEBUG"
+				GeneratePreprocessedFile="0"
+				ExceptionHandling="1"
+				RuntimeLibrary="2"
+				BufferSecurityCheck="false"
+				TreatWChar_tAsBuiltInType="false"
+				RuntimeTypeInfo="true"
+				AssemblerListingLocation="build\"
+				ObjectFile="build\"
+				ProgramDataBaseFileName=".\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="QT_NO_DEBUG,NDEBUG,_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_NO_DEBUG,QT_WEBKIT_LIB,QT_GUI_LIB,QT_CORE_LIB,QT_THREAD_SUPPORT"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				IgnoreImportLibrary="true"
+				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot; &quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
+				AdditionalDependencies="e:\Qt\2009.03\qt\lib\qtmain.lib e:\Qt\2009.03\qt\lib\QtWebKit4.lib e:\Qt\2009.03\qt\lib\QtGui4.lib e:\Qt\2009.03\qt\lib\QtCore4.lib e:\Qt\2009.03\qt\lib\QtNetwork4.lib"
+				OutputFile="release\surfer.exe"
+				LinkIncremental="1"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="e:\Qt\2009.03\qt\lib"
+				GenerateDebugInformation="false"
+				ProgramDatabaseFile=""
+				SubSystem="2"
+				LinkTimeCodeGeneration="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			>
+			<File
+				RelativePath="src\adressbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\application.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\authenticationdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\bookmarksdelegate.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\bookmarksdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\bookmarksfolderdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\bookmarksfoldermodel.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\bookmarksfolderview.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\bookmarksitem.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\bookmarksmanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\bookmarksview.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\closedtab.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\downloaddialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\downloaditem.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\downloaditemdelegate.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\downloaditemwidget.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\downloadmanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\downloadview.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\historydialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\historyfiltermodel.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\historyitem.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\historymanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\historyview.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\main.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\mainwindow.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\networkaccessmanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\networkcookiejar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\networkdiskcache.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\searchbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\settingsdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\settingsmanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\statusbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\tab.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\tabbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\tabmanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\tabwidget.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\toolbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\webpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\webview.cpp"
+				>
+			</File>
+			<File
+				RelativePath="src\zoomslider.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
+			>
+			<File
+				RelativePath="src\adressbar.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\adressbar.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\adressbar.h -o build\moc_adressbar.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\adressbar.h"
+						Outputs="build\moc_adressbar.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\adressbar.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\adressbar.h -o build\moc_adressbar.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\adressbar.h"
+						Outputs="build\moc_adressbar.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\application.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\application.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\application.h -o build\moc_application.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\application.h"
+						Outputs="build\moc_application.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\application.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\application.h -o build\moc_application.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\application.h"
+						Outputs="build\moc_application.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\authenticationdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\authenticationdialog.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\authenticationdialog.h -o build\moc_authenticationdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\authenticationdialog.h"
+						Outputs="build\moc_authenticationdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\authenticationdialog.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\authenticationdialog.h -o build\moc_authenticationdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\authenticationdialog.h"
+						Outputs="build\moc_authenticationdialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\bookmarksdelegate.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksdelegate.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksdelegate.h -o build\moc_bookmarksdelegate.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksdelegate.h"
+						Outputs="build\moc_bookmarksdelegate.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksdelegate.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksdelegate.h -o build\moc_bookmarksdelegate.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksdelegate.h"
+						Outputs="build\moc_bookmarksdelegate.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\bookmarksdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksdialog.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksdialog.h -o build\moc_bookmarksdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksdialog.h"
+						Outputs="build\moc_bookmarksdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksdialog.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksdialog.h -o build\moc_bookmarksdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksdialog.h"
+						Outputs="build\moc_bookmarksdialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\bookmarksfolderdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksfolderdialog.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksfolderdialog.h -o build\moc_bookmarksfolderdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksfolderdialog.h"
+						Outputs="build\moc_bookmarksfolderdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksfolderdialog.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksfolderdialog.h -o build\moc_bookmarksfolderdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksfolderdialog.h"
+						Outputs="build\moc_bookmarksfolderdialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\bookmarksfoldermodel.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksfoldermodel.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksfoldermodel.h -o build\moc_bookmarksfoldermodel.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksfoldermodel.h"
+						Outputs="build\moc_bookmarksfoldermodel.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksfoldermodel.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksfoldermodel.h -o build\moc_bookmarksfoldermodel.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksfoldermodel.h"
+						Outputs="build\moc_bookmarksfoldermodel.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\bookmarksfolderview.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksfolderview.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksfolderview.h -o build\moc_bookmarksfolderview.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksfolderview.h"
+						Outputs="build\moc_bookmarksfolderview.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksfolderview.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksfolderview.h -o build\moc_bookmarksfolderview.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksfolderview.h"
+						Outputs="build\moc_bookmarksfolderview.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\bookmarksitem.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksitem.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksitem.h -o build\moc_bookmarksitem.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksitem.h"
+						Outputs="build\moc_bookmarksitem.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksitem.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksitem.h -o build\moc_bookmarksitem.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksitem.h"
+						Outputs="build\moc_bookmarksitem.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\bookmarksmanager.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksmanager.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksmanager.h -o build\moc_bookmarksmanager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksmanager.h"
+						Outputs="build\moc_bookmarksmanager.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksmanager.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksmanager.h -o build\moc_bookmarksmanager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksmanager.h"
+						Outputs="build\moc_bookmarksmanager.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\bookmarksview.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksview.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksview.h -o build\moc_bookmarksview.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksview.h"
+						Outputs="build\moc_bookmarksview.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\bookmarksview.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\bookmarksview.h -o build\moc_bookmarksview.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\bookmarksview.h"
+						Outputs="build\moc_bookmarksview.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\closedtab.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\closedtab.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\closedtab.h -o build\moc_closedtab.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\closedtab.h"
+						Outputs="build\moc_closedtab.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\closedtab.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\closedtab.h -o build\moc_closedtab.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\closedtab.h"
+						Outputs="build\moc_closedtab.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\downloaddialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\downloaddialog.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\downloaddialog.h -o build\moc_downloaddialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\downloaddialog.h"
+						Outputs="build\moc_downloaddialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\downloaddialog.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\downloaddialog.h -o build\moc_downloaddialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\downloaddialog.h"
+						Outputs="build\moc_downloaddialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\downloaditem.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\downloaditem.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\downloaditem.h -o build\moc_downloaditem.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\downloaditem.h"
+						Outputs="build\moc_downloaditem.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\downloaditem.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\downloaditem.h -o build\moc_downloaditem.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\downloaditem.h"
+						Outputs="build\moc_downloaditem.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\downloaditemdelegate.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\downloaditemdelegate.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\downloaditemdelegate.h -o build\moc_downloaditemdelegate.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\downloaditemdelegate.h"
+						Outputs="build\moc_downloaditemdelegate.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\downloaditemdelegate.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\downloaditemdelegate.h -o build\moc_downloaditemdelegate.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\downloaditemdelegate.h"
+						Outputs="build\moc_downloaditemdelegate.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\downloaditemwidget.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\downloaditemwidget.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\downloaditemwidget.h -o build\moc_downloaditemwidget.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\downloaditemwidget.h"
+						Outputs="build\moc_downloaditemwidget.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\downloaditemwidget.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\downloaditemwidget.h -o build\moc_downloaditemwidget.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\downloaditemwidget.h"
+						Outputs="build\moc_downloaditemwidget.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\downloadmanager.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\downloadmanager.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\downloadmanager.h -o build\moc_downloadmanager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\downloadmanager.h"
+						Outputs="build\moc_downloadmanager.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\downloadmanager.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\downloadmanager.h -o build\moc_downloadmanager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\downloadmanager.h"
+						Outputs="build\moc_downloadmanager.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\downloadview.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\downloadview.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\downloadview.h -o build\moc_downloadview.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\downloadview.h"
+						Outputs="build\moc_downloadview.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\downloadview.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\downloadview.h -o build\moc_downloadview.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\downloadview.h"
+						Outputs="build\moc_downloadview.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\historydialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\historydialog.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\historydialog.h -o build\moc_historydialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\historydialog.h"
+						Outputs="build\moc_historydialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\historydialog.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\historydialog.h -o build\moc_historydialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\historydialog.h"
+						Outputs="build\moc_historydialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\historyfiltermodel.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\historyfiltermodel.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\historyfiltermodel.h -o build\moc_historyfiltermodel.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\historyfiltermodel.h"
+						Outputs="build\moc_historyfiltermodel.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\historyfiltermodel.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\historyfiltermodel.h -o build\moc_historyfiltermodel.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\historyfiltermodel.h"
+						Outputs="build\moc_historyfiltermodel.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\historyitem.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\historyitem.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\historyitem.h -o build\moc_historyitem.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\historyitem.h"
+						Outputs="build\moc_historyitem.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\historyitem.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\historyitem.h -o build\moc_historyitem.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\historyitem.h"
+						Outputs="build\moc_historyitem.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\historymanager.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\historymanager.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\historymanager.h -o build\moc_historymanager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\historymanager.h"
+						Outputs="build\moc_historymanager.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\historymanager.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\historymanager.h -o build\moc_historymanager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\historymanager.h"
+						Outputs="build\moc_historymanager.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\historyview.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\historyview.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\historyview.h -o build\moc_historyview.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\historyview.h"
+						Outputs="build\moc_historyview.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\historyview.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\historyview.h -o build\moc_historyview.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\historyview.h"
+						Outputs="build\moc_historyview.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\mainwindow.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\mainwindow.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\mainwindow.h -o build\moc_mainwindow.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\mainwindow.h"
+						Outputs="build\moc_mainwindow.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\mainwindow.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\mainwindow.h -o build\moc_mainwindow.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\mainwindow.h"
+						Outputs="build\moc_mainwindow.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\networkaccessmanager.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\networkaccessmanager.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\networkaccessmanager.h -o build\moc_networkaccessmanager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\networkaccessmanager.h"
+						Outputs="build\moc_networkaccessmanager.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\networkaccessmanager.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\networkaccessmanager.h -o build\moc_networkaccessmanager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\networkaccessmanager.h"
+						Outputs="build\moc_networkaccessmanager.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\networkcookiejar.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\networkcookiejar.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\networkcookiejar.h -o build\moc_networkcookiejar.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\networkcookiejar.h"
+						Outputs="build\moc_networkcookiejar.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\networkcookiejar.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\networkcookiejar.h -o build\moc_networkcookiejar.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\networkcookiejar.h"
+						Outputs="build\moc_networkcookiejar.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\networkdiskcache.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\networkdiskcache.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\networkdiskcache.h -o build\moc_networkdiskcache.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\networkdiskcache.h"
+						Outputs="build\moc_networkdiskcache.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\networkdiskcache.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\networkdiskcache.h -o build\moc_networkdiskcache.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\networkdiskcache.h"
+						Outputs="build\moc_networkdiskcache.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\searchbar.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\searchbar.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\searchbar.h -o build\moc_searchbar.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\searchbar.h"
+						Outputs="build\moc_searchbar.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\searchbar.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\searchbar.h -o build\moc_searchbar.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\searchbar.h"
+						Outputs="build\moc_searchbar.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\settingsdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\settingsdialog.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\settingsdialog.h -o build\moc_settingsdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\settingsdialog.h"
+						Outputs="build\moc_settingsdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\settingsdialog.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\settingsdialog.h -o build\moc_settingsdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\settingsdialog.h"
+						Outputs="build\moc_settingsdialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\settingsmanager.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\settingsmanager.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\settingsmanager.h -o build\moc_settingsmanager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\settingsmanager.h"
+						Outputs="build\moc_settingsmanager.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\settingsmanager.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\settingsmanager.h -o build\moc_settingsmanager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\settingsmanager.h"
+						Outputs="build\moc_settingsmanager.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\statusbar.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\statusbar.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\statusbar.h -o build\moc_statusbar.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\statusbar.h"
+						Outputs="build\moc_statusbar.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\statusbar.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\statusbar.h -o build\moc_statusbar.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\statusbar.h"
+						Outputs="build\moc_statusbar.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\tab.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\tab.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\tab.h -o build\moc_tab.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\tab.h"
+						Outputs="build\moc_tab.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\tab.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\tab.h -o build\moc_tab.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\tab.h"
+						Outputs="build\moc_tab.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\tabbar.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\tabbar.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\tabbar.h -o build\moc_tabbar.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\tabbar.h"
+						Outputs="build\moc_tabbar.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\tabbar.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\tabbar.h -o build\moc_tabbar.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\tabbar.h"
+						Outputs="build\moc_tabbar.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\tabmanager.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\tabmanager.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\tabmanager.h -o build\moc_tabmanager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\tabmanager.h"
+						Outputs="build\moc_tabmanager.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\tabmanager.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\tabmanager.h -o build\moc_tabmanager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\tabmanager.h"
+						Outputs="build\moc_tabmanager.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\tabwidget.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\tabwidget.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\tabwidget.h -o build\moc_tabwidget.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\tabwidget.h"
+						Outputs="build\moc_tabwidget.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\tabwidget.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\tabwidget.h -o build\moc_tabwidget.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\tabwidget.h"
+						Outputs="build\moc_tabwidget.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\toolbar.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\toolbar.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\toolbar.h -o build\moc_toolbar.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\toolbar.h"
+						Outputs="build\moc_toolbar.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\toolbar.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\toolbar.h -o build\moc_toolbar.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\toolbar.h"
+						Outputs="build\moc_toolbar.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\webpage.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\webpage.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\webpage.h -o build\moc_webpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\webpage.h"
+						Outputs="build\moc_webpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\webpage.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\webpage.h -o build\moc_webpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\webpage.h"
+						Outputs="build\moc_webpage.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\webview.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\webview.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\webview.h -o build\moc_webview.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\webview.h"
+						Outputs="build\moc_webview.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\webview.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\webview.h -o build\moc_webview.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\webview.h"
+						Outputs="build\moc_webview.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="src\zoomslider.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\zoomslider.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\zoomslider.h -o build\moc_zoomslider.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\zoomslider.h"
+						Outputs="build\moc_zoomslider.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC src\zoomslider.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\QtWebKit&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;build&quot; -I&quot;build&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\zoomslider.h -o build\moc_zoomslider.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;src\zoomslider.h"
+						Outputs="build\moc_zoomslider.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Generated Files"
+			Filter="cpp;c;cxx;moc;h;def;odl;idl;res;"
+			UniqueIdentifier="{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}"
+			>
+			<File
+				RelativePath="build\moc_adressbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_application.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_authenticationdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_bookmarksdelegate.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_bookmarksdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_bookmarksfolderdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_bookmarksfoldermodel.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_bookmarksfolderview.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_bookmarksitem.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_bookmarksmanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_bookmarksview.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_closedtab.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_downloaddialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_downloaditem.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_downloaditemdelegate.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_downloaditemwidget.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_downloadmanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_downloadview.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_historydialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_historyfiltermodel.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_historyitem.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_historymanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_historyview.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_mainwindow.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_networkaccessmanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_networkcookiejar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_networkdiskcache.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_searchbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_settingsdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_settingsmanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_statusbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_tab.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_tabbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_tabmanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_tabwidget.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_toolbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_webpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_webview.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\moc_zoomslider.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\qrc_main.cpp"
+				>
+			</File>
+			<File
+				RelativePath="build\ui_settingsdialog.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Translation Files"
+			Filter="ts;xlf"
+			UniqueIdentifier="{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}"
+			ParseFiles="false"
+			>
+			<File
+				RelativePath="translations\ru_RU.ts"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Form Files"
+			Filter="ui"
+			UniqueIdentifier="{99349809-55BA-4b9d-BF79-8FDBB0286EB3}"
+			ParseFiles="false"
+			>
+			<File
+				RelativePath="src\settingsdialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="UIC src\settingsdialog.ui"
+						CommandLine="E:\Qt\2009.03\qt\bin\uic.exe src\settingsdialog.ui -o build\ui_settingsdialog.h&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\uic.exe;src\settingsdialog.ui"
+						Outputs="build\ui_settingsdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="UIC src\settingsdialog.ui"
+						CommandLine="E:\Qt\2009.03\qt\bin\uic.exe src\settingsdialog.ui -o build\ui_settingsdialog.h&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\uic.exe;src\settingsdialog.ui"
+						Outputs="build\ui_settingsdialog.h"
+					/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="qrc;*"
+			UniqueIdentifier="{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}"
+			ParseFiles="false"
+			>
+			<File
+				RelativePath="icons\apply.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\bookmarks.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\cancel.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\clear.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\close.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\closeTab.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\copy.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\createBookmark.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\createFolder.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\defaultPageIcon.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\defaults.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\delete.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\download-small.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\download.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\edit.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\folder-bookmark.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\folder.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\goBack.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\goForward.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\history.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\main.qrc"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="RCC icons\main.qrc"
+						CommandLine="E:\Qt\2009.03\qt\bin\rcc.exe -name main icons\main.qrc -o build\qrc_main.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\rcc.exe;icons\apply.png;icons\bookmarks.png;icons\cancel.png;icons\clear.png;icons\close.png;icons\closeTab.png;icons\copy.png;icons\createBookmark.png;icons\createFolder.png;icons\defaultPageIcon.png;icons\defaults.png;icons\delete.png;icons\download-small.png;icons\download.png;icons\edit.png;icons\folder-bookmark.png;icons\folder.png;icons\goBack.png;icons\goForward.png;icons\history.png;icons\main.qrc;icons\next.png;icons\ok.png;icons\open-remote.png;icons\openTab.png;icons\previous.png;icons\reload-small.png;icons\reload.png;icons\restore.png;icons\settings.png;icons\stop.png;icons\surfer.png;icons\zoom-in.png;icons\zoom-original.png;icons\zoom-out.png"
+						Outputs="build\qrc_main.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="RCC icons\main.qrc"
+						CommandLine="E:\Qt\2009.03\qt\bin\rcc.exe -name main icons\main.qrc -o build\qrc_main.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\rcc.exe;icons\apply.png;icons\bookmarks.png;icons\cancel.png;icons\clear.png;icons\close.png;icons\closeTab.png;icons\copy.png;icons\createBookmark.png;icons\createFolder.png;icons\defaultPageIcon.png;icons\defaults.png;icons\delete.png;icons\download-small.png;icons\download.png;icons\edit.png;icons\folder-bookmark.png;icons\folder.png;icons\goBack.png;icons\goForward.png;icons\history.png;icons\main.qrc;icons\next.png;icons\ok.png;icons\open-remote.png;icons\openTab.png;icons\previous.png;icons\reload-small.png;icons\reload.png;icons\restore.png;icons\settings.png;icons\stop.png;icons\surfer.png;icons\zoom-in.png;icons\zoom-original.png;icons\zoom-out.png"
+						Outputs="build\qrc_main.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="icons\next.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\ok.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\open-remote.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\openTab.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\previous.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\reload-small.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\reload.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\restore.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\settings.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\stop.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\surfer.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\zoom-in.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\zoom-original.png"
+				>
+			</File>
+			<File
+				RelativePath="icons\zoom-out.png"
+				>
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

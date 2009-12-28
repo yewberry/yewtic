@@ -1,0 +1,936 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9,00"
+	Name="sqlitebrowser"
+	ProjectGUID="{89CDBFDA-9663-3232-B993-EBD0B77E028C}"
+	Keyword="Qt4VSv1.0">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="."
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			ConfigurationType="1"
+			IntermediateDirectory="debug\"
+			UseOfMfc="0">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="&quot;e:\Qt\2009.03\qt\include\QtCore&quot;,&quot;e:\Qt\2009.03\qt\include\QtGui&quot;,&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot;,&quot;e:\Qt\2009.03\qt\include&quot;,&quot;sqlite_source&quot;,&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot;,&quot;debug&quot;,e:\Qt\2009.03\qt\mkspecs\default"
+				AdditionalOptions="-Zm200 -w34100 -w34189 -w34100 -w34189"
+				AssemblerListingLocation="debug\"
+				BufferSecurityCheck="false"
+				DebugInformationFormat="3"
+				ExceptionHandling="1"
+				GeneratePreprocessedFile="0"
+				ObjectFile="debug\"
+				Optimization ="4"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_QT3SUPPORT_LIB,QT3_SUPPORT,QT_GUI_LIB,QT_CORE_LIB,QT_THREAD_SUPPORT"
+				ProgramDataBaseFileName=".\"
+				RuntimeLibrary="3"
+				RuntimeTypeInfo="true"
+				SuppressStartupBanner="true"
+				TreatWChar_tAsBuiltInType="false"
+				WarningLevel="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="e:\Qt\2009.03\qt\lib\qtmaind.lib e:\Qt\2009.03\qt\lib\Qt3Supportd4.lib e:\Qt\2009.03\qt\lib\QtGuid4.lib e:\Qt\2009.03\qt\lib\QtCored4.lib"
+				AdditionalLibraryDirectories="e:\Qt\2009.03\qt\lib"
+				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot; &quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
+				GenerateDebugInformation="true"
+				IgnoreImportLibrary="true"
+				LinkTimeCodeGeneration="0"
+				OutputFile="debug\sqlitebrowser.exe"
+				ProgramDatabaseFile=""
+				SubSystem="2"
+				SuppressStartupBanner="true"/>
+			<Tool
+				Name="VCMIDLTool"
+				DefaultCharType="0"
+				EnableErrorChecks="1"
+				WarningLevel="0"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_QT3SUPPORT_LIB,QT3_SUPPORT,QT_GUI_LIB,QT_CORE_LIB,QT_THREAD_SUPPORT,_DEBUG"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="."
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			ConfigurationType="1"
+			IntermediateDirectory="release\"
+			UseOfMfc="0">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="&quot;e:\Qt\2009.03\qt\include\QtCore&quot;,&quot;e:\Qt\2009.03\qt\include\QtGui&quot;,&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot;,&quot;e:\Qt\2009.03\qt\include&quot;,&quot;sqlite_source&quot;,&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot;,&quot;release&quot;,e:\Qt\2009.03\qt\mkspecs\default"
+				AdditionalOptions="-Zm200 -w34100 -w34189 -w34100 -w34189"
+				AssemblerListingLocation="release\"
+				BufferSecurityCheck="false"
+				DebugInformationFormat="0"
+				ExceptionHandling="1"
+				GeneratePreprocessedFile="0"
+				ObjectFile="release\"
+				Optimization ="2"
+				PreprocessorDefinitions="QT_NO_DEBUG,NDEBUG,_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_NO_DEBUG,QT_QT3SUPPORT_LIB,QT3_SUPPORT,QT_GUI_LIB,QT_CORE_LIB,QT_THREAD_SUPPORT,NDEBUG"
+				ProgramDataBaseFileName=".\"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="true"
+				SuppressStartupBanner="true"
+				TreatWChar_tAsBuiltInType="false"
+				WarningLevel="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="e:\Qt\2009.03\qt\lib\qtmain.lib e:\Qt\2009.03\qt\lib\Qt3Support4.lib e:\Qt\2009.03\qt\lib\QtGui4.lib e:\Qt\2009.03\qt\lib\QtCore4.lib"
+				AdditionalLibraryDirectories="e:\Qt\2009.03\qt\lib"
+				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot; &quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
+				GenerateDebugInformation="false"
+				IgnoreImportLibrary="true"
+				LinkIncremental="1"
+				LinkTimeCodeGeneration="0"
+				OutputFile="release\sqlitebrowser.exe"
+				ProgramDatabaseFile=""
+				SubSystem="2"
+				SuppressStartupBanner="true"/>
+			<Tool
+				Name="VCMIDLTool"
+				DefaultCharType="0"
+				EnableErrorChecks="1"
+				WarningLevel="0"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="QT_NO_DEBUG,NDEBUG,_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_NO_DEBUG,QT_QT3SUPPORT_LIB,QT3_SUPPORT,QT_GUI_LIB,QT_CORE_LIB,QT_THREAD_SUPPORT"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			<File
+				RelativePath="aboutform.cpp"/>
+			<File
+				RelativePath="addfieldform.cpp"/>
+			<File
+				RelativePath="addfieldtypeform.cpp"/>
+			<File
+				RelativePath="browsermain.cpp"/>
+			<File
+				RelativePath="choosetableform.cpp"/>
+			<File
+				RelativePath="createindexform.cpp"/>
+			<File
+				RelativePath="createtableform.cpp"/>
+			<File
+				RelativePath="deleteindexform.cpp"/>
+			<File
+				RelativePath="deletetableform.cpp"/>
+			<File
+				RelativePath="editfieldform.cpp"/>
+			<File
+				RelativePath="editform.cpp"/>
+			<File
+				RelativePath="editformwindow.cpp"/>
+			<File
+				RelativePath="edittableform.cpp"/>
+			<File
+				RelativePath="exporttablecsvform.cpp"/>
+			<File
+				RelativePath="extendedmainform.cpp"/>
+			<File
+				RelativePath="findform.cpp"/>
+			<File
+				RelativePath="form1.cpp"/>
+			<File
+				RelativePath="importcsvform.cpp"/>
+			<File
+				RelativePath="preferencesform.cpp"/>
+			<File
+				RelativePath="renametableform.cpp"/>
+			<File
+				RelativePath="sqlbrowser_util.c"/>
+			<File
+				RelativePath="sqlite_source\sqlite3.c"/>
+			<File
+				RelativePath="sqlitedb.cpp"/>
+			<File
+				RelativePath="sqllogform.cpp"/>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<File
+				RelativePath="aboutform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;aboutform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 aboutform.h -o debug\moc_aboutform.cpp"
+						Description="MOC aboutform.h"
+						Outputs="debug\moc_aboutform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;aboutform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 aboutform.h -o release\moc_aboutform.cpp"
+						Description="MOC aboutform.h"
+						Outputs="release\moc_aboutform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="addfieldform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;addfieldform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 addfieldform.h -o debug\moc_addfieldform.cpp"
+						Description="MOC addfieldform.h"
+						Outputs="debug\moc_addfieldform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;addfieldform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 addfieldform.h -o release\moc_addfieldform.cpp"
+						Description="MOC addfieldform.h"
+						Outputs="release\moc_addfieldform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="addfieldtypeform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;addfieldtypeform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 addfieldtypeform.h -o debug\moc_addfieldtypeform.cpp"
+						Description="MOC addfieldtypeform.h"
+						Outputs="debug\moc_addfieldtypeform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;addfieldtypeform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 addfieldtypeform.h -o release\moc_addfieldtypeform.cpp"
+						Description="MOC addfieldtypeform.h"
+						Outputs="release\moc_addfieldtypeform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="choosetableform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;choosetableform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 choosetableform.h -o debug\moc_choosetableform.cpp"
+						Description="MOC choosetableform.h"
+						Outputs="debug\moc_choosetableform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;choosetableform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 choosetableform.h -o release\moc_choosetableform.cpp"
+						Description="MOC choosetableform.h"
+						Outputs="release\moc_choosetableform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="createindexform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;createindexform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 createindexform.h -o debug\moc_createindexform.cpp"
+						Description="MOC createindexform.h"
+						Outputs="debug\moc_createindexform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;createindexform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 createindexform.h -o release\moc_createindexform.cpp"
+						Description="MOC createindexform.h"
+						Outputs="release\moc_createindexform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="createtableform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;createtableform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 createtableform.h -o debug\moc_createtableform.cpp"
+						Description="MOC createtableform.h"
+						Outputs="debug\moc_createtableform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;createtableform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 createtableform.h -o release\moc_createtableform.cpp"
+						Description="MOC createtableform.h"
+						Outputs="release\moc_createtableform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="deleteindexform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;deleteindexform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 deleteindexform.h -o debug\moc_deleteindexform.cpp"
+						Description="MOC deleteindexform.h"
+						Outputs="debug\moc_deleteindexform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;deleteindexform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 deleteindexform.h -o release\moc_deleteindexform.cpp"
+						Description="MOC deleteindexform.h"
+						Outputs="release\moc_deleteindexform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="deletetableform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;deletetableform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 deletetableform.h -o debug\moc_deletetableform.cpp"
+						Description="MOC deletetableform.h"
+						Outputs="debug\moc_deletetableform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;deletetableform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 deletetableform.h -o release\moc_deletetableform.cpp"
+						Description="MOC deletetableform.h"
+						Outputs="release\moc_deletetableform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="editfieldform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;editfieldform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 editfieldform.h -o debug\moc_editfieldform.cpp"
+						Description="MOC editfieldform.h"
+						Outputs="debug\moc_editfieldform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;editfieldform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 editfieldform.h -o release\moc_editfieldform.cpp"
+						Description="MOC editfieldform.h"
+						Outputs="release\moc_editfieldform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="editform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;editform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 editform.h -o debug\moc_editform.cpp"
+						Description="MOC editform.h"
+						Outputs="debug\moc_editform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;editform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 editform.h -o release\moc_editform.cpp"
+						Description="MOC editform.h"
+						Outputs="release\moc_editform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="editformwindow.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;editformwindow.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 editformwindow.h -o debug\moc_editformwindow.cpp"
+						Description="MOC editformwindow.h"
+						Outputs="debug\moc_editformwindow.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;editformwindow.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 editformwindow.h -o release\moc_editformwindow.cpp"
+						Description="MOC editformwindow.h"
+						Outputs="release\moc_editformwindow.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="edittableform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;edittableform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 edittableform.h -o debug\moc_edittableform.cpp"
+						Description="MOC edittableform.h"
+						Outputs="debug\moc_edittableform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;edittableform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 edittableform.h -o release\moc_edittableform.cpp"
+						Description="MOC edittableform.h"
+						Outputs="release\moc_edittableform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="exporttablecsvform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;exporttablecsvform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 exporttablecsvform.h -o debug\moc_exporttablecsvform.cpp"
+						Description="MOC exporttablecsvform.h"
+						Outputs="debug\moc_exporttablecsvform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;exporttablecsvform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 exporttablecsvform.h -o release\moc_exporttablecsvform.cpp"
+						Description="MOC exporttablecsvform.h"
+						Outputs="release\moc_exporttablecsvform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="extendedmainform.h"/>
+			<File
+				RelativePath="findform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;findform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 findform.h -o debug\moc_findform.cpp"
+						Description="MOC findform.h"
+						Outputs="debug\moc_findform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;findform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 findform.h -o release\moc_findform.cpp"
+						Description="MOC findform.h"
+						Outputs="release\moc_findform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="form1.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;form1.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 form1.h -o debug\moc_form1.cpp"
+						Description="MOC form1.h"
+						Outputs="debug\moc_form1.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;form1.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 form1.h -o release\moc_form1.cpp"
+						Description="MOC form1.h"
+						Outputs="release\moc_form1.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="importcsvform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;importcsvform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 importcsvform.h -o debug\moc_importcsvform.cpp"
+						Description="MOC importcsvform.h"
+						Outputs="debug\moc_importcsvform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;importcsvform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 importcsvform.h -o release\moc_importcsvform.cpp"
+						Description="MOC importcsvform.h"
+						Outputs="release\moc_importcsvform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="preferencesform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;preferencesform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 preferencesform.h -o debug\moc_preferencesform.cpp"
+						Description="MOC preferencesform.h"
+						Outputs="debug\moc_preferencesform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;preferencesform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 preferencesform.h -o release\moc_preferencesform.cpp"
+						Description="MOC preferencesform.h"
+						Outputs="release\moc_preferencesform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="renametableform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;renametableform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 renametableform.h -o debug\moc_renametableform.cpp"
+						Description="MOC renametableform.h"
+						Outputs="debug\moc_renametableform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;renametableform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 renametableform.h -o release\moc_renametableform.cpp"
+						Description="MOC renametableform.h"
+						Outputs="release\moc_renametableform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="sqlbrowser_util.h"/>
+			<File
+				RelativePath="sqlite_source\sqlite3.h"/>
+			<File
+				RelativePath="sqlitebrowsertypes.h"/>
+			<File
+				RelativePath="sqlitedb.h"/>
+			<File
+				RelativePath="sqllogform.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;sqllogform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;debug&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 sqllogform.h -o debug\moc_sqllogform.cpp"
+						Description="MOC sqllogform.h"
+						Outputs="debug\moc_sqllogform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="E:\Qt\2009.03\qt\bin\moc.exe;sqllogform.h"
+						CommandLine="E:\Qt\2009.03\qt\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;e:\Qt\2009.03\qt\include\QtCore&quot; -I&quot;e:\Qt\2009.03\qt\include\QtGui&quot; -I&quot;e:\Qt\2009.03\qt\include\Qt3Support&quot; -I&quot;e:\Qt\2009.03\qt\include&quot; -I&quot;sqlite_source&quot; -I&quot;e:\Qt\2009.03\qt\include\ActiveQt&quot; -I&quot;release&quot; -Ie:\Qt\2009.03\qt\mkspecs\default -D_MSC_VER=1500 -DWIN32 sqllogform.h -o release\moc_sqllogform.cpp"
+						Description="MOC sqllogform.h"
+						Outputs="release\moc_sqllogform.cpp"
+						Path="e:\Qt\2009.03\qt\bin"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Generated Files"
+			Filter="cpp;c;cxx;moc;h;def;odl;idl;res;"
+			UniqueIdentifier="{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}">
+			<File
+				RelativePath="debug\moc_aboutform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_aboutform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_addfieldform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_addfieldform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_addfieldtypeform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_addfieldtypeform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_choosetableform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_choosetableform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_createindexform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_createindexform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_createtableform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_createtableform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_deleteindexform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_deleteindexform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_deletetableform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_deletetableform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_editfieldform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_editfieldform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_editform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_editform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_editformwindow.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_editformwindow.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_edittableform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_edittableform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_exporttablecsvform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_exporttablecsvform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_findform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_findform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_form1.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_form1.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_importcsvform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_importcsvform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_preferencesform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_preferencesform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_renametableform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_renametableform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="debug\moc_sqllogform.cpp">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\moc_sqllogform.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="qmake_image_collection.cpp"/>
+			<File
+				RelativePath="debug\winapp.res">
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+			<File
+				RelativePath="release\winapp.res">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"/>
+			</File>
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="qrc;*"
+			UniqueIdentifier="{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}"
+			ParseFiles="false">
+			<File
+				RelativePath="images\128.png"/>
+			<File
+				RelativePath="images\create_index.png">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="echo;images\128.png;images\create_index.png;images\create_table.png;images\delete_index.png;images\delete_table.png;images\icone16.png;images\log.png;images\modify_table.png;images\new.png;images\open.png;images\revert.png;images\save.png;images\searchfind.png;images\whatis.png"
+						CommandLine="echo images\create_index.png images\create_table.png images\delete_index.png images\delete_table.png images\icone16.png > images.tmp  &amp;&amp; &#x09; echo images\log.png images\modify_table.png images\new.png images\open.png images\revert.png >> images.tmp  &amp;&amp; &#x09; echo images\save.png images\searchfind.png images\whatis.png images\128.png >> images.tmp  &amp;&amp; &#x09; E:\Qt\2009.03\qt\bin\uic3.exe -embed sqlitebrowser -f images.tmp -o qmake_image_collection.cpp"
+						Description="UIC3 Image collection in qmake_image_collection.cpp"
+						Outputs="qmake_image_collection.cpp"
+						Path="."/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						AdditionalDependencies="echo;images\128.png;images\create_index.png;images\create_table.png;images\delete_index.png;images\delete_table.png;images\icone16.png;images\log.png;images\modify_table.png;images\new.png;images\open.png;images\revert.png;images\save.png;images\searchfind.png;images\whatis.png"
+						CommandLine="echo images\create_index.png images\create_table.png images\delete_index.png images\delete_table.png images\icone16.png > images.tmp  &amp;&amp; &#x09; echo images\log.png images\modify_table.png images\new.png images\open.png images\revert.png >> images.tmp  &amp;&amp; &#x09; echo images\save.png images\searchfind.png images\whatis.png images\128.png >> images.tmp  &amp;&amp; &#x09; E:\Qt\2009.03\qt\bin\uic3.exe -embed sqlitebrowser -f images.tmp -o qmake_image_collection.cpp"
+						Description="UIC3 Image collection in qmake_image_collection.cpp"
+						Outputs="qmake_image_collection.cpp"
+						Path="."/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="images\create_table.png"/>
+			<File
+				RelativePath="images\delete_index.png"/>
+			<File
+				RelativePath="images\delete_table.png"/>
+			<File
+				RelativePath="images\icone16.png"/>
+			<File
+				RelativePath="images\log.png"/>
+			<File
+				RelativePath="images\modify_table.png"/>
+			<File
+				RelativePath="images\new.png"/>
+			<File
+				RelativePath="images\open.png"/>
+			<File
+				RelativePath="images\revert.png"/>
+			<File
+				RelativePath="images\save.png"/>
+			<File
+				RelativePath="images\searchfind.png"/>
+			<File
+				RelativePath="images\whatis.png"/>
+		</Filter>
+		<File
+			RelativePath="winapp.rc"/>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>
