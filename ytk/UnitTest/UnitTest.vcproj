@@ -59,7 +59,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="sqlite3.lib"
+				AdditionalDependencies="sqlite3.lib qtmaind.lib QtCored4.lib QtGuid4.lib QtWebKitd4.lib log4cplusUD.lib"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
@@ -185,16 +185,16 @@
 				RelativePath="..\BatDown\SqliteDB.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\SqliteDBTest.cpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\common.h"
+				>
+			</File>
 			<Filter
 				Name="tut"
 				>
@@ -450,10 +450,6 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
-		<File
-			RelativePath="..\BatDown\ytk.db"
-			>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>

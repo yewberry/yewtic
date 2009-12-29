@@ -25,7 +25,7 @@ bool SqliteDB::open(const QString &db){
 
 	m_lastErrMsg = QString("no error");
 
-	rc = sqlite3_open(getEncodedQString(db), &m_db);
+	rc = sqlite3_open( (const char *)db.toUtf8(), &m_db );
 	if( rc ) {
 		m_lastErrMsg = sqlite3_errmsg(m_db);
 		sqlite3_close(m_db);
@@ -64,13 +64,13 @@ recList_t SqliteDB::getTableRecords(const QString &tablename){
 	recList_t browseRecs;
 
 	QString statement = "SELECT rowid, *  FROM ";
-	statement.append( getEncodedQString(tablename) );
+	statement.append(tablename);
 	statement.append(" ORDER BY rowid; ");
 
 	int ncol;
 	int nrow = 0;
 	QStringList r;
-	rc = sqlite3_prepare(m_db,statement,statement.length(), &stmt, &tail);
+	rc = sqlite3_prepare(m_db,(const char *)statement.toUtf8(),statement.length(), &stmt, &tail);
 	if( SQLITE_OK == rc ){
 		while ( sqlite3_step(stmt) == SQLITE_ROW ){
 			r.clear();
@@ -78,8 +78,8 @@ recList_t SqliteDB::getTableRecords(const QString &tablename){
 			for(int i=0; i<ncol; ++i){
 				char *strresult = 0;
 				strresult = (char *)sqlite3_column_text(stmt, i);
-				QString rv = QString(strresult);
-				r << getEncodedQString(rv);
+				QString rv = QString::fromUtf8(strresult);
+				r << rv;
 			}
 			browseRecs.append(r);
 			nrow++;
@@ -90,12 +90,6 @@ recList_t SqliteDB::getTableRecords(const QString &tablename){
 		m_lastErrMsg = QString ("could not get fields");
 	}
 
+	QStringList b = browseRecs.at(0);
 	return browseRecs;
-}
-
-QByteArray SqliteDB::getEncodedQString(const QString &input){
-	if (m_curEncoding==kEncodingUTF8) return input.toUtf8();
-	if (m_curEncoding==kEncodingLatin1) return input.toLatin1();
-
-	return input;
 }

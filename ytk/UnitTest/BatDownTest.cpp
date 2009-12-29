@@ -1,4 +1,6 @@
 #include "DBManager.h"
+#include "SqliteDB.h"
+
 #include "exception.h"
 #include <vector>
 
@@ -16,6 +18,18 @@ namespace tut
 
 	typedef tg::object testobject;
 
+	template<> 
+	template<> 
+	void testobject::test<1>(){ 
+		set_test_name("Sqlite db");
+		
+		SqliteDB db;
+		db.open("ytk.db");
+		recList_t rs = db.getTableRecords("btdl_conf");
+		QStringList b = rs.at(0);
+	}
+
+	/*
 	template<> 
 	template<> 
 	void testobject::test<1>() 
@@ -69,4 +83,6 @@ namespace tut
 		}
 
 	}
+	*/
+
 };
