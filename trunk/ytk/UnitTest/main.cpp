@@ -16,8 +16,7 @@ int main()
 	tut::console_reporter reporter;
 	tut::runner.get().set_callback(&reporter);
 
-	//tut::runner.get().run_tests();
-	tut::runner.get().run_tests("SqliteDB");
+	tut::runner.get().run_tests();
 
 	std::cin.get();
 	return !reporter.all_ok();

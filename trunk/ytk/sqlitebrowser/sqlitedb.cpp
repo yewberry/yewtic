@@ -461,8 +461,7 @@ void DBBrowserDB::getTableRecords( const QString & tablename )
  statement.append(" ORDER BY rowid; ");
  //qDebug(statement);
  logSQL(statement, kLogMsg_App);
-  err=sqlite3_prepare(_db,statement,statement.length(),
-                              &vm, &tail);
+  err=sqlite3_prepare(_db,statement,statement.length(),&vm, &tail);
  if (err == SQLITE_OK){
      int rownum = 0;
    
