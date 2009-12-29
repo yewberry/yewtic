@@ -181,6 +181,14 @@
 				RelativePath=".\main.cpp"
 				>
 			</File>
+			<File
+				RelativePath="..\BatDown\SqliteDB.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SqliteDBTest.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -442,6 +450,10 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
+		<File
+			RelativePath="..\BatDown\ytk.db"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>
