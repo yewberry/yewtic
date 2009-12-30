@@ -1,8 +1,7 @@
 #include <QtGui>
 
 #include "BatDown.h"
-#include "DBManager.h"
-#include "sqlite3/sqlite3.h"
+#include "SqliteDB.h"
 
 BatDown::BatDown(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags){
@@ -10,12 +9,16 @@ BatDown::BatDown(QWidget *parent, Qt::WFlags flags)
 }
 
 BatDown::~BatDown(){
-	delete dbMgr;
+	delete m_dbMgr;
+	delete m_setting;
 }
 
 void BatDown::init(){
 	initLogger();
-	dbMgr = new DBManager("ytk.db");
+
+	m_dbMgr = new SqliteDB;
+	m_dbMgr->open("ytk.db");
+	m_setting = new QMap<QString, QString>;
 
 	createActions();
 	createMenus();
@@ -28,6 +31,7 @@ void BatDown::init(){
 }
 
 void BatDown::closeEvent(QCloseEvent *event){
+	writeSettings();
 	event->accept();
 }
 
@@ -106,22 +110,29 @@ void BatDown::createCentralArea(){
 }
 
 void BatDown::readSettings(){
-	vector< vector<string> > vec;
-	dbMgr->queryAsVector(
-		"select name,text,app_pos,\
-		proxy_enable,proxy_port,proxy_host,proxy_type \
-		from btdl_conf where id=1", vec);
+	recList_t rs = m_dbMgr->query("select * from btdl_conf where id=1");
 	//TODO load default
-	vector<string> rec = vec.at(0);
+	QStringList fldK = rs.at(0);
+	QStringList fldV = rs.at(1);
 
-	QString text = QString::fromStdString(rec.at(1));
-	QString::fromStdString(rec.at(2)).split(",");
+	for(int i=0,len=fldK.size(); i<len; ++i){
+		m_setting->insert( fldK.at(i), fldV.at(i) );
+	}
 
-	
-	resize(800, 600);
+	QStringList pos = m_setting->value("app_pos").split(",");
+	setGeometry(pos[0].toInt(), pos[1].toInt(), pos[2].toInt(), pos[3].toInt());
 }
 
 void BatDown::writeSettings(){
+	QRect rect = geometry();
+	QString pos = QString("%1,%2,%3,%4")
+					.arg(rect.x())
+					.arg(rect.y())
+					.arg(rect.width())
+					.arg(rect.height());
+	m_setting->insert("app_pos", pos);
+
+	m_dbMgr->updateRecord( *m_setting, "rowid=1", "btdl_conf" );
 }
 
 Logger g_logger = Logger::getRoot();
