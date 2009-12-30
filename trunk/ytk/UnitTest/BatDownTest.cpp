@@ -1,8 +1,5 @@
-#include "DBManager.h"
 #include "SqliteDB.h"
-
 #include "exception.h"
-#include <vector>
 
 #include <tut/tut.hpp> 
 using namespace std;
@@ -20,69 +17,28 @@ namespace tut
 
 	template<> 
 	template<> 
-	void testobject::test<1>(){ 
+	void testobject::test<1>(){
 		set_test_name("Sqlite db");
 		
 		SqliteDB db;
 		db.open("ytk.db");
-		recList_t rs = db.getTableRecords("btdl_conf");
+		recList_t rs = db.queryTable("btdl_conf");
 		QStringList b = rs.at(0);
-	}
+		QString str = b.join(",");
+		b = rs.at(1);
+		str = b.join(",");
 
-	/*
-	template<> 
-	template<> 
-	void testobject::test<1>() 
-	{ 
-		set_test_name("DB Excpetion");
+		for(int i=0; i<30; ++i){
+			record_t rec;
+			rec["url"]		= "http://www.xxx.com/"+QString("%1").arg(i)+".mp3";
+			rec["title"]	= QString::fromLocal8Bit("¸èÇú£º")+QString("%1").arg(i)+"_MP3";
+			rec["res_type"]	= "MUSIC";
+			rec["file_ext"]	= "mp3";
 
-		std::string s;
-		DBManager dbMgr("batdown.db");
-		char *sql = "create table test(id int, name text)";
-		try {
-			dbMgr.exec(sql);
-		} catch(ytk::SqlException e) {
-			s = e.what();
-		}
-		ensure_equals("check exception", s, "table test already exists");
-
-		try {
-			sql = "insert into test values (00, 'ROLLBACK')";
-			dbMgr.begin();
-			dbMgr.exec(sql);
-			dbMgr.rollback();
-
-			sql = "insert into test values (99, 'COMMIT')";
-			dbMgr.begin();
-			dbMgr.exec(sql);
-			dbMgr.commit();
-
-			sql = "delete from test where num=99";
-			dbMgr.exec(sql);
-
-			char **result;
-			int row;
-			int col;
-			dbMgr.queryAsArray("select * from test", &result, &row, &col);
-			std::cerr<<row<<" "<<col<<std::endl;
-			dbMgr.freeQueryArray(result);
-
-			vector< vector<string> > vec;
-			vector<string> colNms;
-			colNms = dbMgr.queryAsVector("select * from test", vec);
-			cout<<colNms.at(0)<<","<<colNms.at(1)<<endl;
-			for(int i=0, len=vec.size(); i<len; ++i){
-				vector<string> v = vec.at(i);
-				cout<<v.at(0)<<","<<v.at(1)<<endl;
-			}
-			
-
-		} catch(ytk::SqlException e) {
-			std::cerr<< e.what();
-			ensure_equals("Exception", 1, 0);
+			db.insertRecord(rec, "btdl_entry");
 		}
 
-	}
-	*/
+		std::cerr<<(const char*)db.getLastErrMsg().toLatin1();
 
+	}
 };

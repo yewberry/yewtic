@@ -7,7 +7,7 @@
 
 extern Logger g_logger;
 
-class DBManager;
+class SqliteDB;
 
 class BatDown : public QMainWindow
 {
@@ -39,7 +39,8 @@ private:
 	void init();
 	void initLogger();
 private:
-	DBManager *dbMgr;
+	SqliteDB *m_dbMgr;
+	QMap<QString, QString> *m_setting;
 
 	QTextEdit *logAppender;
 	WebBrowser *webBrowser;
