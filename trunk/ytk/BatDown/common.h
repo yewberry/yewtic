@@ -10,11 +10,12 @@ using namespace std;
 #include <log4cplus/qtwidgetappender.h>
 using namespace log4cplus;
 using namespace log4cplus::helpers;
-#define yDEBUG(msg) LOG4CPLUS_DEBUG(g_logger, msg)
-#define yINFO(msg)	LOG4CPLUS_INFO(g_logger, msg)
-#define yWARN(msg)	LOG4CPLUS_WARN(g_logger, msg)
-#define yERROR(msg) LOG4CPLUS_ERROR(g_logger, msg)
-extern Logger g_logger;
+#define yDEBUG(msg) LOG4CPLUS_DEBUG(rootLogger, msg)
+#define yINFO(msg)	LOG4CPLUS_INFO(rootLogger, msg)
+#define yWARN(msg)	LOG4CPLUS_WARN(rootLogger, msg)
+#define yERROR(msg) LOG4CPLUS_ERROR(rootLogger, msg)
+
+extern Logger rootLogger;
 
 #include "exception.h"
 #endif // COMMON_H
