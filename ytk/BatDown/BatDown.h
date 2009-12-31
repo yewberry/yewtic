@@ -3,11 +3,10 @@
 
 #include <QtGui/QMainWindow>
 #include "common.h"
-#include "WebBrowser.h"
-
-extern Logger g_logger;
 
 class SqliteDB;
+class WebBrowser;
+class QTableView;
 
 class BatDown : public QMainWindow
 {
@@ -38,12 +37,16 @@ private:
 
 	void init();
 	void initLogger();
+
+public:
+	static SqliteDB dbMgr;
+
 private:
-	SqliteDB *m_dbMgr;
 	QMap<QString, QString> *m_setting;
 
-	QTextEdit *logAppender;
-	WebBrowser *webBrowser;
+	QTableView	*entriesTable;
+	QTextEdit	*logAppender;
+	WebBrowser	*webBrowser;
 
 
 private:

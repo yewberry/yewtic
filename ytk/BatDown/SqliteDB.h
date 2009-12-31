@@ -5,6 +5,7 @@
 #include <QtCore/QMap>
 #include <QtCore/QString>
 #include "sqlite3/sqlite3.h"
+#include "common.h"
 
 enum
 {
@@ -21,13 +22,14 @@ class SqliteDB
 {
 public:
 	SqliteDB(): m_db(0), m_curEncoding(kEncodingUTF8){};
+	SqliteDB(const QString &db): m_curEncoding(kEncodingUTF8){open(db);};
 	~SqliteDB(){close();};
 
 	bool open(const QString &db);
 	bool isOpen();
 	void close();
 
-	recList_t query(const QString &sql);
+	recList_t query(const QString &sql, bool queryHeader = false);
 	recList_t queryTable(const QString &tablename);
 	void updateRecord(record_t &data, const QString &condition, const QString &tablename);
 	void insertRecord(record_t &data, const QString &tablename);

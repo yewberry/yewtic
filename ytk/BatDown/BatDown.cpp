@@ -2,6 +2,10 @@
 
 #include "BatDown.h"
 #include "SqliteDB.h"
+#include "WebBrowser.h"
+#include "EntryModel.h"
+
+SqliteDB BatDown::dbMgr;
 
 BatDown::BatDown(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags){
@@ -9,15 +13,13 @@ BatDown::BatDown(QWidget *parent, Qt::WFlags flags)
 }
 
 BatDown::~BatDown(){
-	delete m_dbMgr;
 	delete m_setting;
 }
 
 void BatDown::init(){
 	initLogger();
+	dbMgr.open(("ytk.db"));
 
-	m_dbMgr = new SqliteDB;
-	m_dbMgr->open("ytk.db");
 	m_setting = new QMap<QString, QString>;
 
 	createActions();
@@ -88,7 +90,12 @@ void BatDown::createStatusBar(){
 }
 
 void BatDown::createCentralArea(){
-	QLabel *demo = new QLabel(tr("Dummy"));
+	EntryModel *model = new EntryModel;
+	entriesTable = new QTableView;
+	entriesTable->setModel(model);
+	entriesTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+	//entriesTable->resizeColumnsToContents();
+
 	webBrowser = new WebBrowser;
 	
 	QWidget *centralWidget = new QWidget;
@@ -102,7 +109,7 @@ void BatDown::createCentralArea(){
 	QVBoxLayout *vbLay = new QVBoxLayout;
     vbLay->setMargin(0);
     vbLay->setSpacing(0);
-	vbLay->addWidget(demo, 1);
+	vbLay->addWidget(entriesTable, 1);
 	vbLay->addLayout(hbLay, 1);
 
 	centralWidget->setLayout(vbLay);
@@ -110,7 +117,7 @@ void BatDown::createCentralArea(){
 }
 
 void BatDown::readSettings(){
-	recList_t rs = m_dbMgr->query("select * from btdl_conf where id=1");
+	recList_t rs = dbMgr.query("select * from btdl_conf where id=1", true);
 	//TODO load default
 	QStringList fldK = rs.at(0);
 	QStringList fldV = rs.at(1);
@@ -132,10 +139,10 @@ void BatDown::writeSettings(){
 					.arg(rect.height());
 	m_setting->insert("app_pos", pos);
 
-	m_dbMgr->updateRecord( *m_setting, "rowid=1", "btdl_conf" );
+	dbMgr.updateRecord( *m_setting, "rowid=1", "btdl_conf" );
 }
 
-Logger g_logger = Logger::getRoot();
+
 void BatDown::initLogger(){
 	logAppender = new QTextEdit;
 	logAppender->setReadOnly(true);

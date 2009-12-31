@@ -8,6 +8,7 @@ bool SqliteDB::open(const QString &db){
 	if (isOpen()) close();
 
 	//try to verify the SQLite version 3 file header
+	//yINFO((const char *)QString::fromLocal8Bit("验证 SQLite 数据库文件头: %1").arg(db).toLocal8Bit());
 	QFile dbfile(db);
 	if ( dbfile.open( QIODevice::ReadOnly ) ) {
 		char buffer[16+1];
@@ -68,7 +69,7 @@ void SqliteDB::exec(QString &sql){
 	}
 }
 
-recList_t SqliteDB::query(const QString &sql){
+recList_t SqliteDB::query(const QString &sql, bool queryHeader){
 	sqlite3_stmt *stmt;
 	const char *tail;
 
@@ -84,7 +85,7 @@ recList_t SqliteDB::query(const QString &sql){
 			r.clear();
 			ncol = sqlite3_data_count(stmt);
 			for(int i=0; i<ncol; ++i){
-				if(!addHeaderflag){
+				if(!addHeaderflag && queryHeader){
 					const char *headerName = sqlite3_column_name(stmt, i);
 					QString rv = QString::fromUtf8(headerName);
 					header << rv;
@@ -94,7 +95,7 @@ recList_t SqliteDB::query(const QString &sql){
 				QString rv = QString::fromUtf8(strresult);
 				r << rv;
 			}
-			if(!addHeaderflag){
+			if(!addHeaderflag && queryHeader){
 				browseRecs.append(header);
 				addHeaderflag = true;
 			}
@@ -113,7 +114,7 @@ recList_t SqliteDB::queryTable(const QString &tablename){
 	QString sql = "SELECT rowid, *  FROM ";
 	sql.append(tablename);
 	sql.append(" ORDER BY rowid; ");
-	return query(sql);
+	return query(sql, true);
 }
 
 void SqliteDB::updateRecord(
