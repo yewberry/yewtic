@@ -29,6 +29,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlitebrowser", "sqlitebrow
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "surfer", "surfer\surfer.vcproj", "{32BE4673-6530-32D3-A79C-3022E39F8A4F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestMD5", "test\TestMD5\TestMD5.vcproj", "{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -211,6 +213,18 @@ Global
 		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Release|Win32.Build.0 = Release|Win32
 		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Release44|Win32.ActiveCfg = Release|Win32
 		{32BE4673-6530-32D3-A79C-3022E39F8A4F}.Release44|Win32.Build.0 = Release|Win32
+		{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}.Debug_Unicode|Win32.ActiveCfg = Debug|Win32
+		{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}.Debug_Unicode|Win32.Build.0 = Debug|Win32
+		{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}.Debug|Win32.Build.0 = Debug|Win32
+		{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}.Release PE|Win32.ActiveCfg = Release|Win32
+		{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}.Release PE|Win32.Build.0 = Release|Win32
+		{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}.Release_Unicode|Win32.ActiveCfg = Release|Win32
+		{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}.Release_Unicode|Win32.Build.0 = Release|Win32
+		{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}.Release|Win32.ActiveCfg = Release|Win32
+		{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}.Release|Win32.Build.0 = Release|Win32
+		{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}.Release44|Win32.ActiveCfg = Release|Win32
+		{8D8A4E1C-2682-4DC1-BB34-9D4812AF750F}.Release44|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
