@@ -7,6 +7,7 @@
 class SqliteDB;
 class WebBrowser;
 class QTableView;
+class QTreeView;
 
 class BatDown : public QMainWindow
 {
@@ -44,6 +45,7 @@ public:
 private:
 	QMap<QString, QString> *m_setting;
 
+	QTreeView	*favoritesTree;
 	QTableView	*entriesTable;
 	QTextEdit	*logAppender;
 	WebBrowser	*webBrowser;

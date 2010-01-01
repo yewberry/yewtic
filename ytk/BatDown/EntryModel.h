@@ -9,7 +9,7 @@ class EntryModel : public QAbstractTableModel
 	Q_OBJECT
 
 public:
-	EntryModel(QWidget *parent = 0);
+	EntryModel(QObject *parent = 0);
 	~EntryModel(void);
 
 	virtual QVariant headerData (int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
