@@ -4,6 +4,7 @@
 #include "SqliteDB.h"
 #include "WebBrowser.h"
 #include "EntryModel.h"
+#include "FavoritesModel.h"
 
 SqliteDB BatDown::dbMgr;
 
@@ -90,16 +91,23 @@ void BatDown::createStatusBar(){
 }
 
 void BatDown::createCentralArea(){
-	EntryModel *model = new EntryModel;
+	FavoritesModel *favModel = new FavoritesModel;
+	favoritesTree = new QTreeView;
+	favoritesTree->setModel(favModel);
+	favoritesTree->expandAll();
+
+	EntryModel *entryModel = new EntryModel;
 	entriesTable = new QTableView;
-	entriesTable->setModel(model);
+	entriesTable->setModel(entryModel);
 	entriesTable->setSelectionBehavior(QAbstractItemView::SelectRows);
-	//entriesTable->resizeColumnsToContents();
+	entriesTable->horizontalHeader()->setStretchLastSection(true);
+	entriesTable->resizeColumnsToContents();
+	entriesTable->resizeRowsToContents();
+	entriesTable->setColumnWidth(0, 200);
 
 	webBrowser = new WebBrowser;
 	
 	QWidget *centralWidget = new QWidget;
-
 	QHBoxLayout *hbLay = new QHBoxLayout;
     hbLay->setMargin(0);
     hbLay->setSpacing(0);
@@ -112,7 +120,13 @@ void BatDown::createCentralArea(){
 	vbLay->addWidget(entriesTable, 1);
 	vbLay->addLayout(hbLay, 1);
 
-	centralWidget->setLayout(vbLay);
+	QHBoxLayout *mainLayout = new QHBoxLayout;
+	mainLayout->setMargin(0);
+	mainLayout->setSpacing(0);
+	mainLayout->addWidget(favoritesTree, 1);
+	mainLayout->addLayout(vbLay, 5);
+
+	centralWidget->setLayout(mainLayout);
 	setCentralWidget(centralWidget);
 }
 
@@ -154,7 +168,7 @@ void BatDown::initLogger(){
 	
 	try{
 		ConfigureAndWatchThread configureThread(LOG4CPLUS_TEXT("log4cplus.properties"), 3*1000);
-		yDEBUG("logger conf done.");
+		yINFO("日志配置文件加载完毕。");
 	} catch(...) {
 		std::cout << "Exception..." << std::endl;
 		yERROR("Exception occured...");
