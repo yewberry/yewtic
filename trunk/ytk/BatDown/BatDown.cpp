@@ -5,11 +5,12 @@
 #include "WebBrowser.h"
 #include "EntryModel.h"
 #include "FavoritesModel.h"
+#include "md5.h"
 
 SqliteDB BatDown::dbMgr;
 
 BatDown::BatDown(QWidget *parent, Qt::WFlags flags)
-	: QMainWindow(parent, flags){
+: QMainWindow(parent, flags){
 	init();
 }
 
@@ -47,22 +48,41 @@ void BatDown::download(){
 void BatDown::about(){
 }
 
+void BatDown::testMd5(){
+	char *fn = "jquery.min.js";
+	QFile testFile(fn);
+	testFile.open( QIODevice::ReadOnly );
+	QByteArray ba = testFile.readAll();
+	const char *test = (const char *)ba;
+
+	md5_state_t state;
+	md5_byte_t digest[16];
+	char hex_output[16*2 + 1];
+	md5_init(&state);
+	md5_append(&state, (const md5_byte_t *)test, strlen(test));
+	md5_finish(&state, digest);
+	int di;
+	for(di = 0; di < 16; ++di)
+		sprintf(hex_output + di * 2, "%02x", digest[di]);
+	yDEBUG(hex_output);
+}
+
 void BatDown::createActions(){
 	quitAct		= new QAction(tr("&Quit"), this);
 	connect( quitAct,SIGNAL(triggered(bool)),
-			qApp, SLOT(quit()) );
+		qApp, SLOT(quit()) );
 
 	aboutAct	= new QAction(tr("&About"), this);
 	connect( aboutAct, SIGNAL(triggered(bool)),
-			this, SLOT(about()) );
+		this, SLOT(about()) );
 
 	analyseAct	= new QAction(tr("Analyse Url"), this);
 	connect( analyseAct, SIGNAL(triggered(bool)),
-			this, SLOT(analyseUrl()) );
+		this, SLOT(analyseUrl()) );
 
 	downloadAct	= new QAction(tr("Download"), this);
 	connect( downloadAct, SIGNAL(triggered(bool)),
-			this, SLOT(download()) );
+		this, SLOT(download()) );
 }
 
 void BatDown::createMenus(){
@@ -88,7 +108,7 @@ void BatDown::createToolBars(){
 
 	QToolBar *testToollBar = addToolBar("Test");
 	QAction *testMd5 = new QAction("Test MD5", this);
-	connect( testMd5, SIGNAL(triggered(bool)), this, SLOT(download()) );
+	connect( testMd5, SIGNAL(triggered(bool)), this, SLOT(testMd5()) );
 	testToollBar->addAction(testMd5);
 }
 
@@ -111,17 +131,17 @@ void BatDown::createCentralArea(){
 	entriesTable->setColumnWidth(0, 200);
 
 	webBrowser = new WebBrowser;
-	
+
 	QWidget *centralWidget = new QWidget;
 	QHBoxLayout *hbLay = new QHBoxLayout;
-    hbLay->setMargin(0);
-    hbLay->setSpacing(0);
+	hbLay->setMargin(0);
+	hbLay->setSpacing(0);
 	hbLay->addWidget(logAppender, 1);
 	hbLay->addWidget(webBrowser, 1);
 
 	QVBoxLayout *vbLay = new QVBoxLayout;
-    vbLay->setMargin(0);
-    vbLay->setSpacing(0);
+	vbLay->setMargin(0);
+	vbLay->setSpacing(0);
 	vbLay->addWidget(entriesTable, 1);
 	vbLay->addLayout(hbLay, 1);
 
@@ -152,10 +172,10 @@ void BatDown::readSettings(){
 void BatDown::writeSettings(){
 	QRect rect = geometry();
 	QString pos = QString("%1,%2,%3,%4")
-					.arg(rect.x())
-					.arg(rect.y())
-					.arg(rect.width())
-					.arg(rect.height());
+		.arg(rect.x())
+		.arg(rect.y())
+		.arg(rect.width())
+		.arg(rect.height());
 	m_setting->insert("app_pos", pos);
 
 	dbMgr.updateRecord( *m_setting, "rowid=1", "btdl_conf" );
@@ -170,7 +190,7 @@ void BatDown::initLogger(){
 
 	//LogLog::getLogLog()->setInternalDebugging(true);
 	//logger = Logger::getRoot();
-	
+
 	try{
 		ConfigureAndWatchThread configureThread(LOG4CPLUS_TEXT("log4cplus.properties"), 3*1000);
 		yINFO("日志配置文件加载完毕。");
