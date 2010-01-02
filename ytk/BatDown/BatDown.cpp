@@ -85,6 +85,11 @@ void BatDown::createToolBars(){
 	fileToolBar = addToolBar(tr("File"));
 	fileToolBar->addAction(analyseAct);
 	fileToolBar->addAction(downloadAct);
+
+	QToolBar *testToollBar = addToolBar("Test");
+	QAction *testMd5 = new QAction("Test MD5", this);
+	connect( testMd5, SIGNAL(triggered(bool)), this, SLOT(download()) );
+	testToollBar->addAction(testMd5);
 }
 
 void BatDown::createStatusBar(){
