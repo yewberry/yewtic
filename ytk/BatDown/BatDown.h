@@ -25,6 +25,9 @@ protected slots:
 	void download();
 	void about();
 
+private slots:
+	void testMd5();
+
 private:
 	void createActions();
 	void createMenus();
