@@ -418,6 +418,13 @@
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_EntryModel.cpp"
 					>
 					<FileConfiguration
+						Name="Release_Unicode|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -429,6 +436,13 @@
 				<File
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_FavoritesModel.cpp"
 					>
+					<FileConfiguration
+						Name="Release_Unicode|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
@@ -486,6 +500,13 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_Unicode|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_FavoritesModel.cpp"
@@ -493,6 +514,13 @@
 					<FileConfiguration
 						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"

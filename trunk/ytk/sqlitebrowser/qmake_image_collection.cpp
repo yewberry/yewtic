@@ -17,7 +17,7 @@
 **      images\whatis.png
 **      images\128.png
 **
-** Created: ??? ??? 29 21:09:39 2009
+** Created: ??? ?? 3 14:58:41 2010
 **      by: The User Interface Compiler for Qt version 4.5.2
 **
 ** WARNING! All changes made in this file will be lost!

@@ -1,9 +1,8 @@
 #include "FavoritesModel.h"
 #include "TreeNode.h"
-#include "BatDown.h"
 
-FavoritesModel::FavoritesModel(QObject *parent)
-: QAbstractItemModel(parent)
+FavoritesModel::FavoritesModel(BatDown* app, QObject *parent)
+: QAbstractItemModel(parent), m_pApp(app)
 {
 	QList<QVariant> rootData;
 	rootData<<tr("Bookmark");
@@ -117,7 +116,7 @@ Qt::ItemFlags FavoritesModel::flags(const QModelIndex &index) const
 
 void FavoritesModel::setupModelData()
 {
-	records = BatDown::dbMgr.query("SELECT id,pid,title,url FROM btdl_favs");
+	records = m_pApp->getDbMgr().query("SELECT id,pid,title,url FROM btdl_favs");
 
 	QMap<QString, TreeNode*> map;
 	for(int i=0,len=records.size(); i<len; ++i){

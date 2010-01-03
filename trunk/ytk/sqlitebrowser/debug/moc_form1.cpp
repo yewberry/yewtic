@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'form1.h'
 **
-** Created: Tue Dec 29 21:09:41 2009
+** Created: Sun Jan 3 14:58:43 2010
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.2)
 **
 ** WARNING! All changes made in this file will be lost!
