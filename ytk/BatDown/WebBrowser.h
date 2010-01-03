@@ -1,21 +1,23 @@
 #ifndef WEBBROWSER_H
 #define WEBBROWSER_H
 
-#include "common.h"
 #include <QtGui/QWidget>
+#include "BatDown.h"
 
 class QWebView;
 class QLineEdit;
 class QPushButton;
 
-class WebBrowser : public QWidget
+class WebBrowser : public QWidget, public BatDownBase
 {
 	Q_OBJECT
 
 public:
-	WebBrowser(QWidget *parent = 0, Qt::WFlags flags = 0);
+	WebBrowser(BatDown* app, QWidget *parent = 0, Qt::WFlags flags = 0);
 	~WebBrowser(void);
 
+	void openUrl(const QString &url);
+	void openUrl(const QString &url, const QString &scriptFilename);
 
 public slots:
 	void populateJavaScriptWindowObject();
@@ -28,11 +30,9 @@ private slots:
 	void evalJS();
 
 private:
-	QString extjs;
-	QWebView *view;
-	QLineEdit *locationEdit;
-
-	QPushButton *gooBtn;
+	QString		m_jsLib;
+	QWebView	*m_pWebView;
+	QLineEdit	*m_pAddrBar;
 };
 
 

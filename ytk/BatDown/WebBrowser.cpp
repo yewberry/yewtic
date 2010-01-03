@@ -5,59 +5,59 @@
 #include <QtWebKit/QWebFrame>
 #include <QtGui>
 
-WebBrowser::WebBrowser(QWidget *parent, Qt::WFlags flags) : QWidget(parent, flags)
+WebBrowser::WebBrowser(BatDown* app, QWidget *parent, Qt::WFlags flags)
+: QWidget(parent, flags), BatDownBase(app)
 {
 	QFile file;
 	file.setFileName(":/BatDown/jquery.min.js");
 	file.open(QIODevice::ReadOnly);
-	extjs = file.readAll();
+	m_jsLib = file.readAll();
 	file.close();
 
-	gooBtn = new QPushButton(tr("Google Key Value"));
-	connect( gooBtn, SIGNAL(clicked()), this, SLOT(evalJS()) );
-
-	QHBoxLayout *btns = new QHBoxLayout;
-	btns->addWidget(gooBtn);
-	
-	yDEBUG("bef load url");
-	view = new QWebView;
-	view->load( QUrl("http://www.baidu.com") );
-	connect(view, SIGNAL(loadFinished(bool)), this, SLOT(finishLoading(bool)));
-	
-	locationEdit = new QLineEdit;
+	m_pWebView = new QWebView;
+	m_pAddrBar = new QLineEdit;
 
 	QVBoxLayout *lay = new QVBoxLayout;
 	//lay->addLayout(btns);
-	lay->addWidget(locationEdit);
-	lay->addWidget(view);
+	lay->addWidget(m_pAddrBar);
+	lay->addWidget(m_pWebView);
 
-	connect(view->page()->mainFrame(), SIGNAL(javaScriptWindowObjectCleared()),
+	connect(m_pWebView, SIGNAL(loadFinished(bool)), this, SLOT(finishLoading(bool)));
+	connect(m_pWebView->page()->mainFrame(), SIGNAL(javaScriptWindowObjectCleared()),
 		this, SLOT(populateJavaScriptWindowObject()));
-	setLayout(lay);
-	setWindowTitle(tr("Test WebKit"));
 
-	
+	setLayout(lay);
+	setWindowTitle(tr("Web Browser"));
 }
 
 WebBrowser::~WebBrowser(void)
 {
 }
 
+void WebBrowser::openUrl(const QString &url)
+{
+	m_pWebView->load( QUrl(url) );
+}
+void WebBrowser::openUrl(const QString &url, const QString &scriptFilename)
+{
+
+}
+
 void WebBrowser::populateJavaScriptWindowObject(){
-	view->page()->mainFrame()->addToJavaScriptWindowObject("testQtWebKit", this);
+	m_pWebView->page()->mainFrame()->addToJavaScriptWindowObject("yewticObject", this);
 }
 
 void WebBrowser::evalJS(){
 	QString code = "var a = $('.lst')[0]; a.value = 'xixi';testQtWebKit.setValues(a.value+'_abc')";
-	view->page()->mainFrame()->evaluateJavaScript(code);
+	m_pWebView->page()->mainFrame()->evaluateJavaScript(code);
 }
 
 void WebBrowser::setValues(const QString &value)
 {
-	locationEdit->setText(value);
+	m_pAddrBar->setText(value);
 }
 
 void WebBrowser::finishLoading(bool)
 {
-	//view->page()->mainFrame()->evaluateJavaScript(extjs);
+	m_pWebView->page()->mainFrame()->evaluateJavaScript(m_jsLib);
 }

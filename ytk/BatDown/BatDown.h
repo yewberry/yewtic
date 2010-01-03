@@ -8,6 +8,7 @@
 class WebBrowser;
 class QTableView;
 class QTreeView;
+class FavoritesView;
 
 typedef QMap<QString, QString> settings_t;
 
@@ -19,8 +20,12 @@ public:
 	BatDown(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~BatDown();
 	
-	SqliteDB& getDbMgr();
-	settings_t& getSettings();
+	SqliteDB&		getDbMgr();
+	settings_t&		getSettings();
+
+	FavoritesView*	getFavoritesView();
+	WebBrowser*		getWebBrowser();
+
 
 protected:
 	void closeEvent(QCloseEvent *event);
@@ -32,6 +37,8 @@ protected slots:
 
 private slots:
 	void testMd5();
+	void testXml();
+	void testJson();
 
 private:
 	void createActions();
@@ -51,10 +58,10 @@ private:
 	SqliteDB	m_dbMgr;
 	settings_t	m_settings;
 
-	QTreeView	*favoritesTree;
-	QTableView	*entriesTable;
-	QTextEdit	*logAppender;
-	WebBrowser	*webBrowser;
+	FavoritesView	*m_pFavoritesTree;
+	QTableView		*entriesTable;
+	QTextEdit		*logAppender;
+	WebBrowser		*m_pWebBrowser;
 
 
 private:
@@ -63,6 +70,15 @@ private:
 
 	QAction *analyseAct, *downloadAct;
 	QAction *quitAct, *aboutAct;
+};
+
+class BatDownBase {
+public:
+	BatDownBase(BatDown *p){m_pApp = p;}
+	BatDown* getApp(){return m_pApp;}
+	void setApp(BatDown *p){m_pApp = p;}
+protected:
+	BatDown	*m_pApp;
 };
 
 #endif // BATDOWN_H

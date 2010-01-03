@@ -4,7 +4,7 @@
 #include <QtCore/QAbstractTableModel>
 #include "BatDown.h"
 
-class EntryModel : public QAbstractTableModel
+class EntryModel : public QAbstractTableModel, public BatDownBase
 {
 	Q_OBJECT
 
@@ -23,7 +23,6 @@ public:
 	//virtual bool removeRows(int row, int count, const QModelIndex & parent = QModelIndex());
 	
 private:
-	BatDown		*m_pApp;
 	recList_t	entries;
 	QStringList headers;
 };
