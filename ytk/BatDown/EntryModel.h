@@ -2,14 +2,14 @@
 #define ENTRYMODEL_H
 
 #include <QtCore/QAbstractTableModel>
-#include "SqliteDB.h"
+#include "BatDown.h"
 
 class EntryModel : public QAbstractTableModel
 {
 	Q_OBJECT
 
 public:
-	EntryModel(QObject *parent = 0);
+	EntryModel(BatDown* app, QObject *parent = 0);
 	~EntryModel(void);
 
 	virtual QVariant headerData (int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
@@ -23,7 +23,8 @@ public:
 	//virtual bool removeRows(int row, int count, const QModelIndex & parent = QModelIndex());
 	
 private:
-	recList_t entries;
+	BatDown		*m_pApp;
+	recList_t	entries;
 	QStringList headers;
 };
 

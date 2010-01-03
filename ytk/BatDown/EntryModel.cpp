@@ -1,10 +1,10 @@
 #include "EntryModel.h"
 #include "BatDown.h"
 
-EntryModel::EntryModel(QObject *parent)
-: QAbstractTableModel(parent)
+EntryModel::EntryModel(BatDown* app, QObject *parent)
+: QAbstractTableModel(parent), m_pApp(app)
 {
-	entries = BatDown::dbMgr.query(
+	entries = m_pApp->getDbMgr().query(
 		"SELECT title,res_type,file_ext,url,url AS id FROM btdl_entry");
 	headers<<tr("Title")<<tr("Type")<<tr("File Ext.")<<tr("URL");
 }

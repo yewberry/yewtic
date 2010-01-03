@@ -7,31 +7,26 @@
 #include "FavoritesModel.h"
 #include "md5.h"
 
-SqliteDB BatDown::dbMgr;
-
 BatDown::BatDown(QWidget *parent, Qt::WFlags flags)
 : QMainWindow(parent, flags){
+	initLogger();
+	m_dbMgr.open(("ytk.db"));
+	readSettings();
+
 	init();
 }
 
 BatDown::~BatDown(){
-	delete m_setting;
+	m_dbMgr.close();
 }
 
 void BatDown::init(){
-	initLogger();
-	dbMgr.open(("ytk.db"));
-
-	m_setting = new QMap<QString, QString>;
-
 	createActions();
 	createMenus();
 	createContextMenu();
 	createToolBars();
 	createStatusBar();
 	createCentralArea();
-
-	readSettings();
 }
 
 void BatDown::closeEvent(QCloseEvent *event){
@@ -116,12 +111,12 @@ void BatDown::createStatusBar(){
 }
 
 void BatDown::createCentralArea(){
-	FavoritesModel *favModel = new FavoritesModel;
+	FavoritesModel *favModel = new FavoritesModel(this);
 	favoritesTree = new QTreeView;
 	favoritesTree->setModel(favModel);
 	favoritesTree->expandAll();
 
-	EntryModel *entryModel = new EntryModel;
+	EntryModel *entryModel = new EntryModel(this);
 	entriesTable = new QTableView;
 	entriesTable->setModel(entryModel);
 	entriesTable->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -132,7 +127,6 @@ void BatDown::createCentralArea(){
 
 	webBrowser = new WebBrowser;
 
-	QWidget *centralWidget = new QWidget;
 	QHBoxLayout *hbLay = new QHBoxLayout;
 	hbLay->setMargin(0);
 	hbLay->setSpacing(0);
@@ -151,21 +145,22 @@ void BatDown::createCentralArea(){
 	mainLayout->addWidget(favoritesTree, 1);
 	mainLayout->addLayout(vbLay, 5);
 
+	QWidget *centralWidget = new QWidget;
 	centralWidget->setLayout(mainLayout);
 	setCentralWidget(centralWidget);
 }
 
 void BatDown::readSettings(){
-	recList_t rs = dbMgr.query("select * from btdl_conf where id=1", true);
+	recList_t rs = m_dbMgr.query("select * from btdl_conf where id=1", true);
 	//TODO load default
 	QStringList fldK = rs.at(0);
 	QStringList fldV = rs.at(1);
 
 	for(int i=0,len=fldK.size(); i<len; ++i){
-		m_setting->insert( fldK.at(i), fldV.at(i) );
+		m_settings.insert( fldK.at(i), fldV.at(i) );
 	}
 
-	QStringList pos = m_setting->value("app_pos").split(",");
+	QStringList pos = m_settings.value("app_pos").split(",");
 	setGeometry(pos[0].toInt(), pos[1].toInt(), pos[2].toInt(), pos[3].toInt());
 }
 
@@ -176,9 +171,8 @@ void BatDown::writeSettings(){
 		.arg(rect.y())
 		.arg(rect.width())
 		.arg(rect.height());
-	m_setting->insert("app_pos", pos);
-
-	dbMgr.updateRecord( *m_setting, "rowid=1", "btdl_conf" );
+	m_settings.insert("app_pos", pos);
+	m_dbMgr.updateRecord( m_settings, "rowid=1", "btdl_conf" );
 }
 
 
@@ -198,4 +192,14 @@ void BatDown::initLogger(){
 		std::cout << "Exception..." << std::endl;
 		yERROR("Exception occured...");
 	}
+}
+
+SqliteDB& BatDown::getDbMgr()
+{
+	return m_dbMgr;
+}
+
+settings_t& BatDown::getSettings()
+{
+	return m_settings;
 }

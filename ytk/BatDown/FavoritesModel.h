@@ -2,7 +2,7 @@
 #define FAVORITESMODEL_H
 
 #include <QtCore/QAbstractItemModel>
-#include "SqliteDB.h"
+#include "BatDown.h"
 
 class TreeNode;
 
@@ -11,7 +11,7 @@ class FavoritesModel : public QAbstractItemModel
 	Q_OBJECT
 
 public:
-	FavoritesModel(QObject *parent = 0);
+	FavoritesModel(BatDown* app, QObject *parent = 0);
 	~FavoritesModel();
 
 	virtual QModelIndex index(int row, int column, const QModelIndex &parent) const;
@@ -27,8 +27,9 @@ private:
 	void setupModelData();
 
 private:
-	TreeNode* rootNode;
-	recList_t records;
+	BatDown		*m_pApp;
+	TreeNode	*rootNode;
+	recList_t	records;
 
 };
 

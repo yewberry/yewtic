@@ -3,11 +3,13 @@
 
 #include <QtGui/QMainWindow>
 #include "common.h"
+#include "SqliteDB.h"
 
-class SqliteDB;
 class WebBrowser;
 class QTableView;
 class QTreeView;
+
+typedef QMap<QString, QString> settings_t;
 
 class BatDown : public QMainWindow
 {
@@ -16,6 +18,9 @@ class BatDown : public QMainWindow
 public:
 	BatDown(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~BatDown();
+	
+	SqliteDB& getDbMgr();
+	settings_t& getSettings();
 
 protected:
 	void closeEvent(QCloseEvent *event);
@@ -42,11 +47,9 @@ private:
 	void init();
 	void initLogger();
 
-public:
-	static SqliteDB dbMgr;
-
 private:
-	QMap<QString, QString> *m_setting;
+	SqliteDB	m_dbMgr;
+	settings_t	m_settings;
 
 	QTreeView	*favoritesTree;
 	QTableView	*entriesTable;
