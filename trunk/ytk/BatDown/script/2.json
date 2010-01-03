@@ -1,0 +1,9 @@
+{
+	"id": 2,
+	"title": "Å·ÃÀÖ÷Á÷",
+	"url": "http://bbs.breezecn.com/thread.php?fid=3",
+	"steps": {
+		"seq": ["login","get_post","get_music","get_url"]
+	
+	}
+}

@@ -28,6 +28,7 @@ namespace tut
 		b = rs.at(1);
 		str = b.join(",");
 
+		/*
 		for(int i=0; i<30; ++i){
 			record_t rec;
 			rec["url"]		= "http://www.xxx.com/"+QString("%1").arg(i)+".mp3";
@@ -37,8 +38,9 @@ namespace tut
 
 			db.insertRecord(rec, "btdl_entry");
 		}
+		*/
 
 		std::cerr<<(const char*)db.getLastErrMsg().toLatin1();
-
+		db.close();
 	}
 };

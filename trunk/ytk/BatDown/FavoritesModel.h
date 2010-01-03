@@ -6,7 +6,7 @@
 
 class TreeNode;
 
-class FavoritesModel : public QAbstractItemModel
+class FavoritesModel : public QAbstractItemModel, public BatDownBase
 {
 	Q_OBJECT
 
@@ -27,7 +27,6 @@ private:
 	void setupModelData();
 
 private:
-	BatDown		*m_pApp;
 	TreeNode	*rootNode;
 	recList_t	records;
 

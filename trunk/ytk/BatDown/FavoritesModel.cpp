@@ -2,7 +2,7 @@
 #include "TreeNode.h"
 
 FavoritesModel::FavoritesModel(BatDown* app, QObject *parent)
-: QAbstractItemModel(parent), m_pApp(app)
+: QAbstractItemModel(parent), BatDownBase(app)
 {
 	QList<QVariant> rootData;
 	rootData<<tr("Bookmark");
@@ -63,7 +63,7 @@ QVariant FavoritesModel::data(const QModelIndex &index, int role) const
 	//refer to FavoritesModel::setupModelData for data field order.
 	if(role == Qt::DisplayRole){
 		TreeNode *node = static_cast<TreeNode*>(index.internalPointer());
-		return node->data(2);
+		return node->getText();
 	}
 	if(role == Qt::ToolTipRole){
 		TreeNode *node = static_cast<TreeNode*>(index.internalPointer());
@@ -116,7 +116,7 @@ Qt::ItemFlags FavoritesModel::flags(const QModelIndex &index) const
 
 void FavoritesModel::setupModelData()
 {
-	records = m_pApp->getDbMgr().query("SELECT id,pid,title,url FROM btdl_favs");
+	records = m_pApp->getDbMgr().query("SELECT id,pid,title,url,type,script_file FROM btdl_favs");
 
 	QMap<QString, TreeNode*> map;
 	for(int i=0,len=records.size(); i<len; ++i){

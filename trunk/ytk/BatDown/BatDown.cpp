@@ -4,8 +4,9 @@
 #include "SqliteDB.h"
 #include "WebBrowser.h"
 #include "EntryModel.h"
-#include "FavoritesModel.h"
+#include "FavoritesView.h"
 #include "md5.h"
+#include "json.h"
 
 BatDown::BatDown(QWidget *parent, Qt::WFlags flags)
 : QMainWindow(parent, flags){
@@ -61,6 +62,41 @@ void BatDown::testMd5(){
 		sprintf(hex_output + di * 2, "%02x", digest[di]);
 	yDEBUG(hex_output);
 }
+void BatDown::testXml(){
+	/*
+	try
+	{
+	XMLPlatformUtils::Initialize();
+	XercesDOMParser *parser = new XercesDOMParser;
+	parser->setValidationScheme(false);
+	parser->setDoNamespaces(false);
+	parser->setDoSchema(false);
+	parser->setValidationSchemaFullChecking(false);
+	parser->setCreateEntityReferenceNodes(false);
+
+	} catch(...) {
+	XMLPlatformUtils::Terminate();
+	}
+	*/
+}
+void BatDown::testJson(){
+	char *fn = "script/2.json";
+	QFile testFile(fn);
+	if(!testFile.open(QIODevice::ReadOnly | QIODevice::Text) )
+		return;
+	QByteArray ba = testFile.readAll();
+	char* json = ba.data();
+	json_t* root = NULL;
+	json_t* item;
+
+	assert (JSON_OK == json_parse_document (&root, json));
+	assert (root->child);
+	item = json_find_first_label (root, "title");
+	QString ss = QString::fromLocal8Bit(item->child->text);
+	yDEBUG(ss.toLocal8Bit().data());
+	json_free_value (&item);
+	json_free_value (&root);
+}
 
 void BatDown::createActions(){
 	quitAct		= new QAction(tr("&Quit"), this);
@@ -105,16 +141,23 @@ void BatDown::createToolBars(){
 	QAction *testMd5 = new QAction("Test MD5", this);
 	connect( testMd5, SIGNAL(triggered(bool)), this, SLOT(testMd5()) );
 	testToollBar->addAction(testMd5);
+	/*
+	QAction *testXml = new QAction("Test XML", this);
+	connect( testXml, SIGNAL(triggered(bool)), this, SLOT(testXml()) );
+	testToollBar->addAction(testXml);
+	*/
+	QAction *testJson = new QAction("Test JSON", this);
+	connect( testJson, SIGNAL(triggered(bool)), this, SLOT(testJson()) );
+	testToollBar->addAction(testJson);
+
 }
 
 void BatDown::createStatusBar(){
 }
 
 void BatDown::createCentralArea(){
-	FavoritesModel *favModel = new FavoritesModel(this);
-	favoritesTree = new QTreeView;
-	favoritesTree->setModel(favModel);
-	favoritesTree->expandAll();
+	m_pFavoritesTree = new FavoritesView(this);
+	m_pFavoritesTree->expandToDepth(0);
 
 	EntryModel *entryModel = new EntryModel(this);
 	entriesTable = new QTableView;
@@ -125,13 +168,13 @@ void BatDown::createCentralArea(){
 	entriesTable->resizeRowsToContents();
 	entriesTable->setColumnWidth(0, 200);
 
-	webBrowser = new WebBrowser;
+	m_pWebBrowser = new WebBrowser(this);
 
 	QHBoxLayout *hbLay = new QHBoxLayout;
 	hbLay->setMargin(0);
 	hbLay->setSpacing(0);
 	hbLay->addWidget(logAppender, 1);
-	hbLay->addWidget(webBrowser, 1);
+	hbLay->addWidget(m_pWebBrowser, 1);
 
 	QVBoxLayout *vbLay = new QVBoxLayout;
 	vbLay->setMargin(0);
@@ -142,7 +185,7 @@ void BatDown::createCentralArea(){
 	QHBoxLayout *mainLayout = new QHBoxLayout;
 	mainLayout->setMargin(0);
 	mainLayout->setSpacing(0);
-	mainLayout->addWidget(favoritesTree, 1);
+	mainLayout->addWidget(m_pFavoritesTree, 1);
 	mainLayout->addLayout(vbLay, 5);
 
 	QWidget *centralWidget = new QWidget;
@@ -202,4 +245,12 @@ SqliteDB& BatDown::getDbMgr()
 settings_t& BatDown::getSettings()
 {
 	return m_settings;
+}
+WebBrowser* BatDown::getWebBrowser()
+{
+	return m_pWebBrowser;
+}
+FavoritesView* BatDown::getFavoritesView()
+{
+	return m_pFavoritesTree;
 }
