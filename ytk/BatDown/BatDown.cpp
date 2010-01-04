@@ -5,6 +5,8 @@
 #include "WebBrowser.h"
 #include "EntryModel.h"
 #include "FavoritesView.h"
+#include "TreeNode.h"
+#include "ScriptDialog.h"
 #include "md5.h"
 #include "json.h"
 
@@ -39,6 +41,17 @@ void BatDown::analyseUrl(){
 }
 
 void BatDown::download(){
+}
+
+void BatDown::editScript()
+{
+	if(0 == m_pFavoritesTree)return;
+	QModelIndex idx = m_pFavoritesTree->selectionModel()->currentIndex();
+	TreeNode *node = static_cast<TreeNode*>(idx.internalPointer());
+	QString scriptFilename = node->getScriptFilename();
+
+	ScriptDialog editor(scriptFilename);
+	editor.exec();
 }
 
 void BatDown::about(){
@@ -114,6 +127,10 @@ void BatDown::createActions(){
 	downloadAct	= new QAction(tr("Download"), this);
 	connect( downloadAct, SIGNAL(triggered(bool)),
 		this, SLOT(download()) );
+
+	editScriptAct = new QAction(tr("Edit Script"), this);
+	connect( editScriptAct, SIGNAL(triggered(bool)),
+		this, SLOT(editScript()) );
 }
 
 void BatDown::createMenus(){
@@ -122,6 +139,7 @@ void BatDown::createMenus(){
 	fileMenu = mbar->addMenu(tr("&File"));
 	fileMenu->addAction(analyseAct);
 	fileMenu->addAction(downloadAct);
+	fileMenu->addAction(editScriptAct);
 	fileMenu->addSeparator();
 	fileMenu->addAction(quitAct);
 
