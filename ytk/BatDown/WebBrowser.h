@@ -18,19 +18,23 @@ public:
 
 	void openUrl(const QString &url);
 	void openUrl(const QString &url, const QString &scriptFilename);
+	void evalJS(const QString &code);
+	void evalScripts();
 
 public slots:
 	void populateJavaScriptWindowObject();
-	void setValues(const QString &value);
+	void setProperty(const QString &name, const QString &value);
+	QString getProperty(const QString &name);
 
 protected slots:
 	void finishLoading(bool);
-
-private slots:
-	void evalJS();
-
+	
 private:
 	QString		m_jsLib;
+	QMap<QString, QString> m_props;
+	QMap<QString, QString> m_steps;
+	QStringList	m_stepSeq;
+
 	QWebView	*m_pWebView;
 	QLineEdit	*m_pAddrBar;
 };

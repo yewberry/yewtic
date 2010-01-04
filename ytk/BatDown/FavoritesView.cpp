@@ -23,5 +23,5 @@ void FavoritesView::onDblClick(const QModelIndex &idx)
 	QString msg = QString::fromLocal8Bit("´ò¿ªµØÖ·:%1").arg(node->getUrl());
 	yINFO((const char *)msg.toLocal8Bit());
 	WebBrowser *wb = m_pApp->getWebBrowser();
-	wb->openUrl(node->getUrl());
+	wb->openUrl(node->getUrl(), node->getScriptFilename());
 }

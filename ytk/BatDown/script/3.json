@@ -1,0 +1,9 @@
+{
+	"id": 3,
+	"title": "Å·ÃÀÖ÷Á÷",
+	"url": "http://bbs.breezecn.com/thread.php?fid=3",
+	"steps": {
+		"seq": ["login_check","login","get_post","get_music","get_url"],
+		"login_check": "var a = $('a[href=login.php]'); if(a.length == 1)yewticObject.setProperty('isLogin','FALSE');"
+	}
+}
