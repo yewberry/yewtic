@@ -33,6 +33,7 @@ protected:
 protected slots:
 	void analyseUrl();
 	void download();
+	void editScript();
 	void about();
 
 private slots:
@@ -68,7 +69,7 @@ private:
 	QMenu *fileMenu, *editMenu, *toolsMenu, *optionsMenu, *helpMenu;
 	QToolBar *fileToolBar, *editToolBar;
 
-	QAction *analyseAct, *downloadAct;
+	QAction *analyseAct, *downloadAct, *editScriptAct;
 	QAction *quitAct, *aboutAct;
 };
 

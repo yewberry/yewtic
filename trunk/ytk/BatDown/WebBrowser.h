@@ -32,6 +32,7 @@ protected slots:
 private:
 	QString		m_jsLib;
 	QMap<QString, QString> m_props;
+
 	QMap<QString, QString> m_steps;
 	QStringList	m_stepSeq;
 
