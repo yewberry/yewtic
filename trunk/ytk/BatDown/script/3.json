@@ -3,7 +3,11 @@
 	"title": "Å·ÃÀÖ÷Á÷",
 	"url": "http://bbs.breezecn.com/thread.php?fid=3",
 	"steps": {
-		"seq": ["login_check","login","get_post","get_music","get_url"],
-		"login_check": "var a = $('a[href=login.php]');\n if(a.length == 1)yewticObject.setProperty('isLogin','FALSE');"
+		"seq": ["login_check",
+		"login",
+		"get_post",
+		"get_music",
+		"get_url"],
+		"login_check": "var loginLink = $('a[href=login.php]');\nif(loginLink.length == 1){\n\tyewticObject.setProperty('isLogin','TRUE');\n} else {\n\tyewticObject.setProperty('isLogin','FALSE');\n}\n"
 	}
 }
