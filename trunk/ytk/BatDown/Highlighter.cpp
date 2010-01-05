@@ -97,7 +97,7 @@ Highlighter::Highlighter(QTextDocument *parent)
 //! [5]
     functionFormat.setFontItalic(true);
     functionFormat.setForeground(Qt::blue);
-    rule.pattern = QRegExp("\\b[A-Za-z0-9_]+(?=\\()");
+    rule.pattern = QRegExp("\\b[A-Za-z0-9_]+(?=\\()-if");
     rule.format = functionFormat;
     highlightingRules.append(rule);
 //! [5]
