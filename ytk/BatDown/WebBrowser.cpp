@@ -6,6 +6,7 @@
 #include <QtGui>
 
 #include "BatDownUtils.h"
+#include "ScriptDialog.h"
 
 WebBrowser::WebBrowser(BatDown* app, QWidget *parent, Qt::WFlags flags)
 : QWidget(parent, flags), BatDownBase(app)
@@ -42,28 +43,10 @@ void WebBrowser::openUrl(const QString &url)
 }
 void WebBrowser::openUrl(const QString &url, const QString &scriptFilename)
 {
-	json_t *root = BatDownUtils::readJsonFromFile(scriptFilename);
-	json_t *urlNode = json_find_first_label(root, "url");
-	json_t *stepsNode = json_find_first_label(root, "steps");
-	json_t *seqNode = json_find_first_label(stepsNode->child, "seq");
-	
-	json_t *item = item=seqNode->child->child;
-	m_stepSeq.clear();
-	while( item ){
-		m_stepSeq.append(item->text);
-		item = item->next;
-	}
-
-	item = seqNode->next;
-	m_steps.clear();
-	while( item ){
-		m_steps.insert(item->text, item->child->text);
-		item = item->next;
-	}
-	
-	QString _url = QString::fromLocal8Bit(urlNode->child->text);
-	json_free_value(&root);
-
+	ScriptDialog script(scriptFilename);
+	m_stepSeq = script.getStepSeq();
+	//QString s = m_stepSeq.join(",");
+	m_steps = script.getSteps();
 	openUrl(url);
 }
 
