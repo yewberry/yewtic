@@ -38,8 +38,8 @@ ScriptDialog::ScriptDialog(const QString &fn, QWidget *parent)
 
 	QVBoxLayout *mainLayout = new QVBoxLayout;
 	mainLayout->addLayout(hbLayout);
-	mainLayout->addWidget(m_pEditor);
-	mainLayout->addStretch(1);
+	mainLayout->addWidget(m_pEditor, 1);
+	mainLayout->addStretch();
 	mainLayout->addLayout(buttonsLayout);
 	setLayout(mainLayout);
 
@@ -47,7 +47,7 @@ ScriptDialog::ScriptDialog(const QString &fn, QWidget *parent)
 	if(!m_fn.isEmpty()){
 		setScript(m_fn);
 	}
-	resize(800, 300);
+	resize(1024, 600);
 }
 
 ScriptDialog::~ScriptDialog()
