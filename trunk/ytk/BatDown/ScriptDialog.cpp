@@ -35,10 +35,15 @@ ScriptDialog::ScriptDialog(const QString &fn, QWidget *parent)
 
 	m_pEditor = new CodeEditor;
 	m_pEditor->setTabStopWidth(40);
+	m_pCondEditor = new CodeEditor;
+	m_pCondEditor->setTabStopWidth(40);
+	QHBoxLayout *editorLayout = new QHBoxLayout;
+	editorLayout->addWidget(m_pEditor, 2);
+	editorLayout->addWidget(m_pCondEditor, 1);
 
 	QVBoxLayout *mainLayout = new QVBoxLayout;
 	mainLayout->addLayout(hbLayout);
-	mainLayout->addWidget(m_pEditor, 1);
+	mainLayout->addLayout(editorLayout, 1);
 	mainLayout->addStretch();
 	mainLayout->addLayout(buttonsLayout);
 	setLayout(mainLayout);
@@ -78,8 +83,12 @@ void ScriptDialog::setScript(const QString &filename)
 	item = seqNode->next;
 	m_steps.clear();
 	while( item ){
-		char *c = json_unescape(item->child->text);
+		json_t *testNode	= item->child->child;
+		json_t *scriptNode	= testNode->next;
+		char *t = json_unescape(testNode->child->text);
+		char *c = json_unescape(scriptNode->child->text);
 		m_steps.insert( item->text, QString::fromLocal8Bit(c) );
+		m_stepTests.insert( item->text, QString::fromLocal8Bit(t) );
 		m_stepFuncs.append( 
 			QString::fromLocal8Bit("Yew.%1=function(){%2};")
 			.arg(item->text)
@@ -98,8 +107,10 @@ void ScriptDialog::setScript(const QString &filename)
 void ScriptDialog::onStepChanged(const QString &text)
 {
 	saveDirty();
-	QString str = m_steps.value(text);
-	m_pEditor->setCode(text, str);
+	QString script = m_steps.value(text);
+	QString test = m_stepTests.value(text);
+	m_pEditor->setCode(text, script);
+	m_pCondEditor->setCode(text, test);
 }
 
 void ScriptDialog::onSeqChanged()
@@ -108,7 +119,6 @@ void ScriptDialog::onSeqChanged()
 	m_stepSeq = s.split(",");
 	m_pStepsEdit->clear();
 	m_pStepsEdit->addItems(m_stepSeq);
-
 }
 
 void ScriptDialog::saveScript()
@@ -127,7 +137,9 @@ void ScriptDialog::saveDirty(){
 	QString oldName = m_pEditor->getName();
 	if(!oldName.isEmpty()){
 		QString oldCode = m_pEditor->getCode();
+		QString oldTestCode = m_pCondEditor->getCode();
 		m_steps.insert( oldName, oldCode );
+		m_stepTests.insert( oldName, oldTestCode );
 	}
 }
 
@@ -162,9 +174,19 @@ void ScriptDialog::saveJson()
 		const char *k = (const char*)ba_k;
 		QByteArray ba_v = iter.value().toLocal8Bit();
 		char *v = ba_v.data();
+
+		QByteArray ba_t = m_stepTests.value(iter.key()).toLocal8Bit();
+		char *t = ba_t.data();
+		
 		v = json_escape(v);
+		t = json_escape(t);
 		json_t *vn = json_new_string( v );
-		json_insert_pair_into_object(stepsNode, k, vn);
+		json_t *tn = json_new_string( t );
+
+		json_t *step = json_new_object();
+		json_insert_pair_into_object(step, "test", tn);
+		json_insert_pair_into_object(step, "script", vn);
+		json_insert_pair_into_object(stepsNode, k, step);
 	}
 	json_insert_pair_into_object(root, "steps", stepsNode);
 
@@ -179,7 +201,10 @@ QMap<QString, QString>& ScriptDialog::getSteps()
 {
 	return m_steps;
 }
-
+QMap<QString, QString>& ScriptDialog::getStepTests()
+{
+	return m_stepTests;
+}
 QString& ScriptDialog::getStepFuncs()
 {
 	return m_stepFuncs;

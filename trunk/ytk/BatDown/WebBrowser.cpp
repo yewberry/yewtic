@@ -11,6 +11,10 @@
 WebBrowser::WebBrowser(BatDown* app, QWidget *parent, Qt::WFlags flags)
 : QWidget(parent, flags), BatDownBase(app)
 {
+	//once test hit set "TRUE", related step's script will be eval
+	//even whe loading is not finish.
+	m_props.insert("_test_hit", "FALSE");
+
 	QFile file;
 	file.setFileName(":/BatDown/jquery.min.js");
 	file.open(QIODevice::ReadOnly);
@@ -58,8 +62,9 @@ void WebBrowser::openUrl(const QString &url)
 void WebBrowser::openUrl(const QString &url, const QString &scriptFilename)
 {
 	ScriptDialog script(scriptFilename);
-	m_stepSeq = script.getStepSeq();
-	m_steps = script.getSteps();
+	m_stepSeq	= script.getStepSeq();
+	m_steps		= script.getSteps();
+	m_stepTests = script.getStepTests();
 	m_stepFuncs = script.getStepFuncs();
 	m_props.remove("nextStep");
 	openUrl(url);
@@ -70,8 +75,24 @@ void WebBrowser::populateJavaScriptWindowObject(){
 }
 
 void WebBrowser::evalJS(const QString &code){
-	//QString code = "var a = $('.lst')[0]; a.value = 'xixi';yewticObject.setValues(a.value+'_abc')";
 	m_pWebView->page()->mainFrame()->evaluateJavaScript(code);
+}
+
+void WebBrowser::evalStepScript(const QString &stepName){
+	QString s = QString(m_jsLib); 
+	s.append(";eval(\"");
+	s.append(m_stepFuncs);
+	s.append("\");");
+	m_pWebView->page()->mainFrame()->evaluateJavaScript(s);
+
+	if(stepName.startsWith("SYS_")){
+	} else {
+		QString script = m_steps.value(stepName);
+		if(!script.isEmpty()){
+			yINFO(QString::fromLocal8Bit("处理步骤：%1").arg(stepName).toLocal8Bit().data());
+			m_pWebView->page()->mainFrame()->evaluateJavaScript(script);
+		}
+	}
 }
 
 void WebBrowser::setProperty(const QString &name, const QString &value)
@@ -87,27 +108,8 @@ QString WebBrowser::getProperty(const QString &name)
 void WebBrowser::finishLoading(bool)
 {
 	yDEBUG("finish loading");
-	QString s = QString(m_jsLib);
-	s.append(";eval(\"");
-	s.append(m_stepFuncs);
-	s.append("\");");
-	m_pWebView->page()->mainFrame()->evaluateJavaScript(s);
-
-	QString nextStep;
-	if( m_props.contains("nextStep") ){
-		nextStep = m_props.value("nextStep");
-	} else {
-		nextStep = m_stepSeq.at(0);
-	}
-
-	if(nextStep.startsWith("SYS_")){
-	} else {
-		QString script = m_steps.value(nextStep);
-		if(!script.isEmpty()){
-			yINFO(QString::fromLocal8Bit("处理步骤：%1").arg(nextStep).toLocal8Bit().data());
-			m_pWebView->page()->mainFrame()->evaluateJavaScript(script);
-		}
-	}
+	QString curStep = curStep();
+	evalStepScript(curStep);
 }
 
 void WebBrowser::adjustLocation()
@@ -118,10 +120,30 @@ void WebBrowser::adjustLocation()
 void WebBrowser::setProgress(int p)
 {
 	QLabel *statusBarField = this->m_pApp->getWebProgress();
-	if(p <= 0 || p >= 100)
-		statusBarField->setText("Done.");
-	else
+	if(p <= 0 || p >= 100){
+		statusBarField->setText("Done");
+	} else {
 		statusBarField->setText(QString("%1%").arg(p));
+		m_props.insert("_test_hit", "FALSE");
+		QString curStep = curStep();
+		m_stepTests.value(curStep);
+		QString hit = m_props.value("_test_hit");
+		if( 0 == hit.compare("TRUE") ){
+			yDEBUG("get it");
+		} else {
+			yDEBUG("loading...");
+		}
+	}
+}
+
+QString WebBrowser::curStep(){
+	QString nextStep;
+	if( m_props.contains("nextStep") ){
+		nextStep = m_props.value("nextStep");
+	} else {
+		nextStep = m_stepSeq.at(0);
+	}
+	return nextStep;
 }
 
 void WebBrowser::logInfo(const QString &msg)
