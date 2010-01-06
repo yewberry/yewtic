@@ -28,6 +28,8 @@ public slots:
 	void logInfo(const QString &msg);
 
 protected slots:
+	void setProgress(int);
+	void adjustLocation();
 	void finishLoading(bool);
 	
 private:

@@ -37,6 +37,8 @@ WebBrowser::WebBrowser(BatDown* app, QWidget *parent, Qt::WFlags flags)
 	//lay->addWidget(m_pAddrBar);
 	lay->addWidget(m_pWebView);
 
+	connect(m_pWebView, SIGNAL(loadProgress(int)), SLOT(setProgress(int)));
+	connect(m_pWebView, SIGNAL(loadFinished(bool)), SLOT(adjustLocation()));
 	connect(m_pWebView, SIGNAL(loadFinished(bool)), this, SLOT(finishLoading(bool)));
 	connect(m_pWebView->page()->mainFrame(), SIGNAL(javaScriptWindowObjectCleared()),
 		this, SLOT(populateJavaScriptWindowObject()));
@@ -90,8 +92,6 @@ void WebBrowser::finishLoading(bool)
 	s.append(m_stepFuncs);
 	s.append("\");");
 	m_pWebView->page()->mainFrame()->evaluateJavaScript(s);
-	//m_pWebView->page()->mainFrame()->evaluateJavaScript(m_stepFuncs);
-	//m_props.insert("_stepFuncs", m_stepFuncs);
 
 	QString nextStep;
 	if( m_props.contains("nextStep") ){
@@ -108,6 +108,20 @@ void WebBrowser::finishLoading(bool)
 			m_pWebView->page()->mainFrame()->evaluateJavaScript(script);
 		}
 	}
+}
+
+void WebBrowser::adjustLocation()
+{
+	m_pAddrBar->setText(m_pWebView->url().toString());
+}
+
+void WebBrowser::setProgress(int p)
+{
+	QLabel *statusBarField = this->m_pApp->getWebProgress();
+	if(p <= 0 || p >= 100)
+		statusBarField->setText("Done.");
+	else
+		statusBarField->setText(QString("%1%").arg(p));
 }
 
 void WebBrowser::logInfo(const QString &msg)
