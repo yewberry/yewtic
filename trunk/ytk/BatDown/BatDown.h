@@ -9,6 +9,7 @@ class WebBrowser;
 class QTableView;
 class QTreeView;
 class FavoritesView;
+class QLabel;
 
 typedef QMap<QString, QString> settings_t;
 
@@ -25,7 +26,7 @@ public:
 
 	FavoritesView*	getFavoritesView();
 	WebBrowser*		getWebBrowser();
-
+	QLabel*			getWebProgress();
 
 protected:
 	void closeEvent(QCloseEvent *event);
@@ -64,6 +65,7 @@ private:
 	QTextEdit		*logAppender;
 	WebBrowser		*m_pWebBrowser;
 
+	QLabel			*m_pWebProgress;
 
 private:
 	QMenu *fileMenu, *editMenu, *toolsMenu, *optionsMenu, *helpMenu;

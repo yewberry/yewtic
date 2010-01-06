@@ -1,6 +1,7 @@
 Yew = {
     getChildrenByTagName: function(tagName,context){
         var cn = context.childNodes;
+        var arr = [];
         for(var i=0; i<cn.length; i++){
             var n = cn[i];
             if(n.localName == tagName)

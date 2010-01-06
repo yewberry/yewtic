@@ -171,6 +171,8 @@ void BatDown::createToolBars(){
 }
 
 void BatDown::createStatusBar(){
+	m_pWebProgress = new QLabel;
+	statusBar()->addPermanentWidget(m_pWebProgress);
 }
 
 void BatDown::createCentralArea(){
@@ -271,4 +273,8 @@ WebBrowser* BatDown::getWebBrowser()
 FavoritesView* BatDown::getFavoritesView()
 {
 	return m_pFavoritesTree;
+}
+QLabel* BatDown::getWebProgress()
+{
+	return m_pWebProgress;
 }
