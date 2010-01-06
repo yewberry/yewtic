@@ -5,9 +5,13 @@
 	"steps": {
 		"seq": ["login_check",
 		"login",
+		"wait_redirect",
 		"get_post",
 		"get_music",
 		"get_url"],
-		"login_check": "var loginLink = $('a[href=login.php]');\nif(loginLink.length == 1){\n\tyewticObject.setProperty('isLogin','TRUE');\n} else {\n\tyewticObject.setProperty('isLogin','FALSE');\n}\n"
+		"get_post": "yewtic.logInfo('获取帖子列表...');\nvar post = $('tr.tr3,tr.t_one');\nyewtic.logInfo('发现 '+post.length+' 个帖子。');\nvar arr = [];\nfor(var i=0; i<post.length; i++){\nyewtic.logInfo('start');\n\tvar tds = $('td', post[i]);\n\tif(tds.length != 6){\n\t\tcontinue;\n\t}\n\tvar o = {};\n\tvar h = tds[0];\n\tvar post = tds[1];\n\tvar post_cata = Yew.getChildrenByTagName('A', post)[0];\nyewtic.logInfo('here?');\n\tif (post_cata != null){\n\t\tvar t = post_cata.innerHTML;\nyewtic.logInfo('here???'+t);\n\t\tif (t.indexOf('[')!=0 || t=='[公告]' || t==\"[其他]\")continue;\n\t\tvar t = post_cata.innerHTML;\n\t\to.cata = jQuery.trim( t.substring(1, t.length-1) );\n\t\to.title = jQuery.trim( Yew.getChildrenByTagName('H3', post)[0].textContent );\n\t\to.rank = jQuery.trim(Yew.getChildrenByTagName('H3', post)[0].nextSibling.nodeValue);\n\t\tif (o.rank.indexOf('(')!=0)\n\t\t\to.rank = '0'\n\t\telse\n\t\t\to.rank = jQuery.trim(rank.substring(1, rank.length-1));\n\t\to.post_by = jQuery.trim( $('a',tds[2])[0].innerHTML );\n\t\to.post_dt = jQuery.trim( $('div',tds[2])[0].innerHTML );\n\t\to.reply_num = jQuery.trim( tds[3].firstChild.nodeValue );\n\t\to.view_num = jQuery.trim( tds[4].firstChild.nodeValue );\n\t\to.last_reply_by = jQuery.trim( $('a',tds[5])[0].innerHTML );\n\t\tarr.push(o);\n\t\tyewtic.logInfo( $.toJSON(o) );\n\t}\nyewtic.logInfo('end');\n}\nyewtic.setProperty('nextStep', 'get_music');\n",
+		"login": "yewtic.logInfo('登录...');\nvar usr = $('input[name=\"pwuser\"]')[0];\nvar pwd = $('input[name=\"pwpwd\"]')[0];\nvar sub = $('input[type=\"submit\"]')[0];\nusr.value = 'yew98';\npwd.value = 'yewyew';\nyewtic.setProperty('nextStep', 'wait_redirect');\nyewtic.logInfo('等待跳转...');\nsub.click();\n",
+		"login_check": "yewtic.logInfo('检查是否登录...');\nvar a = $('a[href=\"login.php\"]');\nif (a.length == 1){\n\tyewtic.logInfo('尚未登录');\n\tyewtic.setProperty('nextStep', 'login');\n\tparent.location = a[0].href;\n} else {\n\tyewtic.logInfo('已登录');\n\tYew.get_post();\n\tyewtic.setProperty('nextStep', 'get_post');\n}\n",
+		"wait_redirect": "yewtic.setProperty('nextStep', 'get_post');\n"
 	}
 }

@@ -4,17 +4,22 @@
 #include "CodeEditor.h"
 #include "json.h"
 
-ScriptDialog::ScriptDialog(const QString &fn)
+ScriptDialog::ScriptDialog(const QString &fn, QWidget *parent)
+: QDialog(parent)
 {
 	m_fn = fn;
 	QPushButton *okButton = new QPushButton(tr("OK"));
+	QPushButton *applyButton = new QPushButton(tr("Apply"));
 	QPushButton *cancelButton = new QPushButton(tr("Cancel"));
+	cancelButton->setDefault(true);
 	connect(okButton, SIGNAL(clicked()), this, SLOT(saveScript()));
+	connect(applyButton, SIGNAL(clicked()), this, SLOT(applyScript()));
 	connect(cancelButton, SIGNAL(clicked()), this, SLOT(close()));
 
 	QHBoxLayout *buttonsLayout = new QHBoxLayout;
 	buttonsLayout->addStretch(1);
 	buttonsLayout->addWidget(okButton);
+	buttonsLayout->addWidget(applyButton);
 	buttonsLayout->addWidget(cancelButton);
 
 	m_pSeqEdit = new QLineEdit;
@@ -75,6 +80,11 @@ void ScriptDialog::setScript(const QString &filename)
 	while( item ){
 		char *c = json_unescape(item->child->text);
 		m_steps.insert( item->text, QString::fromLocal8Bit(c) );
+		m_stepFuncs.append( 
+			QString::fromLocal8Bit("Yew.%1=function(){%2};")
+			.arg(item->text)
+			.arg( QString::fromLocal8Bit(item->child->text) )
+		);
 		item = item->next;
 	}
 
@@ -103,11 +113,14 @@ void ScriptDialog::onSeqChanged()
 
 void ScriptDialog::saveScript()
 {
+	applyScript();
+	close();
+}
+
+void ScriptDialog::applyScript()
+{
 	saveDirty();
 	saveJson();
-	close();
-
-
 }
 
 void ScriptDialog::saveDirty(){
@@ -165,4 +178,9 @@ QStringList& ScriptDialog::getStepSeq()
 QMap<QString, QString>& ScriptDialog::getSteps()
 {
 	return m_steps;
+}
+
+QString& ScriptDialog::getStepFuncs()
+{
+	return m_stepFuncs;
 }

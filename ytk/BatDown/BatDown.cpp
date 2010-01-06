@@ -50,8 +50,8 @@ void BatDown::editScript()
 	TreeNode *node = static_cast<TreeNode*>(idx.internalPointer());
 	QString scriptFilename = node->getScriptFilename();
 
-	ScriptDialog editor(scriptFilename);
-	editor.exec();
+	ScriptDialog *editor = new ScriptDialog(scriptFilename, this);
+	editor->show();
 }
 
 void BatDown::about(){

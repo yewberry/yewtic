@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/BatDown">
         <file>jquery.min.js</file>
+        <file>yewtic.js</file>
+        <file>jquery.json.min.js</file>
     </qresource>
 </RCC>
