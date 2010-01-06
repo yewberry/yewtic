@@ -19,6 +19,7 @@ public:
 	void setScript(const QString &filename);
 	QStringList& getStepSeq();
 	QMap<QString, QString>& getSteps();
+	QMap<QString, QString>& getStepTests();
 	QString& getStepFuncs();
 
 public slots:
@@ -37,6 +38,7 @@ private:
 	QLineEdit *m_pSeqEdit;
 	QComboBox *m_pStepsEdit;
 	CodeEditor *m_pEditor;
+	CodeEditor *m_pCondEditor;
 
 	QString m_fn;
 	QString m_id;
@@ -44,6 +46,7 @@ private:
 	QString m_url;
 	QStringList	m_stepSeq;
 	QMap<QString, QString> m_steps;
+	QMap<QString, QString> m_stepTests;
 	QString m_stepFuncs;
 	
 };

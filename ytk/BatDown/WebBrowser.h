@@ -18,8 +18,6 @@ public:
 
 	void openUrl(const QString &url);
 	void openUrl(const QString &url, const QString &scriptFilename);
-	void evalJS(const QString &code);
-	void evalScripts();
 
 public slots:
 	void populateJavaScriptWindowObject();
@@ -33,10 +31,16 @@ protected slots:
 	void finishLoading(bool);
 	
 private:
+	void evalJS(const QString &code);
+	void evalStepScript(const QString &stepName);
+	QString curStep();
+
+private:
 	QString		m_jsLib;
 	QMap<QString, QString> m_props;
 
 	QMap<QString, QString> m_steps;
+	QMap<QString, QString> m_stepTests;
 	QString m_stepFuncs;
 	QStringList	m_stepSeq;
 
