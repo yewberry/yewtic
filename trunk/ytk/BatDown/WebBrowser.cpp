@@ -24,7 +24,9 @@ WebBrowser::WebBrowser(BatDown* app, QWidget *parent, Qt::WFlags flags)
 
 	file.setFileName(":/BatDown/yewtic.js");
 	file.open(QIODevice::ReadOnly);
+	m_jsLib.append(";");
 	m_jsLib.append( file.readAll() );
+	m_jsLib.append(";");
 	file.close();
 
 	m_pWebView = new QWebView;
@@ -82,9 +84,14 @@ QString WebBrowser::getProperty(const QString &name)
 
 void WebBrowser::finishLoading(bool)
 {
-	m_pWebView->page()->mainFrame()->evaluateJavaScript(m_jsLib);
+	yDEBUG("finish loading");
+	QString s = QString(m_jsLib);
+	s.append(";eval(\"");
+	s.append(m_stepFuncs);
+	s.append("\");");
+	m_pWebView->page()->mainFrame()->evaluateJavaScript(s);
 	//m_pWebView->page()->mainFrame()->evaluateJavaScript(m_stepFuncs);
-	m_props.insert("_stepFuncs", m_stepFuncs);
+	//m_props.insert("_stepFuncs", m_stepFuncs);
 
 	QString nextStep;
 	if( m_props.contains("nextStep") ){
