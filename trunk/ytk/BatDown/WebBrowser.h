@@ -25,6 +25,7 @@ public slots:
 	void populateJavaScriptWindowObject();
 	void setProperty(const QString &name, const QString &value);
 	QString getProperty(const QString &name);
+	void logInfo(const QString &msg);
 
 protected slots:
 	void finishLoading(bool);
@@ -34,6 +35,7 @@ private:
 	QMap<QString, QString> m_props;
 
 	QMap<QString, QString> m_steps;
+	QString m_stepFuncs;
 	QStringList	m_stepSeq;
 
 	QWebView	*m_pWebView;

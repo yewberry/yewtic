@@ -92,12 +92,18 @@ Highlighter::Highlighter(QTextDocument *parent)
     rule.pattern = QRegExp("\".*\"");
     rule.format = quotationFormat;
     highlightingRules.append(rule);
+
+	singleQuotationFormat.setForeground(Qt::darkGreen);
+    rule.pattern = QRegExp("\'.*\'");
+    rule.format = singleQuotationFormat;
+    highlightingRules.append(rule);
+	
 //! [4]
 
 //! [5]
     functionFormat.setFontItalic(true);
     functionFormat.setForeground(Qt::blue);
-    rule.pattern = QRegExp("\\b[A-Za-z0-9_]+(?=\\()-if");
+    rule.pattern = QRegExp("\\b[A-Za-z0-9_]+(?=\\()");
     rule.format = functionFormat;
     highlightingRules.append(rule);
 //! [5]

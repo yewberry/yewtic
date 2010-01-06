@@ -13,15 +13,17 @@ class ScriptDialog : public QDialog
 	Q_OBJECT
 
 public:
-	ScriptDialog(const QString &filename = QString());
+	ScriptDialog(const QString &filename = QString(), QWidget *parent = 0);
 
 	~ScriptDialog();
 	void setScript(const QString &filename);
 	QStringList& getStepSeq();
 	QMap<QString, QString>& getSteps();
+	QString& getStepFuncs();
 
 public slots:
 	void saveScript();
+	void applyScript();
 
 private slots:
 	void onStepChanged(const QString &text);
@@ -42,6 +44,7 @@ private:
 	QString m_url;
 	QStringList	m_stepSeq;
 	QMap<QString, QString> m_steps;
+	QString m_stepFuncs;
 	
 };
 

@@ -543,6 +543,13 @@
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_BatDown.cpp"
 					>
 					<FileConfiguration
+						Name="Release_Unicode|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -622,6 +629,13 @@
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_ScriptDialog.cpp"
 					>
 					<FileConfiguration
+						Name="Release_Unicode|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -633,6 +647,13 @@
 				<File
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_WebBrowser.cpp"
 					>
+					<FileConfiguration
+						Name="Release_Unicode|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
@@ -654,6 +675,13 @@
 					<FileConfiguration
 						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -738,6 +766,13 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_Unicode|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_WebBrowser.cpp"
@@ -745,6 +780,13 @@
 					<FileConfiguration
 						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -818,11 +860,23 @@
 			>
 		</File>
 		<File
+			RelativePath=".\jquery.json-2.2.js"
+			>
+		</File>
+		<File
+			RelativePath=".\jquery.json.min.js"
+			>
+		</File>
+		<File
 			RelativePath=".\jquery.min.js"
 			>
 		</File>
 		<File
 			RelativePath=".\log4cplus.properties"
+			>
+		</File>
+		<File
+			RelativePath=".\yewtic.js"
 			>
 		</File>
 	</Files>
