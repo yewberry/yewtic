@@ -21,9 +21,14 @@ public:
 
 public slots:
 	void populateJavaScriptWindowObject();
+
 	void setProperty(const QString &name, const QString &value);
 	QString getProperty(const QString &name);
+
+	void procPosts(const QString &jsonStr);
+
 	void logInfo(const QString &msg);
+	void logDebug(const QString &msg);
 
 protected slots:
 	void setProgress(int);

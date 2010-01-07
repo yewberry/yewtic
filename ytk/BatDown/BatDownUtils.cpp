@@ -47,3 +47,25 @@ json_t* BatDownUtils::parseJsonFromString(const QString &str)
 
 	return root;
 }
+
+recs_t BatDownUtils::jsonStringToRecordList(const QString &jsonStr)
+{
+	recs_t recs;
+
+	json_t *root = BatDownUtils::parseJsonFromString(jsonStr);
+	if(root == 0)return recs;
+
+	json_t *item = root->child;
+	while( item ){
+		record_t rec;
+		json_t *prop = item->child;
+		while( prop ){
+			rec.insert( prop->text, QString::fromLocal8Bit(prop->child->text) );
+			prop = prop->next;
+		}
+		recs.append(rec);
+		item = item->next;
+	}
+	json_free_value(&root);
+	return recs;
+}

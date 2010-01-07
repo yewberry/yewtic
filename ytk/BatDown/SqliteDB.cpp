@@ -59,14 +59,17 @@ void SqliteDB::close(){
 }
 
 void SqliteDB::exec(QString &sql){
+	yDEBUG(sql.toLocal8Bit().data());
 	char *zErr;
 	int rc = sqlite3_exec(m_db, (const char *)sql.toUtf8(), NULL, NULL, &zErr);
 	if(rc != SQLITE_OK) {
 		if (zErr != NULL) {
 			m_lastErrMsg = QString(zErr);
+			yDEBUG(m_lastErrMsg.toLatin1().data());
 			sqlite3_free(zErr);
 		}
 	}
+	
 }
 
 recList_t SqliteDB::query(const QString &sql, bool queryHeader){
@@ -127,7 +130,8 @@ void SqliteDB::updateRecord(
 	QMapIterator<QString, QString> iter(data);
 	while(iter.hasNext()){
 		iter.next();
-		values.append(iter.key()+"=\'"+iter.value()+"\',");
+		QString temp = QString(iter.value());
+		values.append(iter.key()+"=\'"+temp.replace("'", "''")+"\',");
 	}
 	values.remove(values.size()-1, 1);
 
@@ -155,7 +159,8 @@ void SqliteDB::insertRecord(
 	while(iter.hasNext()){
 		iter.next();
 		fields.append(iter.key()+",");
-		values.append("\'"+iter.value()+"\',");
+		QString temp = QString(iter.value());
+		values.append("\'"+temp.replace("'", "''")+"\',");
 	}
 	fields.remove(fields.size()-1, 1);
 	values.remove(values.size()-1, 1);

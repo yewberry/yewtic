@@ -15,6 +15,7 @@ kEncodingNONE
 };
 typedef QList<QStringList> recList_t;
 typedef QMap<QString, QString> record_t;
+typedef QList<record_t> recs_t;
 
 class QString;
 

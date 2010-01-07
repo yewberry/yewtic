@@ -745,13 +745,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_WebBrowser.cpp"
@@ -836,6 +829,10 @@
 		</File>
 		<File
 			RelativePath=".\BatDown.rc"
+			>
+		</File>
+		<File
+			RelativePath=".\jquery-1.3.2.js"
 			>
 		</File>
 		<File
