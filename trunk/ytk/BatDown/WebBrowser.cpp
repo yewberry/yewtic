@@ -7,6 +7,7 @@
 
 #include "BatDownUtils.h"
 #include "ScriptDialog.h"
+#include "SqliteDB.h"
 
 WebBrowser::WebBrowser(BatDown* app, QWidget *parent, Qt::WFlags flags)
 : QWidget(parent, flags), BatDownBase(app)
@@ -79,13 +80,19 @@ void WebBrowser::evalJS(const QString &code){
 }
 
 void WebBrowser::evalStepScript(const QString &stepName){
+	/*
 	QString s = QString(m_jsLib); 
 	s.append(";eval(\"");
 	s.append(m_stepFuncs);
 	s.append("\");");
-	m_pWebView->page()->mainFrame()->evaluateJavaScript(s);
+	*/
+	m_pWebView->page()->mainFrame()->evaluateJavaScript(m_jsLib);
 
 	if(stepName.startsWith("SYS_")){
+		if(stepName.compare("SYS_END") == 0){
+			yDEBUG("SYS_END");
+			return;
+		}
 	} else {
 		QString script = m_steps.value(stepName);
 		if(!script.isEmpty()){
@@ -105,11 +112,36 @@ QString WebBrowser::getProperty(const QString &name)
 	return m_props.value(name);
 }
 
+void WebBrowser::procPosts(const QString &jsonStr)
+{
+	recs_t recs = BatDownUtils::jsonStringToRecordList(jsonStr);
+	for(int i=0, len=recs.size(); i<len; ++i){
+		record_t rec = recs.at(i);
+		QString url = rec.value("url");
+		QString sql = QString("SELECT COUNT(*) FROM btdl_post WHERE url='%1'").arg( url );
+		QStringList count = m_pApp->getDbMgr().query( sql.toLocal8Bit().data() ).at(0);
+		int c = QString( count.at(0) ).toInt();
+		if(c == 0){
+			m_pApp->getDbMgr().insertRecord(rec, "btdl_post");
+		} else if(c == 1){
+			m_pApp->getDbMgr().updateRecord(rec, QString("url='%1'").arg(url).toLatin1().data() ,"btdl_post");
+		} else {
+			yERROR(QString::fromLocal8Bit("Duplicate record! key:%1, table:btdl_post")
+				.arg(url).toLocal8Bit().data());
+		}
+	}
+}
+
 void WebBrowser::finishLoading(bool)
 {
-	yDEBUG("finish loading");
-	QString curStep = curStep();
-	evalStepScript(curStep);
+	QString cur = curStep();
+	if( m_props.value("_cur_running").compare(cur) == 0 ){
+		return;
+	}
+
+	m_props.remove("_cur_running");
+	yDEBUG(QString("Finish loading and execuate step '%1'").arg(cur).toLatin1().data());
+	evalStepScript(cur);
 }
 
 void WebBrowser::adjustLocation()
@@ -124,15 +156,27 @@ void WebBrowser::setProgress(int p)
 		statusBarField->setText("Done");
 	} else {
 		statusBarField->setText(QString("%1%").arg(p));
-		m_props.insert("_test_hit", "FALSE");
-		QString curStep = curStep();
-		m_stepTests.value(curStep);
-		QString hit = m_props.value("_test_hit");
-		if( 0 == hit.compare("TRUE") ){
-			yDEBUG("get it");
-		} else {
-			yDEBUG("loading...");
+
+		if( m_props.contains("_cur_running") ){
+			yDEBUG(QString("Step '%1' is running").arg(m_props.value("_cur_running")).toLatin1().data());
+			return;
 		}
+
+		QString _curStep = curStep();
+		m_props.insert("_test_hit", "FALSE");
+		QString testCode = m_stepTests.value(_curStep);
+		//yDEBUG(QString("TCode:%1").arg(testCode).toLatin1().data());
+		if( !testCode.isEmpty() ){
+			m_pWebView->page()->mainFrame()->evaluateJavaScript(m_jsLib);
+			m_pWebView->page()->mainFrame()->evaluateJavaScript(testCode);
+			QString hit = m_props.value("_test_hit");
+			if( 0 == hit.compare("TRUE") ){
+				m_props.insert("_cur_running", _curStep);
+				yDEBUG( QString("set _cur_running to '%1' and eval step.").arg(_curStep).toLatin1().data() );
+				evalStepScript(_curStep);
+			}
+		}
+		m_props.insert("_test_hit", "FALSE");
 	}
 }
 
@@ -149,4 +193,8 @@ QString WebBrowser::curStep(){
 void WebBrowser::logInfo(const QString &msg)
 {
 	yINFO(msg.toLocal8Bit().data());
+}
+void WebBrowser::logDebug(const QString &msg)
+{
+	yDEBUG(msg.toLocal8Bit().data());
 }
