@@ -69,3 +69,27 @@ recs_t BatDownUtils::jsonStringToRecordList(const QString &jsonStr)
 	json_free_value(&root);
 	return recs;
 }
+
+QMap<QString, QString> jsonToMap(json_t *root)
+{
+	QMap<QString, QString> map;
+	json_t *item = root->child;
+	while( item ){
+		json_value_type type = item->type;
+		if(type != json_value_type::JSON_OBJECT && type != json_value_type::JSON_ARRAY){
+			QString n = QString::fromLocal8Bit(item->text);
+			QString v = QString::fromLocal8Bit(item->child->text);
+			map.insert(n, v);
+		}
+		item = item->next;
+	}
+	return map;
+}
+
+json_t* mapToJson(const QMap<QString, QString> &map)
+{
+	json_t *root = json_new_object();
+
+
+	return root;
+}

@@ -1,0 +1,176 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+Yew = {};
+Yew.getChildrenByTagName = function(tagName,context){
+    var cn = context.childNodes;
+    var arr = [];
+    for(var i=0; i<cn.length; i++){
+        var n = cn[i];
+        if(n.localName == tagName)
+        	arr.push(n);
+    }
+    return arr;
+}
+
+Yew.getChildByIndex = function(idx, context){
+    if(idx < 0)return null;
+    var cn = context.childNodes;
+    var c = -1;
+    for(var i=0; i<cn.length; i++){
+        var n = cn[i];
+        if(n.nodeType != 1)continue;//not Element
+        else c++;
+        if(c == idx)return n;
+    }
+    return null;
+}
+
+function test(){
+var a = $("a[href='login.php']");
+//parent.location=a[0].href;
+
+a = $("input[name='submit']");
+//a[0].click();
+
+a = $('tbody[style="table-layout: fixed;"]');
+
+a = $('tr.tr3,tr.t_one');
+
+for(var i=0; i<a.length; i++){
+   var tds = $('td', a[i]);
+   if(tds.length != 6)continue;
+   var h = tds[0];
+   var post = tds[1];
+   var title = jQuery.trim(Yew.getChildrenByTagName('H3', post)[0].textContent);
+   var rank = jQuery.trim(Yew.getChildrenByTagName('H3', post)[0].nextSibling.nodeValue);
+   if(rank.indexOf('(')!=0)
+   	rank = '0'
+   else
+   	rank = jQuery.trim(rank.substring(1, rank.length-1));
+   var post_cata = Yew.getChildrenByTagName('A', post)[0];
+   //var cata = post_cata.innerHTML;
+   var t;
+   		if (post_cata != null && post_cata.childNodes.length == 3){
+			t = post_cata.childNodes[1].innerHTML;
+		}
+   var postBy = jQuery.trim($('a',tds[2])[0].innerHTML);
+   var postDt = jQuery.trim($('div',tds[2])[0].innerHTML);
+   var replyNum = jQuery.trim(tds[3].firstChild.nodeValue);
+   var viewNum = jQuery.trim(tds[4].firstChild.nodeValue);
+   var lastReplyBy = jQuery.trim($('a',tds[5])[0].innerHTML);
+   //var lastReplyDt = 
+   var aaaa = 0;
+}
+alert(a.length);
+var b = 0;
+}
+
+function reload(){
+}
+</script>
+
+</head>
+<body>
+<input type="button" value="Test" onclick="test()" />
+<input type="button" value="reload" onclick="reload()" />
+<a id="auto" href="login.php" > abc </a>
+<input type="submit" value="登录" name="submit" onclick="alert('xixi')"/>
+<table>
+<tbody style="table-layout: fixed;"><tr/>
+	<tr class="tr2">
+	<td class="tac y-style">状态</td>
+	<td class="tac" style="width: 55%;">文章</td>
+	<td class="y-style" style="width: 12%;">作者</td>
+	<td class="y-style" style="width: 5%;">回复</td>
+	<td class="y-style" style="width: 7%;">人气</td>
+	<td class="y-style" style="width: 16%;">最后发表</td>
+	</tr>
+
+	<tr align="center" class="tr3 t_one"><td><a target="_blank" href="read.php?tid=324567" title="打开新窗口"><img border="0" src="images/v21/thread/topichot.gif"/></a></td><td id="td_324567" style="text-align: left; padding-left: 8px;"> 
+	<a href="thread.php?fid=3&amp;type=4">[推荐]</a>
+	<h3><a id="a_ajax_324567" href="read.php?tid=324567">【矛盾先生】极具磁性的男声 - Josh Turner《Your Man》</a></h3>  ( +8 )  
+	<img align="absmiddle" alt="新帖标志" src="images/v21/file/new.gif"/>
+	 [ <img border="0" src="images/v21/file/multipage.gif"/><span style="font-size: 7pt; font-family: verdana;"> <a href="read.php?tid=324567&amp;page=1&amp;fpage=1">1</a> <a href="read.php?tid=324567&amp;page=2&amp;fpage=1">2</a></span> ]
+	</td>
+	<td class="tal y-style"><a class="bl" href="profile.php?action=show&amp;uid=741437">矛盾先生</a>
+		<div class="f10">2010-01-01</div></td>
+	<td class="tal f10 y-style">22</td>
+	<td class="tal f10 y-style">1164</td>
+	<td class="tal y-style"><a class="f10" href="read.php?tid=324567&amp;page=e&amp;fpage=1#a"> 2010-01-07 11:46 </a><br/>by: 列那狐</td>
+	</tr>
+
+	<tr align="middle" class="tr3 t_two"><td class="y-style"><img src="images/v21/thread/anc.gif"/></td><th> 论坛公告: <h3><a class="black" href="http://bbs.breezecn.com/read.php?tid=311253">新人及发帖必读（09.10.11更新）</a></h3></th><td class="tal y-style"><a class="bl" href="profile.php?action=show&amp;username=devin">devin</a></td><td class="y-style" colspan="2"><a href="notice.php?fid=">论坛公告</a></td><td class="tal y-style">2009-10-05 20:57</td>
+	</tr>
+
+	<tr align="center" class="tr3 t_one"><td><a target="_blank" href="read.php?tid=204940" title="打开新窗口"><img border="0" src="images/v21/thread/topichot.gif"/></a></td><td id="td_204940" style="text-align: left; padding-left: 8px;"> 
+
+		<img alt="置顶帖标志" src="images/v21/file/headtopic_1.gif"/>
+	<a href="thread.php?fid=3&amp;type=5">[公告]</a>
+	<h3><a id="a_ajax_204940" href="read.php?tid=204940"><b><font color="red">欧美主流音乐区版规兼新人报到帖(无风会员报到只奖励魅力—2009年11月开始)</font></b></a></h3>  ( +1 )  
+	<img align="absmiddle" alt="新帖标志" src="images/v21/file/new.gif"/>
+	 [ <img border="0" src="images/v21/file/multipage.gif"/><span style="font-size: 7pt; font-family: verdana;"> <a href="read.php?tid=204940&amp;page=1&amp;fpage=1">1</a> <a href="read.php?tid=204940&amp;page=2&amp;fpage=1">2</a> <a href="read.php?tid=204940&amp;page=3&amp;fpage=1">3</a> <a href="read.php?tid=204940&amp;page=4&amp;fpage=1">4</a> <a href="read.php?tid=204940&amp;page=5&amp;fpage=1">5</a> .. <a href="read.php?tid=204940&amp;page=44&amp;fpage=1">44</a></span> ]
+	</td>
+	<td class="tal y-style"><a class="bl" href="profile.php?action=show&amp;uid=2025">snail007</a>
+		<div class="f10">2008-06-04</div></td>
+	<td class="tal f10 y-style">648</td>
+	<td class="tal f10 y-style">35442</td>
+	<td class="tal y-style"><a class="f10" href="read.php?tid=204940&amp;page=e&amp;fpage=1#a"> 2010-01-05 21:30 </a><br/>by: 沙漠大虫</td>
+	</tr>
+
+	<tr align="center" class="tr3 t_one"><td><a target="_blank" href="read.php?tid=182651" title="打开新窗口"><img border="0" src="images/v21/thread/topicclose.gif"/></a></td><td id="td_182651" style="text-align: left; padding-left: 8px;"> 
+		<img alt="置顶帖标志" src="images/v21/file/headtopic_1.gif"/>
+	<h3><a id="a_ajax_182651" href="read.php?tid=182651"><b><font color="purple">==========欧主斑竹包厢=========</font></b></a></h3>   <img border="0" align="absbottom" src="images/v21/file/img.gif"/>
+	 [ <img border="0" src="images/v21/file/multipage.gif"/><span style="font-size: 7pt; font-family: verdana;"> <a href="read.php?tid=182651&amp;page=1&amp;fpage=1">1</a> <a href="read.php?tid=182651&amp;page=2&amp;fpage=1">2</a> <a href="read.php?tid=182651&amp;page=3&amp;fpage=1">3</a> <a href="read.php?tid=182651&amp;page=4&amp;fpage=1">4</a> <a href="read.php?tid=182651&amp;page=5&amp;fpage=1">5</a> .. <a href="read.php?tid=182651&amp;page=38&amp;fpage=1">38</a></span> ]
+	</td>
+	<td class="tal y-style"><a class="bl" href="profile.php?action=show&amp;uid=26159">angeline.樱</a>
+		<div class="f10">2008-03-19</div></td>
+	<td class="tal f10 y-style">566</td>
+	<td class="tal f10 y-style">4286</td>
+	<td class="tal y-style"><a class="f10" href="read.php?tid=182651&amp;page=e&amp;fpage=1#a"> 2009-12-31 10:28 </a><br/>by: snail007</td>
+	</tr>
+
+	<a href="thread.php?fid=3&amp;type=8">[其他]</a>
+	<h3><a id="a_ajax_237155" href="read.php?tid=237155"><b><font color="purple">【七嘴八舌-闲话欧主-聊天赚叶子】音乐红茶馆，资讯杂货铺</font></b></a></h3>  ( +1 )   <img border="0" align="absbottom" src="images/v21/file/zip.gif"/>
+	<img align="absmiddle" alt="新帖标志" src="images/v21/file/new.gif"/>
+	 [ <img border="0" src="images/v21/file/multipage.gif"/><span style="font-size: 7pt; font-family: verdana;"> <a href="read.php?tid=237155&amp;page=1&amp;fpage=1">1</a> <a href="read.php?tid=237155&amp;page=2&amp;fpage=1">2</a> <a href="read.php?tid=237155&amp;page=3&amp;fpage=1">3</a> <a href="read.php?tid=237155&amp;page=4&amp;fpage=1">4</a> <a href="read.php?tid=237155&amp;page=5&amp;fpage=1">5</a> .. <a href="read.php?tid=237155&amp;page=22&amp;fpage=1">22</a></span> ]
+	</td>
+	<td class="tal y-style"><a class="bl" href="profile.php?action=show&amp;uid=284302">零落尤可</a>
+		<div class="f10">2008-10-10</div></td>
+	<td class="tal f10 y-style">316</td>
+	<td class="tal f10 y-style">43414</td>
+	<td class="tal y-style"><a class="f10" href="read.php?tid=237155&amp;page=e&amp;fpage=1#a"> 2010-02-22 23:07 </a><br/>by: ajiahan</td>
+	</tr>
+
+	<tr align="center" class="tr3 t_one"><td><a target="_blank" href="read.php?tid=325145" title="打开新窗口"><img border="0" src="images/v21/thread/topichot.gif"/></a></td><td id="td_325145" style="text-align: left; padding-left: 8px;"> 
+	<a href="thread.php?fid=3&amp;type=11">[<font color="red">原创</font>]</a>
+	<h3><a id="a_ajax_325145" href="read.php?tid=325145"><font color="blue">红包音乐帖 ♥The White Tambourine♥  = 欧主亲们来领红包吧 = {V21模式}</font></a></h3>  ( +25 )   <img border="0" align="absbottom" src="images/v21/file/img.gif"/>
+	<img align="absmiddle" alt="新帖标志" src="images/v21/file/new.gif"/>
+	 [ <img border="0" src="images/v21/file/multipage.gif"/><span style="font-size: 7pt; font-family: verdana;"> <a href="read.php?tid=325145&amp;page=1&amp;fpage=1">1</a> <a href="read.php?tid=325145&amp;page=2&amp;fpage=1">2</a> <a href="read.php?tid=325145&amp;page=3&amp;fpage=1">3</a> <a href="read.php?tid=325145&amp;page=4&amp;fpage=1">4</a></span> ]
+	</td>
+	<td class="tal y-style"><a class="bl" href="profile.php?action=show&amp;uid=706033">sum1545</a>
+		<div class="f10">2010-01-04</div></td>
+	<td class="tal f10 y-style">56</td>
+	<td class="tal f10 y-style">654</td>
+	<td class="tal y-style"><a class="f10" href="read.php?tid=325145&amp;page=e&amp;fpage=1#a"> 2010-01-06 21:46 </a><br/>by: 最爱听海</td>
+	</tr>
+
+	<tr align="center" class="tr3 t_one"><td><a target="_blank" href="read.php?tid=314531" title="打开新窗口"><img border="0" src="images/v21/thread/topichot.gif"/></a></td><td id="td_314531" style="text-align: left; padding-left: 8px;"> 
+	<a href="thread.php?fid=3&amp;type=4">[推荐]</a>
+	<h3><a id="a_ajax_314531" href="read.php?tid=314531">一首经典的【you raise me up】，超爱Celtic Woman的版本！</a></h3>  ( +21 )   <img border="0" align="absbottom" src="images/v21/file/zip.gif"/>
+	<img align="absmiddle" alt="新帖标志" src="images/v21/file/new.gif"/>
+	 [ <img border="0" src="images/v21/file/multipage.gif"/><span style="font-size: 7pt; font-family: verdana;"> <a href="read.php?tid=314531&amp;page=1&amp;fpage=1">1</a> <a href="read.php?tid=314531&amp;page=2&amp;fpage=1">2</a> <a href="read.php?tid=314531&amp;page=3&amp;fpage=1">3</a> <a href="read.php?tid=314531&amp;page=4&amp;fpage=1">4</a> <a href="read.php?tid=314531&amp;page=5&amp;fpage=1">5</a> .. <a href="read.php?tid=314531&amp;page=10&amp;fpage=1">10</a></span> ]
+	</td>
+	<td class="tal y-style"><a class="bl" href="profile.php?action=show&amp;uid=294617">笨の兔兔</a>
+		<div class="f10">2009-10-26</div></td>
+	<td class="tal f10 y-style">143</td>
+	<td class="tal f10 y-style">8723</td>
+	<td class="tal y-style"><a class="f10" href="read.php?tid=314531&amp;page=e&amp;fpage=1#a"> 2010-01-06 10:17 </a><br/>by: xwj1014p</td>
+	</tr>
+
+	<tr><td style="height: 8px;" class="f_one" colspan="6"/></tr>
+	</tbody>
+</table>
+</body>
+</html>

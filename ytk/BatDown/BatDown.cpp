@@ -190,27 +190,19 @@ void BatDown::createCentralArea(){
 
 	m_pWebBrowser = new WebBrowser(this);
 
-	QHBoxLayout *hbLay = new QHBoxLayout;
-	hbLay->setMargin(0);
-	hbLay->setSpacing(0);
-	hbLay->addWidget(logAppender, 1);
-	hbLay->addWidget(m_pWebBrowser, 1);
+	m_pRightButtomSplitter = new QSplitter(Qt::Horizontal);
+	m_pRightButtomSplitter->addWidget(logAppender);
+	m_pRightButtomSplitter->addWidget(m_pWebBrowser);
 
-	QVBoxLayout *vbLay = new QVBoxLayout;
-	vbLay->setMargin(0);
-	vbLay->setSpacing(0);
-	vbLay->addWidget(entriesTable, 1);
-	vbLay->addLayout(hbLay, 1);
+	m_pRightSplitter = new QSplitter(Qt::Vertical);
+	m_pRightSplitter->addWidget(entriesTable);
+	m_pRightSplitter->addWidget(m_pRightButtomSplitter);
 
-	QHBoxLayout *mainLayout = new QHBoxLayout;
-	mainLayout->setMargin(0);
-	mainLayout->setSpacing(0);
-	mainLayout->addWidget(m_pFavoritesTree, 1);
-	mainLayout->addLayout(vbLay, 5);
+	m_pMainSplitter = new QSplitter(Qt::Horizontal);
+	m_pMainSplitter->addWidget(m_pFavoritesTree);
+	m_pMainSplitter->addWidget(m_pRightSplitter);
 
-	QWidget *centralWidget = new QWidget;
-	centralWidget->setLayout(mainLayout);
-	setCentralWidget(centralWidget);
+	setCentralWidget(m_pMainSplitter);
 }
 
 void BatDown::readSettings(){

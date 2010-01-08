@@ -112,11 +112,14 @@ QString WebBrowser::getProperty(const QString &name)
 	return m_props.value(name);
 }
 
-void WebBrowser::procPosts(const QString &jsonStr)
+void WebBrowser::procPostLists(const QString &jsonStr)
 {
 	recs_t recs = BatDownUtils::jsonStringToRecordList(jsonStr);
 	for(int i=0, len=recs.size(); i<len; ++i){
 		record_t rec = recs.at(i);
+		ptime t(second_clock::local_time());
+		rec.insert( "last_index_dt", QString::fromStdString(to_iso_extended_string(t)) );
+
 		QString url = rec.value("url");
 		QString sql = QString("SELECT COUNT(*) FROM btdl_post WHERE url='%1'").arg( url );
 		QStringList count = m_pApp->getDbMgr().query( sql.toLocal8Bit().data() ).at(0);

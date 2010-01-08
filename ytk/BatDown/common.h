@@ -14,8 +14,12 @@ using namespace log4cplus::helpers;
 #define yINFO(msg)	LOG4CPLUS_INFO(rootLogger, msg)
 #define yWARN(msg)	LOG4CPLUS_WARN(rootLogger, msg)
 #define yERROR(msg) LOG4CPLUS_ERROR(rootLogger, msg)
-
 extern Logger rootLogger;
+
+#include <boost/date_time/posix_time/posix_time.hpp>
+//using namespace boost;
+using namespace boost::posix_time;
+using namespace boost::gregorian;
 
 #include "exception.h"
 #endif // COMMON_H
