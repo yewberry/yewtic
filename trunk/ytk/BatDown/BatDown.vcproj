@@ -56,7 +56,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qtmain.lib QtCore4.lib QtGui4.lib QtWebKit4.lib log4cplusU.lib sqlite3.lib xerces-c_3.lib"
+				AdditionalDependencies="qtmain.lib QtCore4.lib QtGui4.lib QtWebKit4.lib log4cplusU.lib sqlite3.lib libboost_date_time-vc90-mt-1_40.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				AdditionalLibraryDirectories="&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="false"
@@ -125,7 +125,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qtmaind.lib QtCored4.lib QtGuid4.lib QtWebKitd4.lib log4cplusUD.lib sqlite3.lib xerces-c_3D.lib"
+				AdditionalDependencies="qtmaind.lib QtCored4.lib QtGuid4.lib QtWebKitd4.lib log4cplusUD.lib sqlite3.lib libboost_date_time-vc90-mt-gd-1_40.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				AdditionalLibraryDirectories="&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)lib&quot;"
 				GenerateDebugInformation="true"
@@ -622,13 +622,6 @@
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_ScriptDialog.cpp"
 					>
 					<FileConfiguration
-						Name="Release_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -668,6 +661,13 @@
 					<FileConfiguration
 						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -820,6 +820,18 @@
 			</File>
 			<File
 				RelativePath=".\script\3.json"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="web"
+			>
+			<File
+				RelativePath=".\web\jquery.min.js"
+				>
+			</File>
+			<File
+				RelativePath=".\web\post_list.html"
 				>
 			</File>
 		</Filter>

@@ -10,6 +10,7 @@ class QTableView;
 class QTreeView;
 class FavoritesView;
 class QLabel;
+class QSplitter;
 
 typedef QMap<QString, QString> settings_t;
 
@@ -66,6 +67,9 @@ private:
 	WebBrowser		*m_pWebBrowser;
 
 	QLabel			*m_pWebProgress;
+	QSplitter		*m_pRightButtomSplitter;
+	QSplitter		*m_pRightSplitter;
+	QSplitter		*m_pMainSplitter;
 
 private:
 	QMenu *fileMenu, *editMenu, *toolsMenu, *optionsMenu, *helpMenu;
