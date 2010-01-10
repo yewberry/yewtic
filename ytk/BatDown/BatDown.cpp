@@ -6,17 +6,18 @@
 #include "EntryModel.h"
 #include "FavoritesView.h"
 #include "TreeNode.h"
+#include "PostView.h"
 #include "ScriptDialog.h"
 #include "md5.h"
 #include "json.h"
+#include "BatDownUtils.h"
 
 BatDown::BatDown(QWidget *parent, Qt::WFlags flags)
 : QMainWindow(parent, flags){
 	initLogger();
 	m_dbMgr.open(("ytk.db"));
-	readSettings();
-
 	init();
+	readSettings();
 }
 
 BatDown::~BatDown(){
@@ -111,6 +112,15 @@ void BatDown::testJson(){
 	json_free_value (&root);
 }
 
+void BatDown::testPostView()
+{
+	record_t t;
+	t.insert("cata","Fuck");
+	t.insert("title","Shit");
+	PostModel *m = static_cast<PostModel*>( m_pPostView->model() );
+	m->insertRecord(t, 1);
+}
+
 void BatDown::createActions(){
 	quitAct		= new QAction(tr("&Quit"), this);
 	connect( quitAct,SIGNAL(triggered(bool)),
@@ -168,6 +178,10 @@ void BatDown::createToolBars(){
 	connect( testJson, SIGNAL(triggered(bool)), this, SLOT(testJson()) );
 	testToollBar->addAction(testJson);
 
+	QAction *testPost = new QAction("Test Post", this);
+	connect( testPost, SIGNAL(triggered(bool)), this, SLOT(testPostView()) );
+	testToollBar->addAction(testPost);
+
 }
 
 void BatDown::createStatusBar(){
@@ -176,9 +190,6 @@ void BatDown::createStatusBar(){
 }
 
 void BatDown::createCentralArea(){
-	m_pFavoritesTree = new FavoritesView(this);
-	m_pFavoritesTree->expandToDepth(0);
-
 	EntryModel *entryModel = new EntryModel(this);
 	entriesTable = new QTableView;
 	entriesTable->setModel(entryModel);
@@ -188,14 +199,21 @@ void BatDown::createCentralArea(){
 	entriesTable->resizeRowsToContents();
 	entriesTable->setColumnWidth(0, 200);
 
+	m_pFavoritesTree = new FavoritesView(this);
+	m_pFavoritesTree->expandToDepth(0);
+	m_pPostView = new PostView(this);
 	m_pWebBrowser = new WebBrowser(this);
+
+	m_pRightTopSplitter = new QSplitter(Qt::Horizontal);
+	m_pRightTopSplitter->addWidget(entriesTable);
+	m_pRightTopSplitter->addWidget(m_pPostView);
 
 	m_pRightButtomSplitter = new QSplitter(Qt::Horizontal);
 	m_pRightButtomSplitter->addWidget(logAppender);
 	m_pRightButtomSplitter->addWidget(m_pWebBrowser);
 
 	m_pRightSplitter = new QSplitter(Qt::Vertical);
-	m_pRightSplitter->addWidget(entriesTable);
+	m_pRightSplitter->addWidget(m_pRightTopSplitter);
 	m_pRightSplitter->addWidget(m_pRightButtomSplitter);
 
 	m_pMainSplitter = new QSplitter(Qt::Horizontal);
@@ -206,14 +224,17 @@ void BatDown::createCentralArea(){
 }
 
 void BatDown::readSettings(){
-	recList_t rs = m_dbMgr.query("select * from btdl_conf where id=1", true);
-	//TODO load default
-	QStringList fldK = rs.at(0);
-	QStringList fldV = rs.at(1);
+	m_settings = BatDownUtils::readJsonFileToMap("BatDown.json");
+	QStringList ls;
 
-	for(int i=0,len=fldK.size(); i<len; ++i){
-		m_settings.insert( fldK.at(i), fldV.at(i) );
-	}
+	ls = m_settings.value("main_splitter").split(",");
+	m_pMainSplitter->setSizes(BatDownUtils::stringListToIntList(ls));
+	ls = m_settings.value("r_splitter").split(",");
+	m_pRightSplitter->setSizes(BatDownUtils::stringListToIntList(ls));
+	ls = m_settings.value("r_t_splitter").split(",");
+	m_pRightTopSplitter->setSizes(BatDownUtils::stringListToIntList(ls));
+	ls = m_settings.value("r_b_splitter").split(",");
+	m_pRightButtomSplitter->setSizes(BatDownUtils::stringListToIntList(ls));
 
 	QStringList pos = m_settings.value("app_pos").split(",");
 	setGeometry(pos[0].toInt(), pos[1].toInt(), pos[2].toInt(), pos[3].toInt());
@@ -227,7 +248,17 @@ void BatDown::writeSettings(){
 		.arg(rect.width())
 		.arg(rect.height());
 	m_settings.insert("app_pos", pos);
-	m_dbMgr.updateRecord( m_settings, "rowid=1", "btdl_conf" );
+
+	m_settings.insert("r_t_splitter",
+		BatDownUtils::intListToStringList(m_pRightTopSplitter->sizes()).join(",") );
+	m_settings.insert("r_b_splitter",
+		BatDownUtils::intListToStringList(m_pRightButtomSplitter->sizes()).join(",") );
+	m_settings.insert("r_splitter",
+		BatDownUtils::intListToStringList(m_pRightSplitter->sizes()).join(",") );
+	m_settings.insert("main_splitter",
+		BatDownUtils::intListToStringList(m_pMainSplitter->sizes()).join(",") );
+
+	BatDownUtils::writeMapToJsonFile(m_settings, "BatDown.json");
 }
 
 
@@ -254,7 +285,7 @@ SqliteDB& BatDown::getDbMgr()
 	return m_dbMgr;
 }
 
-settings_t& BatDown::getSettings()
+QMap<QString, QString>& BatDown::getSettings()
 {
 	return m_settings;
 }
@@ -265,6 +296,10 @@ WebBrowser* BatDown::getWebBrowser()
 FavoritesView* BatDown::getFavoritesView()
 {
 	return m_pFavoritesTree;
+}
+PostView* BatDown::getPostView()
+{
+	return m_pPostView;
 }
 QLabel* BatDown::getWebProgress()
 {
