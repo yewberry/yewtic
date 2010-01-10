@@ -30,8 +30,9 @@ public:
 	bool isOpen();
 	void close();
 
-	recList_t query(const QString &sql, bool queryHeader = false);
-	recList_t queryTable(const QString &tablename);
+	recList_t	query(const QString &sql, bool queryHeader = false);
+	recList_t	queryTable(const QString &tablename);
+	recs_t		queryAsMap(const QString &sql);
 	void updateRecord(record_t &data, const QString &condition, const QString &tablename);
 	void insertRecord(record_t &data, const QString &tablename);
 

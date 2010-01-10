@@ -70,7 +70,7 @@ recs_t BatDownUtils::jsonStringToRecordList(const QString &jsonStr)
 	return recs;
 }
 
-QMap<QString, QString> jsonToMap(json_t *root)
+QMap<QString, QString> BatDownUtils::jsonToMap(json_t *root)
 {
 	QMap<QString, QString> map;
 	json_t *item = root->child;
@@ -86,10 +86,53 @@ QMap<QString, QString> jsonToMap(json_t *root)
 	return map;
 }
 
-json_t* mapToJson(const QMap<QString, QString> &map)
+json_t* BatDownUtils::mapToJson(const QMap<QString, QString> &map)
 {
 	json_t *root = json_new_object();
+	QMapIterator<QString, QString> iter(map);
+	while(iter.hasNext()){
+		iter.next();
+		QByteArray ba_k = iter.key().toLocal8Bit();
+		const char *k = (const char*)ba_k;
+		QByteArray ba_v = iter.value().toLocal8Bit();
+		char *v = ba_v.data();
 
+		v = json_escape(v);
+		json_t *vn = json_new_string( v );
+		json_insert_pair_into_object(root, k, vn);
+	}
 
 	return root;
+}
+
+QMap<QString, QString> BatDownUtils::readJsonFileToMap(const QString &fn)
+{
+	json_t *root = BatDownUtils::readJsonFromFile(fn);
+	QMap<QString, QString> map = BatDownUtils::jsonToMap(root);
+	json_free_value(&root);
+	return map;
+}
+
+void BatDownUtils::writeMapToJsonFile(const QMap<QString, QString> &map, const QString &fn)
+{
+	json_t *root = BatDownUtils::mapToJson(map);
+	BatDownUtils::writeJsonToFile(root, fn);
+	json_free_value(&root);
+}
+
+QStringList BatDownUtils::intListToStringList(QList<int> &ls)
+{
+	QStringList l;
+	for(int i=0, len=ls.size(); i<len; ++i){
+		l << QString::number(ls.at(i));
+	}
+	return l;
+}
+QList<int> BatDownUtils::stringListToIntList(QStringList &ls)
+{
+	QList<int> l;
+	for(int i=0, len=ls.size(); i<len; ++i){
+		l << ls.at(i).toInt();
+	}
+	return l;
 }

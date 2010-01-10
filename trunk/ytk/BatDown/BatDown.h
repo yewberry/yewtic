@@ -9,10 +9,9 @@ class WebBrowser;
 class QTableView;
 class QTreeView;
 class FavoritesView;
+class PostView;
 class QLabel;
 class QSplitter;
-
-typedef QMap<QString, QString> settings_t;
 
 class BatDown : public QMainWindow
 {
@@ -23,9 +22,11 @@ public:
 	~BatDown();
 	
 	SqliteDB&		getDbMgr();
-	settings_t&		getSettings();
+	QMap<QString, QString>&	
+					getSettings();
 
 	FavoritesView*	getFavoritesView();
+	PostView*		getPostView();
 	WebBrowser*		getWebBrowser();
 	QLabel*			getWebProgress();
 
@@ -42,6 +43,7 @@ private slots:
 	void testMd5();
 	void testXml();
 	void testJson();
+	void testPostView();
 
 private:
 	void createActions();
@@ -59,14 +61,16 @@ private:
 
 private:
 	SqliteDB	m_dbMgr;
-	settings_t	m_settings;
+	QMap<QString, QString>	m_settings;
 
 	FavoritesView	*m_pFavoritesTree;
 	QTableView		*entriesTable;
+	PostView		*m_pPostView;
 	QTextEdit		*logAppender;
 	WebBrowser		*m_pWebBrowser;
 
 	QLabel			*m_pWebProgress;
+	QSplitter		*m_pRightTopSplitter;
 	QSplitter		*m_pRightButtomSplitter;
 	QSplitter		*m_pRightSplitter;
 	QSplitter		*m_pMainSplitter;

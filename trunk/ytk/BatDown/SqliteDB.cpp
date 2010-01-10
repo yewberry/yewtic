@@ -120,6 +120,25 @@ recList_t SqliteDB::queryTable(const QString &tablename){
 	return query(sql, true);
 }
 
+recs_t SqliteDB::queryAsMap(const QString &sql){
+	QList<QStringList> ls = SqliteDB::query(sql, true);
+	recs_t ret;
+	if(ls.size()>0){
+		QStringList headers = ls.at(0);
+		int hl = headers.size();
+		for(int i=1, len=ls.size(); i<len; ++i){
+			record_t rec;
+			QStringList dat = ls.at(i);
+			for(int j=0; j<hl; ++j){
+				rec.insert( headers.at(j), dat.at(j) );
+			}
+			ret.append(rec);
+		}
+	}
+
+	return ret;
+}
+
 void SqliteDB::updateRecord(
 			record_t &data,
 			const QString &cond,

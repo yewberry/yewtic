@@ -8,6 +8,7 @@
 #include "BatDownUtils.h"
 #include "ScriptDialog.h"
 #include "SqliteDB.h"
+#include "PostView.h"
 
 WebBrowser::WebBrowser(BatDown* app, QWidget *parent, Qt::WFlags flags)
 : QWidget(parent, flags), BatDownBase(app)
@@ -125,7 +126,8 @@ void WebBrowser::procPostLists(const QString &jsonStr)
 		QStringList count = m_pApp->getDbMgr().query( sql.toLocal8Bit().data() ).at(0);
 		int c = QString( count.at(0) ).toInt();
 		if(c == 0){
-			m_pApp->getDbMgr().insertRecord(rec, "btdl_post");
+			//m_pApp->getDbMgr().insertRecord(rec, "btdl_post");
+			static_cast<PostModel*>( m_pApp->getPostView()->model() )->insertRecord(rec, 0);
 		} else if(c == 1){
 			m_pApp->getDbMgr().updateRecord(rec, QString("url='%1'").arg(url).toLatin1().data() ,"btdl_post");
 		} else {
