@@ -6,9 +6,8 @@
 #include "SqliteDB.h"
 
 class WebBrowser;
-class QTableView;
-class QTreeView;
 class FavoritesView;
+class MusicView;
 class PostView;
 class QLabel;
 class QSplitter;
@@ -64,7 +63,7 @@ private:
 	QMap<QString, QString>	m_settings;
 
 	FavoritesView	*m_pFavoritesTree;
-	QTableView		*entriesTable;
+	MusicView		*m_pMusicView;
 	PostView		*m_pPostView;
 	QTextEdit		*logAppender;
 	WebBrowser		*m_pWebBrowser;

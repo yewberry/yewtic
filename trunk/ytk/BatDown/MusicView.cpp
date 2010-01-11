@@ -1,26 +1,25 @@
-#include "PostView.h"
+#include "MusicView.h"
 #include "QHeaderView.h"
 
-PostView::PostView(BatDown *app, QWidget *parent)
+MusicView::MusicView(BatDown *app, QWidget *parent)
 : QTableView(parent), BatDownBase(app)
 {
-	m_pModel = new PostModel(app);
+	m_pModel = new MusicModel(app);
 	setModel(m_pModel);
 	setSelectionBehavior(QAbstractItemView::SelectRows);
 	horizontalHeader()->setStretchLastSection(true);
 	setAlternatingRowColors(true);
-	setColumnWidth(0, 45);
-	setColumnWidth(1, 300);
-	setColumnWidth(2, 45);
+	setColumnWidth(0, 300);
+	setColumnWidth(1, 45);
 
 	connect( this, SIGNAL(doubleClicked(const QModelIndex &)),this, SLOT(onDblClick(const QModelIndex &)) );
 }
 
-PostView::~PostView()
+MusicView::~MusicView()
 {
 
 }
 
-void PostView::onDblClick(const QModelIndex &idx)
+void MusicView::onDblClick(const QModelIndex &idx)
 {
 }

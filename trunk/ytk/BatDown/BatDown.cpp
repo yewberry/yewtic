@@ -7,6 +7,7 @@
 #include "FavoritesView.h"
 #include "TreeNode.h"
 #include "PostView.h"
+#include "MusicView.h"
 #include "ScriptDialog.h"
 #include "md5.h"
 #include "json.h"
@@ -190,22 +191,14 @@ void BatDown::createStatusBar(){
 }
 
 void BatDown::createCentralArea(){
-	EntryModel *entryModel = new EntryModel(this);
-	entriesTable = new QTableView;
-	entriesTable->setModel(entryModel);
-	entriesTable->setSelectionBehavior(QAbstractItemView::SelectRows);
-	entriesTable->horizontalHeader()->setStretchLastSection(true);
-	entriesTable->resizeColumnsToContents();
-	entriesTable->resizeRowsToContents();
-	entriesTable->setColumnWidth(0, 200);
-
 	m_pFavoritesTree = new FavoritesView(this);
 	m_pFavoritesTree->expandToDepth(0);
+	m_pMusicView = new MusicView(this);
 	m_pPostView = new PostView(this);
 	m_pWebBrowser = new WebBrowser(this);
 
 	m_pRightTopSplitter = new QSplitter(Qt::Horizontal);
-	m_pRightTopSplitter->addWidget(entriesTable);
+	m_pRightTopSplitter->addWidget(m_pMusicView);
 	m_pRightTopSplitter->addWidget(m_pPostView);
 
 	m_pRightButtomSplitter = new QSplitter(Qt::Horizontal);
