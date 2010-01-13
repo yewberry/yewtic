@@ -68,25 +68,11 @@ bool BaseTableModel::setData(const QModelIndex &index, const QVariant &value, in
 
 void BaseTableModel::insertRecord(record_t &rec, int position)
 {
+	beginInsertRows( QModelIndex(), position, position );
+
 	m_pApp->getDbMgr().insertRecord(rec, m_table);
 	m_entries.insert(position, rec);
 	insertRows(position, 1);
-}
-
-bool BaseTableModel::insertRows( int row, int count, const QModelIndex & parent )
-{
-	Q_UNUSED(parent);
-	beginInsertRows( QModelIndex(), row, row+count-1 );
 
 	endInsertRows();
-	return true;
-}
-
-bool BaseTableModel::removeRows( int row, int count, const QModelIndex &parent )
-{
-	Q_UNUSED(parent);
-	beginRemoveRows(QModelIndex(), row, row+count-1);
-
-	endRemoveRows();
-	return true;
 }

@@ -6,7 +6,6 @@
 
 class QWebView;
 class QLineEdit;
-class QPushButton;
 
 class WebBrowser : public QWidget, public BatDownBase
 {
@@ -20,15 +19,15 @@ public:
 	void openUrl(const QString &url, const QString &scriptFilename);
 
 public slots:
-	void populateJavaScriptWindowObject();
+	void procPostLists(const QString &jsonStr);
+	//void procPostMusic
 
 	void setProperty(const QString &name, const QString &value);
 	QString getProperty(const QString &name);
 
-	void procPostLists(const QString &jsonStr);
-
 	void logInfo(const QString &msg);
 	void logDebug(const QString &msg);
+	void populateJavaScriptWindowObject();
 
 protected slots:
 	void setProgress(int);
@@ -36,18 +35,15 @@ protected slots:
 	void finishLoading(bool);
 	
 private:
-	void evalJS(const QString &code);
 	void evalStepScript(const QString &stepName);
-	QString curStep();
+	void evalScript(const QString &script);
+
+	QMap<QString, QString> getScripts(const QString &scriptFilename);
 
 private:
 	QString		m_jsLib;
+	QString		m_script;
 	QMap<QString, QString> m_props;
-
-	QMap<QString, QString> m_steps;
-	QMap<QString, QString> m_stepTests;
-	QString m_stepFuncs;
-	QStringList	m_stepSeq;
 
 	QWebView	*m_pWebView;
 	QLineEdit	*m_pAddrBar;

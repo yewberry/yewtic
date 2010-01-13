@@ -19,8 +19,6 @@ public:
 
 	virtual Qt::ItemFlags flags(const QModelIndex &index) const;
 	virtual bool setData(const QModelIndex & index, const QVariant & value, int role = Qt::EditRole);
-	virtual bool insertRows(int row, int count, const QModelIndex & parent = QModelIndex());
-	virtual bool removeRows(int row, int count, const QModelIndex & parent = QModelIndex());
 	
 	void insertRecord(record_t &rec, int position = 0);
 	//void updateReocrd(record_t &rec, int position);
