@@ -1091,6 +1091,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\web\music_list.html"
+				>
+			</File>
+			<File
 				RelativePath=".\web\post_list.html"
 				>
 			</File>

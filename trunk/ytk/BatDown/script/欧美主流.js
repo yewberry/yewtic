@@ -80,19 +80,27 @@
         var s = $.toJSON(arr);
         yewtic.procPostLists(s);
         
-        yewtic.setProperty('posts', s);
-        self.getMusic(0);
+        if(arr.length > 0){
+            yewtic.setProperty('posts', s);
+            yewtic.setProperty('nextStep', 'Yew.getMusic(0)');
+            parent.location = arr[0].url;
+        }
     };
     
     self.getMusic = function(idx){
         var s = yewtic.getProperty('posts');
         eval('var o = ' + s);
         
-        if(idx < o.length)
-            yewtic.setProperty('nextStep', 'Yew.getMusic(' + (idx+1) + ')');
-        else
-            yewtic.removeProperty('nextStep');
         
-        parent.location.reload();
+        
+        if(idx < o.length){
+            var nextIndex = idx +1;
+            yewtic.setProperty('nextStep', 'Yew.getMusic(' + nextIndex + ')');
+            parent.location = o[nextIndex].url;
+        } else {
+            yewtic.removeProperty('nextStep');
+        }
+        
+        //parent.location.reload();
     };
 })(Yew, jQuery);
