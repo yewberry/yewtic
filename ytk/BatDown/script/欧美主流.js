@@ -1,10 +1,9 @@
-(function(YEW, $){
-    YEW.main = function(){
-    alert('in');
-        YEW.checkLogin();
+(function(self, $){
+    self.main = function(){
+        self.checkLogin();
     };
     
-    YEW.checkLogin = function(){
+    self.checkLogin = function(){
         yewtic.logInfo('检查是否登录...');
         var a = $('a[href="login.php"]');
         if (a.length == 1){
@@ -17,7 +16,7 @@
         }
     };
     
-    YEW.login = function(){
+    self.login = function(){
         yewtic.logInfo('登录中...');
         var usr = $('input[name="pwuser"]')[0];
         var pwd = $('input[name="pwpwd"]')[0];
@@ -29,12 +28,12 @@
         sub.click();
     };
     
-    YEW.waitRedirect = function(){
+    self.waitRedirect = function(){
         yewtic.logInfo('等待中...');
         yewtic.setProperty('nextStep', 'Yew.getPosts()');
     };
     
-    YEW.getPosts = function(){
+    self.getPosts = function(){
         yewtic.logInfo('获取帖子列表...');
         var posts = $('tr.tr3,tr.t_one');
         yewtic.logInfo('疑似发现 ' + posts.length + ' 个帖子。');
@@ -80,6 +79,20 @@
         yewtic.logInfo('提取 ' + arr.length + ' 个帖子。');
         var s = $.toJSON(arr);
         yewtic.procPostLists(s);
-
+        
+        yewtic.setProperty('posts', s);
+        self.getMusic(0);
+    };
+    
+    self.getMusic = function(idx){
+        var s = yewtic.getProperty('posts');
+        eval('var o = ' + s);
+        
+        if(idx < o.length)
+            yewtic.setProperty('nextStep', 'Yew.getMusic(' + (idx+1) + ')');
+        else
+            yewtic.removeProperty('nextStep');
+        
+        parent.location.reload();
     };
 })(Yew, jQuery);
