@@ -21,4 +21,8 @@ Yew = {
         }
         return null;
     }
+    
+    , test: function(){
+        alert('in yewtic.js');
+    }
 }

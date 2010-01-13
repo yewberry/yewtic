@@ -693,13 +693,6 @@
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_BaseTableModel.cpp"
 					>
 					<FileConfiguration
-						Name="Release_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -711,13 +704,6 @@
 				<File
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_BatDown.cpp"
 					>
-					<FileConfiguration
-						Name="Release_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
@@ -791,13 +777,6 @@
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_MusicModel.cpp"
 					>
 					<FileConfiguration
-						Name="Release_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -809,13 +788,6 @@
 				<File
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_MusicView.cpp"
 					>
-					<FileConfiguration
-						Name="Release_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
@@ -841,13 +813,6 @@
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_PostView.cpp"
 					>
 					<FileConfiguration
-						Name="Release_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -871,6 +836,13 @@
 				<File
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_WebBrowser.cpp"
 					>
+					<FileConfiguration
+						Name="Release_Unicode|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
@@ -897,13 +869,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_BatDown.cpp"
@@ -911,13 +876,6 @@
 					<FileConfiguration
 						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -995,13 +953,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_MusicView.cpp"
@@ -1009,13 +960,6 @@
 					<FileConfiguration
 						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1045,13 +989,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_ScriptDialog.cpp"
@@ -1071,6 +1008,13 @@
 					<FileConfiguration
 						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1131,11 +1075,11 @@
 			Name="script"
 			>
 			<File
-				RelativePath=".\script\2.json"
+				RelativePath=".\script\&#27431;&#32654;&#20027;&#27969;.js"
 				>
 			</File>
 			<File
-				RelativePath=".\script\3.json"
+				RelativePath=".\script\&#32654;&#22768;&#20185;&#38899;.js"
 				>
 			</File>
 		</Filter>

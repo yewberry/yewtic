@@ -51,6 +51,9 @@ WebBrowser::WebBrowser(BatDown* app, QWidget *parent, Qt::WFlags flags)
 
 	setLayout(lay);
 	setWindowTitle(tr("Web Browser"));
+
+	//TODO Settings dialog
+	QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, false);
 }
 
 WebBrowser::~WebBrowser(void)
@@ -63,54 +66,15 @@ void WebBrowser::openUrl(const QString &url)
 }
 void WebBrowser::openUrl(const QString &url, const QString &scriptFilename)
 {
-	ScriptDialog script(scriptFilename);
-	m_stepSeq	= script.getStepSeq();
-	m_steps		= script.getSteps();
-	m_stepTests = script.getStepTests();
-	m_stepFuncs = script.getStepFuncs();
-	m_props.remove("nextStep");
+	QFile file;
+	file.setFileName(scriptFilename);
+	file.open(QIODevice::ReadOnly);
+	m_script.clear();
+	m_script = QString::fromLocal8Bit( file.readAll() );
+	file.close();
+
+	m_props.insert("nextStep", "Yew.main()");
 	openUrl(url);
-}
-
-void WebBrowser::populateJavaScriptWindowObject(){
-	m_pWebView->page()->mainFrame()->addToJavaScriptWindowObject("yewtic", this);
-}
-
-void WebBrowser::evalJS(const QString &code){
-	m_pWebView->page()->mainFrame()->evaluateJavaScript(code);
-}
-
-void WebBrowser::evalStepScript(const QString &stepName){
-	/*
-	QString s = QString(m_jsLib); 
-	s.append(";eval(\"");
-	s.append(m_stepFuncs);
-	s.append("\");");
-	*/
-	m_pWebView->page()->mainFrame()->evaluateJavaScript(m_jsLib);
-
-	if(stepName.startsWith("SYS_")){
-		if(stepName.compare("SYS_END") == 0){
-			yDEBUG("SYS_END");
-			return;
-		}
-	} else {
-		QString script = m_steps.value(stepName);
-		if(!script.isEmpty()){
-			yINFO(QString::fromLocal8Bit("处理步骤：%1").arg(stepName).toLocal8Bit().data());
-			m_pWebView->page()->mainFrame()->evaluateJavaScript(script);
-		}
-	}
-}
-
-void WebBrowser::setProperty(const QString &name, const QString &value)
-{
-	m_props.insert(name, value);
-}
-
-QString WebBrowser::getProperty(const QString &name)
-{
-	return m_props.value(name);
 }
 
 void WebBrowser::procPostLists(const QString &jsonStr)
@@ -137,16 +101,23 @@ void WebBrowser::procPostLists(const QString &jsonStr)
 	}
 }
 
+void WebBrowser::evalStepScript(const QString &script){
+	evalScript(m_jsLib);
+	evalScript(m_script);
+
+	if(!script.isEmpty()){
+		yINFO(QString::fromLocal8Bit("处理脚本：%1").arg(script).toLocal8Bit().data());
+		evalScript(script);
+	}
+}
+
 void WebBrowser::finishLoading(bool)
 {
-	QString cur = curStep();
-	if( m_props.value("_cur_running").compare(cur) == 0 ){
-		return;
-	}
+	QString nextStep = m_props.value("nextStep");
+	if(nextStep.isEmpty())return;
 
-	m_props.remove("_cur_running");
-	yDEBUG(QString("Finish loading and execuate step '%1'").arg(cur).toLatin1().data());
-	evalStepScript(cur);
+	yDEBUG(QString("Finish loading and execuate script: '%1'").arg(nextStep).toLatin1().data());
+	evalStepScript(nextStep);
 }
 
 void WebBrowser::adjustLocation()
@@ -161,45 +132,33 @@ void WebBrowser::setProgress(int p)
 		statusBarField->setText("Done");
 	} else {
 		statusBarField->setText(QString("%1%").arg(p));
-
-		if( m_props.contains("_cur_running") ){
-			yDEBUG(QString("Step '%1' is running").arg(m_props.value("_cur_running")).toLatin1().data());
-			return;
-		}
-
-		QString _curStep = curStep();
-		m_props.insert("_test_hit", "FALSE");
-		QString testCode = m_stepTests.value(_curStep);
-		//yDEBUG(QString("TCode:%1").arg(testCode).toLatin1().data());
-		if( !testCode.isEmpty() ){
-			m_pWebView->page()->mainFrame()->evaluateJavaScript(m_jsLib);
-			m_pWebView->page()->mainFrame()->evaluateJavaScript(testCode);
-			QString hit = m_props.value("_test_hit");
-			if( 0 == hit.compare("TRUE") ){
-				m_props.insert("_cur_running", _curStep);
-				yDEBUG( QString("set _cur_running to '%1' and eval step.").arg(_curStep).toLatin1().data() );
-				evalStepScript(_curStep);
-			}
-		}
-		m_props.insert("_test_hit", "FALSE");
 	}
-}
-
-QString WebBrowser::curStep(){
-	QString nextStep;
-	if( m_props.contains("nextStep") ){
-		nextStep = m_props.value("nextStep");
-	} else {
-		nextStep = m_stepSeq.at(0);
-	}
-	return nextStep;
 }
 
 void WebBrowser::logInfo(const QString &msg)
 {
 	yINFO(msg.toLocal8Bit().data());
 }
+
 void WebBrowser::logDebug(const QString &msg)
 {
 	yDEBUG(msg.toLocal8Bit().data());
+}
+
+void WebBrowser::setProperty(const QString &name, const QString &value)
+{
+	m_props.insert(name, value);
+}
+
+QString WebBrowser::getProperty(const QString &name)
+{
+	return m_props.value(name);
+}
+
+void WebBrowser::populateJavaScriptWindowObject(){
+	m_pWebView->page()->mainFrame()->addToJavaScriptWindowObject("yewtic", this);
+}
+
+void WebBrowser::evalScript(const QString &script){
+	m_pWebView->page()->mainFrame()->evaluateJavaScript(script);
 }
