@@ -13,10 +13,6 @@
 WebBrowser::WebBrowser(BatDown* app, QWidget *parent, Qt::WFlags flags)
 : QWidget(parent, flags), BatDownBase(app)
 {
-	//once test hit set "TRUE", related step's script will be eval
-	//even whe loading is not finish.
-	m_props.insert("_test_hit", "FALSE");
-
 	QFile file;
 	file.setFileName(":/BatDown/jquery.min.js");
 	file.open(QIODevice::ReadOnly);
@@ -153,6 +149,11 @@ void WebBrowser::setProperty(const QString &name, const QString &value)
 QString WebBrowser::getProperty(const QString &name)
 {
 	return m_props.value(name);
+}
+
+void WebBrowser::removeProperty(const QString &name)
+{
+	m_props.remove(name);
 }
 
 void WebBrowser::populateJavaScriptWindowObject(){

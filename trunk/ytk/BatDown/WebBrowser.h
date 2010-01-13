@@ -24,6 +24,7 @@ public slots:
 
 	void setProperty(const QString &name, const QString &value);
 	QString getProperty(const QString &name);
+	void removeProperty(const QString &name);
 
 	void logInfo(const QString &msg);
 	void logDebug(const QString &msg);
