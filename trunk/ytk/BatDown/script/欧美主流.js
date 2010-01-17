@@ -77,30 +77,31 @@
 	        arr.push(o);
         }
         yewtic.logInfo('提取 ' + arr.length + ' 个帖子。');
-        var s = $.toJSON(arr);
-        yewtic.procPostLists(s);
         
         if(arr.length > 0){
-            yewtic.setProperty('posts', s);
-            yewtic.setProperty('nextStep', 'Yew.getMusic(0)');
-            parent.location = arr[0].url;
+            var str = $.toJSON(arr);
+            yewtic.procPostList(str);
+            self.procPost(arr[0].url);
+            /*
+            for(var i=0; i<arr.length; i++){
+                self.procPost(arr[i].url);
+            }
+            */
         }
+        
+        yewtic.setProperty('nextStep', 'SYS_END');
     };
     
-    self.getMusic = function(idx){
-        var s = yewtic.getProperty('posts');
-        eval('var o = ' + s);
-        
-        
-        
-        if(idx < o.length){
-            var nextIndex = idx +1;
-            yewtic.setProperty('nextStep', 'Yew.getMusic(' + nextIndex + ')');
-            parent.location = o[nextIndex].url;
-        } else {
-            yewtic.removeProperty('nextStep');
-        }
-        
-        //parent.location.reload();
+    self.procPost = function(url){
+        var musicUrls = yewtic.openPageSilently(url, 'Yew.getPostMusicUrls()', 'musicUrls');
+        yewtic.logInfo(musicUrls);
     };
+    
+    self.getPostMusicUrls = function(){
+        var arr = $("a:contains('点击下载')");
+        //var str = $.toJSON(arr);
+        yewtic.logInfo(arr[0].href);
+        //yewtic.setProperty('musicUrls', str);
+    };
+    
 })(Yew, jQuery);

@@ -1,26 +1,33 @@
-#ifndef WEBBROWSER_H
-#define WEBBROWSER_H
+#ifndef WEBVIEW_H
+#define WEBVIEW_H
 
-#include <QtGui/QWidget>
+#include <QtCore>
+#include <QtGui>
+#include <QtWebKit>
 #include "BatDown.h"
 
-class QWebView;
-class QLineEdit;
+class TabManager;
+class Tab;
+class WebPage;
 
-class WebBrowser : public QWidget, public BatDownBase
+class WebView : public QWebView, public BatDownBase
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	WebBrowser(BatDown* app, QWidget *parent = 0, Qt::WFlags flags = 0);
-	~WebBrowser(void);
+    WebView(BatDown *app, QWidget *parent = 0);
 
+protected:
+    QWebView * createWindow(QWebPage::WebWindowType type);
+
+private:
 	void openUrl(const QString &url);
 	void openUrl(const QString &url, const QString &scriptFilename);
+	void evalStepScript(const QString &stepName);
 
 public slots:
-	void procPostLists(const QString &jsonStr);
-	//void procPostMusic
+	void procPostList(const QString &jsonStr);
+	QString openPageSilently(const QString &url, const QString &step, const QString &retProp);
 
 	void setProperty(const QString &name, const QString &value);
 	QString getProperty(const QString &name);
@@ -32,23 +39,18 @@ public slots:
 
 protected slots:
 	void setProgress(int);
-	void adjustLocation();
 	void finishLoading(bool);
 	
 private:
-	void evalStepScript(const QString &stepName);
 	void evalScript(const QString &script);
-
-	QMap<QString, QString> getScripts(const QString &scriptFilename);
 
 private:
 	QString		m_jsLib;
+	QString		m_scriptFilename;
 	QString		m_script;
 	QMap<QString, QString> m_props;
 
-	QWebView	*m_pWebView;
-	QLineEdit	*m_pAddrBar;
+	WebPage		*m_pWebPage;
 };
 
-
-#endif // WEBBROWSER_H
+#endif // WEBVIEW_H
