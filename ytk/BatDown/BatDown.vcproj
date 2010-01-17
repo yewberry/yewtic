@@ -1045,13 +1045,6 @@
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_Tab.cpp"
 					>
 					<FileConfiguration
-						Name="Release_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -1064,13 +1057,6 @@
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_tabmanager.cpp"
 					>
 					<FileConfiguration
-						Name="Release_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -1082,13 +1068,6 @@
 				<File
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_tabwidget.cpp"
 					>
-					<FileConfiguration
-						Name="Release_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
@@ -1113,13 +1092,6 @@
 				<File
 					RelativePath=".\GeneratedFiles\Release_Unicode\moc_WebView.cpp"
 					>
-					<FileConfiguration
-						Name="Release_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug_Unicode|Win32"
 						ExcludedFromBuild="true"
@@ -1314,13 +1286,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_tabmanager.cpp"
@@ -1333,13 +1298,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Unicode|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GeneratedFiles\Debug_Unicode\moc_tabwidget.cpp"
@@ -1347,13 +1305,6 @@
 					<FileConfiguration
 						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1378,13 +1329,6 @@
 					<FileConfiguration
 						Name="Release_Unicode|Win32"
 						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Unicode|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1434,6 +1378,10 @@
 			>
 			<File
 				RelativePath=".\BatDown.json"
+				>
+			</File>
+			<File
+				RelativePath=".\BatDown.rar"
 				>
 			</File>
 			<File
