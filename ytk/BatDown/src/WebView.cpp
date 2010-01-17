@@ -1,18 +1,18 @@
-#include "WebBrowser.h"
-
-#include <QtCore/QFile>
-#include <QtWebKit/QWebView>
-#include <QtWebKit/QWebFrame>
-#include <QtGui>
+#include "WebView.h"
+#include "WebPage.h"
+#include "TabManager.h"
+#include "Tab.h"
 
 #include "BatDownUtils.h"
-#include "ScriptDialog.h"
 #include "SqliteDB.h"
 #include "PostView.h"
 
-WebBrowser::WebBrowser(BatDown* app, QWidget *parent, Qt::WFlags flags)
-: QWidget(parent, flags), BatDownBase(app)
+WebView::WebView(BatDown *app, QWidget *parent)
+        : QWebView(parent), BatDownBase(app)
 {
+    m_pWebPage = new WebPage(this);
+    setPage(m_pWebPage);
+
 	QFile file;
 	file.setFileName(":/BatDown/jquery.min.js");
 	file.open(QIODevice::ReadOnly);
@@ -31,49 +31,44 @@ WebBrowser::WebBrowser(BatDown* app, QWidget *parent, Qt::WFlags flags)
 	m_jsLib.append(";");
 	file.close();
 
-	m_pWebView = new QWebView;
-	m_pAddrBar = new QLineEdit;
-
-	QVBoxLayout *lay = new QVBoxLayout;
-	//lay->addLayout(btns);
-	//lay->addWidget(m_pAddrBar);
-	lay->addWidget(m_pWebView);
-
-	connect(m_pWebView, SIGNAL(loadProgress(int)), SLOT(setProgress(int)));
-	connect(m_pWebView, SIGNAL(loadFinished(bool)), SLOT(adjustLocation()));
-	connect(m_pWebView, SIGNAL(loadFinished(bool)), this, SLOT(finishLoading(bool)));
-	connect(m_pWebView->page()->mainFrame(), SIGNAL(javaScriptWindowObjectCleared()),
+	connect(this, SIGNAL(loadProgress(int)), SLOT(setProgress(int)));
+	connect(this, SIGNAL(loadFinished(bool)), this, SLOT(finishLoading(bool)));
+	connect(m_pWebPage->mainFrame(), SIGNAL(javaScriptWindowObjectCleared()),
 		this, SLOT(populateJavaScriptWindowObject()));
 
-	setLayout(lay);
 	setWindowTitle(tr("Web Browser"));
 
 	//TODO Settings dialog
 	QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, false);
 }
 
-WebBrowser::~WebBrowser(void)
+QWebView* WebView::createWindow(QWebPage::WebWindowType /*type*/)
 {
+    return TabManager::tabManager()->addTab(QUrl())->webView();
 }
 
-void WebBrowser::openUrl(const QString &url)
+
+void WebView::openUrl(const QString &url)
 {
-	m_pWebView->load( QUrl(url) );
+	QString msg = QString::fromLocal8Bit("´ò¿ªµØÖ·:%1").arg(url);
+	yINFO((const char *)msg.toLocal8Bit());
+	this->load( QUrl(url) );
 }
-void WebBrowser::openUrl(const QString &url, const QString &scriptFilename)
+void WebView::openUrl(const QString &url, const QString &scriptFilename)
 {
 	QFile file;
 	file.setFileName(scriptFilename);
 	file.open(QIODevice::ReadOnly);
+	m_scriptFilename.clear();
 	m_script.clear();
+	m_scriptFilename = scriptFilename;
 	m_script = QString::fromLocal8Bit( file.readAll() );
 	file.close();
 
-	m_props.insert("nextStep", "Yew.main()");
 	openUrl(url);
 }
 
-void WebBrowser::procPostLists(const QString &jsonStr)
+void WebView::procPostList(const QString &jsonStr)
 {
 	recs_t recs = BatDownUtils::jsonStringToRecordList(jsonStr);
 	for(int i=0, len=recs.size(); i<len; ++i){
@@ -86,7 +81,6 @@ void WebBrowser::procPostLists(const QString &jsonStr)
 		QStringList count = m_pApp->getDbMgr().query( sql.toLocal8Bit().data() ).at(0);
 		int c = QString( count.at(0) ).toInt();
 		if(c == 0){
-			//m_pApp->getDbMgr().insertRecord(rec, "btdl_post");
 			static_cast<PostModel*>( m_pApp->getPostView()->model() )->insertRecord(rec, 0);
 		} else if(c == 1){
 			m_pApp->getDbMgr().updateRecord(rec, QString("url='%1'").arg(url).toLatin1().data() ,"btdl_post");
@@ -97,7 +91,20 @@ void WebBrowser::procPostLists(const QString &jsonStr)
 	}
 }
 
-void WebBrowser::evalStepScript(const QString &script){
+QString WebView::openPageSilently(const QString &url, const QString &step, const QString &retProp){
+	/*
+	WebPage *wb = new WebPage(m_pApp);
+	wb->setProperty("nextStep", step);
+	wb->openUrl(url, m_scriptFilename);
+	wb->show();
+	int a = 0;
+	QString ret = wb->getProperty(retProp);
+	int b = 0;
+	*/
+	return "";
+}
+
+void WebView::evalStepScript(const QString &script){
 	evalScript(m_jsLib);
 	evalScript(m_script);
 
@@ -107,21 +114,20 @@ void WebBrowser::evalStepScript(const QString &script){
 	}
 }
 
-void WebBrowser::finishLoading(bool)
+void WebView::finishLoading(bool)
 {
+	if( !m_props.contains("nextStep") ){
+		m_props.insert("nextStep", "Yew.main()");
+	}
+		
 	QString nextStep = m_props.value("nextStep");
-	if(nextStep.isEmpty())return;
+	if( nextStep.isEmpty() || nextStep.compare("SYS_END") == 0 )return;
 
 	yDEBUG(QString("Finish loading and execuate script: '%1'").arg(nextStep).toLatin1().data());
 	evalStepScript(nextStep);
 }
 
-void WebBrowser::adjustLocation()
-{
-	m_pAddrBar->setText(m_pWebView->url().toString());
-}
-
-void WebBrowser::setProgress(int p)
+void WebView::setProgress(int p)
 {
 	QLabel *statusBarField = this->m_pApp->getWebProgress();
 	if(p <= 0 || p >= 100){
@@ -131,35 +137,35 @@ void WebBrowser::setProgress(int p)
 	}
 }
 
-void WebBrowser::logInfo(const QString &msg)
+void WebView::logInfo(const QString &msg)
 {
 	yINFO(msg.toLocal8Bit().data());
 }
 
-void WebBrowser::logDebug(const QString &msg)
+void WebView::logDebug(const QString &msg)
 {
 	yDEBUG(msg.toLocal8Bit().data());
 }
 
-void WebBrowser::setProperty(const QString &name, const QString &value)
+void WebView::setProperty(const QString &name, const QString &value)
 {
 	m_props.insert(name, value);
 }
 
-QString WebBrowser::getProperty(const QString &name)
+QString WebView::getProperty(const QString &name)
 {
 	return m_props.value(name);
 }
 
-void WebBrowser::removeProperty(const QString &name)
+void WebView::removeProperty(const QString &name)
 {
 	m_props.remove(name);
 }
 
-void WebBrowser::populateJavaScriptWindowObject(){
-	m_pWebView->page()->mainFrame()->addToJavaScriptWindowObject("yewtic", this);
+void WebView::populateJavaScriptWindowObject(){
+	m_pWebPage->mainFrame()->addToJavaScriptWindowObject("yewtic", this);
 }
 
-void WebBrowser::evalScript(const QString &script){
-	m_pWebView->page()->mainFrame()->evaluateJavaScript(script);
+void WebView::evalScript(const QString &script){
+	m_pWebPage->mainFrame()->evaluateJavaScript(script);
 }

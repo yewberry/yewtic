@@ -5,7 +5,7 @@
 #include "common.h"
 #include "SqliteDB.h"
 
-class WebBrowser;
+class WebPage;
 class FavoritesView;
 class MusicView;
 class PostView;
@@ -26,7 +26,7 @@ public:
 
 	FavoritesView*	getFavoritesView();
 	PostView*		getPostView();
-	WebBrowser*		getWebBrowser();
+	WebPage*		getWebPage();
 	QLabel*			getWebProgress();
 
 protected:
@@ -66,7 +66,7 @@ private:
 	MusicView		*m_pMusicView;
 	PostView		*m_pPostView;
 	QTextEdit		*logAppender;
-	WebBrowser		*m_pWebBrowser;
+	WebPage			*m_pWebPage;
 
 	QLabel			*m_pWebProgress;
 	QSplitter		*m_pRightTopSplitter;

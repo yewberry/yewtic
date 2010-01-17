@@ -2,7 +2,7 @@
 
 #include "BatDown.h"
 #include "SqliteDB.h"
-#include "WebBrowser.h"
+#include "WebPage.h"
 #include "EntryModel.h"
 #include "FavoritesView.h"
 #include "TreeNode.h"
@@ -195,7 +195,7 @@ void BatDown::createCentralArea(){
 	m_pFavoritesTree->expandToDepth(0);
 	m_pMusicView = new MusicView(this);
 	m_pPostView = new PostView(this);
-	m_pWebBrowser = new WebBrowser(this);
+	m_pWebPage = new WebPage(this);
 
 	m_pRightTopSplitter = new QSplitter(Qt::Horizontal);
 	m_pRightTopSplitter->addWidget(m_pMusicView);
@@ -203,7 +203,7 @@ void BatDown::createCentralArea(){
 
 	m_pRightButtomSplitter = new QSplitter(Qt::Horizontal);
 	m_pRightButtomSplitter->addWidget(logAppender);
-	m_pRightButtomSplitter->addWidget(m_pWebBrowser);
+	m_pRightButtomSplitter->addWidget(m_pWebPage);
 
 	m_pRightSplitter = new QSplitter(Qt::Vertical);
 	m_pRightSplitter->addWidget(m_pRightTopSplitter);
@@ -282,9 +282,9 @@ QMap<QString, QString>& BatDown::getSettings()
 {
 	return m_settings;
 }
-WebBrowser* BatDown::getWebBrowser()
+WebPage* BatDown::getWebPage()
 {
-	return m_pWebBrowser;
+	return m_pWebPage;
 }
 FavoritesView* BatDown::getFavoritesView()
 {
