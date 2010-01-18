@@ -127,16 +127,6 @@ void WebView::finishLoading(bool)
 	evalStepScript(nextStep);
 }
 
-void WebView::setProgress(int p)
-{
-	QLabel *statusBarField = this->m_pApp->getWebProgress();
-	if(p <= 0 || p >= 100){
-		statusBarField->setText("Done");
-	} else {
-		statusBarField->setText(QString("%1%").arg(p));
-	}
-}
-
 void WebView::logInfo(const QString &msg)
 {
 	yINFO(msg.toLocal8Bit().data());

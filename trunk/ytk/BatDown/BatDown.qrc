@@ -3,5 +3,6 @@
         <file>jquery.min.js</file>
         <file>yewtic.js</file>
         <file>jquery.json.min.js</file>
+        <file>icons/defaultPageIcon.png</file>
     </qresource>
 </RCC>
