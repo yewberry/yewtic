@@ -7,6 +7,7 @@
 #include "BatDown.h"
 
 class QWebPage;
+class Tab;
 
 class WebView : public QWebView, public BatDownBase
 {
@@ -25,7 +26,7 @@ private:
 
 public slots:
 	void procPostList(const QString &jsonStr);
-	QString openPageSilently(const QString &url, const QString &step, const QString &retProp);
+	void openSubTabs(const QString &jsonStr, const QString &step, int numOfTabsATime = 1);
 
 	void setProperty(const QString &name, const QString &value);
 	QString getProperty(const QString &name);
@@ -33,6 +34,8 @@ public slots:
 
 	void logInfo(const QString &msg);
 	void logDebug(const QString &msg);
+	void logError(const QString &msg);
+	
 	void populateJavaScriptWindowObject();
 
 protected slots:
@@ -45,9 +48,12 @@ private:
 	QString		m_jsLib;
 	QString		m_scriptFilename;
 	QString		m_script;
-	QMap<QString, QString> m_props;
+	QMap<QString, QString>
+				m_props;
 
 	QWebPage	*m_pWebPage;
+	QMap<QString, Tab*>
+				m_subTabs;
 };
 
 #endif // WEBVIEW_H

@@ -81,27 +81,56 @@
         if(arr.length > 0){
             var str = $.toJSON(arr);
             yewtic.procPostList(str);
-            self.procPost(arr[0].url);
-            /*
-            for(var i=0; i<arr.length; i++){
-                self.procPost(arr[i].url);
-            }
-            */
+            yewtic.openSubTabs(str, 'Yew.procPost()', 3);
         }
-        
-        yewtic.setProperty('nextStep', 'SYS_END');
     };
     
-    self.procPost = function(url){
-        var musicUrls = yewtic.openPageSilently(url, 'Yew.getPostMusicUrls()', 'musicUrls');
-        yewtic.logInfo(musicUrls);
-    };
-    
-    self.getPostMusicUrls = function(){
+    self.procPost = function(){
         var arr = $("a:contains('点击下载')");
-        //var str = $.toJSON(arr);
-        yewtic.logInfo(arr[0].href);
-        //yewtic.setProperty('musicUrls', str);
+        var url = yewtic.getProperty('url');
+        yewtic.logInfo('发现 ' + arr.length + ' 首歌。'+url);
+        var songs = [];
+        for(var i=0; i<arr.length; i++){
+            songs[i] = arr[i].href;
+        }
+        if(songs.length > 0){
+            var s = $.toJSON(songs);
+            yewtic.setProperty('p_songs', s);
+            Yew.procMusic(0);
+        }
+    };
+    
+    self.procMusic = function(n){
+        var s = yewtic.getProperty('p_songs');
+        eval('var arr = ' + s);
+        if(n < arr.length){
+            yewtic.setProperty('nextStep', 'Yew.procDownloadConfirm(' + n + ')');
+            parent.location = arr[n];
+        } else {
+            yewtic.logInfo('Find:'+s);
+        }
+    };
+    
+    self.procDownloadConfirm = function(n){
+        var arr = $("a:contains('同意请点击获得下载地址')");
+        if(arr.length == 1){
+            yewtic.setProperty('nextStep', 'Yew.procDownloadUrl(' + n + ')');
+            parent.location = arr[0].href;
+        } else {
+            yewtic.logError("未在下载确认页面找到确认链接。");
+        }
+    };
+    
+    self.procDownloadUrl = function(n){
+        var arr = $("a:contains('右键另存')");
+        
+        var s = yewtic.getProperty('p_songs');
+        eval('var _a = ' + s);
+        _a[n] = arr[0].href;
+        s = $.toJSON(_a);
+        yewtic.setProperty('p_songs', s);
+        
+        Yew.procMusic(++n);
     };
     
 })(Yew, jQuery);

@@ -42,9 +42,6 @@ WebView::WebView(BatDown *app, QWidget *parent)
 		this, SLOT(populateJavaScriptWindowObject()));
 
 	setWindowTitle(tr("Web Browser"));
-
-	//TODO Settings dialog
-	QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, false);
 }
 
 QWebView* WebView::createWindow(QWebPage::WebWindowType /*type*/)
@@ -61,6 +58,9 @@ void WebView::openUrl(const QUrl &url)
 }
 void WebView::openUrl(const QUrl &url, const QString &scriptFilename)
 {
+	if( url.toString().startsWith("about:") )
+		return;
+
 	QFile file;
 	file.setFileName(scriptFilename);
 	file.open(QIODevice::ReadOnly);
@@ -70,6 +70,9 @@ void WebView::openUrl(const QUrl &url, const QString &scriptFilename)
 	m_script = QString::fromLocal8Bit( file.readAll() );
 	file.close();
 
+	if(!m_props.contains("nextStep"))
+		m_props.insert("nextStep", "Yew.main()");
+	m_props.insert("url", url.toString());
 	openUrl(url);
 }
 
@@ -96,17 +99,19 @@ void WebView::procPostList(const QString &jsonStr)
 	}
 }
 
-QString WebView::openPageSilently(const QString &url, const QString &step, const QString &retProp){
-	/*
-	WebPage *wb = new WebPage(m_pApp);
-	wb->setProperty("nextStep", step);
-	wb->openUrl(url, m_scriptFilename);
-	wb->show();
-	int a = 0;
-	QString ret = wb->getProperty(retProp);
-	int b = 0;
-	*/
-	return "";
+void WebView::openSubTabs(const QString &jsonStr, const QString &step, int numOfTabsATime)
+{
+	recs_t recs = BatDownUtils::jsonStringToRecordList(jsonStr);
+	m_subTabs.clear();
+	for(int i=0, len=recs.size(); i<numOfTabsATime; ++i){
+		record_t rec = recs.at(i);
+		QString url = rec.value("url");
+		Tab *tab = TabManager::tabManager()->addTab();
+		m_subTabs.insert(url, tab);
+
+		tab->webView()->setProperty("nextStep", step);
+		tab->load(QUrl(url), m_scriptFilename);
+	}
 }
 
 void WebView::evalStepScript(const QString &script){
@@ -121,13 +126,11 @@ void WebView::evalStepScript(const QString &script){
 
 void WebView::finishLoading(bool)
 {
-	if( !m_props.contains("nextStep") ){
-		m_props.insert("nextStep", "Yew.main()");
-	}
-		
+	if( !m_props.contains("nextStep") ) return;
 	QString nextStep = m_props.value("nextStep");
 	if( nextStep.isEmpty() || nextStep.compare("SYS_END") == 0 )return;
 
+	m_props.remove("nextStep");
 	yDEBUG(QString("Finish loading and execuate script: '%1'").arg(nextStep).toLatin1().data());
 	evalStepScript(nextStep);
 }
@@ -140,6 +143,11 @@ void WebView::logInfo(const QString &msg)
 void WebView::logDebug(const QString &msg)
 {
 	yDEBUG(msg.toLocal8Bit().data());
+}
+
+void WebView::logError(const QString &msg)
+{
+	yERROR(msg.toLocal8Bit().data());
 }
 
 void WebView::setProperty(const QString &name, const QString &value)

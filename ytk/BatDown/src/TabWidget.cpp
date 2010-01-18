@@ -8,4 +8,7 @@ TabWidget::TabWidget(BatDown* app, QWidget *parent)
     setMovable(true);
     setTabsClosable(true);
     connect(this, SIGNAL(tabCloseRequested(int)), TabManager::tabManager(), SLOT(removeTab(int)));
+
+		//TODO Settings dialog
+	QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, false);
 }
