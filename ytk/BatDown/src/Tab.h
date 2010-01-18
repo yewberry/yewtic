@@ -4,37 +4,31 @@
 #include <QtCore>
 #include <QtGui>
 #include <QtWebKit>
+#include "BatDown.h"
 
-class ToolBar;
-class AdressBar;
 class WebView;
 
-class Tab : public QWidget
+class Tab : public QWidget, public BatDownBase
 {
     Q_OBJECT
 
 public:
-    Tab(const QUrl & url, QWidget * parent = 0);
+    Tab(BatDown *app, QWidget *parent = 0);
     QUrl url() const;
     QString title() const;
-    WebView * webView() const;
-
-private:
-    ToolBar * m_toolBar;
-    WebView * m_webView;
-    SearchBar * m_searchBar;
-    StatusBar * m_statusBar;
-    QVBoxLayout * m_layout;
-    QShortcut * m_showSearchShortcut;
-    QShortcut * m_focusAdressShortcut;
+    WebView* webView() const;
 
 public slots:
     void reload();
-    void load(const QUrl & url);
+    void load(const QUrl &url, const QString &scriptFilename);
 
 private slots:
     void updateTitle();
     void updateIcon();
+	void updateProgress(int);
+
+private:
+    WebView		*m_pWebView;
 };
 
 #endif // TAB_H

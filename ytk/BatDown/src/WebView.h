@@ -6,8 +6,6 @@
 #include <QtWebKit>
 #include "BatDown.h"
 
-class TabManager;
-class Tab;
 class WebPage;
 
 class WebView : public QWebView, public BatDownBase
@@ -38,7 +36,6 @@ public slots:
 	void populateJavaScriptWindowObject();
 
 protected slots:
-	void setProgress(int);
 	void finishLoading(bool);
 	
 private:

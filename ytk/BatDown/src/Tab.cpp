@@ -1,95 +1,79 @@
 #include "Tab.h"
 #include "WebView.h"
 
-Tab::Tab(const QUrl & url, QWidget * parent)
-        : QWidget(parent)
+Tab::Tab(BatDown *app, QWidget *parent)
+: QWidget(parent), BatDownBase(app)
 {
-    m_pWebView = new WebView(url, this);
-    m_layout = new QVBoxLayout(this);
-    m_layout->setMargin(0);
-    m_layout->setSpacing(0);
-    m_layout->addWidget(m_pWebView);
+    m_pWebView = new WebView(m_pApp, this);
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->setMargin(0);
+    layout->setSpacing(0);
+    layout->addWidget(m_pWebView);
+	setLayout(layout);
 
-    m_showSearchShortcut = new QShortcut(QKeySequence::Find, this);
-    m_focusAdressShortcut = new QShortcut(Qt::Key_F6, this);
-
-    m_searchBar->hide();
-
-    connect(m_toolBar, SIGNAL(goBackRequsted()), m_webView, SLOT(back()));
-    connect(m_toolBar, SIGNAL(goForwardRequsted()), m_webView, SLOT(forward()));
-    connect(m_toolBar, SIGNAL(reloadRequsted()), m_webView, SLOT(reload()));
-    connect(m_toolBar, SIGNAL(stopRequsted()), m_webView, SLOT(stop()));
-    connect(m_toolBar, SIGNAL(loadRequsted(const QUrl &)), m_webView, SLOT(load(const QUrl &)));
-    connect(m_toolBar, SIGNAL(loadRequsted(const QUrl &)), m_webView, SLOT(setFocus()));
-    connect(m_webView, SIGNAL(urlChanged(const QUrl &)), m_toolBar, SLOT(setUrl(const QUrl &)));
-    connect(m_webView, SIGNAL(urlChanged(const QUrl &)), m_toolBar, SLOT(updateActions()));
-    connect(m_webView, SIGNAL(loadStarted()), m_toolBar, SLOT(enableStopAction()));
-    connect(m_webView, SIGNAL(loadFinished(bool)), m_toolBar, SLOT(disableStopAction()));
-    connect(m_webView, SIGNAL(titleChanged(const QString &)), this, SLOT(updateTitle()));
-    connect(m_webView, SIGNAL(iconChanged()), this, SLOT(updateIcon()));
-    connect(m_searchBar, SIGNAL(searchDataChanged(const QString &, bool, bool)),
-            m_webView, SLOT(find(const QString &, bool, bool)));
-    connect(m_searchBar, SIGNAL(closeRequested()), m_searchBar, SLOT(hide()));
-    connect(m_searchBar, SIGNAL(closeRequested()), m_webView, SLOT(setFocus()));
-    connect(m_webView->page(), SIGNAL(linkHovered(const QString &,const QString &,const QString &)),
-            m_statusBar, SLOT(showMessage(const QString &)));
-    connect(m_webView, SIGNAL(loadProgress(int)), m_statusBar->progressBar(), SLOT(setValue(int)));
-    connect(m_statusBar->slider(), SIGNAL(valueChanged(int)), m_webView, SLOT(setZoom(int)));
-    connect(m_showSearchShortcut, SIGNAL(activated()), m_searchBar, SLOT(show()));
-    connect(m_focusAdressShortcut, SIGNAL(activated()), m_toolBar->adressBar(), SLOT(setFocus()));
+    connect(m_pWebView, SIGNAL(titleChanged(const QString &)), this, SLOT(updateTitle()));
+    connect(m_pWebView, SIGNAL(iconChanged()), this, SLOT(updateIcon()));
+    connect(m_pWebView, SIGNAL(loadProgress(int)), this, SLOT(updateProgress(int)));
 }
 
 QUrl Tab::url() const
 {
-    return m_webView->url();
+    return m_pWebView->url();
 }
 
 QString Tab::title() const
 {
-    return m_webView->title();
+    return m_pWebView->title();
 }
 
-WebView * Tab::webView() const
+WebView* Tab::webView() const
 {
-    return m_webView;
+    return m_pWebView;
 }
 
 void Tab::reload()
 {
-    m_webView->reload();
+    m_pWebView->reload();
 }
 
-void Tab::load(const QUrl & url)
+void Tab::load(const QUrl &url, const QString &scriptFilename)
 {
-    m_webView->load(url);
+	m_pWebView->openUrl(url, scriptFilename);
 }
 
 void Tab::updateTitle()
 {
-    QTabWidget * widget = qobject_cast<QTabWidget *>(parentWidget()->parentWidget());
-    if(widget)
-    {
-        QString text = m_webView->title();
-        if(text.length() > 30)
-        {
+    QTabWidget *widget = qobject_cast<QTabWidget *>(parentWidget()->parentWidget());
+    if(widget){
+        QString text = m_pWebView->title();
+        if(text.length() > 30){
             text.truncate(27);
             text += "...";
         }
         widget->setTabText(widget->indexOf(this), text);
-        widget->setTabToolTip(widget->indexOf(this), m_webView->title());
+        widget->setTabToolTip(widget->indexOf(this), m_pWebView->title());
     }
 }
 
 void Tab::updateIcon()
 {
-    QTabWidget * widget = qobject_cast<QTabWidget *>(parentWidget()->parentWidget());
+    QTabWidget *widget = qobject_cast<QTabWidget *>(parentWidget()->parentWidget());
     if(widget)
     {
-        QIcon icon = m_webView->icon();
-        if(icon.isNull())
-        {
-            icon = QIcon(":/defaultPageIcon.png");
+        QIcon icon = m_pWebView->icon();
+        if(icon.isNull()){
+            icon = QIcon(":/BatDown/defaultPageIcon.png");
         }
         widget->setTabIcon(widget->indexOf(this), icon);
     }
+}
+
+void Tab::updateProgress(int p)
+{
+	QLabel *statusBarField = this->m_pApp->getWebProgress();
+	if(p <= 0 || p >= 100){
+		statusBarField->setText("Done");
+	} else {
+		statusBarField->setText(QString("%1%").arg(p));
+	}
 }
