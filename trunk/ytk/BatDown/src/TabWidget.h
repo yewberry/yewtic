@@ -1,25 +1,16 @@
 #ifndef TABWIDGET_H
 #define TABWIDGET_H
 
-#include <QtCore>
-#include <QtGui>
-#include <QtWebKit>
+#include <QtGui/QTabWidget>
+#include "BatDown.h"
 
-class TabBar;
-class TabManager;
-
-class TabWidget
-        : public QTabWidget
+class TabWidget : public QTabWidget, public BatDownBase
 {
     Q_OBJECT
 
 public:
-    TabWidget(QWidget * parent = 0);
+    TabWidget(BatDown* app, QWidget *parent = 0);
 
-private:
-    TabBar * m_tabBar;
-    QAction * m_openTabAction;
-    QShortcut * m_closeTabShortcut;
 };
 
 #endif // TABWIDGET_H

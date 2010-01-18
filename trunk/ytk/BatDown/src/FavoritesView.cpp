@@ -22,6 +22,8 @@ void FavoritesView::onDblClick(const QModelIndex &idx)
 	TreeNode *node = static_cast<TreeNode*>(idx.internalPointer());
 
 	//TODO change to full functional web browser
+	/*
 	WebPage *wb = m_pApp->getWebPage();
 	wb->openUrl(node->getUrl(), node->getScriptFilename());
+	*/
 }
