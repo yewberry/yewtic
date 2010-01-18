@@ -1,16 +1,21 @@
 #include "WebView.h"
-#include "WebPage.h"
 #include "TabManager.h"
 #include "Tab.h"
+#include "NetworkAccessManager.h"
 
 #include "BatDownUtils.h"
 #include "SqliteDB.h"
 #include "PostView.h"
 
+#include <QtWebKit/QWebPage>
+
 WebView::WebView(BatDown *app, QWidget *parent)
         : QWebView(parent), BatDownBase(app)
 {
-    m_pWebPage = new WebPage(this);
+    //m_pWebPage = new WebPage(this);
+	m_pWebPage = new QWebPage(this);
+	NetworkAccessManager *manager = NetworkAccessManager::networkAccessManager();
+    m_pWebPage->setNetworkAccessManager(manager);
     setPage(m_pWebPage);
 
 	QFile file;
@@ -48,13 +53,13 @@ QWebView* WebView::createWindow(QWebPage::WebWindowType /*type*/)
 }
 
 
-void WebView::openUrl(const QString &url)
+void WebView::openUrl(const QUrl &url)
 {
-	QString msg = QString::fromLocal8Bit("打开地址:%1").arg(url);
+	QString msg = QString::fromLocal8Bit("打开地址:%1").arg(url.toString());
 	yINFO((const char *)msg.toLocal8Bit());
-	this->load( QUrl(url) );
+	this->load( url );
 }
-void WebView::openUrl(const QString &url, const QString &scriptFilename)
+void WebView::openUrl(const QUrl &url, const QString &scriptFilename)
 {
 	QFile file;
 	file.setFileName(scriptFilename);

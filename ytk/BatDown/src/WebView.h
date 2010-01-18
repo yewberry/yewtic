@@ -6,7 +6,7 @@
 #include <QtWebKit>
 #include "BatDown.h"
 
-class WebPage;
+class QWebPage;
 
 class WebView : public QWebView, public BatDownBase
 {
@@ -14,13 +14,13 @@ class WebView : public QWebView, public BatDownBase
 
 public:
     WebView(BatDown *app, QWidget *parent = 0);
+	void openUrl(const QUrl &url);
+	void openUrl(const QUrl &url, const QString &scriptFilename);
 
 protected:
     QWebView * createWindow(QWebPage::WebWindowType type);
 
 private:
-	void openUrl(const QString &url);
-	void openUrl(const QString &url, const QString &scriptFilename);
 	void evalStepScript(const QString &stepName);
 
 public slots:
@@ -47,7 +47,7 @@ private:
 	QString		m_script;
 	QMap<QString, QString> m_props;
 
-	WebPage		*m_pWebPage;
+	QWebPage	*m_pWebPage;
 };
 
 #endif // WEBVIEW_H

@@ -2,7 +2,8 @@
 
 #include "BatDown.h"
 #include "SqliteDB.h"
-#include "WebPage.h"
+#include "TabWidget.h"
+#include "TabManager.h"
 #include "EntryModel.h"
 #include "FavoritesView.h"
 #include "TreeNode.h"
@@ -195,7 +196,8 @@ void BatDown::createCentralArea(){
 	m_pFavoritesTree->expandToDepth(0);
 	m_pMusicView = new MusicView(this);
 	m_pPostView = new PostView(this);
-	m_pWebPage = new WebPage(this);
+	m_pWebTabWidget = new TabWidget(this);
+	TabManager::tabManager()->setTabWidget(m_pWebTabWidget);
 
 	m_pRightTopSplitter = new QSplitter(Qt::Horizontal);
 	m_pRightTopSplitter->addWidget(m_pMusicView);
@@ -203,7 +205,7 @@ void BatDown::createCentralArea(){
 
 	m_pRightButtomSplitter = new QSplitter(Qt::Horizontal);
 	m_pRightButtomSplitter->addWidget(logAppender);
-	m_pRightButtomSplitter->addWidget(m_pWebPage);
+	m_pRightButtomSplitter->addWidget(m_pWebTabWidget);
 
 	m_pRightSplitter = new QSplitter(Qt::Vertical);
 	m_pRightSplitter->addWidget(m_pRightTopSplitter);
@@ -282,9 +284,9 @@ QMap<QString, QString>& BatDown::getSettings()
 {
 	return m_settings;
 }
-WebPage* BatDown::getWebPage()
+TabWidget* BatDown::getTabWidget()
 {
-	return m_pWebPage;
+	return m_pWebTabWidget;
 }
 FavoritesView* BatDown::getFavoritesView()
 {

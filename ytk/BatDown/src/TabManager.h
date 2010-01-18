@@ -6,39 +6,34 @@
 #include <QtWebKit>
 
 class Tab;
-class ClosedTab;
+class TabWidget;
 
-class TabManager
-        : public QObject
+class TabManager : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    TabManager();
-    static TabManager * tabManager();
-    void setTabWidget(QTabWidget * tabWidget);
-    QList<ClosedTab *> closedTabs(int count) const;
-    int count() const;
-    int currentIndex() const;
-    Tab * tab(int index) const;
-    Tab * currentTab() const;
+	TabManager();
+	static TabManager* tabManager();
+	void setTabWidget(TabWidget *tabWidget);
 
-private:
-    static TabManager * m_tabManager;
-    QTabWidget * m_tabWidget;
-    QList<ClosedTab *> m_closedTabs;
+	int count() const;
+	int currentIndex() const;
+	Tab* tab(int index) const;
+	Tab* currentTab() const;
 
 public slots:
-    void setCurrentIndex(int index);
-    Tab * addTab(const QUrl & url = QUrl("about:blank"));
-    Tab * insertTab(int index, const QUrl & url = QUrl("about:blank"));
-    void removeCurrentTab();
-    void removeTab(int index);
-    void removeAllTabs();
-    void restoreTab(int index = 0);
-    void clearRestoreList();
-    void load();
-    void save();
+	void setCurrentIndex(int index);
+
+	Tab * addTab(const QUrl &url=QUrl("about:blank"), const QString &scriptFilename=QString());
+	Tab * insertTab(int index, const QUrl &url=QUrl("about:blank"), const QString &scriptFilename=QString());
+	void removeCurrentTab();
+	void removeTab(int index);
+	void removeAllTabs();
+
+private:
+	static TabManager	*m_pTabManager;
+	TabWidget			*m_pTabWidget;
 };
 
 #endif // TABMANAGER_H
