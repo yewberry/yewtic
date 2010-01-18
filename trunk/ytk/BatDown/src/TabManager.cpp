@@ -72,8 +72,8 @@ Tab* TabManager::insertTab(int index, const QUrl &url, const QString &scriptFile
 		if( icon.isNull() ){
 			icon = QIcon(":/BatDown/defaultPageIcon.png");
 		}
-		m_pTabWidget->insertTab(index, tab, icon, trUtf8("New tab"));
-		m_pTabWidget->setTabToolTip(index, trUtf8("New tab"));
+		m_pTabWidget->insertTab(index, tab, icon, tr("New tab"));
+		m_pTabWidget->setTabToolTip(index, tr("New tab"));
 		setCurrentIndex(index);
 		tab->load(url, scriptFilename);
 

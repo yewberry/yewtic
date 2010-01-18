@@ -51,7 +51,9 @@ void Tab::updateTitle()
             text += "...";
         }
         widget->setTabText(widget->indexOf(this), text);
-        widget->setTabToolTip(widget->indexOf(this), m_pWebView->title());
+		QString tooltip = QString("<table><tr><td><b>%1</b>: %2</td></tr><tr><td><b>%3</b>: %4</td></tr></table>")
+			.arg("Title").arg(m_pWebView->title()).arg("Url").arg(url().toString());
+        widget->setTabToolTip(widget->indexOf(this), tooltip);
     }
 }
 

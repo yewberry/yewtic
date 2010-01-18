@@ -1,7 +1,8 @@
 #include "FavoritesView.h"
 #include "FavoritesModel.h"
 #include "TreeNode.h"
-#include "WebPage.h"
+#include "TabManager.h"
+#include "Tab.h"
 
 FavoritesView::FavoritesView(BatDown *app, QWidget *parent)
 : QTreeView(parent), BatDownBase(app)
@@ -22,8 +23,5 @@ void FavoritesView::onDblClick(const QModelIndex &idx)
 	TreeNode *node = static_cast<TreeNode*>(idx.internalPointer());
 
 	//TODO change to full functional web browser
-	/*
-	WebPage *wb = m_pApp->getWebPage();
-	wb->openUrl(node->getUrl(), node->getScriptFilename());
-	*/
+	TabManager::tabManager()->currentTab()->load( QUrl(node->getUrl()), node->getScriptFilename() );
 }

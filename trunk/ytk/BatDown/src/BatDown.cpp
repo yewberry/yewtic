@@ -198,6 +198,7 @@ void BatDown::createCentralArea(){
 	m_pPostView = new PostView(this);
 	m_pWebTabWidget = new TabWidget(this);
 	TabManager::tabManager()->setTabWidget(m_pWebTabWidget);
+	TabManager::tabManager()->addTab();
 
 	m_pRightTopSplitter = new QSplitter(Qt::Horizontal);
 	m_pRightTopSplitter->addWidget(m_pMusicView);
