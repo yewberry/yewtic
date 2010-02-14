@@ -1,19 +1,21 @@
-#ifndef BATDOWNUTILS_H
-#define BATDOWNUTILS_H
+#ifndef UTILS_H
+#define UTILS_H
 
 #include <QtCore>
 #include "json.h"
 #include "SqliteDB.h"
 
-class BatDownUtils
+class Utils
 {
 public:
 	//you should json_free_value what you get by return of
 	//this func manully.
 	static json_t* readJsonFromFile(const QString &fn);
 	static bool writeJsonToFile(json_t *root, const QString &fn);
+	
 	static json_t* parseJsonFromString(const QString &str);
 	static recs_t jsonStringToRecordList(const QString &jsonStr);
+	
 	static QMap<QString, QString> jsonToMap(json_t *root);
 	static json_t* mapToJson(const QMap<QString, QString> &map);
 
@@ -24,4 +26,4 @@ public:
 	static QList<int> stringListToIntList(QStringList &ls);
 };
 
-#endif //BATDOWNUTILS_H
+#endif //UTILS_H

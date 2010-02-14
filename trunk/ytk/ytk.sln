@@ -35,6 +35,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestBoost", "test\TestBoost
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EmuleManager", "EmuleManager\EmuleManager.vcproj", "{EC60798F-D45C-49A7-93FE-D99710F49596}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestGTest", "test\TestGTest\TestGTest.vcproj", "{E10FA280-9800-41A2-AF2F-94996D79087E}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -253,6 +255,18 @@ Global
 		{EC60798F-D45C-49A7-93FE-D99710F49596}.Release|Win32.Build.0 = Release|Win32
 		{EC60798F-D45C-49A7-93FE-D99710F49596}.Release44|Win32.ActiveCfg = Release|Win32
 		{EC60798F-D45C-49A7-93FE-D99710F49596}.Release44|Win32.Build.0 = Release|Win32
+		{E10FA280-9800-41A2-AF2F-94996D79087E}.Debug_Unicode|Win32.ActiveCfg = Debug|Win32
+		{E10FA280-9800-41A2-AF2F-94996D79087E}.Debug_Unicode|Win32.Build.0 = Debug|Win32
+		{E10FA280-9800-41A2-AF2F-94996D79087E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E10FA280-9800-41A2-AF2F-94996D79087E}.Debug|Win32.Build.0 = Debug|Win32
+		{E10FA280-9800-41A2-AF2F-94996D79087E}.Release PE|Win32.ActiveCfg = Release|Win32
+		{E10FA280-9800-41A2-AF2F-94996D79087E}.Release PE|Win32.Build.0 = Release|Win32
+		{E10FA280-9800-41A2-AF2F-94996D79087E}.Release_Unicode|Win32.ActiveCfg = Release|Win32
+		{E10FA280-9800-41A2-AF2F-94996D79087E}.Release_Unicode|Win32.Build.0 = Release|Win32
+		{E10FA280-9800-41A2-AF2F-94996D79087E}.Release|Win32.ActiveCfg = Release|Win32
+		{E10FA280-9800-41A2-AF2F-94996D79087E}.Release|Win32.Build.0 = Release|Win32
+		{E10FA280-9800-41A2-AF2F-94996D79087E}.Release44|Win32.ActiveCfg = Release|Win32
+		{E10FA280-9800-41A2-AF2F-94996D79087E}.Release44|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
