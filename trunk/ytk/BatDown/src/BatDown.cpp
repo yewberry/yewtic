@@ -4,7 +4,6 @@
 #include "SqliteDB.h"
 #include "TabWidget.h"
 #include "TabManager.h"
-#include "EntryModel.h"
 #include "FavoritesView.h"
 #include "TreeNode.h"
 #include "PostView.h"
