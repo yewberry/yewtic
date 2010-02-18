@@ -37,6 +37,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EmuleManager", "EmuleManage
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestGTest", "test\TestGTest\TestGTest.vcproj", "{E10FA280-9800-41A2-AF2F-94996D79087E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestLibiconv", "test\TestLibiconv\TestLibiconv.vcproj", "{A9AA39E1-A420-40F1-8530-D92C775D7EA0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YtkUtils", "YtkUtils\YtkUtils.vcproj", "{DAD8245B-9DBE-4C60-9DFA-480D721973E3}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -267,6 +271,30 @@ Global
 		{E10FA280-9800-41A2-AF2F-94996D79087E}.Release|Win32.Build.0 = Release|Win32
 		{E10FA280-9800-41A2-AF2F-94996D79087E}.Release44|Win32.ActiveCfg = Release|Win32
 		{E10FA280-9800-41A2-AF2F-94996D79087E}.Release44|Win32.Build.0 = Release|Win32
+		{A9AA39E1-A420-40F1-8530-D92C775D7EA0}.Debug_Unicode|Win32.ActiveCfg = Debug|Win32
+		{A9AA39E1-A420-40F1-8530-D92C775D7EA0}.Debug_Unicode|Win32.Build.0 = Debug|Win32
+		{A9AA39E1-A420-40F1-8530-D92C775D7EA0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A9AA39E1-A420-40F1-8530-D92C775D7EA0}.Debug|Win32.Build.0 = Debug|Win32
+		{A9AA39E1-A420-40F1-8530-D92C775D7EA0}.Release PE|Win32.ActiveCfg = Release|Win32
+		{A9AA39E1-A420-40F1-8530-D92C775D7EA0}.Release PE|Win32.Build.0 = Release|Win32
+		{A9AA39E1-A420-40F1-8530-D92C775D7EA0}.Release_Unicode|Win32.ActiveCfg = Release|Win32
+		{A9AA39E1-A420-40F1-8530-D92C775D7EA0}.Release_Unicode|Win32.Build.0 = Release|Win32
+		{A9AA39E1-A420-40F1-8530-D92C775D7EA0}.Release|Win32.ActiveCfg = Release|Win32
+		{A9AA39E1-A420-40F1-8530-D92C775D7EA0}.Release|Win32.Build.0 = Release|Win32
+		{A9AA39E1-A420-40F1-8530-D92C775D7EA0}.Release44|Win32.ActiveCfg = Release|Win32
+		{A9AA39E1-A420-40F1-8530-D92C775D7EA0}.Release44|Win32.Build.0 = Release|Win32
+		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Debug_Unicode|Win32.ActiveCfg = Debug|Win32
+		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Debug_Unicode|Win32.Build.0 = Debug|Win32
+		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Debug|Win32.Build.0 = Debug|Win32
+		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release PE|Win32.ActiveCfg = Release|Win32
+		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release PE|Win32.Build.0 = Release|Win32
+		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release_Unicode|Win32.ActiveCfg = Release|Win32
+		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release_Unicode|Win32.Build.0 = Release|Win32
+		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release|Win32.ActiveCfg = Release|Win32
+		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release|Win32.Build.0 = Release|Win32
+		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release44|Win32.ActiveCfg = Release|Win32
+		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release44|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
