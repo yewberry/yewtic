@@ -189,6 +189,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\lib\iconv.dll"
+				>
+			</File>
+			<File
+				RelativePath="..\lib\iconv.lib"
+				>
+			</File>
+			<File
 				RelativePath="..\lib\log4cplusUD.dll"
 				>
 			</File>
