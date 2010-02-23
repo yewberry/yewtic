@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC
+	"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+	"http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+    <display-name>QDOG System eUI Studio</display-name>
+    <description>QDOG System eUI Studio</description>
+    
+	<servlet>
+		<servlet-name>main</servlet-name>
+		<servlet-class>com.cs.qdog.web.ria.desktop.servlets.Main</servlet-class>
+	</servlet>
+    <listener> 
+        <listener-class>com.cs.qdog.web.ria.desktop.servlets.SessionListener</listener-class> 
+    </listener>
+
+	<servlet>
+		<servlet-name>TestServlet</servlet-name>
+		<servlet-class>com.cs.qdog.web.ria.desktop.servlets.TestServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>main</servlet-name>
+		<url-pattern>/main</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>main</servlet-name>
+		<url-pattern>/test/main</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>TestServlet</servlet-name>
+		<url-pattern>/TestServlet</url-pattern>
+	</servlet-mapping>
+    
+    <welcome-file-list>
+        <welcome-file>desktop.html</welcome-file>
+    </welcome-file-list>
+
+    <session-config>
+        <session-timeout>
+            1440 <!-- 24*60=1440 minutes -->
+        </session-timeout>
+    </session-config>
+
+</web-app>
