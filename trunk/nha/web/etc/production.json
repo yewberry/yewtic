@@ -1,0 +1,16 @@
+{
+    results: 9, // Reader's configured totalProperty
+    rows: [        // Reader's configured root
+        // record data objects:
+        { id: 1, defect_type: '1', defect_name: '织带脏', total:0, prod_a:0, prod_b:0,prod_c:8,prod_d:0,prod_e:12,prod_f:22,prod_g:0,prod_h:0,prod_i:0,prod_j:1,prod_k:0 },
+        { id: 2, defect_type: '2', defect_name: '织带起毛', total:0, prod_a:0, prod_b:2,prod_c:6,prod_d:0,prod_e:0,prod_f:0,prod_g:0,prod_h:18,prod_i:0,prod_j:0,prod_k:7 },
+        { id: 3, defect_type: '2', defect_name: '织带划伤', total:0, prod_a:12, prod_b:0,prod_c:0,prod_d:0,prod_e:1,prod_f:8,prod_g:7,prod_h:3,prod_i:0,prod_j:0,prod_k:0 },
+        { id: 4, defect_type: '2', defect_name: '织带色差', total:0, prod_a:0, prod_b:8,prod_c:0,prod_d:12,prod_e:2,prod_f:2,prod_g:0,prod_h:6,prod_i:1,prod_j:5,prod_k:3 },
+        { id: 5, defect_type: '2', defect_name: '织带用错', total:0, prod_a:0, prod_b:0,prod_c:0,prod_d:0,prod_e:0,prod_f:7,prod_g:0,prod_h:0,prod_i:0,prod_j:5,prod_k:2 },
+        { id: 6, defect_type: '2', defect_name: '织带偏长', total:0, prod_a:2, prod_b:4,prod_c:0,prod_d:0,prod_e:11,prod_f:7,prod_g:0,prod_h:0,prod_i:0,prod_j:0,prod_k:0 },
+        { id: 7, defect_type: '2', defect_name: '织带偏短', total:0, prod_a:5, prod_b:13,prod_c:2,prod_d:0,prod_e:0,prod_f:6,prod_g:1,prod_h:0,prod_i:0,prod_j:0,prod_k:0 },
+        { id: 8, defect_type: '2', defect_name: '织带导套断', total:0, prod_a:0, prod_b:0,prod_c:0,prod_d:0,prod_e:0,prod_f:0,prod_g:10,prod_h:0,prod_i:2,prod_j:0,prod_k:0 },
+        { id: 9, defect_type: '2', defect_name: '织带导套断', total:0, prod_a:0, prod_b:0,prod_c:0,prod_d:0,prod_e:0,prod_f:0,prod_g:10,prod_h:0,prod_i:2,prod_j:0,prod_k:0 },
+        { id: 10, defect_type: '2', defect_name: 'Total', total:0, prod_a:0, prod_b:0,prod_c:0,prod_d:0,prod_e:12,prod_f:0,prod_g:0,prod_h:0,prod_i:0,prod_j:1,prod_k:0 }
+    ]
+}
