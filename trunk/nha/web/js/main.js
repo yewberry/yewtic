@@ -14,7 +14,7 @@ Ext.onReady(function() {
 			, height: '24'
 			, bodyStyle: 'background-color:#4E78B1;text-align:center'
 			, split: false
-			, html: '南京奥托立夫退回品信息登记系统'
+			, html: '<p><font size="6"><b>南京奥托立夫退回品信息登记系统</b></font></p>'
 		},{
 			region: 'center'
 			, layout: 'fit'
