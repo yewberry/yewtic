@@ -682,6 +682,22 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="iconv"
+				>
+				<File
+					RelativePath="..\include\iconv\iconv.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\iconv\libcharset.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\iconv\localcharset.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -778,6 +794,10 @@
 			</File>
 			<File
 				RelativePath="..\lib\iconv.lib"
+				>
+			</File>
+			<File
+				RelativePath="..\lib\libcairo-2.dll"
 				>
 			</File>
 			<File
