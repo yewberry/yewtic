@@ -41,6 +41,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestLibiconv", "test\TestLi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YtkUtils", "YtkUtils\YtkUtils.vcproj", "{DAD8245B-9DBE-4C60-9DFA-480D721973E3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestFLTK", "test\TestFLTK\TestFLTK.vcproj", "{3933E0C5-3EA8-4245-B8F9-098080053142}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -295,6 +297,18 @@ Global
 		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release|Win32.Build.0 = Release|Win32
 		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release44|Win32.ActiveCfg = Release|Win32
 		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release44|Win32.Build.0 = Release|Win32
+		{3933E0C5-3EA8-4245-B8F9-098080053142}.Debug_Unicode|Win32.ActiveCfg = Debug|Win32
+		{3933E0C5-3EA8-4245-B8F9-098080053142}.Debug_Unicode|Win32.Build.0 = Debug|Win32
+		{3933E0C5-3EA8-4245-B8F9-098080053142}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3933E0C5-3EA8-4245-B8F9-098080053142}.Debug|Win32.Build.0 = Debug|Win32
+		{3933E0C5-3EA8-4245-B8F9-098080053142}.Release PE|Win32.ActiveCfg = Release|Win32
+		{3933E0C5-3EA8-4245-B8F9-098080053142}.Release PE|Win32.Build.0 = Release|Win32
+		{3933E0C5-3EA8-4245-B8F9-098080053142}.Release_Unicode|Win32.ActiveCfg = Release|Win32
+		{3933E0C5-3EA8-4245-B8F9-098080053142}.Release_Unicode|Win32.Build.0 = Release|Win32
+		{3933E0C5-3EA8-4245-B8F9-098080053142}.Release|Win32.ActiveCfg = Release|Win32
+		{3933E0C5-3EA8-4245-B8F9-098080053142}.Release|Win32.Build.0 = Release|Win32
+		{3933E0C5-3EA8-4245-B8F9-098080053142}.Release44|Win32.ActiveCfg = Release|Win32
+		{3933E0C5-3EA8-4245-B8F9-098080053142}.Release44|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
