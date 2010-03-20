@@ -7,7 +7,7 @@
 class SqliteDb : public DbMgr
 {
 public:
-	SqliteDb(void) : DbMgr("sqlite","3.6.21"){};
+	SqliteDb(void) : DbMgr("sqlite","3.6.21"), m_db(0){};
 	~SqliteDb(void);
 
 	bool open(const std::string& db);
