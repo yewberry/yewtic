@@ -41,8 +41,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestLibiconv", "test\TestLi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YtkUtils", "YtkUtils\YtkUtils.vcproj", "{DAD8245B-9DBE-4C60-9DFA-480D721973E3}"
 EndProject
+<<<<<<< .mine
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSqlite3pp", "test\TestSqlite3pp\TestSqlite3pp.vcproj", "{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}"
+EndProject
+=======
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestFLTK", "test\TestFLTK\TestFLTK.vcproj", "{3933E0C5-3EA8-4245-B8F9-098080053142}"
 EndProject
+>>>>>>> .r132
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -297,6 +302,20 @@ Global
 		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release|Win32.Build.0 = Release|Win32
 		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release44|Win32.ActiveCfg = Release|Win32
 		{DAD8245B-9DBE-4C60-9DFA-480D721973E3}.Release44|Win32.Build.0 = Release|Win32
+<<<<<<< .mine
+		{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}.Debug_Unicode|Win32.ActiveCfg = Debug|Win32
+		{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}.Debug_Unicode|Win32.Build.0 = Debug|Win32
+		{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}.Debug|Win32.Build.0 = Debug|Win32
+		{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}.Release PE|Win32.ActiveCfg = Release|Win32
+		{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}.Release PE|Win32.Build.0 = Release|Win32
+		{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}.Release_Unicode|Win32.ActiveCfg = Release|Win32
+		{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}.Release_Unicode|Win32.Build.0 = Release|Win32
+		{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}.Release|Win32.ActiveCfg = Release|Win32
+		{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}.Release|Win32.Build.0 = Release|Win32
+		{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}.Release44|Win32.ActiveCfg = Release|Win32
+		{AA5ECCEB-A2B7-4449-87DE-B81422FD3C9D}.Release44|Win32.Build.0 = Release|Win32
+=======
 		{3933E0C5-3EA8-4245-B8F9-098080053142}.Debug_Unicode|Win32.ActiveCfg = Debug|Win32
 		{3933E0C5-3EA8-4245-B8F9-098080053142}.Debug_Unicode|Win32.Build.0 = Debug|Win32
 		{3933E0C5-3EA8-4245-B8F9-098080053142}.Debug|Win32.ActiveCfg = Debug|Win32
@@ -309,6 +328,7 @@ Global
 		{3933E0C5-3EA8-4245-B8F9-098080053142}.Release|Win32.Build.0 = Release|Win32
 		{3933E0C5-3EA8-4245-B8F9-098080053142}.Release44|Win32.ActiveCfg = Release|Win32
 		{3933E0C5-3EA8-4245-B8F9-098080053142}.Release44|Win32.Build.0 = Release|Win32
+>>>>>>> .r132
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
