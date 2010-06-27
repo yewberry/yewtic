@@ -1382,6 +1382,14 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="doc"
+			>
+			<File
+				RelativePath=".\doc\fltk_1.3.zip"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>
