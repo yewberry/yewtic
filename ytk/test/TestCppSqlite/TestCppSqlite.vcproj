@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="TestSqlite3pp"
-	ProjectGUID="{D151AAEF-C5ED-4B8D-A22B-E1A7F1407E2A}"
-	RootNamespace="TestSqlite3pp"
+	Name="TestCppSqlite"
+	ProjectGUID="{E43ACABB-FA9A-4AEA-9C5C-E1FA4D35AF57}"
+	RootNamespace="TestCppSqlite"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -20,7 +20,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			CharacterSet="0"
+			CharacterSet="2"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -40,7 +40,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\TestBoost\include;..\TestSqlite3\include"
+				AdditionalIncludeDirectories=".;..\TestSqlite3\include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -112,7 +113,6 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\TestBoost\include;..\TestSqlite3\include"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -129,8 +129,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="sqlite3.lib"
-				AdditionalLibraryDirectories="..\TestSqlite3\lib"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -168,31 +166,19 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\sqlite3pp.cpp"
+				RelativePath=".\CppSQLite3.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\testattach.cpp"
+				RelativePath=".\CppSQLite3Demo.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\testcallback.cpp"
+				RelativePath=".\CppSQLite3DemoExt.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\testdisconnect.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\testinsert.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\testinsertall.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\testselect.cpp"
+				RelativePath=".\CppSQLite3DemoMT.cpp"
 				>
 			</File>
 		</Filter>
@@ -202,7 +188,7 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\sqlite3pp.h"
+				RelativePath=".\CppSQLite3.h"
 				>
 			</File>
 		</Filter>
