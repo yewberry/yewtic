@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CollMgr", "CollMgr\CollMgr.vcproj", "{E6C813E7-D69B-4CE7-9044-1F1C8D655BFF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestFLTK", "test\TestFLTK\TestFLTK.vcproj", "{2AB64FC8-4C7F-4E51-A204-04B364D98569}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6C813E7-D69B-4CE7-9044-1F1C8D655BFF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E6C813E7-D69B-4CE7-9044-1F1C8D655BFF}.Debug|Win32.Build.0 = Debug|Win32
+		{E6C813E7-D69B-4CE7-9044-1F1C8D655BFF}.Release|Win32.ActiveCfg = Release|Win32
+		{E6C813E7-D69B-4CE7-9044-1F1C8D655BFF}.Release|Win32.Build.0 = Release|Win32
+		{2AB64FC8-4C7F-4E51-A204-04B364D98569}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2AB64FC8-4C7F-4E51-A204-04B364D98569}.Debug|Win32.Build.0 = Debug|Win32
+		{2AB64FC8-4C7F-4E51-A204-04B364D98569}.Release|Win32.ActiveCfg = Release|Win32
+		{2AB64FC8-4C7F-4E51-A204-04B364D98569}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
