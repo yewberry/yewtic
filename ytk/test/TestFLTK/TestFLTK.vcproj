@@ -1381,6 +1381,10 @@
 				RelativePath=".\lib\fltkzd.lib"
 				>
 			</File>
+			<File
+				RelativePath=".\lib\fluid.exe"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="doc"
