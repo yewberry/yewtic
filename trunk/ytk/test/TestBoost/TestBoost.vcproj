@@ -232,6 +232,14 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="doc"
+			>
+			<File
+				RelativePath=".\doc\libs.zip"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>
