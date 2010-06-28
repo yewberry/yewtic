@@ -168,6 +168,10 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\Boost.PropertyTree.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
@@ -237,6 +241,14 @@
 			>
 			<File
 				RelativePath=".\doc\libs.zip"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="etc"
+			>
+			<File
+				RelativePath=".\etc\Boost.PropertyTree.xml"
 				>
 			</File>
 		</Filter>
