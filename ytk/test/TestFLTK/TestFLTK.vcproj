@@ -1390,6 +1390,14 @@
 			Name="doc"
 			>
 			<File
+				RelativePath=".\doc\Erco&apos;s FLTK Cheat Page.rar"
+				>
+			</File>
+			<File
+				RelativePath=".\doc\fltk-1.3.x-r7654.tar.bz2"
+				>
+			</File>
+			<File
 				RelativePath=".\doc\fltk_1.3.zip"
 				>
 			</File>
