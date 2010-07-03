@@ -1,6 +1,7 @@
 #ifndef _MAIN_WINDOW_H
 #define _MAIN_WINDOW_H
 
+#include <iostream>
 #include <FL/Fl.H>
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Menu_Bar.H>
@@ -12,6 +13,8 @@ public:
 	~MainWindow(void);
 
 	void init(Fl_Menu_Item menuItems[]);
+
+	static void test_cb();
 
 private:
 };
