@@ -18,3 +18,6 @@ MainWindow::init(Fl_Menu_Item menuItems[])
 
 	this->end();
 }
+void MainWindow::test_cb(){
+	std::cout<<"abd";
+}
