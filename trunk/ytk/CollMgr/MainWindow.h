@@ -11,7 +11,7 @@ public:
 	MainWindow(int w, int h, const char* t);
 	~MainWindow(void);
 
-	void init(void);
+	void init(Fl_Menu_Item menuItems[]);
 
 private:
 };
