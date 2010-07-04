@@ -9,19 +9,68 @@ void MainWindowUI::cb_Open(Fl_Menu_* o, void* v) {
   ((MainWindowUI*)(o->parent()->user_data()))->cb_Open_i(o,v);
 }
 
+void MainWindowUI::cb_Turn_i(Fl_Menu_*, void*) {
+  mainWndObj->log_switch_cb();
+}
+void MainWindowUI::cb_Turn(Fl_Menu_* o, void* v) {
+  ((MainWindowUI*)(o->parent()->user_data()))->cb_Turn_i(o,v);
+}
+
 Fl_Menu_Item MainWindowUI::menu_mainMenuBar[] = {
  {"&File", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
  {"&Open File...", 0x4006f,  (Fl_Callback*)MainWindowUI::cb_Open, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
  {0,0,0,0,0,0,0,0,0},
+ {"&View", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
+ {"Turn on/off Log window", 0,  (Fl_Callback*)MainWindowUI::cb_Turn, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+ {0,0,0,0,0,0,0,0,0},
  {0,0,0,0,0,0,0,0,0}
 };
 
+void MainWindowUI::cb_mainTree_i(Fl_Tree*, void*) {
+  Fl_Tree_Item *item = mainTree->item_clicked();
+if ( item ) {
+  fprintf(stderr, "TREE CALLBACK: label='%s' userdata=%ld\n",
+          item->label(),
+          (long)mainTree->user_data());
+} else {
+  fprintf(stderr, "TREE CALLBACK: no item (probably multiple items were changed at once)\n");
+};
+}
+void MainWindowUI::cb_mainTree(Fl_Tree* o, void* v) {
+  ((MainWindowUI*)(o->parent()->user_data()))->cb_mainTree_i(o,v);
+}
+
 MainWindowUI::MainWindowUI() {
-  { mainWindow = new Fl_Double_Window(649, 401, "Collection Manager");
+  { mainWindow = new Fl_Double_Window(646, 400, "Collection Manager");
     mainWindow->user_data((void*)(this));
     { mainMenuBar = new Fl_Menu_Bar(0, 0, 645, 25);
       mainMenuBar->menu(menu_mainMenuBar);
     } // Fl_Menu_Bar* mainMenuBar
+    { mainTree = new Fl_Tree(0, 25, 140, 375);
+      mainTree->box(FL_DOWN_BOX);
+      mainTree->color(FL_BACKGROUND2_COLOR);
+      mainTree->selection_color(FL_BACKGROUND_COLOR);
+      mainTree->labeltype(FL_NORMAL_LABEL);
+      mainTree->labelfont(0);
+      mainTree->labelsize(14);
+      mainTree->labelcolor(FL_FOREGROUND_COLOR);
+      mainTree->callback((Fl_Callback*)cb_mainTree, (void*)(1234));
+      mainTree->align(Fl_Align(FL_ALIGN_TOP));
+      mainTree->when(FL_WHEN_RELEASE);
+      mainTree->end();
+    } // Fl_Tree* mainTree
+    { logView = new LogView(395, 235, 250, 165);
+      logView->box(FL_DOWN_BOX);
+      logView->color(FL_BACKGROUND_COLOR);
+      logView->selection_color(FL_BACKGROUND_COLOR);
+      logView->labeltype(FL_NORMAL_LABEL);
+      logView->labelfont(0);
+      logView->labelsize(14);
+      logView->labelcolor(FL_FOREGROUND_COLOR);
+      logView->align(Fl_Align(FL_ALIGN_CENTER));
+      logView->when(FL_WHEN_RELEASE);
+      LogInit(logView, true);
+    } // LogView* logView
     mainWindow->end();
     mainWindow->resizable(mainWindow);
   } // Fl_Double_Window* mainWindow
@@ -29,7 +78,10 @@ MainWindowUI::MainWindowUI() {
 
 void MainWindowUI::show(int argc, char **argv) {
   mainWndObj = new MainWindow;
+mainWndObj->init();
 mainWindow->show(argc, argv);
+
+mainWndObj->buildTree(mainTree);
 }
 
 MainWindowUI::~MainWindowUI() {

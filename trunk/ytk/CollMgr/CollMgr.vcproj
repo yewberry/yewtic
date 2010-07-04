@@ -40,8 +40,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;..\test\TestFLTK\include;"
-				PreprocessorDefinitions="PLX_VISUALC=1;PLX_CPLUSPLUS=1;PLX_MSWIN32=1;WIN32;_DEBUG;_CONSOLE;FLTK=1;FL_STATIC;WIN32_LEAN_AND_MEAN;VC_EXTRA_LEAN;WIN32_EXTRA_LEAN"
+				AdditionalIncludeDirectories=".;..\test\TestFLTK\include;..\test\TestFLTKLog"
+				PreprocessorDefinitions="PLX_VISUALC=1;PLX_CPLUSPLUS=1;PLX_MSWIN32=1;WIN32;_DEBUG;_CONSOLE;FLTK=1;FL_STATIC;WIN32_LEAN_AND_MEAN;VC_EXTRA_LEAN;WIN32_EXTRA_LEAN;UNICODE;_UNICODE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -114,7 +114,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories=".;..\test\TestFLTK\include;"
+				AdditionalIncludeDirectories=".;..\test\TestFLTK\include;..\test\TestFLTKLog"
 				PreprocessorDefinitions="PLX_VISUALC=1;PLX_CPLUSPLUS=1;PLX_MSWIN32=1;WIN32;NDEBUG;_CONSOLE;FLTK=1;FL_STATIC;WIN32_LEAN_AND_MEAN;VC_EXTRA_LEAN;WIN32_EXTRA_LEAN"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -172,6 +172,14 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath="..\test\TestFLTKLog\log.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\LogView.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
@@ -183,6 +191,10 @@
 				RelativePath=".\MainWindowUI.cxx"
 				>
 			</File>
+			<File
+				RelativePath=".\TreeView.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -190,11 +202,23 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath="..\test\TestFLTKLog\log.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\LogView.h"
+				>
+			</File>
+			<File
 				RelativePath=".\MainWindow.h"
 				>
 			</File>
 			<File
 				RelativePath=".\MainWindowUI.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TreeView.h"
 				>
 			</File>
 		</Filter>

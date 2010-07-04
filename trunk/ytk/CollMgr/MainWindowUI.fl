@@ -2,16 +2,24 @@
 version 1.0300 
 header_name {.h} 
 code_name {.cxx}
+decl {\#include "MainWindow.h"} {public global
+} 
+
+decl {\#include "LogView.h"} {public global
+} 
+
+decl {\#include "TreeView.h"} {public global
+} 
+
 class MainWindowUI {open
 } {
   Function {MainWindowUI()} {open
   } {
     Fl_Window mainWindow {
       label {Collection Manager} open
-      xywh {34 144 649 401} type Double resizable
-      code0 {\#include "MainWindow.h"} visible
+      xywh {22 84 646 400} type Double resizable visible
     } {
-      Fl_Menu_Bar mainMenuBar {open
+      Fl_Menu_Bar mainMenuBar {
         xywh {0 0 645 25}
       } {
         Submenu {} {
@@ -24,18 +32,46 @@ class MainWindowUI {open
             xywh {0 0 100 20} shortcut 0x4006f
           }
         }
+        Submenu {} {
+          label {&View} open
+          xywh {0 0 100 20}
+        } {
+          MenuItem {} {
+            label {Turn on/off Log window}
+            callback {mainWndObj->log_switch_cb();}
+            xywh {0 0 100 20}
+          }
+        }
+      }
+      Fl_Group {} {open
+        xywh {0 23 645 377} resizable
+      } {
+        Fl_Box treeView {
+          label TreeView
+          xywh {0 23 165 376} color 7
+          code0 {treeView.buildTree();}
+          class TreeView
+        }
+        Fl_Box logView {
+          label LogView
+          xywh {405 239 240 158} box DOWN_BOX
+          code0 {LogInit(logView, true);}
+          class LogView
+        }
       }
     }
   }
   Function {show(int argc, char **argv)} {open
   } {
     code {mainWndObj = new MainWindow;
-mainWindow->show(argc, argv);} {}
+mainWndObj->init();
+mainWindow->show(argc, argv);
+
+mainWndObj->buildTree(mainTree);} {}
   }
-  Function {~MainWindowUI()} {open
-  } {
+  Function {~MainWindowUI()} {} {
     code {if(mainWndObj!=NULL)delete mainWndObj;} {}
   }
-  decl {MainWindow *mainWndObj} {private local
+  decl {MainWindow *mainWndObj;} {private local
   }
 } 

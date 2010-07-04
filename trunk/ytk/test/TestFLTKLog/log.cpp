@@ -1010,6 +1010,84 @@ log_hdl->Show();
 return log_hdl;
 } // End of: Init()
 
+/*******************************
+*
+*
+*
+*
+********************************/
+Log *Log::Init(Log *log, bool redirect_stdio_par)
+{
+int ret = 0;
+
+if (log_hdl != 0){
+	Log::DeInit();
+}
+if (log_hdl == 0)
+   {
+   log_hdl = log;
+   }
+
+if (log_hdl == 0)
+   {
+   log_initialised = false;
+   return 0;
+   }
+
+log_initialised = true;
+
+log_hdl->redirect_stdio = redirect_stdio_par;
+
+if ( log_hdl->redirect_stdio )
+   {
+
+#if IOSTREAM_OLDSTYLE
+
+   // save output buffer of the standard cout/cerr streams:
+   log_hdl->cout_backup = cout;
+   log_hdl->cerr_backup = cerr;
+
+   // create stream-to-widget connectors:   
+   log_hdl->my_cout = new OutputWidgetStream(LOG_INFO,  log_hdl->log_out_stream_widget, log_hdl->log_stream_buf, OWSTREAM_BUFF_SIZE);  
+   log_hdl->my_cerr = new OutputWidgetStream(LOG_ERROR, log_hdl->log_out_stream_widget, log_hdl->log_stream_buf, OWSTREAM_BUFF_SIZE);  
+
+   // redirect cout/cerr by assigning the streams:   
+   cout  =  log_hdl->my_cout;
+   cerr  =  log_hdl->my_cerr;
+
+#elif IOSTREAM_STL
+
+   // save output buffer of the standard cout/cerr streams:
+   log_hdl->cout_backup = cout.rdbuf();
+   log_hdl->cerr_backup = cerr.rdbuf();
+
+   // create stream-to-widget connectors:   
+   log_hdl->my_cout  = new OutputWidgetStream( LOG_INFO, log_hdl->log_out_stream_widget, log_hdl->log_stream_buf,OWSTREAM_BUFF_SIZE); 
+   log_hdl->my_cerr  = new OutputWidgetStream( LOG_ERROR, log_hdl->log_out_stream_widget, log_hdl->log_stream_buf,OWSTREAM_BUFF_SIZE); 
+   
+   // redirect cout/cerr by setting the buffers:   
+    cout.rdbuf(log_hdl->my_cout->rdbuf());
+    cerr.rdbuf(log_hdl->my_cerr->rdbuf());
+
+#endif //IOSTREAM_x
+   }
+
+
+/*####### EXIT-Initialisierung: #######*/
+ret = atexit(log_hdl->DeInit);
+if (ret != 0)
+   {
+   fprintf(stderr,"Error: atexit(log_hdl->DeInit) failed, returns :%d",ret);
+   }
+
+#ifdef L_DEBUG
+log_hdl->Activate();
+log_hdl->Show();
+#endif // L_DEBUG 
+
+return log_hdl;
+} // End of: Init(Log *log)
+
 /*
 ###############################################################################
 ## FUNCTION:   Init

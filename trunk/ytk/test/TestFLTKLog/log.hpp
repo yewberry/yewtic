@@ -440,6 +440,7 @@ public:
 
     // (de)initialisers of 'singleton':
     static Log *Init(int x, int y, int w, int h, const char *title, char bg_color, bool redirect_stdio);
+	static Log *Init( Log *log, bool redirect_stdio_par );//Add by yewberry
     static Log *Init( void );
     static void DeInit( void );    // called via atexit
 
