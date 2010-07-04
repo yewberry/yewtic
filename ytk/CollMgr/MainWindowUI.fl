@@ -1,0 +1,41 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0300 
+header_name {.h} 
+code_name {.cxx}
+class MainWindowUI {open
+} {
+  Function {MainWindowUI()} {open
+  } {
+    Fl_Window mainWindow {
+      label {Collection Manager} open
+      xywh {34 144 649 401} type Double resizable
+      code0 {\#include "MainWindow.h"} visible
+    } {
+      Fl_Menu_Bar mainMenuBar {open
+        xywh {0 0 645 25}
+      } {
+        Submenu {} {
+          label {&File} open
+          xywh {0 0 100 20}
+        } {
+          MenuItem {} {
+            label {&Open File...}
+            callback {mainWndObj->test_cb();}
+            xywh {0 0 100 20} shortcut 0x4006f
+          }
+        }
+      }
+    }
+  }
+  Function {show(int argc, char **argv)} {open
+  } {
+    code {mainWndObj = new MainWindow;
+mainWindow->show(argc, argv);} {}
+  }
+  Function {~MainWindowUI()} {open
+  } {
+    code {if(mainWndObj!=NULL)delete mainWndObj;} {}
+  }
+  decl {MainWindow *mainWndObj} {private local
+  }
+} 
