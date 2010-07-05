@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;..\test\TestFLTK\include;..\test\TestFLTKLog"
+				AdditionalIncludeDirectories=".;..\test\TestFLTK\include;..\test\TestFLTKLog;..\test\TestTinyXml\include"
 				PreprocessorDefinitions="PLX_VISUALC=1;PLX_CPLUSPLUS=1;PLX_MSWIN32=1;WIN32;_DEBUG;_CONSOLE;FLTK=1;FL_STATIC;WIN32_LEAN_AND_MEAN;VC_EXTRA_LEAN;WIN32_EXTRA_LEAN;UNICODE;_UNICODE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -59,8 +59,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="fltkd.lib comctl32.lib"
-				AdditionalLibraryDirectories="..\test\TestFLTK\lib"
+				AdditionalDependencies="fltkd.lib comctl32.lib tinyxmld.lib"
+				AdditionalLibraryDirectories="..\test\TestFLTK\lib;..\test\TestTinyXml\lib"
 				IgnoreDefaultLibraryNames="libcd"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
@@ -114,7 +114,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories=".;..\test\TestFLTK\include;..\test\TestFLTKLog"
+				AdditionalIncludeDirectories=".;..\test\TestFLTK\include;..\test\TestFLTKLog;..\test\TestTinyXml\include"
 				PreprocessorDefinitions="PLX_VISUALC=1;PLX_CPLUSPLUS=1;PLX_MSWIN32=1;WIN32;NDEBUG;_CONSOLE;FLTK=1;FL_STATIC;WIN32_LEAN_AND_MEAN;VC_EXTRA_LEAN;WIN32_EXTRA_LEAN"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -132,8 +132,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="fltk.lib comctl32.lib"
-				AdditionalLibraryDirectories="..\test\TestFLTK\lib"
+				AdditionalDependencies="fltk.lib comctl32.lib tinyxml.lib"
+				AdditionalLibraryDirectories="..\test\TestFLTK\lib;..\test\TestTinyXml\lib"
 				IgnoreDefaultLibraryNames="libcd"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
@@ -227,6 +227,14 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+		</Filter>
+		<Filter
+			Name="etc"
+			>
+			<File
+				RelativePath=".\etc\catalog.xml"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\MainWindowUI.fl"
