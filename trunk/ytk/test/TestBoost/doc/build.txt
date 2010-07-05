@@ -1,0 +1,48 @@
+Boost库通用编译配置使用指南2009-06-24 13:04
+理论上，本文适用于boost的各个版本，尤其是最新版本1.39.0；适用于各种C++编译器，如 VC6.0，VS2003，VS2005，VS2008，gcc，C++ Builder等。
+一、下载
+首先从boost官方主页http://www.boost.org下 载最新版boost安装包（目前最新版是1.39.0）。因为boost一部分类是需要编译成库才能使用的，所以我们还需要准备好boost专用的编译辅 助工具bjam。网上很多人都提倡直接使用boost安装包中附带的bjam源码来编译出bjam，但是之前需要修改若干配置脚本才能编译成功。个人认为 真没什么必要，费这劲毫无意义。boost官方网站在提供boost安装包下载链接的同时也提供与该版本安装包对应的bjam的下载，只有200多KB， 可以一同下载下来。
+二、安装
+将boost安装包解压至本地目录，如：E:\SDK\boost_1_39_0，然后将bjam.exe拷贝到该目录下（bjam必须与boost- build.jam在同级目录）。
+三、编译
+接下来就是最重要的编译步骤了。需要打开命令提示符（cmd.exe）窗口并执行bjam，可以使用--help参数来查看命令帮助。这里详细讲解一下 bjam的命令行参数，因为它非常重要。首先，它涉及到编程环境的搭建，你需要根据自己今后具体的使用环境来选择合适的命令行参数；其次，它影响到你的硬 盘空间，完全编译的话据说在3G以上，如果你同时拥有2个以上的IDE（如VC6和VC9共存）而且都要用到boost，那么占用多少硬盘就自己算吧…… 虽说如今大家的硬盘空间都不成问题，但就像本人一样崇尚合理利用资源不习惯铺张浪费提倡节俭的童子应该大有人在。综合以上两点因素，本人使用的bjam命 令如下：
+
+bjam stage --toolset=msvc-9.0 --without-python --stagedir="E:\SDK\boost_1_39_0\vc9" link=shared runtime-link=shared threading=multi debug release
+下面详细解释一下每个参数的含义，请务必仔细看完：
+stage/install：stage表示只生成库（dll和lib），install还会生成包含头文件的include目录。本人推荐使用 stage，因为install生成的这个include目录实际就是boost安装包解压缩后的boost目录（E:\SDK \boost_1_39_0\boost，只比include目录多几个非hpp文件，都很小），所以可以直接使用，而且不同的IDE都可以使用同一套头 文件，这样既节省编译时间，也节省硬盘空间。
+
+toolset：指定编译器，可选的如borland、gcc、msvc（VC6）、msvc-9.0（VS2008）等。
+
+without/with：选择不编译/编译哪些库。本人不需要编译python库，所以排除之，可以根据各人需要选择，默认是全部编译。但是需要注意， 如果选择编译python的话，是需要python语言支持的，应该到python官方主页http://www.python.org下载安装。
+
+stagedir/prefix：stage时使用stagedir，install时使用prefix，表示编译生成文件的路径。推荐给不同的IDE指 定不同的目录，如VS2008对应的是E:\SDK\boost_1_39_0\vc9\lib，VC6对应的是E:\SDK\boost_1_39_0 \vc6\lib，否则都生成到一个目录下面，难以管理。如果使用了install参数，那么还将生成头文件目录，vc9对应的就是E:\SDK \boost_1_39_0\vc9\include\boost-1_39\boost,vc6类似（光这路径都这样累赘，还是使用stage好）。
+
+build-dir：编译生成的中间文件的路径。这个本人这里没用到，默认就在根目录（E:\SDK\boost_1_39_0）下，目录名为 bin.v2，等编译完成后可将这个目录全部删除（没用了），所以不需要去设置。
+
+link：生成动态链接库/静态链接库。生成动态链接库需使用shared方式，生成静态链接库需使用static方式。这里需要注意的是，static 方式下，最终生成的很多静态链接库大小都在几兆、几十兆，甚至接近百兆。这么大的库我们一般是不会采用静态链接方式的，所以这些库不推荐以static方 式编译（without掉）；如果已经编译了赶快删，肯定没用，否则将占用近1G的硬盘空间。以下是巨型库黑名单：wave、graph、math、 regex、test、program_options、serialization、signals。
+
+runtime-link：动态/静态链接C/C++运行时库。同样有shared和static两种方式，这样runtime-link和link一共 可以产生4种组合方式。虽然它和link属性没有直接关系，但我们习惯上，一个工程如果用动态链接那么所有库都用动态链接，如果用静态链接那么所有库都用 静态链接。所以这样其实只需要编译2种组合即可，即link=shared runtime-link=shared和link=static runtime-link=static。
+
+threading：单/多线程编译。一般都写多线程程序，当然要指定multi方式了；如果需要编写单线程程序，那么还需要编译单线程库，可以使用 single方式。
+
+debug/release：编译debug/release版本。一般都是程序的debug版本对应库的debug版本，所以两个都编译。
+
+本人按以上方式分别编译了静态链接和动态链接两个版本后，整个E:\SDK\boost_1_39_0目录（包括安装包解压缩文件和编译生成的库文件）只 有250MB。事实上编译完成后安装包解压缩文件除了boost目录之外其他目录和文件已经可以删除了，这样还可以腾出150MB的空间来。不过我又研究 了一下，其实libs这个目录也很有用，它提供了所有Boost类的使用范例，平时可以作为参考；另外doc目录是一个完整的boost使用帮助文档，当 然最好也不要删了。这样剩下的几个目录和文件加起来也就十多兆，索性都给它们留一条生路吧。
+
+呵呵，一个完整而又完美的boost目录就此诞生了。
+
+如果图省事，不想了解这么多，那么有简单的方法，可以使用命令：
+
+bjam --toolset=msvc-9.0 --build-type=complete
+
+直接指定编译器以完全模式编译即可，这样可以满足今后的一切使用场合，但同时带来的后果是：
+1、占用3G以上的硬盘空间
+2、占用若干小时的编译时间
+3、头文件和库文件存放于C:\Boost（个人非常反感）
+4、生成的很多文件可以永远也用不上
+
+四、配置
+include目录：E:\SDK\boost_1_39_0
+library目录：E:\SDK\boost_1_39_0\vc9\lib
+
+添加到IDE相应的路径下面即可。
