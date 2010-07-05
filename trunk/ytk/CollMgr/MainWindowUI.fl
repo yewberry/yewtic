@@ -47,9 +47,8 @@ class MainWindowUI {open
         xywh {0 23 645 377} resizable
       } {
         Fl_Box treeView {
-          label TreeView
+          label TreeView selected
           xywh {0 23 165 376} color 7
-          code0 {treeView.buildTree();}
           class TreeView
         }
         Fl_Box logView {
@@ -66,8 +65,7 @@ class MainWindowUI {open
     code {mainWndObj = new MainWindow;
 mainWndObj->init();
 mainWindow->show(argc, argv);
-
-mainWndObj->buildTree(mainTree);} {}
+treeView->load();} {}
   }
   Function {~MainWindowUI()} {} {
     code {if(mainWndObj!=NULL)delete mainWndObj;} {}

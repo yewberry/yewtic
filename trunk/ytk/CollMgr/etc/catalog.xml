@@ -1,0 +1,12 @@
+<ytk>
+  <app>CollMgr</app>
+  <ver>1.0</ver>
+  <data>
+    <node id="1" text="国学">
+      <node id="2" text="朗读"></node>
+    </node>
+    <node id="3" text="IT">
+      <node id="4" text="编译器"></node>
+    </node>
+  </data>
+</ytk>

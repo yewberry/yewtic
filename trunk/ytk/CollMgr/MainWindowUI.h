@@ -5,9 +5,10 @@
 #include <FL/Fl.H>
 #include "MainWindow.h"
 #include "LogView.h"
-#include <FL/Fl_Tree.H>
+#include "TreeView.h"
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Menu_Bar.H>
+#include <FL/Fl_Group.H>
 
 class MainWindowUI {
 public:
@@ -21,11 +22,7 @@ private:
   void cb_Turn_i(Fl_Menu_*, void*);
   static void cb_Turn(Fl_Menu_*, void*);
 public:
-  Fl_Tree *mainTree;
-private:
-  void cb_mainTree_i(Fl_Tree*, void*);
-  static void cb_mainTree(Fl_Tree*, void*);
-public:
+  TreeView *treeView;
   LogView *logView;
   void show(int argc, char **argv);
   ~MainWindowUI();
