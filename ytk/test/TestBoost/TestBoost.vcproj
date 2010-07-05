@@ -240,6 +240,10 @@
 			Name="doc"
 			>
 			<File
+				RelativePath=".\doc\build.txt"
+				>
+			</File>
+			<File
 				RelativePath=".\doc\libs.zip"
 				>
 			</File>
