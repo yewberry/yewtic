@@ -43,7 +43,6 @@ MainWindowUI::MainWindowUI() {
         treeView->labelcolor(FL_FOREGROUND_COLOR);
         treeView->align(Fl_Align(FL_ALIGN_CENTER));
         treeView->when(FL_WHEN_RELEASE);
-        treeView.buildTree();
       } // TreeView* treeView
       { logView = new LogView(405, 239, 240, 158, "LogView");
         logView->box(FL_DOWN_BOX);
@@ -55,7 +54,7 @@ MainWindowUI::MainWindowUI() {
         logView->labelcolor(FL_FOREGROUND_COLOR);
         logView->align(Fl_Align(FL_ALIGN_CENTER));
         logView->when(FL_WHEN_RELEASE);
-        LogInit(logView, true);
+        LogInit(logView, false);
       } // LogView* logView
       o->end();
       Fl_Group::current()->resizable(o);
@@ -68,8 +67,7 @@ void MainWindowUI::show(int argc, char **argv) {
   mainWndObj = new MainWindow;
 mainWndObj->init();
 mainWindow->show(argc, argv);
-
-mainWndObj->buildTree(mainTree);
+treeView->load();
 }
 
 MainWindowUI::~MainWindowUI() {

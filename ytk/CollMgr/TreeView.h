@@ -2,6 +2,8 @@
 #define _TREE_VIEW_H
 
 #include <map>
+#include <string>
+#include <iostream>
 #include <FL/Fl_Tree.H>
 #include "tinyxml.h"
 
@@ -14,7 +16,7 @@ public:
 	void load();
 
 private:
-	std::map<wstring, wstring> m_hm;
+	std::map<std::wstring, std::wstring> *m_hm;
 };
 
 #endif

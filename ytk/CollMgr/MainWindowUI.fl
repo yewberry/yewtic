@@ -47,14 +47,14 @@ class MainWindowUI {open
         xywh {0 23 645 377} resizable
       } {
         Fl_Box treeView {
-          label TreeView selected
+          label TreeView
           xywh {0 23 165 376} color 7
           class TreeView
         }
         Fl_Box logView {
-          label LogView
+          label LogView selected
           xywh {405 239 240 158} box DOWN_BOX
-          code0 {LogInit(logView, true);}
+          code0 {LogInit(logView, false);}
           class LogView
         }
       }
