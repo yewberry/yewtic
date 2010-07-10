@@ -68,6 +68,7 @@ void MainWindowUI::show(int argc, char **argv) {
 mainWndObj->init();
 mainWindow->show(argc, argv);
 treeView->load();
+//mainWndObj->buildTree(treeView);
 }
 
 MainWindowUI::~MainWindowUI() {

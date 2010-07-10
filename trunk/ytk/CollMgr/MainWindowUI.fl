@@ -52,7 +52,7 @@ class MainWindowUI {open
           class TreeView
         }
         Fl_Box logView {
-          label LogView selected
+          label LogView
           xywh {405 239 240 158} box DOWN_BOX
           code0 {LogInit(logView, false);}
           class LogView
@@ -65,7 +65,8 @@ class MainWindowUI {open
     code {mainWndObj = new MainWindow;
 mainWndObj->init();
 mainWindow->show(argc, argv);
-treeView->load();} {}
+treeView->load();
+//mainWndObj->buildTree(treeView);} {}
   }
   Function {~MainWindowUI()} {} {
     code {if(mainWndObj!=NULL)delete mainWndObj;} {}

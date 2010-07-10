@@ -15,8 +15,10 @@ void MainWindow::buildTree(Fl_Tree *tree){
 	tree->add("eMuleDl");
 	char s[20];
 	char* str = "大国学A";
+	wstring ws = L"我的国学B";
 	std::cout<<strlen(str)<<std::endl;
 	fl_utf8from_mb(s, 20,str,strlen(str));
+	fl_utf8fromwc(s,20,ws.c_str(),20);
 	tree->add(s);
 	tree->add("eMuleDl/IT");
 }
