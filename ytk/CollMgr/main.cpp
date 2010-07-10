@@ -1,11 +1,12 @@
 #include <FL/Fl.H>
-#include "MainWindowUI.h"
+#include "MainWindow.h"
 #include "log.hpp"
 
 
 int main(int argc, char **argv) {
-	MainWindowUI *wnd = new MainWindowUI;
+	MainWindow *wnd = new MainWindow;
 	Fl::scheme("gtk+");
+	//Fl::scheme("plastic");
 	wnd->show(argc, argv);
 
 	return Fl::run();

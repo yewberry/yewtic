@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include "MainWindowUI.h"
 
 MainWindow::MainWindow(void)
 {
@@ -8,21 +9,29 @@ MainWindow::~MainWindow(void)
 {
 }
 
-void MainWindow::init(){
-}
+void MainWindow::show(int argc, char **argv){
+	ui = new MainWindowUI;
+	ui->init(this);
+	ui->treeView->load("etc/catalog.xml");
 
-void MainWindow::buildTree(Fl_Tree *tree){
-	tree->add("eMuleDl");
-	char s[20];
-	char* str = "大国学A";
-	wstring ws = L"我的国学B";
-	std::cout<<strlen(str)<<std::endl;
-	fl_utf8from_mb(s, 20,str,strlen(str));
-	fl_utf8fromwc(s,20,ws.c_str(),20);
-	tree->add(s);
-	tree->add("eMuleDl/IT");
-}
+	TableView *tbl = ui->tableView;
+	LogInfo(("in table view"));
+	// COLS
+	tbl->cols(5);
+	tbl->col_header(1);
+	tbl->col_header_height(25);
+	tbl->col_resize(1);
+	tbl->col_width_all(80);
 
+    // ROWS
+    tbl->row_header(0);
+    tbl->row_header_width(60);
+    tbl->row_resize(1);
+    tbl->rows(500);
+    tbl->row_height_all(20);
+
+	ui->show(argc, argv);
+}
 
 void MainWindow::log_switch_cb(){
 	if(LogIsVisible()){

@@ -32,9 +32,9 @@ MainWindowUI::MainWindowUI() {
     { mainMenuBar = new Fl_Menu_Bar(0, 0, 645, 25);
       mainMenuBar->menu(menu_mainMenuBar);
     } // Fl_Menu_Bar* mainMenuBar
-    { Fl_Group* o = new Fl_Group(0, 23, 645, 377);
-      { treeView = new TreeView(0, 23, 165, 376, "TreeView");
-        treeView->box(FL_NO_BOX);
+    { Fl_Group* o = new Fl_Group(0, 20, 645, 380);
+      { treeView = new TreeView(0, 24, 165, 375);
+        treeView->box(FL_DOWN_BOX);
         treeView->color(FL_BACKGROUND2_COLOR);
         treeView->selection_color(FL_BACKGROUND_COLOR);
         treeView->labeltype(FL_NORMAL_LABEL);
@@ -54,8 +54,19 @@ MainWindowUI::MainWindowUI() {
         logView->labelcolor(FL_FOREGROUND_COLOR);
         logView->align(Fl_Align(FL_ALIGN_CENTER));
         logView->when(FL_WHEN_RELEASE);
-        LogInit(logView, false);
+        LogInit(logView, true);
       } // LogView* logView
+      { tableView = new TableView(165, 25, 480, 215, "TableView");
+        tableView->box(FL_DOWN_BOX);
+        tableView->color(FL_BACKGROUND2_COLOR);
+        tableView->selection_color(FL_BACKGROUND_COLOR);
+        tableView->labeltype(FL_NORMAL_LABEL);
+        tableView->labelfont(0);
+        tableView->labelsize(14);
+        tableView->labelcolor(FL_FOREGROUND_COLOR);
+        tableView->align(Fl_Align(FL_ALIGN_CENTER));
+        tableView->when(FL_WHEN_RELEASE);
+      } // TableView* tableView
       o->end();
       Fl_Group::current()->resizable(o);
     } // Fl_Group* o
@@ -64,13 +75,9 @@ MainWindowUI::MainWindowUI() {
 }
 
 void MainWindowUI::show(int argc, char **argv) {
-  mainWndObj = new MainWindow;
-mainWndObj->init();
-mainWindow->show(argc, argv);
-treeView->load();
-//mainWndObj->buildTree(treeView);
+  mainWindow->show(argc, argv);
 }
 
-MainWindowUI::~MainWindowUI() {
-  if(mainWndObj!=NULL)delete mainWndObj;
+void MainWindowUI::init(MainWindow* o) {
+  mainWndObj = o;
 }

@@ -2,8 +2,10 @@
 #define _MAIN_WINDOW_H
 
 #include <iostream>
-#include "log.hpp"
 #include <FL/Fl_Tree.H>
+#include "log.hpp"
+
+class MainWindowUI;
 
 class MainWindow
 {
@@ -11,8 +13,7 @@ public:
 	MainWindow(void);
 	~MainWindow(void);
 
-	void init();
-	void buildTree(Fl_Tree *tree);
+	void show(int argc, char **argv);
 
 	//Menu callback
 	void log_switch_cb();
@@ -22,7 +23,8 @@ public:
 	Log* getLogWindow();
 	void setLogWindow(Log *log);
 private:
-	Log		*m_pLog;
+	Log				*m_pLog;
+	MainWindowUI	*ui;
 };
 
 #endif // _MAIN_WINDOW_H
