@@ -11,13 +11,16 @@ decl {\#include "LogView.h"} {public global
 decl {\#include "TreeView.h"} {public global
 } 
 
+decl {\#include "TableView.h"} {public global
+} 
+
 class MainWindowUI {open
 } {
   Function {MainWindowUI()} {open
   } {
     Fl_Window mainWindow {
       label {Collection Manager} open
-      xywh {22 84 646 400} type Double resizable visible
+      xywh {390 145 646 400} type Double resizable visible
     } {
       Fl_Menu_Bar mainMenuBar {
         xywh {0 0 645 25}
@@ -44,32 +47,34 @@ class MainWindowUI {open
         }
       }
       Fl_Group {} {open
-        xywh {0 23 645 377} resizable
+        xywh {0 20 645 380} resizable
       } {
         Fl_Box treeView {
-          label TreeView
-          xywh {0 23 165 376} color 7
+          xywh {0 24 165 375} box DOWN_BOX color 7
           class TreeView
         }
         Fl_Box logView {
           label LogView
           xywh {405 239 240 158} box DOWN_BOX
-          code0 {LogInit(logView, false);}
+          code0 {LogInit(logView, true);}
           class LogView
+        }
+        Fl_Box tableView {
+          label TableView
+          xywh {165 25 480 215} box DOWN_BOX color 7
+          class TableView
         }
       }
     }
   }
+  Function {~MainWindowUI()} {} {}
   Function {show(int argc, char **argv)} {open
   } {
-    code {mainWndObj = new MainWindow;
-mainWndObj->init();
-mainWindow->show(argc, argv);
-treeView->load();
-//mainWndObj->buildTree(treeView);} {}
+    code {mainWindow->show(argc, argv);} {}
   }
-  Function {~MainWindowUI()} {} {
-    code {if(mainWndObj!=NULL)delete mainWndObj;} {}
+  Function {init(MainWindow* o)} {open
+  } {
+    code {mainWndObj = o;} {}
   }
   decl {MainWindow *mainWndObj;} {private local
   }

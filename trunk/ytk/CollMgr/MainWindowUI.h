@@ -6,6 +6,7 @@
 #include "MainWindow.h"
 #include "LogView.h"
 #include "TreeView.h"
+#include "TableView.h"
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Menu_Bar.H>
 #include <FL/Fl_Group.H>
@@ -24,8 +25,10 @@ private:
 public:
   TreeView *treeView;
   LogView *logView;
-  void show(int argc, char **argv);
+  TableView *tableView;
   ~MainWindowUI();
+  void show(int argc, char **argv);
+  void init(MainWindow* o);
 private:
   MainWindow *mainWndObj; 
 };

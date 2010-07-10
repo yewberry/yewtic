@@ -2,7 +2,7 @@
   <app>CollMgr</app>
   <ver>1.0</ver>
   <data>
-    <node id="1" text="GuoXue">
+    <node id="1" text="国学A">
       <node id="2" text="Reading"></node>
     </node>
     <node id="3" text="IT">
