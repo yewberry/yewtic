@@ -14,9 +14,8 @@ public:
 	~TreeView(void);
 
 	void load();
-
 private:
-	std::map<std::wstring, std::wstring> *m_hm;
+	void addNode(TiXmlElement* el, std::string path);
 };
 
 #endif
