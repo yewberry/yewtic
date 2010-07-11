@@ -271,6 +271,10 @@
 				RelativePath=".\etc\catalog.xml"
 				>
 			</File>
+			<File
+				RelativePath=".\etc\ytk_cm.db"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\MainWindowUI.fl"
