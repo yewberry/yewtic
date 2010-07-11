@@ -1,5 +1,5 @@
 //
-// "$Id: Fl_Widget.H 7469 2010-04-07 23:17:33Z matt $"
+// "$Id: Fl_Widget.H 7661 2010-07-01 15:01:49Z manolo $"
 //
 // Widget header file for the Fast Light Tool Kit (FLTK).
 //
@@ -25,7 +25,7 @@
 //     http://www.fltk.org/str.php
 //
 
-/* \file
+/** \file
    Fl_Widget, Fl_Label classes . */
 
 #ifndef Fl_Widget_H
@@ -971,5 +971,5 @@ public:
 #endif
 
 //
-// End of "$Id: Fl_Widget.H 7469 2010-04-07 23:17:33Z matt $".
+// End of "$Id: Fl_Widget.H 7661 2010-07-01 15:01:49Z manolo $".
 //

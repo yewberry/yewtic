@@ -13,23 +13,6 @@ void MainWindow::show(int argc, char **argv){
 	ui = new MainWindowUI;
 	ui->init(this);
 	ui->treeView->load("etc/catalog.xml");
-
-	TableView *tbl = ui->tableView;
-	LogInfo(("in table view"));
-	// COLS
-	tbl->cols(5);
-	tbl->col_header(1);
-	tbl->col_header_height(25);
-	tbl->col_resize(1);
-	tbl->col_width_all(80);
-
-    // ROWS
-    tbl->row_header(0);
-    tbl->row_header_width(60);
-    tbl->row_resize(1);
-    tbl->rows(500);
-    tbl->row_height_all(20);
-
 	ui->show(argc, argv);
 }
 

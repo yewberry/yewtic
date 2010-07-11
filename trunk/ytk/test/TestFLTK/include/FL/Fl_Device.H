@@ -1,5 +1,5 @@
 //
-// "$Id: Fl_Device.H 7654 2010-06-24 21:55:20Z manolo $"
+// "$Id: Fl_Device.H 7666 2010-07-04 17:19:38Z AlbrechtS $"
 //
 // Definition of classes Fl_Device, Fl_Graphics_Driver, Fl_Surface_Device, Fl_Display_Device
 // for the Fast Light Tool Kit (FLTK).
@@ -49,11 +49,11 @@ class Fl_Graphics_Driver;
 class Fl_Display_Device;
 class Fl_Surface_Device;
 /** \brief Points to the driver that currently receives all graphics requests */
-extern Fl_Graphics_Driver *fl_device;
+FL_EXPORT extern Fl_Graphics_Driver *fl_graphics_driver;
 /** \brief Points to the surface that currently receives all graphics requests */
-extern Fl_Surface_Device *fl_surface;
+FL_EXPORT extern Fl_Surface_Device *fl_surface;
 /** \brief Points to the platform's display */
-extern Fl_Display_Device *fl_display_device;
+FL_EXPORT extern Fl_Display_Device *fl_display_device;
 
 /**
  signature of image generation callback function.
@@ -97,9 +97,10 @@ public:
  <br> The preferred FLTK API for drawing operations is the function collection of the 
  \ref fl_drawings and \ref fl_attributes modules. 
  <br> Alternatively, methods of the Fl_Graphics_Driver class can be called
- using the global variable Fl_Graphics_Driver * \ref fl_device that points at all time to the single driver 
- (an instance of an Fl_Graphics_Driver subclass) that's currently receiving graphics requests:
- \code fl_device->rect(x, y, w, h); \endcode
+ using the global variable Fl_Graphics_Driver * \ref fl_graphics_driver that points at all time to 
+ the single driver (an instance of an Fl_Graphics_Driver subclass) that's currently receiving graphics 
+ requests. For example:
+ \code fl_graphics_driver->rect(x, y, w, h); \endcode
  <br>Each protected method of the Fl_Graphics_Driver class has the same effect as the
  function of the \ref fl_drawings and \ref fl_attributes modules which bears the same name
  prefixed with fl_ and has the same parameter list.
@@ -381,5 +382,5 @@ public:
 #endif // Fl_Device_H
 
 //
-// End of "$Id: Fl_Device.H 7654 2010-06-24 21:55:20Z manolo $".
+// End of "$Id: Fl_Device.H 7666 2010-07-04 17:19:38Z AlbrechtS $".
 //
