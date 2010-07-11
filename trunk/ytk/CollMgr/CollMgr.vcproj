@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;..\test\TestFLTK\include;..\test\TestFLTKLog;..\test\TestTinyXml\include;../.."
+				AdditionalIncludeDirectories=".;..\test\TestFLTK\include;..\test\TestFLTKLog;..\test\TestTinyXml\include;..\test\TestSqlite3\include;..\test\TestCppSqlite\;..\.."
 				PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS;PLX_VISUALC=1;PLX_CPLUSPLUS=1;PLX_MSWIN32=1;WIN32;_DEBUG;_CONSOLE;FLTK=1;FL_STATIC;WIN32_LEAN_AND_MEAN;VC_EXTRA_LEAN;WIN32_EXTRA_LEAN;UNICODE;_UNICODE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -59,9 +59,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="fltkd.lib comctl32.lib tinyxmld.lib"
+				AdditionalDependencies="fltkd.lib comctl32.lib tinyxmld.lib sqlite3.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\test\TestFLTK\lib;..\test\TestTinyXml\lib"
+				AdditionalLibraryDirectories="..\test\TestFLTK\lib;..\test\TestTinyXml\lib;..\test\TestSqlite3\lib"
 				IgnoreDefaultLibraryNames="libcd"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -118,7 +118,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories=".;..\test\TestFLTK\include;..\test\TestFLTKLog;..\test\TestTinyXml\include"
+				AdditionalIncludeDirectories=".;..\test\TestFLTK\include;..\test\TestFLTKLog;..\test\TestTinyXml\include;..\test\TestSqlite3\include;..\test\TestCppSqlite\;..\.."
 				PreprocessorDefinitions="PLX_VISUALC=1;PLX_CPLUSPLUS=1;PLX_MSWIN32=1;WIN32;NDEBUG;_CONSOLE;FLTK=1;FL_STATIC;WIN32_LEAN_AND_MEAN;VC_EXTRA_LEAN;WIN32_EXTRA_LEAN"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -136,8 +136,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="fltk.lib comctl32.lib tinyxml.lib"
-				AdditionalLibraryDirectories="..\test\TestFLTK\lib;..\test\TestTinyXml\lib"
+				AdditionalDependencies="fltk.lib comctl32.lib tinyxml.lib sqlite3.lib"
+				AdditionalLibraryDirectories="..\test\TestFLTK\lib;..\test\TestTinyXml\lib;..\test\TestSqlite3\lib"
 				IgnoreDefaultLibraryNames="libcd"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
@@ -176,6 +176,10 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath="..\test\TestCppSqlite\CppSQLite3.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\FileCollector.cpp"
 				>
 			</File>
@@ -200,6 +204,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\TableModel.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\TableView.cpp"
 				>
 			</File>
@@ -213,6 +221,10 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath="..\test\TestCppSqlite\CppSQLite3.h"
+				>
+			</File>
 			<File
 				RelativePath=".\FileCollector.h"
 				>
@@ -231,6 +243,10 @@
 			</File>
 			<File
 				RelativePath=".\MainWindowUI.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TableModel.h"
 				>
 			</File>
 			<File
