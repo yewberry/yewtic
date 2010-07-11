@@ -32,39 +32,56 @@ MainWindowUI::MainWindowUI() {
     { mainMenuBar = new Fl_Menu_Bar(0, 0, 645, 25);
       mainMenuBar->menu(menu_mainMenuBar);
     } // Fl_Menu_Bar* mainMenuBar
-    { Fl_Group* o = new Fl_Group(0, 20, 645, 380);
-      { treeView = new TreeView(0, 24, 165, 375);
-        treeView->box(FL_DOWN_BOX);
-        treeView->color(FL_BACKGROUND2_COLOR);
-        treeView->selection_color(FL_BACKGROUND_COLOR);
-        treeView->labeltype(FL_NORMAL_LABEL);
-        treeView->labelfont(0);
-        treeView->labelsize(14);
-        treeView->labelcolor(FL_FOREGROUND_COLOR);
-        treeView->align(Fl_Align(FL_ALIGN_CENTER));
-        treeView->when(FL_WHEN_RELEASE);
-      } // TreeView* treeView
-      { logView = new LogView(405, 239, 240, 158, "LogView");
-        logView->box(FL_DOWN_BOX);
-        logView->color(FL_BACKGROUND_COLOR);
-        logView->selection_color(FL_BACKGROUND_COLOR);
-        logView->labeltype(FL_NORMAL_LABEL);
-        logView->labelfont(0);
-        logView->labelsize(14);
-        logView->labelcolor(FL_FOREGROUND_COLOR);
-        logView->align(Fl_Align(FL_ALIGN_CENTER));
-        logView->when(FL_WHEN_RELEASE);
-        LogInit(logView, true);
-      } // LogView* logView
+    { treeView = new TreeView(0, 25, 140, 375);
+      treeView->box(FL_DOWN_BOX);
+      treeView->color(FL_BACKGROUND2_COLOR);
+      treeView->selection_color(FL_BACKGROUND_COLOR);
+      treeView->labeltype(FL_NORMAL_LABEL);
+      treeView->labelfont(0);
+      treeView->labelsize(14);
+      treeView->labelcolor(FL_FOREGROUND_COLOR);
+      treeView->align(Fl_Align(FL_ALIGN_TOP));
+      treeView->when(FL_WHEN_RELEASE);
+      treeView->end();
+    } // TreeView* treeView
+    { logView = new LogView(385, 230, 260, 170);
+      logView->box(FL_DOWN_BOX);
+      logView->color(FL_BACKGROUND_COLOR);
+      logView->selection_color(FL_BACKGROUND_COLOR);
+      logView->labeltype(FL_NORMAL_LABEL);
+      logView->labelfont(0);
+      logView->labelsize(14);
+      logView->labelcolor(FL_FOREGROUND_COLOR);
+      logView->align(Fl_Align(FL_ALIGN_TOP));
+      logView->when(FL_WHEN_RELEASE);
+      logView->end();
+    } // LogView* logView
+    { Fl_Group* o = new Fl_Group(140, 230, 245, 170);
+      o->box(FL_DOWN_BOX);
+      { Fl_Output* o = new Fl_Output(185, 235, 100, 25, "Total:");
+        o->color(FL_BACKGROUND_COLOR);
+      } // Fl_Output* o
       o->end();
-      Fl_Group::current()->resizable(o);
     } // Fl_Group* o
+    { tableView = new TableView(140, 25, 505, 205);
+      tableView->box(FL_NO_BOX);
+      tableView->color(FL_BACKGROUND_COLOR);
+      tableView->selection_color(FL_BACKGROUND_COLOR);
+      tableView->labeltype(FL_NORMAL_LABEL);
+      tableView->labelfont(0);
+      tableView->labelsize(14);
+      tableView->labelcolor(FL_FOREGROUND_COLOR);
+      tableView->align(Fl_Align(FL_ALIGN_TOP));
+      tableView->when(FL_WHEN_RELEASE);
+      tableView->end();
+    } // TableView* tableView
     mainWindow->end();
   } // Fl_Double_Window* mainWindow
 }
 
 void MainWindowUI::show(int argc, char **argv) {
-  mainWindow->show(argc, argv);
+  LogInit(logView, true);
+mainWindow->show(argc, argv);
 }
 
 void MainWindowUI::init(MainWindow* o) {

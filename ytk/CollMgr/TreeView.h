@@ -1,7 +1,6 @@
 #ifndef _TREE_VIEW_H
 #define _TREE_VIEW_H
 
-#include <map>
 #include <string>
 #include <iostream>
 #include <FL/Fl_Tree.H>
