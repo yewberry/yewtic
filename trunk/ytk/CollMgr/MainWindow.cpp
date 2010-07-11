@@ -13,6 +13,7 @@ void MainWindow::show(int argc, char **argv){
 	ui = new MainWindowUI;
 	ui->init(this);
 	ui->treeView->load("etc/catalog.xml");
+	ui->totalFiles->value("abc");;
 	
 	TableView *table1 = ui->tableView;
 	table1->selection_color(FL_YELLOW);

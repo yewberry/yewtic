@@ -54,15 +54,25 @@ class MainWindowUI {open
         xywh {385 230 260 170} box DOWN_BOX
         class LogView
       } {}
-      Fl_Group {} {
+      Fl_Group {} {open selected
         xywh {140 230 245 170} box DOWN_BOX
       } {
-        Fl_Output {} {
-          label {Total:}
-          xywh {185 235 100 25} color 49
+        Fl_Output totalFiles {
+          label {Total            :}
+          xywh {215 235 100 15} box FLAT_BOX color 49 labeltype EMBOSSED_LABEL labelsize 12 textsize 12
+          code0 {totalFiles->align(FL_ALIGN_LEFT);}
+        }
+        Fl_Output processedFiles {
+          label {Processed :}
+          xywh {215 250 70 15} box FLAT_BOX color 49 labeltype EMBOSSED_LABEL labelsize 12 textsize 12
+        }
+        Fl_Output remainFiles {
+          label {Remain      :}
+          xywh {215 265 75 15} box FLAT_BOX color 49 labeltype EMBOSSED_LABEL labelsize 12 textsize 12
+          code0 {totalFiles->align(FL_ALIGN_LEFT);}
         }
       }
-      Fl_Scroll tableView {open selected
+      Fl_Scroll tableView {open
         xywh {140 25 505 205}
         class TableView
       } {}
