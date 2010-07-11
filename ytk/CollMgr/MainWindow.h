@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "log.hpp"
-#include "CppSQLite3.h"
+#include "CollMgr.h"
 
 class MainWindowUI;
 
