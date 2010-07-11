@@ -1330,10 +1330,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\lib\fltkd.lib"
-				>
-			</File>
-			<File
 				RelativePath=".\lib\fltkdll.dll"
 				>
 			</File>
