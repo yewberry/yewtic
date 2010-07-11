@@ -2,8 +2,8 @@
 #define _MAIN_WINDOW_H
 
 #include <iostream>
-#include <FL/Fl_Tree.H>
 #include "log.hpp"
+#include "CppSQLite3.h"
 
 class MainWindowUI;
 

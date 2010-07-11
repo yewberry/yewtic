@@ -27,6 +27,8 @@ void MainWindow::show(int argc, char **argv){
     table1->when(FL_WHEN_CHANGED|FL_WHEN_RELEASE);
     table1->end();
 	
+	CppSQLite3DB db;
+	std::cout<<db.SQLiteVersion()<<std::endl;
 	ui->show(argc, argv);
 }
 
