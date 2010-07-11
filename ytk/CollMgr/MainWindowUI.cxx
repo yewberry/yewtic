@@ -56,17 +56,6 @@ MainWindowUI::MainWindowUI() {
         logView->when(FL_WHEN_RELEASE);
         LogInit(logView, true);
       } // LogView* logView
-      { tableView = new TableView(165, 25, 480, 215, "TableView");
-        tableView->box(FL_DOWN_BOX);
-        tableView->color(FL_BACKGROUND2_COLOR);
-        tableView->selection_color(FL_BACKGROUND_COLOR);
-        tableView->labeltype(FL_NORMAL_LABEL);
-        tableView->labelfont(0);
-        tableView->labelsize(14);
-        tableView->labelcolor(FL_FOREGROUND_COLOR);
-        tableView->align(Fl_Align(FL_ALIGN_CENTER));
-        tableView->when(FL_WHEN_RELEASE);
-      } // TableView* tableView
       o->end();
       Fl_Group::current()->resizable(o);
     } // Fl_Group* o

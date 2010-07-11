@@ -11,9 +11,6 @@ decl {\#include "LogView.h"} {public global
 decl {\#include "TreeView.h"} {public global
 } 
 
-decl {\#include "TableView.h"} {public global
-} 
-
 class MainWindowUI {open
 } {
   Function {MainWindowUI()} {open
@@ -58,11 +55,6 @@ class MainWindowUI {open
           xywh {405 239 240 158} box DOWN_BOX
           code0 {LogInit(logView, true);}
           class LogView
-        }
-        Fl_Box tableView {
-          label TableView
-          xywh {165 25 480 215} box DOWN_BOX color 7
-          class TableView
         }
       }
     }
