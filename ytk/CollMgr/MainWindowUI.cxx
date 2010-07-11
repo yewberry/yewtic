@@ -58,9 +58,29 @@ MainWindowUI::MainWindowUI() {
     } // LogView* logView
     { Fl_Group* o = new Fl_Group(140, 230, 245, 170);
       o->box(FL_DOWN_BOX);
-      { Fl_Output* o = new Fl_Output(185, 235, 100, 25, "Total:");
-        o->color(FL_BACKGROUND_COLOR);
-      } // Fl_Output* o
+      { totalFiles = new Fl_Output(215, 235, 100, 15, "Total            :");
+        totalFiles->box(FL_FLAT_BOX);
+        totalFiles->color(FL_BACKGROUND_COLOR);
+        totalFiles->labeltype(FL_EMBOSSED_LABEL);
+        totalFiles->labelsize(12);
+        totalFiles->textsize(12);
+        totalFiles->align(FL_ALIGN_LEFT);
+      } // Fl_Output* totalFiles
+      { processedFiles = new Fl_Output(215, 250, 70, 15, "Processed :");
+        processedFiles->box(FL_FLAT_BOX);
+        processedFiles->color(FL_BACKGROUND_COLOR);
+        processedFiles->labeltype(FL_EMBOSSED_LABEL);
+        processedFiles->labelsize(12);
+        processedFiles->textsize(12);
+      } // Fl_Output* processedFiles
+      { remainFiles = new Fl_Output(215, 265, 75, 15, "Remain      :");
+        remainFiles->box(FL_FLAT_BOX);
+        remainFiles->color(FL_BACKGROUND_COLOR);
+        remainFiles->labeltype(FL_EMBOSSED_LABEL);
+        remainFiles->labelsize(12);
+        remainFiles->textsize(12);
+        totalFiles->align(FL_ALIGN_LEFT);
+      } // Fl_Output* remainFiles
       o->end();
     } // Fl_Group* o
     { tableView = new TableView(140, 25, 505, 205);
@@ -76,6 +96,7 @@ MainWindowUI::MainWindowUI() {
       tableView->end();
     } // TableView* tableView
     mainWindow->end();
+    mainWindow->resizable(mainWindow);
   } // Fl_Double_Window* mainWindow
 }
 

@@ -26,6 +26,9 @@ private:
 public:
   TreeView *treeView;
   LogView *logView;
+  Fl_Output *totalFiles;
+  Fl_Output *processedFiles;
+  Fl_Output *remainFiles;
   TableView *tableView;
   ~MainWindowUI();
   void show(int argc, char **argv);
