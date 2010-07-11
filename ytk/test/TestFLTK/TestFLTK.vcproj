@@ -1325,66 +1325,6 @@
 		<Filter
 			Name="lib"
 			>
-			<File
-				RelativePath=".\lib\fltk.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkd.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkforms.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkformsd.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkgl.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkgld.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkimages.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkimagesd.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkjpeg.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkjpegd.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkpng.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkpngd.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkz.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fltkzd.lib"
-				>
-			</File>
-			<File
-				RelativePath=".\lib\fluid.exe"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="doc"
@@ -1394,11 +1334,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\doc\fltk-1.3.x-r7654.tar.bz2"
+				RelativePath=".\doc\fltk-1.3.x-r7669.7z"
 				>
 			</File>
 			<File
-				RelativePath=".\doc\fltk_1.3.zip"
+				RelativePath=".\doc\fltk_pdf.7z"
 				>
 			</File>
 		</Filter>
