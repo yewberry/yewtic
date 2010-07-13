@@ -230,6 +230,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\common.h"
+				>
+			</File>
+			<File
 				RelativePath="..\test\TestCppSqlite\CppSQLite3.h"
 				>
 			</File>

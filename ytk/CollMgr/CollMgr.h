@@ -1,6 +1,7 @@
 #ifndef _COLL_MGR_H
 #define _COLL_MGR_H
 
+#include <iostream>
 #include "CppSQLite3.h"
 
 class CollMgr
@@ -11,8 +12,10 @@ public:
 
 	static CppSQLite3DB* getDB();
 private:
-	static char *DB_NAME = "ytk_cm.db";
 	static CppSQLite3DB *db;
+
+public:
+	static char *DB_FILE;
 };
 
 #endif
