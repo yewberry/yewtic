@@ -18,8 +18,8 @@ void MainWindow::show(int argc, char **argv){
 	TableView *table1 = ui->tableView;
 	table1->selection_color(FL_YELLOW);
     table1->when(FL_WHEN_RELEASE);	// handle table events on release
-    table1->rows(10000);
-    table1->cols(10000);
+    table1->rows(1);
+    table1->cols(5);
     table1->col_header(1);		// enable col header
     table1->col_resize(4);		// enable col resizing
     table1->row_header(1);		// enable row header

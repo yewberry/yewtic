@@ -3,6 +3,7 @@
 
 #include <FL/fl_draw.H>
 #include <FL/Fl_Table_Row.H>
+#include "TableModel.h"
 
 class TableView : public Fl_Table_Row
 {
@@ -12,6 +13,9 @@ public:
 
 	void draw_cell(TableContext context,  		// table cell drawing
 		int R=0, int C=0, int X=0, int Y=0, int W=0, int H=0);
+
+private:
+	TableModel *m_pModel;
 };
 
 #endif

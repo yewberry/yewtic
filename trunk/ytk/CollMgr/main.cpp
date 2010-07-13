@@ -1,6 +1,6 @@
 #include <FL/Fl.H>
 #include "MainWindow.h"
-#include "log.hpp"
+#include "common.h"
 
 
 int main(int argc, char **argv) {

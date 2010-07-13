@@ -3,10 +3,13 @@
 TableView::TableView(int x, int y, int w, int h, const char *l)
 : Fl_Table_Row(x,y,w,h,l)
 {
+	m_pModel = new TableModel;
+	m_pModel->refresh();
 }
 
 TableView::~TableView(void)
 {
+	if( 0 != m_pModel)delete m_pModel; 
 }
 
 void TableView::draw_cell(TableContext context, 
@@ -42,7 +45,8 @@ void TableView::draw_cell(TableContext context,
 
 				// TEXT
 				fl_color(FL_BLACK);
-				fl_draw(s, X, Y, W, H, FL_ALIGN_CENTER);
+				const char *str = this->m_pModel->getFieldValue(R, C);
+				fl_draw(str, X, Y, W, H, FL_ALIGN_CENTER);
 
 				// BORDER
 				fl_color(FL_LIGHT2); 
