@@ -142,6 +142,8 @@
 				<pathentry base-path="D:/yewberry/Qt/2010.05/qt/include" include="phonon_compat" kind="inc" path="" system="true"/>
 				<pathentry base-path="D:/yewberry/Qt/2010.05/qt/include" include="phonon" kind="inc" path="" system="true"/>
 				<pathentry base-path="D:/yewberry/Qt/2010.05/qt/include" include="ActiveQt" kind="inc" path="" system="true"/>
+				<pathentry kind="src" path=""/>
+				<pathentry kind="out" path=""/>
 			</storageModule>
 		</cconfiguration>
 	</storageModule>

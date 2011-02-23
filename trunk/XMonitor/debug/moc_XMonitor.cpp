@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'XMonitor.h'
 **
-** Created: Mon Feb 21 14:36:06 2011
+** Created: Wed Feb 23 15:10:28 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
