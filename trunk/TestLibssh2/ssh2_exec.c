@@ -74,10 +74,10 @@ static int waitsocket(int socket_fd, LIBSSH2_SESSION *session)
 
 int main(int argc, char *argv[])
 {
-    const char *hostname = "192.168.56.1";
-    const char *commandline = "uptime";
-    const char *username    = "xpa";
-    const char *password    = "xpa";
+    const char *hostname = "172.28.13.18";
+    const char *commandline = "ls";
+    const char *username    = "euap";
+    const char *password    = "euap";
     unsigned long hostaddr;
     int sock;
     struct sockaddr_in sin;
