@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/check_off.png</file>
+        <file>images/check_off_hover.png</file>
+        <file>images/check_on.png</file>
+        <file>images/check_on_hover.png</file>
+        <file>images/combo_down_arrow.png</file>
+        <file>images/combo_left_arrow.png</file>
+        <file>images/combo_right_arrow.png</file>
+        <file>images/combo_up_arrow.png</file>
+        <file>images/help.png</file>
+        <file>images/pagefold.png</file>
+        <file>images/password.png</file>
+        <file>images/preferences.png</file>
+        <file>images/pushbutton.png</file>
+        <file>images/pushbutton_hover.png</file>
+        <file>images/pushbutton_pressed.png</file>
+        <file>images/radio_off.png</file>
+        <file>images/radio_off_hover.png</file>
+        <file>images/radio_on.png</file>
+        <file>images/radio_on_hover.png</file>
+        <file>images/view.png</file>
+        <file>style.qss</file>
+    </qresource>
+</RCC>

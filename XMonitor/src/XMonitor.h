@@ -2,7 +2,7 @@
 #define XMONITOR_H
 
 #include <QtGui/QMainWindow>
-#include "ui_XMonitor.h"
+#include "../ui_XMonitor.h"
 
 class XMonitor : public QMainWindow
 {
