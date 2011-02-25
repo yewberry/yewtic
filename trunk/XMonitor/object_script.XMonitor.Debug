@@ -1,0 +1,12 @@
+INPUT(
+./debug/MyQtLog.o
+./debug/Server.o
+./debug/Common.o
+./debug/TopHeader.o
+./debug/XMonitor.o
+./debug/main.o
+./debug/moc_MyQtLog.o
+./debug/moc_Server.o
+./debug/moc_XMonitor.o
+./debug/qrc_res.o
+);

@@ -21,5 +21,8 @@
         <file>images/radio_on_hover.png</file>
         <file>images/view.png</file>
         <file>style.qss</file>
+        <file>images/pc.png</file>
+        <file>images/report.png</file>
+        <file>images/logo.png</file>
     </qresource>
 </RCC>

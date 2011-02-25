@@ -1,0 +1,12 @@
+INPUT(
+./release/MyQtLog.o
+./release/Server.o
+./release/Common.o
+./release/TopHeader.o
+./release/XMonitor.o
+./release/main.o
+./release/moc_MyQtLog.o
+./release/moc_Server.o
+./release/moc_XMonitor.o
+./release/qrc_res.o
+);
