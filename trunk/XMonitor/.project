@@ -3,6 +3,8 @@
 	<name>XMonitor</name>
 	<comment></comment>
 	<projects>
+		<project>MyQtLog</project>
+		<project>TestLibssh2</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

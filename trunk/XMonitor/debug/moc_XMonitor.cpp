@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'XMonitor.h'
 **
-** Created: Wed Feb 23 15:10:28 2011
+** Created: Fri Feb 25 15:46:33 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../XMonitor.h"
+#include "../src/XMonitor.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'XMonitor.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62
