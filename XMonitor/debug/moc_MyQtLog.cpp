@@ -1,15 +1,15 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'XMonitor.h'
+** Meta object code from reading C++ file 'MyQtLog.h'
 **
-** Created: Fri Feb 25 18:24:32 2011
+** Created: Fri Feb 25 20:05:27 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../src/XMonitor.h"
+#include "../src/MyQtLog.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'XMonitor.h' doesn't include <QObject>."
+#error "The header file 'MyQtLog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62
 #error "This file was generated using the moc from 4.7.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -17,7 +17,7 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-static const uint qt_meta_data_XMonitor[] = {
+static const uint qt_meta_data_MyQtLog[] = {
 
  // content:
        5,       // revision
@@ -33,35 +33,35 @@ static const uint qt_meta_data_XMonitor[] = {
        0        // eod
 };
 
-static const char qt_meta_stringdata_XMonitor[] = {
-    "XMonitor\0"
+static const char qt_meta_stringdata_MyQtLog[] = {
+    "MyQtLog\0"
 };
 
-const QMetaObject XMonitor::staticMetaObject = {
-    { &QMainWindow::staticMetaObject, qt_meta_stringdata_XMonitor,
-      qt_meta_data_XMonitor, 0 }
+const QMetaObject MyQtLog::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_MyQtLog,
+      qt_meta_data_MyQtLog, 0 }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
-const QMetaObject &XMonitor::getStaticMetaObject() { return staticMetaObject; }
+const QMetaObject &MyQtLog::getStaticMetaObject() { return staticMetaObject; }
 #endif //Q_NO_DATA_RELOCATION
 
-const QMetaObject *XMonitor::metaObject() const
+const QMetaObject *MyQtLog::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
 }
 
-void *XMonitor::qt_metacast(const char *_clname)
+void *MyQtLog::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_XMonitor))
-        return static_cast<void*>(const_cast< XMonitor*>(this));
-    return QMainWindow::qt_metacast(_clname);
+    if (!strcmp(_clname, qt_meta_stringdata_MyQtLog))
+        return static_cast<void*>(const_cast< MyQtLog*>(this));
+    return QWidget::qt_metacast(_clname);
 }
 
-int XMonitor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int MyQtLog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QMainWindow::qt_metacall(_c, _id, _a);
+    _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     return _id;

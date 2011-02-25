@@ -119,7 +119,6 @@
 				<pathentry kind="src" path=""/>
 				<pathentry kind="out" path=""/>
 				<pathentry kind="prj" path="/TestLibssh2"/>
-				<pathentry kind="prj" path="/MyQtLog"/>
 				<pathentry base-path="D:/yewberry/Qt/2010.05/qt/include" include="" kind="inc" path="" system="true"/>
 				<pathentry base-path="D:/yewberry/Qt/2010.05/qt/include" include="QtXmlPatterns" kind="inc" path="" system="true"/>
 				<pathentry base-path="D:/yewberry/Qt/2010.05/qt/include" include="QtXml" kind="inc" path="" system="true"/>
