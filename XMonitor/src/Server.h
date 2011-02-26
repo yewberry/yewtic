@@ -8,15 +8,16 @@
 #ifndef SERVER_H_
 #define SERVER_H_
 
-#include <QObject>
+#include "XBean.h"
 
-class Server : public QObject
+class Server : public XBean
 {
-	Q_OBJECT
-
 public:
 	Server();
 	virtual ~Server();
+
+	void load();
+	void save();
 
 	void name(QString n);
 	QString name();

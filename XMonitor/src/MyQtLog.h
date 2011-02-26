@@ -3,6 +3,7 @@
 
 #include <QtGui>
 #include "ui_MyQtLog.h"
+#include <string>
 
 #define yDEBUG(msg) (MyQtLog::log->d(msg,__FILE__,__LINE__))
 #define yINFO(msg) (MyQtLog::log->i(msg,__FILE__,__LINE__))
@@ -27,6 +28,7 @@ public:
     void w(QString msg, char *file, int line);
     void e(QString msg, char *file, int line);
     void f(QString msg, char *file, int line);
+
     void write(QString msg);
 
 private:

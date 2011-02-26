@@ -3,7 +3,6 @@
 	<name>XMonitor</name>
 	<comment></comment>
 	<projects>
-		<project>TestLibssh2</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

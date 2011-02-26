@@ -24,5 +24,10 @@
         <file>images/pc.png</file>
         <file>images/report.png</file>
         <file>images/logo.png</file>
+        <file>script/db.sql</file>
+        <file>images/setting.png</file>
+        <file>images/vw.png</file>
+        <file>images/add_server.png</file>
+        <file>images/delete.png</file>
     </qresource>
 </RCC>
