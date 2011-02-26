@@ -10,10 +10,12 @@ using namespace std;
 
 void verifyBoost();
 int testDateTime();
+void testUuid();
 
 int main() {
 	//verifyBoost();
 	//testDateTime();
+	testUuid();
 	return 0;
 }
 
@@ -69,4 +71,18 @@ int testDateTime() {
 	}
 
 	return 0;
+}
+
+/****************************/
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_io.hpp>
+#include <boost/uuid/random_generator.hpp>
+#include <boost/algorithm/string.hpp>
+
+void testUuid(){
+	boost::uuids::random_generator uuid_gen;
+	boost::uuids::uuid uu = uuid_gen();
+	std::string str = boost::uuids::to_string(uu);
+	boost::erase_all(str, "-");
+	std::cout<<str<<"|"<<str.size()<<std::endl;
 }
