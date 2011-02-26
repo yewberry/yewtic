@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'XMonitor.ui'
 **
-** Created: Fri Feb 25 16:00:36 2011
+** Created: Sat Feb 26 11:39:49 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

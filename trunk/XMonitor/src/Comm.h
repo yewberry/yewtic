@@ -1,18 +1,21 @@
 /*
- * Common.h
+ * Comm.h
  *
  *  Created on: 2011-2-25
  *      Author: Yewberry
  */
 
-#ifndef COMMON_H_
-#define COMMON_H_
+#ifndef COMM_H_
+#define COMM_H_
 
 #include <QtCore>
+#include <string>
 
-class Common {
+class Comm {
 public:
 	static QString stringFromResource(const QString &resName);
+	static std::string uuid();
+
 };
 
-#endif /* COMMON_H_ */
+#endif /* COMM_H_ */

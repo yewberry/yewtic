@@ -7,13 +7,22 @@
 
 #include "Server.h"
 
-Server::Server() {
-	// TODO Auto-generated constructor stub
+Server::Server()
+{
+	m_tbl = "server";
 
 }
 
 Server::~Server() {
 	// TODO Auto-generated destructor stub
+}
+
+void Server::load(){
+
+}
+
+void Server::save(){
+
 }
 
 void Server::name(QString n) {

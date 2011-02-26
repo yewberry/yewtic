@@ -1,19 +1,54 @@
 #include "XMonitor.h"
 #include <QtGui>
-#include "MyQtLog.h"
+#include <QtSql>
 
 #include "TopHeader.h"
+#include "TitleBar.h"
+#include "MyQtLog.h"
+#include "ServerView.h"
+#include "Comm.h"
 
 XMonitor::XMonitor(QWidget *parent)
     : QMainWindow(parent)
 {
 	ui.setupUi(this);
 	drawUi();
+	initGuiConns();
+	readSettings();
+	openDatabase();
+	showServerView();
 }
 
 XMonitor::~XMonitor()
 {
 
+}
+
+void XMonitor::closeEvent(QCloseEvent *event) {
+	if (QMessageBox::question(this, tr("Confirm?"), tr("Confirm to close?"),
+			QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes) {
+		writeSettings();
+	} else {
+		event->ignore();
+	}
+}
+
+void XMonitor::showServerView(){
+	yDEBUG("load server nodes...");
+	ServerView *sv = (ServerView*)m_pCentralWidgetLayout->widget(0);
+	Server s;
+	s.name("hp_serv");
+	s.ip("172.28.13.18");
+	s.desc("ADC Server");
+	sv->addNode(s);
+	yDEBUG("load server nodes done.");
+	m_pCentralWidgetLayout->setCurrentIndex(0);
+	yDEBUG("show server.");
+}
+
+void XMonitor::showReportView(){
+	m_pCentralWidgetLayout->setCurrentIndex(1);
+	yDEBUG("show report.");
 }
 
 void XMonitor::drawUi(){
@@ -46,6 +81,28 @@ void XMonitor::drawUi(){
 	m_pRptBtn->setProperty("kind","toolbar");
 	m_pRptBtn->setText(tr("&Report"));
 
+	m_pSetBtn = new QToolButton(m_pTopHeader);
+	m_pSetBtn->setIcon(QIcon(":/images/setting.png"));
+	m_pSetBtn->setIconSize(QSize(70,70));
+	m_pSetBtn->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+	m_pSetBtn->setToolTip(tr("Setting"));
+	m_pSetBtn->setStatusTip(m_pSetBtn->toolTip());
+	m_pSetBtn->setFocusPolicy(Qt::NoFocus);
+	m_pSetBtn->move(295,39);//220+70+5
+	m_pSetBtn->setProperty("kind","toolbar");
+	m_pSetBtn->setText(tr("&Setting"));
+
+	m_pViewBtn = new QToolButton(m_pTopHeader);
+	m_pViewBtn->setIcon(QIcon(":/images/vw.png"));
+	m_pViewBtn->setIconSize(QSize(70,70));
+	m_pViewBtn->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+	m_pViewBtn->setToolTip(tr("Setting the window view"));
+	m_pViewBtn->setStatusTip(m_pViewBtn->toolTip());
+	m_pViewBtn->setFocusPolicy(Qt::NoFocus);
+	m_pViewBtn->move(370,39);//295+70+5
+	m_pViewBtn->setProperty("kind","toolbar");
+	m_pViewBtn->setText(tr("&View"));
+
 	m_pHelpBtn = new QToolButton(m_pTopHeader);
 	m_pHelpBtn->setIcon(QIcon(":/images/help.png"));
 	m_pHelpBtn->setIconSize(QSize(70,70));
@@ -53,18 +110,111 @@ void XMonitor::drawUi(){
 	m_pHelpBtn->setToolTip(tr("Help"));
 	m_pHelpBtn->setStatusTip(m_pHelpBtn->toolTip());
 	m_pHelpBtn->setFocusPolicy(Qt::NoFocus);
-	m_pHelpBtn->move(295,39);//220+70+5
+	m_pHelpBtn->move(445,39);//370+70+5
 	m_pHelpBtn->setProperty("kind","toolbar");
 	m_pHelpBtn->setText(tr("&Help"));
 
 	//dock = new QDockWidget(tr("Properties"), this);
 
-	dock = new QDockWidget(tr("Output"), this);
-	dock->setAllowedAreas(Qt::BottomDockWidgetArea | Qt::RightDockWidgetArea | Qt::LeftDockWidgetArea);
+	dock = new QDockWidget(this);
+	dock->setAllowedAreas(Qt::BottomDockWidgetArea | Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	MyQtLog::init("log.html", dock);
 	dock->setWidget(MyQtLog::log);
+	TitleBar *title = new TitleBar(dock);
+	title->setTitleText(tr("Output"));
+	dock->setTitleBarWidget(title);
 	addDockWidget(Qt::BottomDockWidgetArea, dock);
 
+	drawCentralWidget();
+
 	yDEBUG("Draw main ui done.");
+
+}
+
+void XMonitor::drawCentralWidget(){
+
+    QComboBox *comboBox;
+    QTextEdit *textEdit;
+    QLineEdit *lineEdit;
+
+    QWidget *central = new QWidget;
+    QHBoxLayout *hLay = new QHBoxLayout(central);
+
+    QStackedLayout *sLay = new QStackedLayout;
+    ServerView *svrView = new ServerView(central);
+    sLay->addWidget(svrView);
+
+    textEdit = new QTextEdit(central);
+    textEdit->setObjectName(QString::fromUtf8("textEdit"));
+    sLay->addWidget(textEdit);
+
+    lineEdit = new QLineEdit(central);
+    lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+    sLay->addWidget(lineEdit);
+
+    hLay->addLayout(sLay);
+    m_pCentralWidgetLayout = sLay;
+
+	setCentralWidget(central);
+}
+
+void XMonitor::initGuiConns(){
+	yDEBUG("Initialize GUI Connections.");
+	connect( m_pSvrBtn, SIGNAL(clicked()), this, SLOT(showServerView()) );
+	connect( m_pRptBtn, SIGNAL(clicked()), this, SLOT(showReportView()) );
+
+}
+
+void XMonitor::readSettings(){
+	QSettings st("XMonitor.ini",QSettings::IniFormat);
+	st.beginGroup("system");
+	restoreGeometry(st.value("geometry").toByteArray());
+	st.endGroup();
+
+	st.beginGroup("database");
+	m_dbName 	= st.value("name", "data.db").toString();
+	m_dbUsr 	= st.value("usr", "xpa").toString();
+	m_dbPwd 	= st.value("pwd", "xpa").toString();
+	st.endGroup();
+}
+
+void XMonitor::writeSettings(){
+	QSettings st("XMonitor.ini",QSettings::IniFormat);
+	st.beginGroup("system");
+	st.setValue("geometry", saveGeometry());
+	st.endGroup();
+
+	st.beginGroup("database");
+	st.setValue("name", m_dbName);
+	st.setValue("usr", 	m_dbUsr);
+	st.setValue("pwd", 	m_dbPwd);
+	st.endGroup();
+}
+
+void XMonitor::openDatabase(){
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName(m_dbName);
+	db.setUserName(m_dbUsr);
+	db.setPassword(m_dbPwd);
+    if (!db.open()) {
+        QMessageBox::critical(0, QObject::tr("Database Error"),
+                              db.lastError().text());
+        yFATAL(QString("Can't open db: %1").arg(m_dbName));
+    }
+    QFile dbFile(m_dbName);
+    if( dbFile.size() == 0 ){
+    	initDatabase();
+    }
+}
+
+void XMonitor::initDatabase(){
+	yINFO("Initialize Database...");
+	QString sql = Comm::stringFromResource(":/script/db.sql");
+	QSqlQuery query;
+	QStringList ls = sql.split("\n");
+	Q_FOREACH(QString str, ls){
+		query.exec(str);
+	}
+	yINFO("Initialize Done.");
 
 }
