@@ -8,10 +8,10 @@
 #include "ServerViewNode.h"
 #include "ServerViewLink.h"
 
-ServerViewNode::ServerViewNode() {
-	m_txtColor = Qt::darkGreen;
-	m_outlineColor = Qt::darkBlue;
-	m_bgColor = Qt::white;
+ServerViewNode::ServerViewNode(NodeType t, QMenu *ctxMenu) :
+	m_txtColor(Qt::darkGreen), m_outlineColor(Qt::darkBlue),
+	m_bgColor(Qt::white), m_pContextMenu(ctxMenu)
+{
 	setFlags(ItemIsMovable | ItemIsSelectable);
 
 }
@@ -57,7 +57,13 @@ void ServerViewNode::paint(QPainter *painter,
 			rect.height()));
 
 	painter->setPen(m_txtColor);
-	painter->drawText(rect, Qt::AlignCenter, "Server");
+	painter->drawText(rect, Qt::AlignCenter, m_text);
+}
+
+void ServerViewNode::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
+	scene()->clearSelection();
+	setSelected(true);
+	m_pContextMenu->exec(event->screenPos());
 }
 
 void ServerViewNode::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
@@ -90,7 +96,7 @@ int ServerViewNode::roundness(double size) const {
 	return 100 * Diameter / int(size);
 }
 
-void ServerViewNode::text(const QString& t){
+void ServerViewNode::text(const QString& t) {
 	m_text = t;
 }
 
