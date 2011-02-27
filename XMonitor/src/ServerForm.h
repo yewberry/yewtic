@@ -2,25 +2,30 @@
 #define SERVERFORM_H
 
 #include <QDialog>
+#include <QtSql>
 
-class QSqlTableModel;
 class QDataWidgetMapper;
 class QLineEdit;
 class QTextEdit;
+class QCheckBox;
 
 class ServerForm: public QDialog {
 	Q_OBJECT
 
 public:
-	enum OpType{ADD, EDIT};
-	enum { ID = 0, IP = 1, NAME = 2, DESC = 3, USR = 4, PWD = 5 };
-	ServerForm(OpType op, QString id, QWidget *parent = 0);
+	enum OpType{INQ, ADD, EDIT};
+	enum { ID = 0, IP = 1, NAME = 2, DESC = 3, USR = 4, PWD = 5, ACTIVE = 6 };
+	ServerForm(QString id = "", OpType op = INQ, QWidget *parent = 0);
 	~ServerForm();
 
+	QSqlTableModel* model();
+	QString id();
 	QString ip();
 	QString name();
+	bool isServerActive();
+	void setServerActive(bool c);
 
-private slots:
+public slots:
 	void save();
 
 private:
@@ -39,6 +44,7 @@ private:
 	QLineEdit* m_uiUsr;
 	QLineEdit* m_uiPwd;
 	QTextEdit* m_uiDesc;
+	QCheckBox* m_uiIsActive;
 
 };
 

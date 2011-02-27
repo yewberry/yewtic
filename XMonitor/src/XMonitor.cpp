@@ -5,6 +5,7 @@
 #include "TopHeader.h"
 #include "TitleBar.h"
 #include "ServerView.h"
+#include "ServerForm.h"
 #include "Comm.h"
 
 XMonitor::XMonitor(QWidget *parent) :
@@ -32,18 +33,18 @@ void XMonitor::closeEvent(QCloseEvent *event) {
 
 void XMonitor::showServerView() {
 	yDEBUG("load server nodes...");
-	 ServerView *sv = (ServerView*)m_pCentralWidgetLayout->widget(0);
-	 Server s;
-	 sv->addNode(s);
-
+	ServerView *sv = (ServerView*)m_pCentralWidgetLayout->widget(0);
+	sv->clearScene();
+	sv->loadFromDb();
 	yDEBUG("load server nodes done.");
+
 	m_pCentralWidgetLayout->setCurrentIndex(0);
-	yDEBUG("show server.");
+	yDEBUG("Show server.");
 }
 
 void XMonitor::showReportView() {
 	m_pCentralWidgetLayout->setCurrentIndex(1);
-	yDEBUG("show report.");
+	yDEBUG("Show report.");
 }
 
 void XMonitor::drawUi() {

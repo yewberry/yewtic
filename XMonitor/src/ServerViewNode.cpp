@@ -7,6 +7,7 @@
 #include <QtGui>
 #include "ServerViewNode.h"
 #include "ServerViewLink.h"
+#include "ServerForm.h"
 
 ServerViewNode::ServerViewNode(NodeType t, QMenu *ctxMenu) :
 	m_txtColor(Qt::darkGreen), m_outlineColor(Qt::darkBlue),
@@ -67,10 +68,10 @@ void ServerViewNode::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
 }
 
 void ServerViewNode::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-	QString txt = QInputDialog::getText(event->widget(), "Edit Text",
-			"Enter new text:", QLineEdit::Normal, m_text);
-	if (!txt.isEmpty())
-		text(txt);
+	ServerForm form(m_id, ServerForm::EDIT);
+	form.exec();
+
+	text(QString("%1\n%2").arg(form.ip()).arg(form.name()));
 }
 
 QVariant ServerViewNode::itemChange(GraphicsItemChange change,
@@ -96,10 +97,39 @@ int ServerViewNode::roundness(double size) const {
 	return 100 * Diameter / int(size);
 }
 
+void ServerViewNode::startBlink(){
+	m_isServerActive = true;
+	m_oldBgColor = m_bgColor;
+	m_blinkCount = 0;
+	m_blinkTimer = startTimer(500);
+}
+
+void ServerViewNode::stopBlink(){
+	m_isServerActive = false;
+	m_bgColor = m_oldBgColor;
+	m_blinkCount = 0;
+	killTimer(m_blinkTimer);
+	update(outlineRect());
+}
+
+void ServerViewNode::timerEvent(QTimerEvent *event){
+	m_blinkCount % 2 == 0 ? m_bgColor = Qt::green : m_bgColor = Qt::white;
+	m_blinkCount++;
+	update(outlineRect());
+}
+
 void ServerViewNode::text(const QString& t) {
 	m_text = t;
 }
 
 QString ServerViewNode::text() const {
 	return m_text;
+}
+
+void ServerViewNode::id(const QString& t) {
+	m_id = t;
+}
+
+QString ServerViewNode::id() const {
+	return m_id;
 }

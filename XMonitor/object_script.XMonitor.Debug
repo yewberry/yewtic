@@ -4,7 +4,6 @@ INPUT(
 ./debug/ServerViewLink.o
 ./debug/ServerViewNode.o
 ./debug/ServerView.o
-./debug/ServerViewScene.o
 ./debug/XBean.o
 ./debug/Comm.o
 ./debug/Step.o

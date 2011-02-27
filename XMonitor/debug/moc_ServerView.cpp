@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ServerView.h'
 **
-** Created: Sun Feb 27 20:55:35 2011
+** Created: Mon Feb 28 06:57:37 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ServerView[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -34,13 +34,18 @@ static const uint qt_meta_data_ServerView[] = {
       12,   11,   11,   11, 0x08,
       24,   11,   11,   11, 0x08,
       37,   11,   11,   11, 0x08,
+      57,   52,   11,   11, 0x08,
+      87,   11,   11,   11, 0x08,
+     130,  119,  103,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ServerView[] = {
     "ServerView\0\0addServer()\0deleteItem()\0"
-    "updateActions()\0"
+    "activeServer()\0node\0activeServer(ServerViewNode*)\0"
+    "updateActions()\0ServerViewNode*\0"
+    "id,ip,name\0addItem(QString,QString,QString)\0"
 };
 
 const QMetaObject ServerView::staticMetaObject = {
@@ -74,10 +79,14 @@ int ServerView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: addServer(); break;
         case 1: deleteItem(); break;
-        case 2: updateActions(); break;
+        case 2: activeServer(); break;
+        case 3: activeServer((*reinterpret_cast< ServerViewNode*(*)>(_a[1]))); break;
+        case 4: updateActions(); break;
+        case 5: { ServerViewNode* _r = addItem((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])));
+            if (_a[0]) *reinterpret_cast< ServerViewNode**>(_a[0]) = _r; }  break;
         default: ;
         }
-        _id -= 3;
+        _id -= 6;
     }
     return _id;
 }

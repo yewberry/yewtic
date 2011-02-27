@@ -8,13 +8,12 @@
 #ifndef SERVERVIEW_H_
 #define SERVERVIEW_H_
 
-#include <QWidget>
+#include <QDialog>
 #include <QMenu>
-#include "Server.h"
 #include "Comm.h"
-
 #include <QGraphicsScene>
 #include <QGraphicsView>
+
 
 class ServerViewNode;
 
@@ -25,7 +24,8 @@ public:
 	ServerView(QWidget *parent = 0);
 	~ServerView();
 
-	void addNode(const Server &svr);
+	void loadFromDb();
+	void clearScene();
 
 protected:
 	void contextMenuEvent(QContextMenuEvent * event);
@@ -33,11 +33,16 @@ protected:
 private slots:
     void addServer();
     void deleteItem();
+    void activeServer();
+    void activeServer(ServerViewNode* node);
+
     void updateActions();
+    ServerViewNode* addItem(QString id, QString ip, QString name);
 
 private:
 	void createActions();
 	void createMenus();
+	void createItemMenus();
 
 	ServerViewNode* selectedNode() const;
 
@@ -48,8 +53,14 @@ private:
     QAction* m_pAddServerAct;
     QAction* m_pEditServerAct;
     QAction* m_pDeleteItemAct;
+    QAction* m_pActiveServerAct;
+    QAction* m_pDeActiveServerAct;
 
     QMenu*	m_pCtxMenu;
+    QMenu*	m_pItemCtxMenu;
+
+    int m_itemCount;
+
 };
 
 #endif /* SERVERVIEW_H_ */
