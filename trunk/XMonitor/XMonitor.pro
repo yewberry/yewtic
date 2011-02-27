@@ -7,7 +7,8 @@ QT += core \
     opengl \
     webkit \
     script
-HEADERS += src/TitleBar.h \
+HEADERS += src/ServerForm.h \
+    src/TitleBar.h \
     src/ServerViewLink.h \
     src/ServerViewNode.h \
     src/ServerView.h \
@@ -19,7 +20,8 @@ HEADERS += src/TitleBar.h \
     src/Server.h \
     src/TopHeader.h \
     src/XMonitor.h
-SOURCES += src/TitleBar.cpp \
+SOURCES += src/ServerForm.cpp \
+    src/TitleBar.cpp \
     src/ServerViewLink.cpp \
     src/ServerViewNode.cpp \
     src/ServerView.cpp \

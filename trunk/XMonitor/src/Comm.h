@@ -10,6 +10,7 @@
 
 #include <QtCore>
 #include <string>
+#include "MyQtLog.h"
 
 class Comm {
 public:

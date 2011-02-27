@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'MyQtLog.ui'
 **
-** Created: Sat Feb 26 11:39:49 2011
+** Created: Sun Feb 27 20:54:03 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

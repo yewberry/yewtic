@@ -11,6 +11,7 @@
 #include <QWidget>
 #include <QMenu>
 #include "Server.h"
+#include "Comm.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -25,6 +26,9 @@ public:
 	~ServerView();
 
 	void addNode(const Server &svr);
+
+protected:
+	void contextMenuEvent(QContextMenuEvent * event);
 
 private slots:
     void addServer();
@@ -42,9 +46,10 @@ private:
     QGraphicsView*	m_pView;
 
     QAction* m_pAddServerAct;
+    QAction* m_pEditServerAct;
     QAction* m_pDeleteItemAct;
 
-    QMenu*	m_pEditMenu;
+    QMenu*	m_pCtxMenu;
 };
 
 #endif /* SERVERVIEW_H_ */

@@ -12,13 +12,18 @@
 #include <QGraphicsItem>
 #include <QSet>
 #include <QColor>
+#include <QMenu>
 
 class ServerViewLink;
 
 class ServerViewNode: public QGraphicsItem {
 
 public:
-	ServerViewNode();
+	enum NodeType {
+		GeneralServer
+	};
+
+	ServerViewNode(NodeType t = GeneralServer, QMenu *ctxMenu = 0);
 	~ServerViewNode();
 
 	void addLink(ServerViewLink *link);
@@ -33,6 +38,7 @@ public:
 	QString text() const;
 
 protected:
+	void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
 	void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
 	QVariant itemChange(GraphicsItemChange change, const QVariant &value);
 
@@ -43,9 +49,11 @@ private:
 	QSet<ServerViewLink *> m_links;
 
 	QString m_text;
-    QColor m_txtColor;
-    QColor m_bgColor;
-    QColor m_outlineColor;
+	QColor m_txtColor;
+	QColor m_bgColor;
+	QColor m_outlineColor;
+
+	QMenu* m_pContextMenu;
 };
 
 #endif /* SERVERVIEWNODE_H_ */

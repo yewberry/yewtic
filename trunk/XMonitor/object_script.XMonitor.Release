@@ -1,4 +1,5 @@
 INPUT(
+./release/ServerForm.o
 ./release/TitleBar.o
 ./release/ServerViewLink.o
 ./release/ServerViewNode.o
@@ -12,6 +13,7 @@ INPUT(
 ./release/TopHeader.o
 ./release/XMonitor.o
 ./release/main.o
+./release/moc_ServerForm.o
 ./release/moc_TitleBar.o
 ./release/moc_ServerView.o
 ./release/moc_MyQtLog.o
