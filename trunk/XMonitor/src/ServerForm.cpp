@@ -1,10 +1,9 @@
 #include "ServerForm.h"
 #include <QtGui>
-#include <QtSql>
 #include "Comm.h"
 
-ServerForm::ServerForm(OpType op, QString id, QWidget *parent) :
-	QDialog(parent), m_opType(op), m_id(id) {
+ServerForm::ServerForm(QString id, OpType op, QWidget *parent) :
+	QDialog(parent), m_id(id), m_opType(op) {
 	drawUi();
 	mapping();
 }
@@ -28,6 +27,8 @@ void ServerForm::mapping() {
 	m_pMapper->addMapping(m_uiDesc, DESC);
 	m_pMapper->addMapping(m_uiUsr, USR);
 	m_pMapper->addMapping(m_uiPwd, PWD);
+	m_pMapper->addMapping(m_uiIsActive, ACTIVE);
+
 
     if( !m_id.isEmpty() ) {
         for (int row = 0; row < m_pModel->rowCount(); ++row) {
@@ -38,7 +39,7 @@ void ServerForm::mapping() {
             }
         }
 
-    } else {
+    } else if(m_opType == ADD){
         int row = m_pModel->rowCount();
         m_pModel->insertRow(row);
         m_pMapper->setCurrentIndex(row);
@@ -73,6 +74,10 @@ void ServerForm::drawUi() {
 	QLabel *descLabel = new QLabel(tr("&Description:"));
 	descLabel->setBuddy(m_uiDesc);
 
+	m_uiIsActive = new QCheckBox;
+	QLabel *activeLabel = new QLabel(tr("&Active?:"));
+	activeLabel->setBuddy(m_uiIsActive);
+
 	QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok
 			| QDialogButtonBox::Cancel);
 
@@ -98,7 +103,10 @@ void ServerForm::drawUi() {
 	mainLayout->addWidget(pwdLabel, 5, 0);
 	mainLayout->addWidget(m_uiPwd, 5, 1);
 
-	mainLayout->addWidget(buttonBox, 6, 0, 1, 2);
+	mainLayout->addWidget(activeLabel, 6, 0);
+	mainLayout->addWidget(m_uiIsActive, 6, 1);
+
+	mainLayout->addWidget(buttonBox, 7, 0, 1, 2);
 	setLayout(mainLayout);
 
 	switch (m_opType) {
@@ -119,10 +127,26 @@ void ServerForm::save(){
 	this->close();
 }
 
+QSqlTableModel* ServerForm::model(){
+	return m_pModel;
+}
+
+QString ServerForm::id(){
+	return m_uiID->text();
+}
+
 QString ServerForm::ip(){
 	return m_uiIP->text();
 }
 
 QString ServerForm::name(){
 	return m_uiName->text();
+}
+
+bool ServerForm::isServerActive(){
+	return m_uiIsActive->isChecked();
+}
+
+void ServerForm::setServerActive(bool c){
+	m_uiIsActive->setChecked(c);
 }

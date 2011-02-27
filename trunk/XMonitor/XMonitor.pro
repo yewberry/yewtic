@@ -12,7 +12,6 @@ HEADERS += src/ServerForm.h \
     src/ServerViewLink.h \
     src/ServerViewNode.h \
     src/ServerView.h \
-    src/ServerViewScene.h \
     src/XBean.h \
     src/Comm.h \
     src/Step.h \
@@ -25,7 +24,6 @@ SOURCES += src/ServerForm.cpp \
     src/ServerViewLink.cpp \
     src/ServerViewNode.cpp \
     src/ServerView.cpp \
-    src/ServerViewScene.cpp \
     src/XBean.cpp \
     src/Comm.cpp \
     src/Step.cpp \
@@ -44,3 +42,5 @@ INCLUDEPATH = D:/yewberry/boost_1_45_0 \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++ \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/mingw32 \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/backward
+    
+LIBS    +=  -lpthread 

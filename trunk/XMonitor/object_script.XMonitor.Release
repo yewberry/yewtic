@@ -4,7 +4,6 @@ INPUT(
 ./release/ServerViewLink.o
 ./release/ServerViewNode.o
 ./release/ServerView.o
-./release/ServerViewScene.o
 ./release/XBean.o
 ./release/Comm.o
 ./release/Step.o

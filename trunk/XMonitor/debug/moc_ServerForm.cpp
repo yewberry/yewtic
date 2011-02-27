@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ServerForm.h'
 **
-** Created: Sun Feb 27 23:00:08 2011
+** Created: Mon Feb 28 06:57:25 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -31,7 +31,7 @@ static const uint qt_meta_data_ServerForm[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      12,   11,   11,   11, 0x08,
+      12,   11,   11,   11, 0x0a,
 
        0        // eod
 };
