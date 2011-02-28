@@ -20,9 +20,7 @@ class ServerViewNode: public QGraphicsObject {
 
 public:
 	bool	m_isServerActive;
-	enum NodeType {
-		GeneralServer
-	};
+	enum NodeType { GeneralServer };
 
 	ServerViewNode(NodeType t = GeneralServer, QMenu *ctxMenu = 0);
 	~ServerViewNode();

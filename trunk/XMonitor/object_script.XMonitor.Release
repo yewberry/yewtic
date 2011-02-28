@@ -6,9 +6,7 @@ INPUT(
 ./release/ServerView.o
 ./release/XBean.o
 ./release/Comm.o
-./release/Step.o
 ./release/MyQtLog.o
-./release/Server.o
 ./release/TopHeader.o
 ./release/XMonitor.o
 ./release/main.o

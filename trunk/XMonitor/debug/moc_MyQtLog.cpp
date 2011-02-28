@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MyQtLog.h'
 **
-** Created: Mon Feb 28 06:57:46 2011
+** Created: Mon Feb 28 16:56:03 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!

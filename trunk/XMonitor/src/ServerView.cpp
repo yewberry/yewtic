@@ -61,14 +61,16 @@ void ServerView::contextMenuEvent(QContextMenuEvent * event) {
 }
 
 void ServerView::loadFromDb() {
+	yDEBUG("load server nodes...");
 	ServerForm form;
 	QSqlTableModel *model = form.model();
 	for (int row = 0; row < model->rowCount(); ++row) {
 		QSqlRecord record = model->record(row);
-		ServerViewNode *node = addItem(record.value(ServerForm::ID).toString(), record.value(
-				ServerForm::IP).toString(),
-				record.value(ServerForm::NAME).toString());
-		activeServer(node);
+		ServerViewNode *node =
+			addItem(record.value(ServerForm::ID).toString(),
+				record.value(ServerForm::IP).toString(),
+				record.value(ServerForm::NAME).toString()
+			);
 	}
 }
 
@@ -84,6 +86,7 @@ void ServerView::activeServer(ServerViewNode *node){
 	if(form.isServerActive()){
 		yINFO( QString("Monitor server: %1(%2).").arg(form.name()).arg(form.ip()) );
 		node->startBlink();
+
 		int NUM_THREADS = 5;
 		pthread_t threads[NUM_THREADS];
 		int thread_args[NUM_THREADS];
@@ -131,6 +134,7 @@ ServerViewNode* ServerView::addItem(QString id, QString ip, QString name) {
 }
 
 void ServerView::deleteItem() {
+
 	m_itemCount--;
 }
 
@@ -169,32 +173,36 @@ void ServerView::createActions() {
 void ServerView::createMenus() {
 	m_pCtxMenu = new QMenu(this);
 	m_pCtxMenu->addAction(m_pAddServerAct);
-	m_pCtxMenu->addAction(m_pEditServerAct);
-	m_pCtxMenu->addSeparator();
-	m_pCtxMenu->addAction(m_pDeleteItemAct);
+
 }
 
 void ServerView::createItemMenus(){
 	m_pItemCtxMenu = new QMenu(this);
+	m_pItemCtxMenu->addAction(m_pEditServerAct);
+	m_pItemCtxMenu->addAction(m_pDeleteItemAct);
+	m_pItemCtxMenu->addSeparator();
 	m_pItemCtxMenu->addAction(m_pActiveServerAct);
 	m_pItemCtxMenu->addAction(m_pDeActiveServerAct);
 }
 
 void ServerView::updateActions() {
+	bool hasSelection = !m_pScene->selectedItems().isEmpty();
+	bool isNode = (selectedNode() != 0);
+
+	m_pDeleteItemAct->setEnabled(hasSelection);
+	if(isNode){
+		ServerViewNode *svrNode = selectedNode();
+	}
 	/*
-	 bool hasSelection = !m_pScene->selectedItems().isEmpty();
-	 bool isNode = (selectedNode() != 0);
+	Q_FOREACH(QAction *action, m_pView->actions()){
+		m_pView->removeAction(action);
+	}
 
-	 m_pDeleteItemAct->setEnabled(hasSelection);
-	 foreach (QAction *action, m_pView->actions()){
-	 m_pView->removeAction(action);
-	 }
-
-	 foreach (QAction *action, m_pEditMenu->actions()){
-	 if (action->isEnabled())
-	 m_pView->addAction(action);
-	 }
-	 */
+	Q_FOREACH(QAction *action, m_pEditMenu->actions()){
+		if (action->isEnabled())
+			m_pView->addAction(action);
+	}
+	*/
 }
 
 ServerViewNode* ServerView::selectedNode() const {

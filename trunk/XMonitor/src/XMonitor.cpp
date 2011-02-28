@@ -16,6 +16,8 @@ XMonitor::XMonitor(QWidget *parent) :
 	readSettings();
 	openDatabase();
 	showServerView();
+	ServerView *sv = (ServerView*)m_pCentralWidgetLayout->widget(0);
+	sv->loadFromDb();
 }
 
 XMonitor::~XMonitor() {
@@ -32,19 +34,11 @@ void XMonitor::closeEvent(QCloseEvent *event) {
 }
 
 void XMonitor::showServerView() {
-	yDEBUG("load server nodes...");
-	ServerView *sv = (ServerView*)m_pCentralWidgetLayout->widget(0);
-	sv->clearScene();
-	sv->loadFromDb();
-	yDEBUG("load server nodes done.");
-
 	m_pCentralWidgetLayout->setCurrentIndex(0);
-	yDEBUG("Show server.");
 }
 
 void XMonitor::showReportView() {
 	m_pCentralWidgetLayout->setCurrentIndex(1);
-	yDEBUG("Show report.");
 }
 
 void XMonitor::drawUi() {
@@ -222,7 +216,7 @@ void XMonitor::initDatabase() {
 	int i = 1;
 	Q_FOREACH(QString str, ls)
 		{
-			query.exec(str);
+			bool r = query.exec(str);
 			progress.setValue(++i);
 			qApp->processEvents();
 		}

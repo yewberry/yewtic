@@ -3,11 +3,9 @@
 
 #include <QDialog>
 #include <QtSql>
+#include "../ui_ServerForm.h"
 
 class QDataWidgetMapper;
-class QLineEdit;
-class QTextEdit;
-class QCheckBox;
 
 class ServerForm: public QDialog {
 	Q_OBJECT
@@ -33,18 +31,13 @@ private:
 	void mapping();
 
 private:
+	Ui::ServerFormClass ui;
+
 	OpType 				m_opType;
 	QSqlTableModel* 	m_pModel;
 	QDataWidgetMapper*	m_pMapper;
 	QString 			m_id;
 
-	QLineEdit* m_uiID;
-	QLineEdit* m_uiIP;
-	QLineEdit* m_uiName;
-	QLineEdit* m_uiUsr;
-	QLineEdit* m_uiPwd;
-	QTextEdit* m_uiDesc;
-	QCheckBox* m_uiIsActive;
 
 };
 

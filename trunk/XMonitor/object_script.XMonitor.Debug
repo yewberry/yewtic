@@ -6,9 +6,7 @@ INPUT(
 ./debug/ServerView.o
 ./debug/XBean.o
 ./debug/Comm.o
-./debug/Step.o
 ./debug/MyQtLog.o
-./debug/Server.o
 ./debug/TopHeader.o
 ./debug/XMonitor.o
 ./debug/main.o
