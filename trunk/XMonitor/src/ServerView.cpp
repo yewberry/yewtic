@@ -10,28 +10,6 @@
 #include "ServerViewNode.h"
 #include "ServerForm.h"
 
-#include <pthread.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include   <unistd.h>
-
-void *TaskCode(void *argument) {
-	int tid;
-
-	tid = *((int *) argument);
-	printf("Hello World! It's me, thread %d!\n", tid);
-
-	while(true){
-		printf("thread %d do work\n", tid);
-		printf("thread %d do sleep\n", tid);
-		usleep(5000);
-
-	}
-
-	return NULL;
-}
-
 ServerView::ServerView(QWidget *parent) :
 	QWidget(parent), m_pCtxMenu(0), m_itemCount(0) {
 	m_pScene = new QGraphicsScene(0, 0, 300, 200);
@@ -61,23 +39,30 @@ void ServerView::contextMenuEvent(QContextMenuEvent * event) {
 }
 
 void ServerView::loadFromDb() {
-	yDEBUG("load server nodes...");
+	yDEBUG("Load server nodes...");
 	ServerForm form;
 	QSqlTableModel *model = form.model();
 	for (int row = 0; row < model->rowCount(); ++row) {
 		QSqlRecord record = model->record(row);
-		ServerViewNode *node =
-			addItem(record.value(ServerForm::ID).toString(),
-				record.value(ServerForm::IP).toString(),
-				record.value(ServerForm::NAME).toString()
-			);
+		ServerViewNode *node = addItem( record.value(ServerForm::ID).toString() );
+	}
+}
+
+void ServerView::saveScene() {
+	yDEBUG("Save server scene...");
+	QList<QGraphicsItem *> items = m_pScene->items();
+	Q_FOREACH(QGraphicsItem *item, items){
+		ServerViewNode * svrNode = dynamic_cast<ServerViewNode *> (item);
+		if(svrNode != 0){
+			svrNode->saveNodePos();
+		}
 	}
 }
 
 void ServerView::addServer() {
 	ServerForm form("", ServerForm::ADD);
 	form.exec();
-	addItem(form.id(), form.ip(), form.name());
+	addItem( form.id() );
 }
 
 void ServerView::activeServer(ServerViewNode *node){
@@ -86,19 +71,6 @@ void ServerView::activeServer(ServerViewNode *node){
 	if(form.isServerActive()){
 		yINFO( QString("Monitor server: %1(%2).").arg(form.name()).arg(form.ip()) );
 		node->startBlink();
-
-		int NUM_THREADS = 5;
-		pthread_t threads[NUM_THREADS];
-		int thread_args[NUM_THREADS];
-		int rc, i;
-
-		/* create all threads */
-		for (i = 0; i < NUM_THREADS; ++i) {
-			thread_args[i] = i;
-			printf("In main: creating thread %d\n", i);
-			rc = pthread_create(&threads[i], NULL, TaskCode, (void *) &thread_args[i]);
-			assert(0 == rc);
-		}
 	}
 }
 
@@ -109,25 +81,22 @@ void ServerView::activeServer(){
 		yINFO( QString("De-Active server: %1(%2).").arg(form.name()).arg(form.ip()) );
 		node->stopBlink();
 		form.setServerActive(false);
-		form.save();
 
 	} else {
 		yINFO( QString("Active server: %1(%2).").arg(form.name()).arg(form.ip()) );
 		node->startBlink();
 		form.setServerActive(true);
-		form.save();
+
 	}
 }
 
 
 
 //TODO this function is temp
-ServerViewNode* ServerView::addItem(QString id, QString ip, QString name) {
-	ServerViewNode *node = new ServerViewNode(ServerViewNode::GeneralServer, m_pItemCtxMenu);
-	node->id(id);
-	node->text(QString("%1\n%2").arg(ip).arg(name));
-	node->setPos(QPoint(0 + (120 * (m_itemCount % 5)), 0 + (50 * ((m_itemCount
-			/ 5) % 7))));
+ServerViewNode* ServerView::addItem(QString id) {
+	ServerViewNode *node = new ServerViewNode(id, ServerViewNode::GeneralServer, m_pItemCtxMenu);
+	if(node->storedPosition().isNull())
+		node->setPos(QPoint(0 + (120 * (m_itemCount % 5)), 0 + (50 * ((m_itemCount / 5) % 7))));
 	m_pScene->addItem(node);
 	m_itemCount++;
 	return node;

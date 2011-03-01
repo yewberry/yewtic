@@ -4,9 +4,16 @@
 #include <QtGui/QMainWindow>
 #include "../ui_XMonitor.h"
 
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <unistd.h>
+
 class TopHeader;
 class QToolButton;
 class QStackedLayout;
+class ServerView;
 
 class XMonitor : public QMainWindow
 {
@@ -16,12 +23,18 @@ public:
     XMonitor(QWidget *parent = 0);
     ~XMonitor();
 
+	static void* serverMonitorThread(void *arg);
+	static pthread_t threads[];
+
 protected:
     void closeEvent(QCloseEvent *event);
 
-public slots:
+private slots:
 	void showServerView();
 	void showReportView();
+
+	void startServerMonitorThread();
+	void stopServerMonitorThread();
 
 private:
     void drawUi();
@@ -42,6 +55,7 @@ private:
     QToolButton* 	m_pViewBtn;
     QToolButton*	m_pHelpBtn;
 
+    ServerView*		m_pServerView;
     QStackedLayout*	m_pCentralWidgetLayout;
 
     QString m_dbName;

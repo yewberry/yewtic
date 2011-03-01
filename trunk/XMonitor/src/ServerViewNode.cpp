@@ -9,12 +9,16 @@
 #include "ServerViewLink.h"
 #include "ServerForm.h"
 
-ServerViewNode::ServerViewNode(NodeType t, QMenu *ctxMenu) :
+ServerViewNode::ServerViewNode(QString id, NodeType t, QMenu *ctxMenu) :
+	m_id(id),
 	m_txtColor(Qt::darkGreen), m_outlineColor(Qt::darkBlue),
 	m_bgColor(Qt::white), m_pContextMenu(ctxMenu)
 {
 	setFlags(ItemIsMovable | ItemIsSelectable);
-
+	ServerForm form(m_id, ServerForm::INQ);
+	m_text = QString("%1\n%2").arg(form.ip()).arg(form.name());
+	m_storedPosition = form.uiScenePos();
+	setPos(m_storedPosition);
 }
 
 ServerViewNode::~ServerViewNode() {
@@ -70,8 +74,8 @@ void ServerViewNode::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
 void ServerViewNode::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	ServerForm form(m_id, ServerForm::EDIT);
 	form.exec();
-
-	text(QString("%1\n%2").arg(form.ip()).arg(form.name()));
+	m_text = QString("%1\n%2").arg(form.ip()).arg(form.name());
+	update(outlineRect());
 }
 
 QVariant ServerViewNode::itemChange(GraphicsItemChange change,
@@ -118,18 +122,19 @@ void ServerViewNode::timerEvent(QTimerEvent *event){
 	update(outlineRect());
 }
 
-void ServerViewNode::text(const QString& t) {
-	m_text = t;
+void ServerViewNode::saveNodePos(){
+	ServerForm form(m_id, ServerForm::EDIT);
+	form.uiScenePos( scenePos() );
 }
 
 QString ServerViewNode::text() const {
 	return m_text;
 }
 
-void ServerViewNode::id(const QString& t) {
-	m_id = t;
-}
-
 QString ServerViewNode::id() const {
 	return m_id;
+}
+
+QPointF ServerViewNode::storedPosition() const {
+	return m_storedPosition;
 }

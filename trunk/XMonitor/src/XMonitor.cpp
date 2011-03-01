@@ -8,6 +8,8 @@
 #include "ServerForm.h"
 #include "Comm.h"
 
+pthread_t XMonitor::threads[10];
+
 XMonitor::XMonitor(QWidget *parent) :
 	QMainWindow(parent) {
 	ui.setupUi(this);
@@ -16,8 +18,8 @@ XMonitor::XMonitor(QWidget *parent) :
 	readSettings();
 	openDatabase();
 	showServerView();
-	ServerView *sv = (ServerView*)m_pCentralWidgetLayout->widget(0);
-	sv->loadFromDb();
+	m_pServerView->loadFromDb();
+	startServerMonitorThread();
 }
 
 XMonitor::~XMonitor() {
@@ -39,6 +41,35 @@ void XMonitor::showServerView() {
 
 void XMonitor::showReportView() {
 	m_pCentralWidgetLayout->setCurrentIndex(1);
+}
+
+void* XMonitor::serverMonitorThread(void *arg){
+	int tid;
+	tid = *((int *) arg);
+	printf("Hello World! It's me, thread %d!\n", tid);
+
+	while(true){
+		printf("thread %d do work\n", tid);
+	}
+}
+
+void XMonitor::startServerMonitorThread(){
+	int NUM_THREADS = 5;
+	pthread_t threads[NUM_THREADS];
+	int thread_args[NUM_THREADS];
+	int rc, i;
+
+	/* create all threads */
+	for (i = 0; i < NUM_THREADS; ++i) {
+		thread_args[i] = i;
+		printf("In main: creating thread %d\n", i);
+		rc = pthread_create(&threads[i], NULL, XMonitor::serverMonitorThread, (void *) &thread_args[i]);
+		assert(0 == rc);
+	}
+}
+
+void XMonitor::stopServerMonitorThread(){
+
 }
 
 void XMonitor::drawUi() {
@@ -132,8 +163,8 @@ void XMonitor::drawCentralWidget() {
 	QHBoxLayout *hLay = new QHBoxLayout(central);
 
 	QStackedLayout *sLay = new QStackedLayout;
-	ServerView *svrView = new ServerView(central);
-	sLay->addWidget(svrView);
+	m_pServerView = new ServerView(central);
+	sLay->addWidget(m_pServerView);
 
 	textEdit = new QTextEdit(central);
 	textEdit->setObjectName(QString::fromUtf8("textEdit"));
@@ -180,6 +211,8 @@ void XMonitor::writeSettings() {
 	st.setValue("usr", m_dbUsr);
 	st.setValue("pwd", m_dbPwd);
 	st.endGroup();
+
+	m_pServerView->saveScene();
 }
 
 void XMonitor::openDatabase() {
@@ -214,14 +247,15 @@ void XMonitor::initDatabase() {
 	progress.setValue(1);
 
 	int i = 1;
-	Q_FOREACH(QString str, ls)
-		{
-			bool r = query.exec(str);
-			progress.setValue(++i);
-			qApp->processEvents();
-		}
+	Q_FOREACH(QString str, ls){
+		bool r = query.exec(str);
+		progress.setValue(++i);
+		qApp->processEvents();
+	}
 	progress.setValue(progress.maximum());
 	qApp->processEvents();
 	yINFO("Initialize Done.");
 
 }
+
+void serverMonitorThread(void *arg);
