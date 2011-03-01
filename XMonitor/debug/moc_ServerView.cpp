@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ServerView.h'
 **
-** Created: Mon Feb 28 16:55:48 2011
+** Created: Tue Mar 1 11:03:40 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -36,7 +36,7 @@ static const uint qt_meta_data_ServerView[] = {
       37,   11,   11,   11, 0x08,
       57,   52,   11,   11, 0x08,
       87,   11,   11,   11, 0x08,
-     130,  119,  103,   11, 0x08,
+     122,  119,  103,   11, 0x08,
 
        0        // eod
 };
@@ -44,8 +44,8 @@ static const uint qt_meta_data_ServerView[] = {
 static const char qt_meta_stringdata_ServerView[] = {
     "ServerView\0\0addServer()\0deleteItem()\0"
     "activeServer()\0node\0activeServer(ServerViewNode*)\0"
-    "updateActions()\0ServerViewNode*\0"
-    "id,ip,name\0addItem(QString,QString,QString)\0"
+    "updateActions()\0ServerViewNode*\0id\0"
+    "addItem(QString)\0"
 };
 
 const QMetaObject ServerView::staticMetaObject = {
@@ -82,7 +82,7 @@ int ServerView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 2: activeServer(); break;
         case 3: activeServer((*reinterpret_cast< ServerViewNode*(*)>(_a[1]))); break;
         case 4: updateActions(); break;
-        case 5: { ServerViewNode* _r = addItem((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])));
+        case 5: { ServerViewNode* _r = addItem((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< ServerViewNode**>(_a[0]) = _r; }  break;
         default: ;
         }

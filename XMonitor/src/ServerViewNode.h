@@ -22,7 +22,7 @@ public:
 	bool	m_isServerActive;
 	enum NodeType { GeneralServer };
 
-	ServerViewNode(NodeType t = GeneralServer, QMenu *ctxMenu = 0);
+	ServerViewNode(QString id, NodeType t = GeneralServer, QMenu *ctxMenu = 0);
 	~ServerViewNode();
 
 	void addLink(ServerViewLink *link);
@@ -35,11 +35,11 @@ public:
 
 	void startBlink();
 	void stopBlink();
+	void saveNodePos();
 
-	void id(const QString &id);
 	QString id() const;
-	void text(const QString &t);
 	QString text() const;
+	QPointF storedPosition() const;
 
 protected:
 	void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
@@ -55,6 +55,8 @@ private:
 
 	QString m_id;
 	QString m_text;
+	QPointF	m_storedPosition;
+
 	QColor 	m_txtColor;
 	QColor 	m_bgColor;
 

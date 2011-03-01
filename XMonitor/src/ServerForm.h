@@ -12,7 +12,7 @@ class ServerForm: public QDialog {
 
 public:
 	enum OpType{INQ, ADD, EDIT};
-	enum { ID = 0, IP = 1, NAME = 2, DESC = 3, USR = 4, PWD = 5, ACTIVE = 6 };
+	enum { ID = 0, IP = 1, NAME = 2, DESC = 3, USR = 4, PWD = 5, ACTIVE = 6, UI_SCENE_POS = 7 };
 	ServerForm(QString id = "", OpType op = INQ, QWidget *parent = 0);
 	~ServerForm();
 
@@ -20,6 +20,10 @@ public:
 	QString id();
 	QString ip();
 	QString name();
+
+	QPointF uiScenePos();
+	void uiScenePos(QPointF pos);
+
 	bool isServerActive();
 	void setServerActive(bool c);
 

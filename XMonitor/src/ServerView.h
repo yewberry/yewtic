@@ -26,6 +26,7 @@ public:
 
 	void loadFromDb();
 	void clearScene();
+	void saveScene();
 
 protected:
 	void contextMenuEvent(QContextMenuEvent * event);
@@ -37,7 +38,7 @@ private slots:
     void activeServer(ServerViewNode* node);
 
     void updateActions();
-    ServerViewNode* addItem(QString id, QString ip, QString name);
+    ServerViewNode* addItem(QString id);
 
 private:
 	void createActions();
