@@ -8,6 +8,12 @@
 #include "ServerForm.h"
 #include "Comm.h"
 
+#ifdef WIN32
+#include "windows.h"
+#else
+#include <unistd.h>
+#endif
+
 pthread_t XMonitor::threads[10];
 
 XMonitor::XMonitor(QWidget *parent) :
@@ -50,17 +56,22 @@ void* XMonitor::serverMonitorThread(void *arg){
 
 	while(true){
 		printf("thread %d do work\n", tid);
+
+#ifdef WIN32
+		Sleep(1000);
+#else
+		sleep(1000);
+#endif
 	}
 }
 
 void XMonitor::startServerMonitorThread(){
-	int NUM_THREADS = 5;
-	pthread_t threads[NUM_THREADS];
-	int thread_args[NUM_THREADS];
+	pthread_t threads[2];
+	int thread_args[2];
 	int rc, i;
 
 	/* create all threads */
-	for (i = 0; i < NUM_THREADS; ++i) {
+	for (i = 0; i < 2; ++i) {
 		thread_args[i] = i;
 		printf("In main: creating thread %d\n", i);
 		rc = pthread_create(&threads[i], NULL, XMonitor::serverMonitorThread, (void *) &thread_args[i]);

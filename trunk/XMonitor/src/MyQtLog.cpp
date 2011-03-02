@@ -1,6 +1,7 @@
 #include "MyQtLog.h"
 
 MyQtLog *MyQtLog::log = 0;
+pthread_mutex_t MyQtLog::m_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 MyQtLog::MyQtLog(QWidget *parent)
     : QWidget(parent), file(0), filename("")

@@ -4,6 +4,7 @@
 #include <QtGui>
 #include "ui_MyQtLog.h"
 #include <string>
+#include <pthread.h>
 
 #define yDEBUG(msg) (MyQtLog::log->d(msg,__FILE__,__LINE__))
 #define yINFO(msg) (MyQtLog::log->i(msg,__FILE__,__LINE__))
@@ -17,6 +18,7 @@ class MyQtLog : public QWidget
 
 public:
     ~MyQtLog(void);
+    static pthread_mutex_t m_mutex;
     static MyQtLog* init(QString path = QString(), QWidget *parent = 0);
     static MyQtLog	*log;
     QString			filename;
