@@ -9,14 +9,14 @@
 #define SERVERVIEWNODE_H_
 
 #include <QApplication>
-#include <QGraphicsItem>
 #include <QSet>
 #include <QColor>
 #include <QMenu>
+#include "ServerViewItem.h"
 
 class ServerViewLink;
 
-class ServerViewNode: public QGraphicsObject {
+class ServerViewNode: public ServerViewItem {
 
 public:
 	bool	m_isServerActive;
@@ -37,7 +37,7 @@ public:
 	void stopBlink();
 	void saveNodePos();
 
-	QString id() const;
+
 	QString text() const;
 	QPointF storedPosition() const;
 
@@ -53,7 +53,6 @@ private:
 
 	QSet<ServerViewLink *> m_links;
 
-	QString m_id;
 	QString m_text;
 	QPointF	m_storedPosition;
 

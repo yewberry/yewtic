@@ -23,18 +23,21 @@ public:
     XMonitor(QWidget *parent = 0);
     ~XMonitor();
 
+    ServerView* serverView();
+
 	static void* serverMonitorThread(void *arg);
 	static pthread_t threads[];
 
 protected:
     void closeEvent(QCloseEvent *event);
+    void timerEvent(QTimerEvent *event);
 
 private slots:
 	void showServerView();
 	void showReportView();
 
-	void startServerMonitorThread();
-	void stopServerMonitorThread();
+	void startBackgroundThread();
+	void stopBackgroundThread();
 
 private:
     void drawUi();
@@ -61,6 +64,9 @@ private:
     QString m_dbName;
     QString m_dbUsr;
     QString m_dbPwd;
+
+    static int	m_threadTimerInter;
+    int		m_threadTimer;
 };
 
 #endif // XMONITOR_H

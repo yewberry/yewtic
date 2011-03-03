@@ -7,7 +7,6 @@
 
 #include <QtGui>
 #include "ServerView.h"
-#include "ServerViewNode.h"
 #include "ServerForm.h"
 
 ServerView::ServerView(QWidget *parent) :
@@ -181,4 +180,14 @@ ServerViewNode* ServerView::selectedNode() const {
 	} else {
 		return 0;
 	}
+}
+
+ServerViewItem* ServerView::getItemById(QString id){
+	QList<QGraphicsItem *> items = m_pScene->items();
+	Q_FOREACH(QGraphicsItem *item, items){
+		ServerViewItem *si = dynamic_cast<ServerViewItem *>(item);
+		if(si != 0 && si->id().compare(id) == 0)
+			return si;
+	}
+	return 0;
 }
