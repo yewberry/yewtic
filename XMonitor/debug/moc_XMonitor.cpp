@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'XMonitor.h'
 **
-** Created: Tue Mar 1 11:51:58 2011
+** Created: Thu Mar 3 17:31:56 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -34,15 +34,14 @@ static const uint qt_meta_data_XMonitor[] = {
       10,    9,    9,    9, 0x08,
       27,    9,    9,    9, 0x08,
       44,    9,    9,    9, 0x08,
-      71,    9,    9,    9, 0x08,
+      68,    9,    9,    9, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_XMonitor[] = {
     "XMonitor\0\0showServerView()\0showReportView()\0"
-    "startServerMonitorThread()\0"
-    "stopServerMonitorThread()\0"
+    "startBackgroundThread()\0stopBackgroundThread()\0"
 };
 
 const QMetaObject XMonitor::staticMetaObject = {
@@ -76,8 +75,8 @@ int XMonitor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: showServerView(); break;
         case 1: showReportView(); break;
-        case 2: startServerMonitorThread(); break;
-        case 3: stopServerMonitorThread(); break;
+        case 2: startBackgroundThread(); break;
+        case 3: stopBackgroundThread(); break;
         default: ;
         }
         _id -= 4;

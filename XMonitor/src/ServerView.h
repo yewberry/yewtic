@@ -14,8 +14,8 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 
-
-class ServerViewNode;
+#include "ServerViewItem.h"
+#include "ServerViewNode.h"
 
 class ServerView : public QWidget
 {
@@ -27,6 +27,7 @@ public:
 	void loadFromDb();
 	void clearScene();
 	void saveScene();
+	ServerViewItem* getItemById(QString id);
 
 protected:
 	void contextMenuEvent(QContextMenuEvent * event);

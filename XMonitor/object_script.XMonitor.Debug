@@ -1,4 +1,5 @@
 INPUT(
+./debug/ServerViewItem.o
 ./debug/ServerForm.o
 ./debug/TitleBar.o
 ./debug/ServerViewLink.o

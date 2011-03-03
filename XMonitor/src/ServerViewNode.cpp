@@ -10,7 +10,7 @@
 #include "ServerForm.h"
 
 ServerViewNode::ServerViewNode(QString id, NodeType t, QMenu *ctxMenu) :
-	m_id(id),
+	ServerViewItem(id),
 	m_txtColor(Qt::darkGreen), m_outlineColor(Qt::darkBlue),
 	m_bgColor(Qt::white), m_pContextMenu(ctxMenu)
 {
@@ -111,14 +111,13 @@ void ServerViewNode::startBlink(){
 void ServerViewNode::stopBlink(){
 	m_isServerActive = false;
 	m_bgColor = m_oldBgColor;
-	m_blinkCount = 0;
+	m_blinkCount = 1;
 	killTimer(m_blinkTimer);
 	update(outlineRect());
 }
 
 void ServerViewNode::timerEvent(QTimerEvent *event){
-	m_blinkCount % 2 == 0 ? m_bgColor = Qt::green : m_bgColor = Qt::white;
-	m_blinkCount++;
+	m_blinkCount % 2 == 0 ? m_bgColor = Qt::green,m_blinkCount++ : m_bgColor = Qt::white,m_blinkCount--;
 	update(outlineRect());
 }
 
@@ -129,10 +128,6 @@ void ServerViewNode::saveNodePos(){
 
 QString ServerViewNode::text() const {
 	return m_text;
-}
-
-QString ServerViewNode::id() const {
-	return m_id;
 }
 
 QPointF ServerViewNode::storedPosition() const {

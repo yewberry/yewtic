@@ -5,6 +5,7 @@
 #include "TopHeader.h"
 #include "TitleBar.h"
 #include "ServerView.h"
+#include "ServerViewItem.h"
 #include "ServerForm.h"
 #include "Comm.h"
 
@@ -15,9 +16,16 @@
 #endif
 
 pthread_t XMonitor::threads[10];
+int XMonitor::m_threadTimerInter;
 
-XMonitor::XMonitor(QWidget *parent) :
-	QMainWindow(parent) {
+static pthread_mutex_t mymutex = PTHREAD_MUTEX_INITIALIZER;
+static QString thrdLogBuf;
+static XMonitor *myapp;
+
+XMonitor::XMonitor(QWidget *parent)
+	: QMainWindow(parent)
+{
+	myapp = this;
 	ui.setupUi(this);
 	drawUi();
 	initGuiConns();
@@ -25,11 +33,13 @@ XMonitor::XMonitor(QWidget *parent) :
 	openDatabase();
 	showServerView();
 	m_pServerView->loadFromDb();
-	startServerMonitorThread();
+
+	startBackgroundThread();
+	m_threadTimer = startTimer(m_threadTimerInter);
 }
 
 XMonitor::~XMonitor() {
-
+	stopBackgroundThread();
 }
 
 void XMonitor::closeEvent(QCloseEvent *event) {
@@ -50,36 +60,46 @@ void XMonitor::showReportView() {
 }
 
 void* XMonitor::serverMonitorThread(void *arg){
-	int tid;
-	tid = *((int *) arg);
-	printf("Hello World! It's me, thread %d!\n", tid);
+	while(true) {
+		QSqlTableModel model;
+		model.setTable("server");
+		model.select();
 
-	while(true){
-		printf("thread %d do work\n", tid);
+		pthread_mutex_lock(&mymutex);
+		thrdLogBuf.append(model.rowCount());
+		for (int row = 0; row < model.rowCount(); ++row) {
+			QSqlRecord record = model.record(row);
+			bool act = record.value(ServerForm::ACTIVE).toBool();
+			if(act){
+				QString id = record.value(ServerForm::ID).toString();
+				thrdLogBuf.append(QString("Node: %1\n").arg(id));
+				ServerViewItem *item = myapp->serverView()->getItemById(id);
+				if(item != 0){
+					ServerViewNode *si = dynamic_cast<ServerViewNode *>(item);
+					if(si != 0)
+						si->startBlink();
+				}
+			}
+		}
+		pthread_mutex_unlock(&mymutex);
 
 #ifdef WIN32
-		Sleep(1000);
+		Sleep(XMonitor::m_threadTimerInter);
 #else
-		sleep(1000);
+		sleep(XMonitor::m_threadTimerInter);
 #endif
+
 	}
 }
 
-void XMonitor::startServerMonitorThread(){
-	pthread_t threads[2];
-	int thread_args[2];
-	int rc, i;
-
-	/* create all threads */
-	for (i = 0; i < 2; ++i) {
-		thread_args[i] = i;
-		printf("In main: creating thread %d\n", i);
-		rc = pthread_create(&threads[i], NULL, XMonitor::serverMonitorThread, (void *) &thread_args[i]);
-		assert(0 == rc);
-	}
+void XMonitor::startBackgroundThread(){
+	int rc = pthread_create(&XMonitor::threads[0], NULL, XMonitor::serverMonitorThread, NULL);
+	assert(0 == rc);
 }
 
-void XMonitor::stopServerMonitorThread(){
+void XMonitor::stopBackgroundThread(){
+	pthread_t p = XMonitor::threads[0];
+	pthread_cancel(p);
 
 }
 
@@ -200,11 +220,12 @@ void XMonitor::initGuiConns() {
 
 void XMonitor::readSettings() {
 	QSettings st("XMonitor.ini", QSettings::IniFormat);
-	st.beginGroup("system");
+	st.beginGroup("SYSTEM");
 	restoreGeometry(st.value("geometry").toByteArray());
+	XMonitor::m_threadTimerInter = st.value("thread_worker_interval", 1000).toInt();
 	st.endGroup();
 
-	st.beginGroup("database");
+	st.beginGroup("DATABASE");
 	m_dbName = st.value("name", "data.db").toString();
 	m_dbUsr = st.value("usr", "xpa").toString();
 	m_dbPwd = st.value("pwd", "xpa").toString();
@@ -213,11 +234,12 @@ void XMonitor::readSettings() {
 
 void XMonitor::writeSettings() {
 	QSettings st("XMonitor.ini", QSettings::IniFormat);
-	st.beginGroup("system");
+	st.beginGroup("SYSTEM");
 	st.setValue("geometry", saveGeometry());
+	st.setValue("thread_worker_interval", XMonitor::m_threadTimerInter);
 	st.endGroup();
 
-	st.beginGroup("database");
+	st.beginGroup("DATABASE");
 	st.setValue("name", m_dbName);
 	st.setValue("usr", m_dbUsr);
 	st.setValue("pwd", m_dbPwd);
@@ -269,4 +291,16 @@ void XMonitor::initDatabase() {
 
 }
 
-void serverMonitorThread(void *arg);
+void XMonitor::timerEvent(QTimerEvent *event){
+	pthread_mutex_lock(&mymutex);
+	if(!thrdLogBuf.isEmpty()){
+		thrdLogBuf.replace("\n","<br>");
+		yDEBUG(thrdLogBuf);
+		thrdLogBuf.clear();
+	}
+	pthread_mutex_unlock(&mymutex);
+}
+
+ServerView* XMonitor::serverView(){
+	return m_pServerView;
+}
