@@ -25,6 +25,7 @@ public:
     QFile			*file;
     QTextBrowser	*brs;
 
+public slots:
     void d(QString msg, char *file, int line);
     void i(QString msg, char *file, int line);
     void w(QString msg, char *file, int line);

@@ -7,24 +7,24 @@ QT += core \
     opengl \
     webkit \
     script
-HEADERS += src/ServerViewItem.h \
+HEADERS += src/ServerThread.h \
+    src/ServerViewItem.h \
     src/ServerForm.h \
     src/TitleBar.h \
     src/ServerViewLink.h \
     src/ServerViewNode.h \
     src/ServerView.h \
-    src/XBean.h \
     src/Comm.h \
     src/MyQtLog.h \
     src/TopHeader.h \
     src/XMonitor.h
-SOURCES += src/ServerViewItem.cpp \
+SOURCES += src/ServerThread.cpp \
+    src/ServerViewItem.cpp \
     src/ServerForm.cpp \
     src/TitleBar.cpp \
     src/ServerViewLink.cpp \
     src/ServerViewNode.cpp \
     src/ServerView.cpp \
-    src/XBean.cpp \
     src/Comm.cpp \
     src/MyQtLog.cpp \
     src/TopHeader.cpp \

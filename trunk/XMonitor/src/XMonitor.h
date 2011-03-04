@@ -4,16 +4,11 @@
 #include <QtGui/QMainWindow>
 #include "../ui_XMonitor.h"
 
-#include <pthread.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <unistd.h>
-
 class TopHeader;
 class QToolButton;
 class QStackedLayout;
 class ServerView;
+class ServerThread;
 
 class XMonitor : public QMainWindow
 {
@@ -25,12 +20,8 @@ public:
 
     ServerView* serverView();
 
-	static void* serverMonitorThread(void *arg);
-	static pthread_t threads[];
-
 protected:
     void closeEvent(QCloseEvent *event);
-    void timerEvent(QTimerEvent *event);
 
 private slots:
 	void showServerView();
@@ -65,8 +56,8 @@ private:
     QString m_dbUsr;
     QString m_dbPwd;
 
-    static int	m_threadTimerInter;
-    int		m_threadTimer;
+    ServerThread* m_pSvrThrd;
+    int	m_threadInter;
 };
 
 #endif // XMONITOR_H

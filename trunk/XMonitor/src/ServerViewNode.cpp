@@ -111,13 +111,14 @@ void ServerViewNode::startBlink(){
 void ServerViewNode::stopBlink(){
 	m_isServerActive = false;
 	m_bgColor = m_oldBgColor;
-	m_blinkCount = 1;
+	m_blinkCount = 0;
 	killTimer(m_blinkTimer);
 	update(outlineRect());
 }
 
 void ServerViewNode::timerEvent(QTimerEvent *event){
-	m_blinkCount % 2 == 0 ? m_bgColor = Qt::green,m_blinkCount++ : m_bgColor = Qt::white,m_blinkCount--;
+	m_blinkCount % 2 == 0 ? m_bgColor = Qt::green: m_bgColor = Qt::white;
+	m_blinkCount++;
 	update(outlineRect());
 }
 
