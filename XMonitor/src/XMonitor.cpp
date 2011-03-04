@@ -1,31 +1,17 @@
 #include "XMonitor.h"
 #include <QtGui>
-#include <QtSql>
 
+#include "Comm.h"
 #include "TopHeader.h"
 #include "TitleBar.h"
 #include "ServerView.h"
 #include "ServerViewItem.h"
 #include "ServerForm.h"
-#include "Comm.h"
-
-#ifdef WIN32
-#include "windows.h"
-#else
-#include <unistd.h>
-#endif
-
-pthread_t XMonitor::threads[10];
-int XMonitor::m_threadTimerInter;
-
-static pthread_mutex_t mymutex = PTHREAD_MUTEX_INITIALIZER;
-static QString thrdLogBuf;
-static XMonitor *myapp;
+#include "ServerThread.h"
 
 XMonitor::XMonitor(QWidget *parent)
 	: QMainWindow(parent)
 {
-	myapp = this;
 	ui.setupUi(this);
 	drawUi();
 	initGuiConns();
@@ -34,8 +20,10 @@ XMonitor::XMonitor(QWidget *parent)
 	showServerView();
 	m_pServerView->loadFromDb();
 
+	m_pSvrThrd = new ServerThread(this, m_threadInter);
+	connect( m_pSvrThrd, SIGNAL(sendDebugLog(QString, char*, int)), MyQtLog::log, SLOT(d(QString, char*, int)) );
+
 	startBackgroundThread();
-	m_threadTimer = startTimer(m_threadTimerInter);
 }
 
 XMonitor::~XMonitor() {
@@ -59,48 +47,25 @@ void XMonitor::showReportView() {
 	m_pCentralWidgetLayout->setCurrentIndex(1);
 }
 
+/*
 void* XMonitor::serverMonitorThread(void *arg){
 	while(true) {
 		QSqlTableModel model;
 		model.setTable("server");
 		model.select();
 
-		pthread_mutex_lock(&mymutex);
-		thrdLogBuf.append(model.rowCount());
-		for (int row = 0; row < model.rowCount(); ++row) {
-			QSqlRecord record = model.record(row);
-			bool act = record.value(ServerForm::ACTIVE).toBool();
-			if(act){
-				QString id = record.value(ServerForm::ID).toString();
-				thrdLogBuf.append(QString("Node: %1\n").arg(id));
-				ServerViewItem *item = myapp->serverView()->getItemById(id);
-				if(item != 0){
-					ServerViewNode *si = dynamic_cast<ServerViewNode *>(item);
-					if(si != 0)
-						si->startBlink();
-				}
-			}
-		}
-		pthread_mutex_unlock(&mymutex);
-
-#ifdef WIN32
-		Sleep(XMonitor::m_threadTimerInter);
-#else
-		sleep(XMonitor::m_threadTimerInter);
-#endif
 
 	}
+	return (void*)0;
 }
+*/
 
 void XMonitor::startBackgroundThread(){
-	int rc = pthread_create(&XMonitor::threads[0], NULL, XMonitor::serverMonitorThread, NULL);
-	assert(0 == rc);
+	m_pSvrThrd->start();
 }
 
 void XMonitor::stopBackgroundThread(){
-	pthread_t p = XMonitor::threads[0];
-	pthread_cancel(p);
-
+	m_pSvrThrd->stop();
 }
 
 void XMonitor::drawUi() {
@@ -222,7 +187,7 @@ void XMonitor::readSettings() {
 	QSettings st("XMonitor.ini", QSettings::IniFormat);
 	st.beginGroup("SYSTEM");
 	restoreGeometry(st.value("geometry").toByteArray());
-	XMonitor::m_threadTimerInter = st.value("thread_worker_interval", 1000).toInt();
+	m_threadInter = st.value("thread_worker_interval", 1000).toInt();
 	st.endGroup();
 
 	st.beginGroup("DATABASE");
@@ -236,7 +201,7 @@ void XMonitor::writeSettings() {
 	QSettings st("XMonitor.ini", QSettings::IniFormat);
 	st.beginGroup("SYSTEM");
 	st.setValue("geometry", saveGeometry());
-	st.setValue("thread_worker_interval", XMonitor::m_threadTimerInter);
+	st.setValue("thread_worker_interval", m_threadInter);
 	st.endGroup();
 
 	st.beginGroup("DATABASE");
@@ -289,16 +254,6 @@ void XMonitor::initDatabase() {
 	qApp->processEvents();
 	yINFO("Initialize Done.");
 
-}
-
-void XMonitor::timerEvent(QTimerEvent *event){
-	pthread_mutex_lock(&mymutex);
-	if(!thrdLogBuf.isEmpty()){
-		thrdLogBuf.replace("\n","<br>");
-		yDEBUG(thrdLogBuf);
-		thrdLogBuf.clear();
-	}
-	pthread_mutex_unlock(&mymutex);
 }
 
 ServerView* XMonitor::serverView(){

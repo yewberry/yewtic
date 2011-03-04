@@ -36,19 +36,24 @@ MyQtLog* MyQtLog::init(QString path, QWidget *parent){
 }
 
 void MyQtLog::d(QString msg, char *file, int line){
-	write(QString("<span style=\"color:gray\">[DEBUG] %1 (%2:%3)</span>").arg(msg).arg(file).arg(line));
+	QString t = QTime::currentTime().toString("hh:mm:ss.zzz");
+	write(QString("<span style=\"color:gray\">[DEBUG]%4 %1 (%2:%3)</span>").arg(msg).arg(file).arg(line).arg(t));
 }
 void MyQtLog::i(QString msg, char *file, int line){
-	write(QString("<span style=\"color:blue\">[INFO ] %1 (%2:%3)</span>").arg(msg).arg(file).arg(line));
+	QString t = QTime::currentTime().toString("hh:mm:ss.zzz");
+	write(QString("<span style=\"color:blue\">[INFO ]%4 %1 (%2:%3)</span>").arg(msg).arg(file).arg(line).arg(t));
 }
 void MyQtLog::w(QString msg, char *file, int line){
-	write(QString("<span style=\"color:orange\"><b>[WARN ] %1 (%2:%3)</></span>").arg(msg).arg(file).arg(line));
+	QString t = QTime::currentTime().toString("hh:mm:ss.zzz");
+	write(QString("<span style=\"color:orange\"><b>[WARN ]%4 %1 (%2:%3)</></span>").arg(msg).arg(file).arg(line).arg(t));
 }
 void MyQtLog::e(QString msg, char *file, int line){
-	write(QString("<span style=\"color:red\"><b>[ERROR] %1 (%2:%3)</b></span>").arg(msg).arg(file).arg(line));
+	QString t = QTime::currentTime().toString("hh:mm:ss.zzz");
+	write(QString("<span style=\"color:red\"><b>[ERROR]%4 %1 (%2:%3)</b></span>").arg(msg).arg(file).arg(line).arg(t));
 }
 void MyQtLog::f(QString msg, char *file, int line){
-	write(QString("<span style=\"color:red\"><b>[FATAL] %1 (%2:%3)</b></span>").arg(msg).arg(file).arg(line));
+	QString t = QTime::currentTime().toString("hh:mm:ss.zzz");
+	write(QString("<span style=\"color:red\"><b>[FATAL]%4 %1 (%2:%3)</b></span>").arg(msg).arg(file).arg(line).arg(t));
 }
 
 void MyQtLog::write(QString msg){
