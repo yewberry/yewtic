@@ -7,10 +7,9 @@
 
 #include "ServerViewItem.h"
 
-ServerViewItem::ServerViewItem(QString id)
+ServerViewItem::ServerViewItem(QString id, QGraphicsItem *parent)
+	: QGraphicsObject(parent), m_id(id)
 {
-	 m_id = id;
-
 }
 
 ServerViewItem::~ServerViewItem() {

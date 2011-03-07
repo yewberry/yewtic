@@ -7,7 +7,9 @@ QT += core \
     opengl \
     webkit \
     script
-HEADERS += src/ServerThread.h \
+HEADERS += src/StepForm.h \
+    src/XThread.h \
+    src/ServerThread.h \
     src/ServerViewItem.h \
     src/ServerForm.h \
     src/TitleBar.h \
@@ -18,7 +20,9 @@ HEADERS += src/ServerThread.h \
     src/MyQtLog.h \
     src/TopHeader.h \
     src/XMonitor.h
-SOURCES += src/ServerThread.cpp \
+SOURCES += src/StepForm.cpp \
+    src/XThread.cpp \
+    src/ServerThread.cpp \
     src/ServerViewItem.cpp \
     src/ServerForm.cpp \
     src/TitleBar.cpp \
@@ -30,7 +34,8 @@ SOURCES += src/ServerThread.cpp \
     src/TopHeader.cpp \
     src/XMonitor.cpp \
     src/main.cpp
-FORMS += ui/ServerForm.ui \
+FORMS += ui/StepForm.ui \
+    ui/ServerForm.ui \
     ui/MyQtLog.ui \
     ui/XMonitor.ui
 RESOURCES += res.qrc

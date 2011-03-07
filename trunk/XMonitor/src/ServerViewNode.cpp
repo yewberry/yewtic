@@ -5,23 +5,28 @@
  *      Author: Yewberry
  */
 #include <QtGui>
+#include "ServerView.h"
 #include "ServerViewNode.h"
 #include "ServerViewLink.h"
 #include "ServerForm.h"
+#include "Comm.h"
 
-ServerViewNode::ServerViewNode(QString id, NodeType t, QMenu *ctxMenu) :
+ServerViewNode::ServerViewNode(QString id, NodeType t, QMenu *ctxMenu, ServerView *servView) :
 	ServerViewItem(id),
 	m_txtColor(Qt::darkGreen), m_outlineColor(Qt::darkBlue),
-	m_bgColor(Qt::white), m_pContextMenu(ctxMenu)
+	m_bgColor(Qt::white), m_pContextMenu(ctxMenu), m_pServerView(servView)
 {
 	setFlags(ItemIsMovable | ItemIsSelectable);
 	ServerForm form(m_id, ServerForm::INQ);
 	m_text = QString("%1\n%2").arg(form.ip()).arg(form.name());
 	m_storedPosition = form.uiScenePos();
 	setPos(m_storedPosition);
+
+	m_blinkTimer = startTimer(500);
 }
 
 ServerViewNode::~ServerViewNode() {
+	killTimer(m_blinkTimer);
 	foreach(ServerViewLink *link, m_links)
 			delete link;
 }
@@ -66,6 +71,9 @@ void ServerViewNode::paint(QPainter *painter,
 }
 
 void ServerViewNode::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
+	QAction *act = m_pServerView->activeServerAction();
+	QString t = isActive()? tr("Stop monitor") : tr("Start monitor");
+	act->setText(t);
 	scene()->clearSelection();
 	setSelected(true);
 	m_pContextMenu->exec(event->screenPos());
@@ -101,25 +109,15 @@ int ServerViewNode::roundness(double size) const {
 	return 100 * Diameter / int(size);
 }
 
-void ServerViewNode::startBlink(){
-	m_isServerActive = true;
-	m_oldBgColor = m_bgColor;
-	m_blinkCount = 0;
-	m_blinkTimer = startTimer(500);
-}
-
-void ServerViewNode::stopBlink(){
-	m_isServerActive = false;
-	m_bgColor = m_oldBgColor;
-	m_blinkCount = 0;
-	killTimer(m_blinkTimer);
-	update(outlineRect());
-}
-
 void ServerViewNode::timerEvent(QTimerEvent *event){
-	m_blinkCount % 2 == 0 ? m_bgColor = Qt::green: m_bgColor = Qt::white;
-	m_blinkCount++;
-	update(outlineRect());
+	bool act = isActive();
+	if(act){
+		m_bgColor == Qt::white ? m_bgColor = Qt::green : m_bgColor = Qt::white;
+		update(outlineRect());
+	} else if(m_bgColor != Qt::white){
+		m_bgColor = Qt::white;
+		update(outlineRect());
+	}
 }
 
 void ServerViewNode::saveNodePos(){
@@ -133,4 +131,9 @@ QString ServerViewNode::text() const {
 
 QPointF ServerViewNode::storedPosition() const {
 	return m_storedPosition;
+}
+
+bool ServerViewNode::isActive(){
+	ServerForm form(m_id, ServerForm::INQ);
+	return form.isServerActive();
 }

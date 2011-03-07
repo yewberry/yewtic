@@ -15,7 +15,7 @@
 #include "ServerForm.h"
 
 ServerThread::ServerThread(QObject *parent, int inter)
-	: QThread(parent), m_threadInter(inter), m_stopped(false)
+	: XThread(parent, inter)
 {
 }
 void ServerThread::run()
@@ -31,23 +31,20 @@ void ServerThread::run()
 			QString nm = record.value(ServerForm::NAME).toString();
 
 			yTDEBUG(QString("Serv %1 is %2").arg(nm).arg(act));
+			/*
 			if(act){
 				QString id = record.value(ServerForm::ID).toString();
 				XMonitor *app = (XMonitor*)this->parent();
 				ServerViewNode *item = dynamic_cast<ServerViewNode *>(app->serverView()->getItemById(id));
 				if(item != 0){
-					item->startBlink();
+
 				}
 			}
+			*/
 		}
 
 
     	msleep(m_threadInter);
     }
     m_stopped = false;
-}
-
-void ServerThread::stop()
-{
-	m_stopped = true;
 }

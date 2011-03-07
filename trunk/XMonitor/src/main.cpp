@@ -13,9 +13,10 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
     app.setStyle("plastique");
+    app.setStyleSheet(Comm::stringFromResource(":/style.qss"));
 
     XMonitor w;
-    w.setStyleSheet(Comm::stringFromResource(":/style.qss"));
+    //w.setStyleSheet();
     w.show();
     return app.exec();
 }

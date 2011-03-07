@@ -12,7 +12,7 @@
 
 class ServerViewItem : public QGraphicsObject {
 public:
-	ServerViewItem(QString id = "");
+	ServerViewItem(QString id = "", QGraphicsItem *parent = 0);
 	~ServerViewItem();
 
 	QString id() const;
