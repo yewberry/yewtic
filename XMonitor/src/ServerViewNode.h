@@ -14,15 +14,16 @@
 #include <QMenu>
 #include "ServerViewItem.h"
 
+class ServerView;
 class ServerViewLink;
 
 class ServerViewNode: public ServerViewItem {
 
 public:
-	bool	m_isServerActive;
 	enum NodeType { GeneralServer };
 
-	ServerViewNode(QString id, NodeType t = GeneralServer, QMenu *ctxMenu = 0);
+	ServerViewNode(QString id, NodeType t = GeneralServer, QMenu *ctxMenu = 0,
+			ServerView *servView = 0);
 	~ServerViewNode();
 
 	void addLink(ServerViewLink *link);
@@ -33,10 +34,7 @@ public:
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 			QWidget *widget);
 
-	void startBlink();
-	void stopBlink();
 	void saveNodePos();
-
 
 	QString text() const;
 	QPointF storedPosition() const;
@@ -50,6 +48,7 @@ protected:
 private:
 	QRectF outlineRect() const;
 	int roundness(double size) const;
+	bool isActive();
 
 	QSet<ServerViewLink *> m_links;
 
@@ -58,14 +57,12 @@ private:
 
 	QColor 	m_txtColor;
 	QColor 	m_bgColor;
-
-	QColor 	m_oldBgColor;
-	int		m_blinkTimer;
-	int		m_blinkCount;
-
 	QColor 	m_outlineColor;
 
-	QMenu* 	m_pContextMenu;
+	int		m_blinkTimer;
+
+	QMenu* 		m_pContextMenu;
+	ServerView* m_pServerView;
 };
 
 #endif /* SERVERVIEWNODE_H_ */

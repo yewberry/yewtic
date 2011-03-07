@@ -24,7 +24,7 @@ ServerView::ServerView(QWidget *parent) :
 
 	createActions();
 	createMenus();
-	createItemMenus();
+
 	connect(m_pScene, SIGNAL(selectionChanged()), this, SLOT(updateActions()));
 
 }
@@ -59,18 +59,9 @@ void ServerView::saveScene() {
 }
 
 void ServerView::addServer() {
-	ServerForm form("", ServerForm::ADD);
+	ServerForm form("", ServerForm::ADD, this);
 	form.exec();
 	addItem( form.id() );
-}
-
-void ServerView::activeServer(ServerViewNode *node){
-	ServerForm form(node->id());
-
-	if(form.isServerActive()){
-		yINFO( QString("Monitor server: %1(%2).").arg(form.name()).arg(form.ip()) );
-		node->startBlink();
-	}
 }
 
 void ServerView::activeServer(){
@@ -78,14 +69,11 @@ void ServerView::activeServer(){
 	ServerForm form(node->id());
 	if(form.isServerActive()){
 		yINFO( QString("De-Active server: %1(%2).").arg(form.name()).arg(form.ip()) );
-		node->stopBlink();
 		form.setServerActive(false);
 
 	} else {
 		yINFO( QString("Active server: %1(%2).").arg(form.name()).arg(form.ip()) );
-		node->startBlink();
 		form.setServerActive(true);
-
 	}
 }
 
@@ -93,7 +81,7 @@ void ServerView::activeServer(){
 
 //TODO this function is temp
 ServerViewNode* ServerView::addItem(QString id) {
-	ServerViewNode *node = new ServerViewNode(id, ServerViewNode::GeneralServer, m_pItemCtxMenu);
+	ServerViewNode *node = new ServerViewNode(id, ServerViewNode::GeneralServer, m_pItemCtxMenu, this);
 	if(node->storedPosition().isNull())
 		node->setPos(QPoint(0 + (120 * (m_itemCount % 5)), 0 + (50 * ((m_itemCount / 5) % 7))));
 	m_pScene->addItem(node);
@@ -132,25 +120,17 @@ void ServerView::createActions() {
 	m_pActiveServerAct->setShortcut(tr("Ctrl+M"));
 	connect(m_pActiveServerAct, SIGNAL(triggered()), this, SLOT(activeServer()));
 
-	m_pDeActiveServerAct = new QAction(tr("De-Active Monito&r"), this);
-	//m_pActiveServerAct->setIcon(QIcon(":/images/delete.png"));
-	m_pDeActiveServerAct->setShortcut(tr("Ctrl+R"));
-	connect(m_pDeActiveServerAct, SIGNAL(triggered()), this, SLOT(activeServer()));
 }
 
 void ServerView::createMenus() {
 	m_pCtxMenu = new QMenu(this);
 	m_pCtxMenu->addAction(m_pAddServerAct);
 
-}
-
-void ServerView::createItemMenus(){
 	m_pItemCtxMenu = new QMenu(this);
 	m_pItemCtxMenu->addAction(m_pEditServerAct);
 	m_pItemCtxMenu->addAction(m_pDeleteItemAct);
 	m_pItemCtxMenu->addSeparator();
 	m_pItemCtxMenu->addAction(m_pActiveServerAct);
-	m_pItemCtxMenu->addAction(m_pDeActiveServerAct);
 }
 
 void ServerView::updateActions() {
@@ -190,4 +170,8 @@ ServerViewItem* ServerView::getItemById(QString id){
 			return si;
 	}
 	return 0;
+}
+
+QAction* ServerView::activeServerAction(){
+	return m_pActiveServerAct;
 }

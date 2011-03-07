@@ -1,4 +1,5 @@
 INPUT(
+./debug/XThread.o
 ./debug/ServerThread.o
 ./debug/ServerViewItem.o
 ./debug/ServerForm.o
@@ -11,6 +12,7 @@ INPUT(
 ./debug/TopHeader.o
 ./debug/XMonitor.o
 ./debug/main.o
+./debug/moc_XThread.o
 ./debug/moc_ServerThread.o
 ./debug/moc_ServerForm.o
 ./debug/moc_TitleBar.o

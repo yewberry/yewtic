@@ -1,8 +1,8 @@
-#include "ServerForm.h"
+#include "StepForm.h"
 #include <QtGui>
 #include "Comm.h"
 
-ServerForm::ServerForm(QString id, OpType op, QWidget *parent)
+StepForm::StepForm(QString id, OpType op, QWidget *parent)
 	: QDialog(parent), m_id(id), m_opType(op)
 {
 	ui.setupUi(this);
@@ -10,13 +10,9 @@ ServerForm::ServerForm(QString id, OpType op, QWidget *parent)
 	mapping();
 }
 
-ServerForm::~ServerForm() {
-
-}
-
-void ServerForm::mapping() {
+void StepForm::mapping() {
 	m_pModel = new QSqlTableModel(this);
-	m_pModel->setTable("server");
+	m_pModel->setTable("step");
 	m_pModel->select();
 
 	m_pMapper = new QDataWidgetMapper(this);
@@ -51,7 +47,7 @@ void ServerForm::mapping() {
     }
 }
 
-void ServerForm::drawUi() {
+void StepForm::drawUi() {
 
 	QDialogButtonBox *buttonBox = ui.buttonBox;
 
@@ -71,28 +67,28 @@ void ServerForm::drawUi() {
 
 }
 
-void ServerForm::save(){
+void StepForm::save(){
 	m_pMapper->submit();
 	this->close();
 }
 
-QSqlTableModel* ServerForm::model(){
+QSqlTableModel* StepForm::model(){
 	return m_pModel;
 }
 
-QString ServerForm::id(){
+QString StepForm::id(){
 	return ui.id->text();
 }
 
-QString ServerForm::ip(){
+QString StepForm::ip(){
 	return ui.ip->text();
 }
 
-QString ServerForm::name(){
+QString StepForm::name(){
 	return ui.name->text();
 }
 
-QPointF ServerForm::uiScenePos(){
+QPointF StepForm::uiScenePos(){
 	QString s = ui.itemPos->text();
 	if(s.isEmpty()){
 		s = "0.0,0.0";
@@ -101,16 +97,16 @@ QPointF ServerForm::uiScenePos(){
 	return QPoint( ls[0].toFloat(), ls[1].toFloat() );
 }
 
-void ServerForm::uiScenePos(QPointF pos){
+void StepForm::uiScenePos(QPointF pos){
 	ui.itemPos->setText( QString("%1,%2").arg(pos.x()).arg(pos.y()) );
 	save();
 }
 
-bool ServerForm::isServerActive(){
+bool StepForm::isServerActive(){
 	return ui.isActive->isChecked();
 }
 
-void ServerForm::setServerActive(bool c){
+void StepForm::setServerActive(bool c){
 	ui.isActive->setChecked(c);
 	save();
 }

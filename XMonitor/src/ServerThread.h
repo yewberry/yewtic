@@ -8,27 +8,17 @@
 #ifndef SERVERTHREAD_H_
 #define SERVERTHREAD_H_
 
-#define yTDEBUG(msg) (emit sendDebugLog(msg,__FILE__,__LINE__))
+#include "XThread.h"
 
-#include <QThread>
-;
-class ServerThread : public QThread
+class ServerThread : public XThread
 {
     Q_OBJECT
 
 public:
-    ServerThread(QObject * parent = 0, int inter = 300);
-    void stop();
-
-signals:
-	void sendDebugLog(QString, char*, int);
+    ServerThread(QObject *parent = 0, int inter = 300);
 
 protected:
     void run();
-
-private:
-    volatile bool m_stopped;
-    int m_threadInter;
 };
 
 #endif /* SERVERTHREAD_H_ */

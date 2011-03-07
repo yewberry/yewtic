@@ -29,6 +29,9 @@ public:
 	void saveScene();
 	ServerViewItem* getItemById(QString id);
 
+
+	QAction* activeServerAction();
+
 protected:
 	void contextMenuEvent(QContextMenuEvent * event);
 
@@ -36,7 +39,6 @@ private slots:
     void addServer();
     void deleteItem();
     void activeServer();
-    void activeServer(ServerViewNode* node);
 
     void updateActions();
     ServerViewNode* addItem(QString id);
@@ -56,7 +58,6 @@ private:
     QAction* m_pEditServerAct;
     QAction* m_pDeleteItemAct;
     QAction* m_pActiveServerAct;
-    QAction* m_pDeActiveServerAct;
 
     QMenu*	m_pCtxMenu;
     QMenu*	m_pItemCtxMenu;
