@@ -1,15 +1,15 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'ServerForm.h'
+** Meta object code from reading C++ file 'StepForm.h'
 **
-** Created: Tue Mar 8 16:16:05 2011
+** Created: Tue Mar 8 16:15:40 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../src/ServerForm.h"
+#include "../src/StepForm.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'ServerForm.h' doesn't include <QObject>."
+#error "The header file 'StepForm.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62
 #error "This file was generated using the moc from 4.7.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -17,7 +17,7 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-static const uint qt_meta_data_ServerForm[] = {
+static const uint qt_meta_data_StepForm[] = {
 
  // content:
        5,       // revision
@@ -31,38 +31,38 @@ static const uint qt_meta_data_ServerForm[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      12,   11,   11,   11, 0x0a,
+      10,    9,    9,    9, 0x0a,
 
        0        // eod
 };
 
-static const char qt_meta_stringdata_ServerForm[] = {
-    "ServerForm\0\0save()\0"
+static const char qt_meta_stringdata_StepForm[] = {
+    "StepForm\0\0save()\0"
 };
 
-const QMetaObject ServerForm::staticMetaObject = {
-    { &QDialog::staticMetaObject, qt_meta_stringdata_ServerForm,
-      qt_meta_data_ServerForm, 0 }
+const QMetaObject StepForm::staticMetaObject = {
+    { &QDialog::staticMetaObject, qt_meta_stringdata_StepForm,
+      qt_meta_data_StepForm, 0 }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
-const QMetaObject &ServerForm::getStaticMetaObject() { return staticMetaObject; }
+const QMetaObject &StepForm::getStaticMetaObject() { return staticMetaObject; }
 #endif //Q_NO_DATA_RELOCATION
 
-const QMetaObject *ServerForm::metaObject() const
+const QMetaObject *StepForm::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
 }
 
-void *ServerForm::qt_metacast(const char *_clname)
+void *StepForm::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_ServerForm))
-        return static_cast<void*>(const_cast< ServerForm*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_StepForm))
+        return static_cast<void*>(const_cast< StepForm*>(this));
     return QDialog::qt_metacast(_clname);
 }
 
-int ServerForm::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int StepForm::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)

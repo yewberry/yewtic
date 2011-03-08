@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ServerView.h'
 **
-** Created: Mon Mar 7 20:10:19 2011
+** Created: Tue Mar 8 17:07:30 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ServerView[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,16 +33,17 @@ static const uint qt_meta_data_ServerView[] = {
  // slots: signature, parameters, type, tag, flags
       12,   11,   11,   11, 0x08,
       24,   11,   11,   11, 0x08,
-      37,   11,   11,   11, 0x08,
-      52,   11,   11,   11, 0x08,
-      87,   84,   68,   11, 0x08,
+      34,   11,   11,   11, 0x08,
+      47,   11,   11,   11, 0x08,
+      62,   11,   11,   11, 0x08,
+      97,   94,   78,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ServerView[] = {
-    "ServerView\0\0addServer()\0deleteItem()\0"
-    "activeServer()\0updateActions()\0"
+    "ServerView\0\0addServer()\0addStep()\0"
+    "deleteItem()\0activeServer()\0updateActions()\0"
     "ServerViewNode*\0id\0addItem(QString)\0"
 };
 
@@ -76,14 +77,15 @@ int ServerView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: addServer(); break;
-        case 1: deleteItem(); break;
-        case 2: activeServer(); break;
-        case 3: updateActions(); break;
-        case 4: { ServerViewNode* _r = addItem((*reinterpret_cast< QString(*)>(_a[1])));
+        case 1: addStep(); break;
+        case 2: deleteItem(); break;
+        case 3: activeServer(); break;
+        case 4: updateActions(); break;
+        case 5: { ServerViewNode* _r = addItem((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< ServerViewNode**>(_a[0]) = _r; }  break;
         default: ;
         }
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }

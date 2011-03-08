@@ -29,5 +29,8 @@
         <file>images/add_server.png</file>
         <file>images/delete.png</file>
         <file>script/db.sql</file>
+        <file>images/desable_server.png</file>
+        <file>images/enable_server.png</file>
+        <file>images/edit.png</file>
     </qresource>
 </RCC>

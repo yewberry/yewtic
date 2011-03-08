@@ -8,6 +8,7 @@
 #include <QtGui>
 #include "ServerView.h"
 #include "ServerForm.h"
+#include "StepForm.h"
 
 ServerView::ServerView(QWidget *parent) :
 	QWidget(parent), m_pCtxMenu(0), m_itemCount(0) {
@@ -77,8 +78,6 @@ void ServerView::activeServer(){
 	}
 }
 
-
-
 //TODO this function is temp
 ServerViewNode* ServerView::addItem(QString id) {
 	ServerViewNode *node = new ServerViewNode(id, ServerViewNode::GeneralServer, m_pItemCtxMenu, this);
@@ -87,6 +86,15 @@ ServerViewNode* ServerView::addItem(QString id) {
 	m_pScene->addItem(node);
 	m_itemCount++;
 	return node;
+}
+
+void ServerView::addStep() {
+	ServerViewNode *svr = selectedNode();
+	if(svr != 0){
+		StepForm form("", StepForm::ADD, this);
+		form.svrId(svr->id());
+		form.exec();
+	}
 }
 
 void ServerView::deleteItem() {
@@ -100,13 +108,18 @@ void ServerView::clearScene() {
 }
 
 void ServerView::createActions() {
-	m_pAddServerAct = new QAction(tr("Add &Server"), this);
+	m_pAddServerAct = new QAction(tr("Add Server"), this);
 	m_pAddServerAct->setIcon(QIcon(":/images/add_server.png"));
-	m_pAddServerAct->setShortcut(tr("Ctrl+S"));
+	//m_pAddServerAct->setShortcut(tr("Ctrl+S"));
 	connect(m_pAddServerAct, SIGNAL(triggered()), this, SLOT(addServer()));
 
+	m_pAddStepAct = new QAction(tr("Add &Step"), this);
+	m_pAddStepAct->setIcon(QIcon(":/images/add_step.png"));
+	m_pAddStepAct->setShortcut(tr("Ctrl+S"));
+	connect(m_pAddStepAct, SIGNAL(triggered()), this, SLOT(addStep()));
+
 	m_pEditServerAct = new QAction(tr("&Edit Server"), this);
-	m_pEditServerAct->setIcon(QIcon(":/images/add_server.png"));
+	m_pEditServerAct->setIcon(QIcon(":/images/edit.png"));
 	m_pEditServerAct->setShortcut(tr("Ctrl+E"));
 	connect(m_pEditServerAct, SIGNAL(triggered()), this, SLOT(addServer()));
 
@@ -116,8 +129,8 @@ void ServerView::createActions() {
 	connect(m_pDeleteItemAct, SIGNAL(triggered()), this, SLOT(deleteItem()));
 
 	m_pActiveServerAct = new QAction(tr("Active &Monitor"), this);
-	//m_pActiveServerAct->setIcon(QIcon(":/images/delete.png"));
 	m_pActiveServerAct->setShortcut(tr("Ctrl+M"));
+	m_pActiveServerAct->setData(ACTIVE_SVR_ACT);
 	connect(m_pActiveServerAct, SIGNAL(triggered()), this, SLOT(activeServer()));
 
 }
@@ -130,7 +143,16 @@ void ServerView::createMenus() {
 	m_pItemCtxMenu->addAction(m_pEditServerAct);
 	m_pItemCtxMenu->addAction(m_pDeleteItemAct);
 	m_pItemCtxMenu->addSeparator();
+	m_pItemCtxMenu->addAction(m_pAddStepAct);
+	m_pItemCtxMenu->addSeparator();
 	m_pItemCtxMenu->addAction(m_pActiveServerAct);
+}
+
+QList<QAction *> ServerView::getActions(){
+	QList<QAction *> ls;
+	ls.append(m_pCtxMenu->actions());
+	ls.append(m_pItemCtxMenu->actions());
+	return ls;
 }
 
 void ServerView::updateActions() {
@@ -170,8 +192,4 @@ ServerViewItem* ServerView::getItemById(QString id){
 			return si;
 	}
 	return 0;
-}
-
-QAction* ServerView::activeServerAction(){
-	return m_pActiveServerAct;
 }
