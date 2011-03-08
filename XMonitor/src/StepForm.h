@@ -1,5 +1,5 @@
-#ifndef SERVERFORM_H
-#define SERVERFORM_H
+#ifndef STEPFORM_H
+#define STEPFORM_H
 
 #include <QDialog>
 #include <QtSql>
@@ -18,6 +18,7 @@ public:
 	QSqlTableModel* model();
 	QString id();
 	QString svrId();
+	void svrId(QString sId);
 	QString name();
 	QString desc();
 
@@ -32,11 +33,12 @@ private:
 	Ui::StepFormClass ui;
 
 	OpType 				m_opType;
-	QSqlTableModel* 	m_pModel;
+	QSqlRelationalTableModel*
+						m_pModel;
 	QDataWidgetMapper*	m_pMapper;
 	QString 			m_id;
 
 
 };
 
-#endif // SERVERFORM_H
+#endif // STEPFORM_H

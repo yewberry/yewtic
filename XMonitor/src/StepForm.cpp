@@ -11,8 +11,10 @@ StepForm::StepForm(QString id, OpType op, QWidget *parent)
 }
 
 void StepForm::mapping() {
-	m_pModel = new QSqlTableModel(this);
+	m_pModel = new QSqlRelationalTableModel(this);
 	m_pModel->setTable("step");
+	m_pModel->setRelation(SVR_ID, QSqlRelation("server", "id", "name"));
+	m_pModel->setSort(SEQ, Qt::AscendingOrder);
 	m_pModel->select();
 
 	m_pMapper = new QDataWidgetMapper(this);
@@ -20,13 +22,12 @@ void StepForm::mapping() {
 	m_pMapper->setModel(m_pModel);
 	m_pMapper->setItemDelegate(new QSqlRelationalDelegate(this));
 	m_pMapper->addMapping(ui.id, ID);
-	m_pMapper->addMapping(ui.ip, IP);
+	m_pMapper->addMapping(ui.svrId, SVR_ID);
 	m_pMapper->addMapping(ui.name, NAME);
-	m_pMapper->addMapping(ui.desc, DESC);
-	m_pMapper->addMapping(ui.usr, USR);
-	m_pMapper->addMapping(ui.pwd, PWD);
-	m_pMapper->addMapping(ui.isActive, ACTIVE);
-	m_pMapper->addMapping(ui.itemPos, UI_SCENE_POS);
+	m_pMapper->addMapping(ui.cmd, CMD);
+	m_pMapper->addMapping(ui.cmdResult, CMD_RESULT);
+	m_pMapper->addMapping(ui.script, SCRIPT);
+	m_pMapper->addMapping(ui.seq, SEQ);
 
 	if(m_opType == ADD){
         int row = m_pModel->rowCount();
@@ -56,13 +57,13 @@ void StepForm::drawUi() {
 
 	switch (m_opType) {
 	case ADD:
-		setWindowTitle(tr("Add Server"));
+		setWindowTitle(tr("Add Step"));
 		break;
 	case EDIT:
-		setWindowTitle(tr("Edit Server"));
+		setWindowTitle(tr("Edit Step"));
 		break;
 	default:
-		setWindowTitle(tr("Server Infomation"));
+		setWindowTitle(tr("Step Infomation"));
 	}
 
 }
@@ -80,33 +81,18 @@ QString StepForm::id(){
 	return ui.id->text();
 }
 
-QString StepForm::ip(){
-	return ui.ip->text();
+QString StepForm::svrId(){
+	return ui.svrId->text();
+}
+
+void StepForm::svrId(QString sId){
+	ui.svrId->setText(sId);
 }
 
 QString StepForm::name(){
 	return ui.name->text();
 }
 
-QPointF StepForm::uiScenePos(){
-	QString s = ui.itemPos->text();
-	if(s.isEmpty()){
-		s = "0.0,0.0";
-	}
-	QStringList ls = s.split(",");
-	return QPoint( ls[0].toFloat(), ls[1].toFloat() );
-}
-
-void StepForm::uiScenePos(QPointF pos){
-	ui.itemPos->setText( QString("%1,%2").arg(pos.x()).arg(pos.y()) );
-	save();
-}
-
-bool StepForm::isServerActive(){
-	return ui.isActive->isChecked();
-}
-
-void StepForm::setServerActive(bool c){
-	ui.isActive->setChecked(c);
-	save();
+QString StepForm::desc(){
+	return ui.desc->toPlainText();
 }

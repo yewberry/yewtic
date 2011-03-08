@@ -21,6 +21,8 @@ class ServerView : public QWidget
 {
 	Q_OBJECT
 public:
+	enum {ACTIVE_SVR_ACT = 1};
+
 	ServerView(QWidget *parent = 0);
 	~ServerView();
 
@@ -29,14 +31,14 @@ public:
 	void saveScene();
 	ServerViewItem* getItemById(QString id);
 
-
-	QAction* activeServerAction();
+	QList<QAction*> getActions();
 
 protected:
 	void contextMenuEvent(QContextMenuEvent * event);
 
 private slots:
     void addServer();
+    void addStep();
     void deleteItem();
     void activeServer();
 
@@ -55,6 +57,7 @@ private:
     QGraphicsView*	m_pView;
 
     QAction* m_pAddServerAct;
+    QAction* m_pAddStepAct;
     QAction* m_pEditServerAct;
     QAction* m_pDeleteItemAct;
     QAction* m_pActiveServerAct;
