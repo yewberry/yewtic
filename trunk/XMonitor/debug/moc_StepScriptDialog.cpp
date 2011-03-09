@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'StepScriptDialog.h'
 **
-** Created: Wed Mar 9 20:35:17 2011
+** Created: Wed Mar 9 23:06:56 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -31,13 +31,13 @@ static const uint qt_meta_data_StepScriptDialog[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      18,   17,   17,   17, 0x0a,
+      18,   17,   17,   17, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_StepScriptDialog[] = {
-    "StepScriptDialog\0\0save()\0"
+    "StepScriptDialog\0\0runCmd()\0"
 };
 
 const QMetaObject StepScriptDialog::staticMetaObject = {
@@ -69,7 +69,7 @@ int StepScriptDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: save(); break;
+        case 0: runCmd(); break;
         default: ;
         }
         _id -= 1;
