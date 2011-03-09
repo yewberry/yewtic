@@ -5,8 +5,8 @@
 #include "StepForm.h"
 #include "JsHighlighter.h"
 
-StepScriptDialog::StepScriptDialog(QString svrId, QString curStepId, QWidget *parent)
-	: QDialog(parent), m_svrId(svrId), m_initStepId(curStepId)
+StepScriptDialog::StepScriptDialog(OpType type, QString svrId, QString curStepId, QWidget *parent)
+	: QDialog(parent), m_opType(type), m_svrId(svrId), m_initStepId(curStepId)
 {
 	ui.setupUi(this);
 	drawUi();
@@ -44,15 +44,47 @@ void StepScriptDialog::mapping() {
 }
 
 void StepScriptDialog::drawUi() {
+	switch(m_opType){
+	case EDIT_STEP :
+		ui.steplist->hide();
+		break;
+	case MOD_EDIT_SVR_STEPS:
+		ui.steplist->show();
+		break;
+	default:
+		break;
+	}
 	m_pHighlighter = new JsHighlighter(ui.script->document());
 
 	QDialogButtonBox *buttonBox = ui.buttonBox;
-	connect( buttonBox, SIGNAL(accepted()), this, SLOT(save()) );
+	connect( buttonBox, SIGNAL(accepted()), this, SLOT(accept()) );
 	connect( buttonBox, SIGNAL(rejected()), this, SLOT(reject()) );
-	connect( ui.runCmdBtn, SIGNAL(clicked()), this, SLOT(editScript()) );
+	connect( ui.runCmdBtn, SIGNAL(clicked()), this, SLOT(runCmd()) );
 }
 
-void StepScriptDialog::save(){
-	m_pMapper->submit();
-	close();
+void StepScriptDialog::runCmd(){
+}
+
+void StepScriptDialog::cmd(QString s){
+	ui.cmd->setPlainText(s);
+}
+
+void StepScriptDialog::cmdResult(QString s){
+	ui.cmdResult->setPlainText(s);
+}
+
+void StepScriptDialog::script(QString s){
+	ui.script->setPlainText(s);
+}
+
+QString StepScriptDialog::getCmd(){
+	return ui.cmd->toPlainText();
+}
+
+QString StepScriptDialog::getCmdResult(){
+	return ui.cmdResult->toPlainText();
+}
+
+QString StepScriptDialog::getScript(){
+	return ui.script->toPlainText();
 }

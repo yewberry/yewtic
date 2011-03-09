@@ -79,8 +79,16 @@ void StepForm::save(){
 }
 
 void StepForm::editScript(){
-	StepScriptDialog dlg( svrId(), id(), this);
-	dlg.exec();
+	StepScriptDialog dlg(StepScriptDialog::EDIT_STEP);
+	dlg.cmd(ui.cmd->text());
+	dlg.cmdResult(ui.cmdResult->text());
+	dlg.script(ui.script->text());
+
+	if( dlg.exec() == QDialog::Accepted ){
+		ui.cmd->setText(dlg.getCmd());
+		ui.cmdResult->setText(dlg.getCmdResult());
+		ui.script->setText(dlg.getScript());
+	}
 }
 
 QSqlTableModel* StepForm::model(){
