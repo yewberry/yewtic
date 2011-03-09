@@ -7,7 +7,8 @@ QT += core \
     opengl \
     webkit \
     script
-HEADERS += src/JsHighlighter.h \
+HEADERS += src/StepScriptDialog.h \
+    src/JsHighlighter.h \
     src/StepForm.h \
     src/XThread.h \
     src/ServerThread.h \
@@ -21,7 +22,8 @@ HEADERS += src/JsHighlighter.h \
     src/MyQtLog.h \
     src/TopHeader.h \
     src/XMonitor.h
-SOURCES += src/JsHighlighter.cpp \
+SOURCES += src/StepScriptDialog.cpp \
+    src/JsHighlighter.cpp \
     src/StepForm.cpp \
     src/XThread.cpp \
     src/ServerThread.cpp \
@@ -36,7 +38,7 @@ SOURCES += src/JsHighlighter.cpp \
     src/TopHeader.cpp \
     src/XMonitor.cpp \
     src/main.cpp
-FORMS += ui/StepScriptEditor.ui \
+FORMS += ui/StepScriptDialog.ui \
     ui/StepForm.ui \
     ui/ServerForm.ui \
     ui/MyQtLog.ui \

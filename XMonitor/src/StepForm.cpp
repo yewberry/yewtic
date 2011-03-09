@@ -2,6 +2,8 @@
 #include <QtGui>
 #include "Comm.h"
 
+#include "StepScriptDialog.h"
+
 StepForm::StepForm(QString id, OpType op, QWidget *parent)
 	: QDialog(parent), m_id(id), m_opType(op)
 {
@@ -49,11 +51,14 @@ void StepForm::mapping() {
 }
 
 void StepForm::drawUi() {
+	ui.cmd->hide();
+	ui.cmdResult->hide();
+	ui.script->hide();
 
 	QDialogButtonBox *buttonBox = ui.buttonBox;
-
-	connect(buttonBox, SIGNAL(accepted()), this, SLOT(save()));
-	connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+	connect( buttonBox, SIGNAL(accepted()), this, SLOT(save()) );
+	connect( buttonBox, SIGNAL(rejected()), this, SLOT(reject()) );
+	connect( ui.scriptBtn, SIGNAL(clicked()), this, SLOT(editScript()) );
 
 	switch (m_opType) {
 	case ADD:
@@ -71,6 +76,11 @@ void StepForm::drawUi() {
 void StepForm::save(){
 	m_pMapper->submit();
 	this->close();
+}
+
+void StepForm::editScript(){
+	StepScriptDialog dlg( svrId(), id(), this);
+	dlg.exec();
 }
 
 QSqlTableModel* StepForm::model(){
