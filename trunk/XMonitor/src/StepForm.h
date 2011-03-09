@@ -24,6 +24,7 @@ public:
 
 public slots:
 	void save();
+	void editScript();
 
 private:
 	void drawUi();

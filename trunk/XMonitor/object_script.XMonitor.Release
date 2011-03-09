@@ -1,4 +1,6 @@
 INPUT(
+./release/StepScriptDialog.o
+./release/JsHighlighter.o
 ./release/StepForm.o
 ./release/XThread.o
 ./release/ServerThread.o
@@ -13,6 +15,8 @@ INPUT(
 ./release/TopHeader.o
 ./release/XMonitor.o
 ./release/main.o
+./release/moc_StepScriptDialog.o
+./release/moc_JsHighlighter.o
 ./release/moc_StepForm.o
 ./release/moc_XThread.o
 ./release/moc_ServerThread.o

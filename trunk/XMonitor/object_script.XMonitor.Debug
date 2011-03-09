@@ -1,4 +1,6 @@
 INPUT(
+./debug/StepScriptDialog.o
+./debug/JsHighlighter.o
 ./debug/StepForm.o
 ./debug/XThread.o
 ./debug/ServerThread.o
@@ -13,6 +15,8 @@ INPUT(
 ./debug/TopHeader.o
 ./debug/XMonitor.o
 ./debug/main.o
+./debug/moc_StepScriptDialog.o
+./debug/moc_JsHighlighter.o
 ./debug/moc_StepForm.o
 ./debug/moc_XThread.o
 ./debug/moc_ServerThread.o

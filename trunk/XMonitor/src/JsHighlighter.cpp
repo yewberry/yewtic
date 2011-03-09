@@ -40,10 +40,10 @@
 
 #include <QtGui>
 
-#include "highlighter.h"
+#include "JsHighlighter.h"
 
 //! [0]
-Highlighter::Highlighter(QTextDocument *parent)
+JsHighlighter::JsHighlighter(QTextDocument *parent)
     : QSyntaxHighlighter(parent)
 {
     HighlightingRule rule;
@@ -108,7 +108,7 @@ Highlighter::Highlighter(QTextDocument *parent)
 //! [6]
 
 //! [7]
-void Highlighter::highlightBlock(const QString &text)
+void JsHighlighter::highlightBlock(const QString &text)
 {
     foreach (const HighlightingRule &rule, highlightingRules) {
         QRegExp expression(rule.pattern);

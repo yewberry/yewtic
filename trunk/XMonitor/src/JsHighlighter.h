@@ -38,8 +38,8 @@
 **
 ****************************************************************************/
 
-#ifndef HIGHLIGHTER_H
-#define HIGHLIGHTER_H
+#ifndef JSHIGHLIGHTER_H
+#define JSHIGHLIGHTER_H
 
 #include <QSyntaxHighlighter>
 
@@ -51,12 +51,12 @@ class QTextDocument;
 QT_END_NAMESPACE
 
 //! [0]
-class Highlighter : public QSyntaxHighlighter
+class JsHighlighter : public QSyntaxHighlighter
 {
     Q_OBJECT
 
 public:
-    Highlighter(QTextDocument *parent = 0);
+    JsHighlighter(QTextDocument *parent = 0);
 
 protected:
     void highlightBlock(const QString &text);
