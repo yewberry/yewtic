@@ -18,7 +18,7 @@ ServerViewNode::ServerViewNode(QString id, NodeType t, QMenu *ctxMenu, ServerVie
 {
 	setFlags(ItemIsMovable | ItemIsSelectable);
 	ServerForm form(m_id, ServerForm::INQ);
-	m_text = QString("%1\n%2").arg(form.ip()).arg(form.name());
+	m_text = QString("%1\n%2").arg(form.getIp()).arg(form.name());
 	m_storedPosition = form.uiScenePos();
 	setPos(m_storedPosition);
 
@@ -99,7 +99,7 @@ void ServerViewNode::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
 void ServerViewNode::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	ServerForm form(m_id, ServerForm::EDIT);
 	form.exec();
-	m_text = QString("%1\n%2").arg(form.ip()).arg(form.name());
+	m_text = QString("%1\n%2").arg(form.getIp()).arg(form.name());
 	update(outlineRect());
 }
 

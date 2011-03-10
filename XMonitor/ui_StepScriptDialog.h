@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'StepScriptDialog.ui'
 **
-** Created: Wed Mar 9 20:25:57 2011
+** Created: Thu Mar 10 16:31:25 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -19,6 +19,7 @@
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QListView>
+#include <QtGui/QPlainTextEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QTextEdit>
 #include <QtGui/QVBoxLayout>
@@ -32,15 +33,14 @@ public:
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout;
     QListView *steplist;
-    QVBoxLayout *verticalLayout;
+    QVBoxLayout *editorLayout;
     QLabel *label;
-    QTextEdit *cmd;
+    QPlainTextEdit *cmd;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QPushButton *runCmdBtn;
     QTextEdit *cmdResult;
     QLabel *label_3;
-    QTextEdit *script;
     QDialogButtonBox *buttonBox;
 
     void setupUi(QWidget *StepScriptDialogClass)
@@ -65,9 +65,9 @@ public:
 
         horizontalLayout->addWidget(steplist);
 
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        editorLayout = new QVBoxLayout();
+        editorLayout->setSpacing(6);
+        editorLayout->setObjectName(QString::fromUtf8("editorLayout"));
         label = new QLabel(StepScriptDialogClass);
         label->setObjectName(QString::fromUtf8("label"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -76,14 +76,12 @@ public:
         sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy1);
 
-        verticalLayout->addWidget(label);
+        editorLayout->addWidget(label);
 
-        cmd = new QTextEdit(StepScriptDialogClass);
+        cmd = new QPlainTextEdit(StepScriptDialogClass);
         cmd->setObjectName(QString::fromUtf8("cmd"));
-        sizePolicy.setHeightForWidth(cmd->sizePolicy().hasHeightForWidth());
-        cmd->setSizePolicy(sizePolicy);
 
-        verticalLayout->addWidget(cmd);
+        editorLayout->addWidget(cmd);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
@@ -101,34 +99,26 @@ public:
         horizontalLayout_2->addWidget(runCmdBtn);
 
 
-        verticalLayout->addLayout(horizontalLayout_2);
+        editorLayout->addLayout(horizontalLayout_2);
 
         cmdResult = new QTextEdit(StepScriptDialogClass);
         cmdResult->setObjectName(QString::fromUtf8("cmdResult"));
         sizePolicy.setHeightForWidth(cmdResult->sizePolicy().hasHeightForWidth());
         cmdResult->setSizePolicy(sizePolicy);
 
-        verticalLayout->addWidget(cmdResult);
+        editorLayout->addWidget(cmdResult);
 
         label_3 = new QLabel(StepScriptDialogClass);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         sizePolicy1.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
         label_3->setSizePolicy(sizePolicy1);
 
-        verticalLayout->addWidget(label_3);
+        editorLayout->addWidget(label_3);
 
-        script = new QTextEdit(StepScriptDialogClass);
-        script->setObjectName(QString::fromUtf8("script"));
-        sizePolicy.setHeightForWidth(script->sizePolicy().hasHeightForWidth());
-        script->setSizePolicy(sizePolicy);
+        editorLayout->setStretch(1, 1);
+        editorLayout->setStretch(3, 1);
 
-        verticalLayout->addWidget(script);
-
-        verticalLayout->setStretch(1, 1);
-        verticalLayout->setStretch(3, 1);
-        verticalLayout->setStretch(5, 4);
-
-        horizontalLayout->addLayout(verticalLayout);
+        horizontalLayout->addLayout(editorLayout);
 
         horizontalLayout->setStretch(0, 1);
         horizontalLayout->setStretch(1, 4);

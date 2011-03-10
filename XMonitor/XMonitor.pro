@@ -7,7 +7,8 @@ QT += core \
     opengl \
     webkit \
     script
-HEADERS += src/CodeEditor.h \
+HEADERS += src/SSH2Utils.h \
+    src/CodeEditor.h \
     src/StepScriptDialog.h \
     src/JsHighlighter.h \
     src/StepForm.h \
@@ -23,7 +24,8 @@ HEADERS += src/CodeEditor.h \
     src/MyQtLog.h \
     src/TopHeader.h \
     src/XMonitor.h
-SOURCES += src/CodeEditor.cpp \
+SOURCES += src/SSH2Utils.cpp \
+    src/CodeEditor.cpp \
     src/StepScriptDialog.cpp \
     src/JsHighlighter.cpp \
     src/StepForm.cpp \
@@ -49,11 +51,12 @@ FORMS += ui/ServerForm.ui \
     ui/MyQtLog.ui \
     ui/XMonitor.ui
 RESOURCES += res.qrc
-INCLUDEPATH = D:/yewberry/boost_1_45_0 \
+INCLUDEPATH += D:/yewberry/boost_1_45_0 \
     C:/MinGW/include \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include-fixed \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++ \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/mingw32 \
-    C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/backward
-LIBS += -lpthread
+    C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/backward \
+    ../TestLibssh2/lib/include
+LIBS += -LD:'../TestLibssh2/lib' -lpthread -lssh2dll

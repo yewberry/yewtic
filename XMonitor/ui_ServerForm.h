@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ServerForm.ui'
 **
-** Created: Tue Mar 8 16:12:47 2011
+** Created: Thu Mar 10 17:05:20 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -45,7 +45,6 @@ public:
     QLineEdit *itemPos;
     QLabel *label_6;
     QLineEdit *pwd;
-    QLabel *label_7;
     QCheckBox *isActive;
     QDialogButtonBox *buttonBox;
 
@@ -131,15 +130,10 @@ public:
 
         gridLayout->addWidget(pwd, 5, 1, 1, 1);
 
-        label_7 = new QLabel(ServerFormClass);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
-
-        gridLayout->addWidget(label_7, 6, 0, 1, 1);
-
         isActive = new QCheckBox(ServerFormClass);
         isActive->setObjectName(QString::fromUtf8("isActive"));
 
-        gridLayout->addWidget(isActive, 6, 1, 1, 1);
+        gridLayout->addWidget(isActive, 5, 3, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout);
@@ -151,6 +145,13 @@ public:
 
         verticalLayout->addWidget(buttonBox);
 
+        QWidget::setTabOrder(id, ip);
+        QWidget::setTabOrder(ip, name);
+        QWidget::setTabOrder(name, desc);
+        QWidget::setTabOrder(desc, usr);
+        QWidget::setTabOrder(usr, pwd);
+        QWidget::setTabOrder(pwd, itemPos);
+        QWidget::setTabOrder(itemPos, buttonBox);
 
         retranslateUi(ServerFormClass);
         QObject::connect(buttonBox, SIGNAL(accepted()), ServerFormClass, SLOT(accept()));
@@ -169,8 +170,7 @@ public:
         label_5->setText(QApplication::translate("ServerFormClass", "User:", 0, QApplication::UnicodeUTF8));
         label_8->setText(QApplication::translate("ServerFormClass", "Item Pos:", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("ServerFormClass", "Password:", 0, QApplication::UnicodeUTF8));
-        label_7->setText(QApplication::translate("ServerFormClass", "is Active?", 0, QApplication::UnicodeUTF8));
-        isActive->setText(QApplication::translate("ServerFormClass", "CheckBox", 0, QApplication::UnicodeUTF8));
+        isActive->setText(QApplication::translate("ServerFormClass", "isActive?", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

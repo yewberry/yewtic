@@ -10,10 +10,6 @@ ServerForm::ServerForm(QString id, OpType op, QWidget *parent)
 	mapping();
 }
 
-ServerForm::~ServerForm() {
-
-}
-
 void ServerForm::mapping() {
 	m_pModel = new QSqlTableModel(this);
 	m_pModel->setTable("server");
@@ -84,12 +80,20 @@ QString ServerForm::id(){
 	return ui.id->text();
 }
 
-QString ServerForm::ip(){
+QString ServerForm::getIp(){
 	return ui.ip->text();
 }
 
 QString ServerForm::name(){
 	return ui.name->text();
+}
+
+QString ServerForm::getUser(){
+	return ui.usr->text();
+}
+
+QString ServerForm::getPwd(){
+	return ui.pwd->text();
 }
 
 QPointF ServerForm::uiScenePos(){

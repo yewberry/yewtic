@@ -7,6 +7,7 @@
 class QSqlRelationalTableModel;
 class QDataWidgetMapper;
 class JsHighlighter;
+class CodeEditor;
 
 class StepScriptDialog: public QDialog {
 	Q_OBJECT
@@ -32,6 +33,8 @@ private:
 
 private:
 	Ui::StepScriptDialogClass ui;
+	//designer plugin needed
+	CodeEditor*			m_pScriptEditor;
 
 	QSqlRelationalTableModel*
 						m_pModel;
