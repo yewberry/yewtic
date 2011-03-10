@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
     app.setStyleSheet(Comm::stringFromResource(":/style.qss"));
 
     XMonitor w;
-    //w.setStyleSheet();
     w.show();
     return app.exec();
 }

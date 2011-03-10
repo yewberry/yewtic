@@ -14,12 +14,13 @@ public:
 	enum OpType{INQ, ADD, EDIT};
 	enum { ID = 0, IP = 1, NAME = 2, DESC = 3, USR = 4, PWD = 5, ACTIVE = 6, UI_SCENE_POS = 7 };
 	ServerForm(QString id = "", OpType op = INQ, QWidget *parent = 0);
-	~ServerForm();
 
 	QSqlTableModel* model();
 	QString id();
-	QString ip();
+	QString getIp();
 	QString name();
+	QString getUser();
+	QString getPwd();
 
 	QPointF uiScenePos();
 	void uiScenePos(QPointF pos);
@@ -38,11 +39,10 @@ private:
 	Ui::ServerFormClass ui;
 
 	OpType 				m_opType;
-	QSqlTableModel* 	m_pModel;
+	QSqlTableModel*
+						m_pModel;
 	QDataWidgetMapper*	m_pMapper;
 	QString 			m_id;
-
-
 };
 
 #endif // SERVERFORM_H

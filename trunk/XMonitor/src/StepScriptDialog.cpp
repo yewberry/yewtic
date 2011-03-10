@@ -3,7 +3,11 @@
 #include <QtSql>
 #include "Comm.h"
 #include "StepForm.h"
+#include "CodeEditor.h"
 #include "JsHighlighter.h"
+#include "SSH2Utils.h"
+#include "ServerForm.h"
+#include <iostream>
 
 StepScriptDialog::StepScriptDialog(OpType type, QString svrId, QString curStepId, QWidget *parent)
 	: QDialog(parent), m_opType(type), m_svrId(svrId), m_initStepId(curStepId)
@@ -26,7 +30,7 @@ void StepScriptDialog::mapping() {
 	m_pMapper->setItemDelegate(new QSqlRelationalDelegate(this));
 	m_pMapper->addMapping(ui.cmd, StepForm::CMD);
 	m_pMapper->addMapping(ui.cmdResult, StepForm::CMD_RESULT);
-	m_pMapper->addMapping(ui.script, StepForm::SCRIPT);
+	m_pMapper->addMapping(m_pScriptEditor, StepForm::SCRIPT);
 
 	if( !m_initStepId.isEmpty() ) {
         for (int row = 0; row < m_pModel->rowCount(); ++row) {
@@ -54,7 +58,9 @@ void StepScriptDialog::drawUi() {
 	default:
 		break;
 	}
-	m_pHighlighter = new JsHighlighter(ui.script->document());
+	m_pScriptEditor = new CodeEditor(this);
+	m_pHighlighter = new JsHighlighter(m_pScriptEditor->document());
+	ui.editorLayout->addWidget(m_pScriptEditor);
 
 	QDialogButtonBox *buttonBox = ui.buttonBox;
 	connect( buttonBox, SIGNAL(accepted()), this, SLOT(accept()) );
@@ -63,6 +69,21 @@ void StepScriptDialog::drawUi() {
 }
 
 void StepScriptDialog::runCmd(){
+	ServerForm svr(m_svrId, ServerForm::INQ);
+	SSH2Utils ssh2;
+	ssh2.init();
+	int rc = 0;
+	const char *ip  = svr.getIp().toStdString().c_str();
+	const char *usr = svr.getUser().toStdString().c_str();
+	const char *pwd = svr.getPwd().toStdString().c_str();
+	rc = ssh2.connect(ip, usr, pwd);
+
+	if(rc == 0){
+		char *t = "ls -l";
+		rc = ssh2.exec(t);
+		std::string str = ssh2.execResultStr();
+		std::cout << "CMD RESULT:\n" << str << std::endl;
+	}
 }
 
 void StepScriptDialog::cmd(QString s){
@@ -74,7 +95,7 @@ void StepScriptDialog::cmdResult(QString s){
 }
 
 void StepScriptDialog::script(QString s){
-	ui.script->setPlainText(s);
+	m_pScriptEditor->setPlainText(s);
 }
 
 QString StepScriptDialog::getCmd(){
@@ -86,5 +107,5 @@ QString StepScriptDialog::getCmdResult(){
 }
 
 QString StepScriptDialog::getScript(){
-	return ui.script->toPlainText();
+	return m_pScriptEditor->toPlainText();
 }

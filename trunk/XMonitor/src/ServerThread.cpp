@@ -30,7 +30,7 @@ void ServerThread::run()
 			bool act = record.value(ServerForm::ACTIVE).toBool();
 			QString nm = record.value(ServerForm::NAME).toString();
 
-			yTDEBUG(QString("Serv %1 is %2").arg(nm).arg(act));
+			//yTDEBUG(QString("Serv %1 is %2").arg(nm).arg(act));
 			/*
 			if(act){
 				QString id = record.value(ServerForm::ID).toString();

@@ -1,4 +1,5 @@
 INPUT(
+./debug/SSH2Utils.o
 ./debug/CodeEditor.o
 ./debug/StepScriptDialog.o
 ./debug/JsHighlighter.o

@@ -10,6 +10,8 @@
 #include "ServerForm.h"
 #include "StepForm.h"
 
+#include "StepScriptDialog.h"
+
 ServerView::ServerView(QWidget *parent) :
 	QWidget(parent), m_pCtxMenu(0), m_itemCount(0) {
 	m_pScene = new QGraphicsScene(0, 0, 300, 200);
@@ -69,11 +71,11 @@ void ServerView::activeServer(){
 	ServerViewNode *node = selectedNode();
 	ServerForm form(node->id());
 	if(form.isServerActive()){
-		yINFO( QString("De-Active server: %1(%2).").arg(form.name()).arg(form.ip()) );
+		yINFO( QString("De-Active server: %1(%2).").arg(form.name()).arg(form.getIp()) );
 		form.setServerActive(false);
 
 	} else {
-		yINFO( QString("Active server: %1(%2).").arg(form.name()).arg(form.ip()) );
+		yINFO( QString("Active server: %1(%2).").arg(form.name()).arg(form.getIp()) );
 		form.setServerActive(true);
 	}
 }

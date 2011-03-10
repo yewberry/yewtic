@@ -1,7 +1,6 @@
 #include "StepForm.h"
 #include <QtGui>
 #include "Comm.h"
-
 #include "StepScriptDialog.h"
 
 StepForm::StepForm(QString id, OpType op, QWidget *parent)
@@ -79,7 +78,7 @@ void StepForm::save(){
 }
 
 void StepForm::editScript(){
-	StepScriptDialog dlg(StepScriptDialog::EDIT_STEP);
+	StepScriptDialog dlg(StepScriptDialog::EDIT_STEP, "", "", this);
 	dlg.cmd(ui.cmd->text());
 	dlg.cmdResult(ui.cmdResult->text());
 	dlg.script(ui.script->text());

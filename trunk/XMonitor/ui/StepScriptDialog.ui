@@ -27,7 +27,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0,1,0,4">
+      <layout class="QVBoxLayout" name="editorLayout" stretch="0,1,0,1,0">
        <item>
         <widget class="QLabel" name="label">
          <property name="sizePolicy">
@@ -42,14 +42,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="cmd">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
+        <widget class="QPlainTextEdit" name="cmd"/>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -95,16 +88,6 @@
          </property>
          <property name="text">
           <string>Script:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QTextEdit" name="script">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
          </property>
         </widget>
        </item>
