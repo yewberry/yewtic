@@ -116,6 +116,8 @@
 				</buildTargets>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.pathentry">
+				<pathentry kind="src" path=""/>
+				<pathentry kind="out" path=""/>
 				<pathentry base-path="D:/yewberry/Qt/2010.05/qt/include" include="" kind="inc" path="" system="true"/>
 				<pathentry base-path="D:/yewberry/Qt/2010.05/qt/include" include="ActiveQt" kind="inc" path="" system="true"/>
 				<pathentry base-path="D:/yewberry/Qt/2010.05/qt/include" include="phonon" kind="inc" path="" system="true"/>
@@ -141,8 +143,6 @@
 				<pathentry base-path="D:/yewberry/Qt/2010.05/qt/include" include="QtWebKit" kind="inc" path="" system="true"/>
 				<pathentry base-path="D:/yewberry/Qt/2010.05/qt/include" include="QtXml" kind="inc" path="" system="true"/>
 				<pathentry base-path="D:/yewberry/Qt/2010.05/qt/include" include="QtXmlPatterns" kind="inc" path="" system="true"/>
-				<pathentry kind="src" path=""/>
-				<pathentry kind="out" path=""/>
 				<pathentry base-ref="org.eclipse.cdt.make.core.DISCOVERED_SCANNER_INFO" include="C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++" kind="inc" path="" system="true"/>
 				<pathentry base-ref="org.eclipse.cdt.make.core.DISCOVERED_SCANNER_INFO" include="C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/mingw32" kind="inc" path="" system="true"/>
 				<pathentry base-ref="org.eclipse.cdt.make.core.DISCOVERED_SCANNER_INFO" include="C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/backward" kind="inc" path="" system="true"/>

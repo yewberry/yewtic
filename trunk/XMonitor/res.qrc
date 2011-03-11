@@ -32,5 +32,6 @@
         <file>images/desable_server.png</file>
         <file>images/enable_server.png</file>
         <file>images/edit.png</file>
+        <file>images/browser.png</file>
     </qresource>
 </RCC>

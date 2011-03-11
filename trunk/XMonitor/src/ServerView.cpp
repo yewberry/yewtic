@@ -9,7 +9,6 @@
 #include "ServerView.h"
 #include "ServerForm.h"
 #include "StepForm.h"
-
 #include "StepScriptDialog.h"
 
 ServerView::ServerView(QWidget *parent) :
@@ -40,33 +39,6 @@ void ServerView::contextMenuEvent(QContextMenuEvent * event) {
 	m_pCtxMenu->exec(QCursor::pos());
 }
 
-void ServerView::loadFromDb() {
-	yDEBUG("Load server nodes...");
-	ServerForm form;
-	QSqlTableModel *model = form.model();
-	for (int row = 0; row < model->rowCount(); ++row) {
-		QSqlRecord record = model->record(row);
-		ServerViewNode *node = addItem( record.value(ServerForm::ID).toString() );
-	}
-}
-
-void ServerView::saveScene() {
-	yDEBUG("Save server scene...");
-	QList<QGraphicsItem *> items = m_pScene->items();
-	Q_FOREACH(QGraphicsItem *item, items){
-		ServerViewNode * svrNode = dynamic_cast<ServerViewNode *> (item);
-		if(svrNode != 0){
-			svrNode->saveNodePos();
-		}
-	}
-}
-
-void ServerView::addServer() {
-	ServerForm form("", ServerForm::ADD, this);
-	form.exec();
-	addItem( form.id() );
-}
-
 void ServerView::activeServer(){
 	ServerViewNode *node = selectedNode();
 	ServerForm form(node->id());
@@ -80,6 +52,20 @@ void ServerView::activeServer(){
 	}
 }
 
+void ServerView::addServer() {
+	ServerForm form("", ServerForm::ADD, this);
+	form.exec();
+	addItem( form.id() );
+}
+
+void ServerView::browserSteps() {
+	ServerViewNode *svr = selectedNode();
+	if(svr != 0){
+		StepScriptDialog dlg(StepScriptDialog::EDIT_SVR_STEPS, svr->id(), "", this);
+		dlg.exec();
+	}
+}
+
 //TODO this function is temp
 ServerViewNode* ServerView::addItem(QString id) {
 	ServerViewNode *node = new ServerViewNode(id, ServerViewNode::GeneralServer, m_pItemCtxMenu, this);
@@ -90,18 +76,20 @@ ServerViewNode* ServerView::addItem(QString id) {
 	return node;
 }
 
-void ServerView::addStep() {
-	ServerViewNode *svr = selectedNode();
-	if(svr != 0){
-		StepForm form("", StepForm::ADD, this);
-		form.svrId(svr->id());
-		form.exec();
-	}
-}
-
 void ServerView::deleteItem() {
 
 	m_itemCount--;
+}
+
+void ServerView::saveScene() {
+	yDEBUG("Save server scene...");
+	QList<QGraphicsItem *> items = m_pScene->items();
+	Q_FOREACH(QGraphicsItem *item, items){
+		ServerViewNode * svrNode = dynamic_cast<ServerViewNode *> (item);
+		if(svrNode != 0){
+			svrNode->saveNodePos();
+		}
+	}
 }
 
 void ServerView::clearScene() {
@@ -114,11 +102,6 @@ void ServerView::createActions() {
 	m_pAddServerAct->setIcon(QIcon(":/images/add_server.png"));
 	//m_pAddServerAct->setShortcut(tr("Ctrl+S"));
 	connect(m_pAddServerAct, SIGNAL(triggered()), this, SLOT(addServer()));
-
-	m_pAddStepAct = new QAction(tr("Add &Step"), this);
-	m_pAddStepAct->setIcon(QIcon(":/images/add_step.png"));
-	m_pAddStepAct->setShortcut(tr("Ctrl+S"));
-	connect(m_pAddStepAct, SIGNAL(triggered()), this, SLOT(addStep()));
 
 	m_pEditServerAct = new QAction(tr("&Edit Server"), this);
 	m_pEditServerAct->setIcon(QIcon(":/images/edit.png"));
@@ -135,6 +118,10 @@ void ServerView::createActions() {
 	m_pActiveServerAct->setData(ACTIVE_SVR_ACT);
 	connect(m_pActiveServerAct, SIGNAL(triggered()), this, SLOT(activeServer()));
 
+	m_pBrowserStepsAct = new QAction(tr("Browser Steps"), this);
+	m_pBrowserStepsAct->setIcon(QIcon(":/images/browser.png"));
+	//m_pBrowserStepsAct->setShortcut(tr("Ctrl+S"));
+	connect(m_pBrowserStepsAct, SIGNAL(triggered()), this, SLOT(browserSteps()));
 }
 
 void ServerView::createMenus() {
@@ -145,7 +132,7 @@ void ServerView::createMenus() {
 	m_pItemCtxMenu->addAction(m_pEditServerAct);
 	m_pItemCtxMenu->addAction(m_pDeleteItemAct);
 	m_pItemCtxMenu->addSeparator();
-	m_pItemCtxMenu->addAction(m_pAddStepAct);
+	m_pItemCtxMenu->addAction(m_pBrowserStepsAct);
 	m_pItemCtxMenu->addSeparator();
 	m_pItemCtxMenu->addAction(m_pActiveServerAct);
 }
@@ -175,6 +162,16 @@ void ServerView::updateActions() {
 			m_pView->addAction(action);
 	}
 	*/
+}
+
+void ServerView::loadFromDb() {
+	yDEBUG("Load server nodes...");
+	ServerForm form;
+	QSqlTableModel *model = form.model();
+	for (int row = 0; row < model->rowCount(); ++row) {
+		QSqlRecord record = model->record(row);
+		ServerViewNode *node = addItem( record.value(ServerForm::ID).toString() );
+	}
 }
 
 ServerViewNode* ServerView::selectedNode() const {

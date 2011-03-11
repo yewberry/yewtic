@@ -25,6 +25,7 @@ void StepForm::mapping() {
 	m_pMapper->addMapping(ui.id, ID);
 	m_pMapper->addMapping(ui.svrId, SVR_ID);
 	m_pMapper->addMapping(ui.name, NAME);
+	m_pMapper->addMapping(ui.desc, DESC);
 	m_pMapper->addMapping(ui.cmd, CMD);
 	m_pMapper->addMapping(ui.cmdResult, CMD_RESULT);
 	m_pMapper->addMapping(ui.script, SCRIPT);
@@ -44,8 +45,6 @@ void StepForm::mapping() {
                 break;
             }
         }
-    } else {
-    	m_pMapper->toFirst();
     }
 }
 
@@ -74,11 +73,19 @@ void StepForm::drawUi() {
 
 void StepForm::save(){
 	m_pMapper->submit();
-	this->close();
+	accept();
+}
+
+void StepForm::delCurStep(){
+    int row = m_pMapper->currentIndex();
+    m_pModel->removeRow(row);
+    m_pMapper->submit();
+    m_pMapper->setCurrentIndex(qMin(row, m_pModel->rowCount() - 1));
 }
 
 void StepForm::editScript(){
 	StepScriptDialog dlg(StepScriptDialog::EDIT_STEP, "", "", this);
+	dlg.svrId(ui.svrId->text());
 	dlg.cmd(ui.cmd->text());
 	dlg.cmdResult(ui.cmdResult->text());
 	dlg.script(ui.script->text());
@@ -98,7 +105,7 @@ QString StepForm::id(){
 	return ui.id->text();
 }
 
-QString StepForm::svrId(){
+QString StepForm::getSvrId(){
 	return ui.svrId->text();
 }
 
@@ -106,10 +113,10 @@ void StepForm::svrId(QString sId){
 	ui.svrId->setText(sId);
 }
 
-QString StepForm::name(){
+QString StepForm::getName(){
 	return ui.name->text();
 }
 
-QString StepForm::desc(){
+QString StepForm::getDesc(){
 	return ui.desc->toPlainText();
 }

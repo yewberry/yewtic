@@ -11,23 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MyQtLog</string>
+   <string>Step Script Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,4">
+    <layout class="QHBoxLayout" name="mainLayout" stretch="4">
      <item>
-      <widget class="QListView" name="steplist">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="editorLayout" stretch="0,1,0,1,0">
+      <layout class="QVBoxLayout" name="editorLayout" stretch="0,0,0">
        <item>
         <widget class="QLabel" name="label">
          <property name="sizePolicy">
@@ -40,9 +30,6 @@
           <string>Command:</string>
          </property>
         </widget>
-       </item>
-       <item>
-        <widget class="QPlainTextEdit" name="cmd"/>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -67,16 +54,6 @@
           </widget>
          </item>
         </layout>
-       </item>
-       <item>
-        <widget class="QTextEdit" name="cmdResult">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
        </item>
        <item>
         <widget class="QLabel" name="label_3">

@@ -183,6 +183,7 @@ int SSH2Utils::connect(const char *hostname, const char *username,
     return 0;
 
 shutdown:
+	return -1;
     deconnect();
 }
 
@@ -200,12 +201,12 @@ void SSH2Utils::deconnect() {
 	m_sock = 0;
 }
 
-int SSH2Utils::reconnect(char *hostname, char *username, char *password) {
+int SSH2Utils::reconnect(const char *hostname, const char *username, const char *password) {
 	deconnect();
 	return connect(hostname, username, password);
 }
 
-int SSH2Utils::exec(char *cmd) {
+int SSH2Utils::exec(const char *cmd) {
 	m_execResultStr.clear();
 	int rc;
 	LIBSSH2_CHANNEL *channel;

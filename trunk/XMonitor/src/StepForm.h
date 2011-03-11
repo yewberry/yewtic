@@ -17,13 +17,14 @@ public:
 
 	QSqlTableModel* model();
 	QString id();
-	QString svrId();
+	QString getSvrId();
 	void svrId(QString sId);
-	QString name();
-	QString desc();
+	QString getName();
+	QString getDesc();
 
 public slots:
 	void save();
+	void delCurStep();
 	void editScript();
 
 private:

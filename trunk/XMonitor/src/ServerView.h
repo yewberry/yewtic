@@ -38,9 +38,10 @@ protected:
 
 private slots:
     void addServer();
-    void addStep();
     void deleteItem();
     void activeServer();
+
+    void browserSteps();
 
     void updateActions();
     ServerViewNode* addItem(QString id);
@@ -57,10 +58,11 @@ private:
     QGraphicsView*	m_pView;
 
     QAction* m_pAddServerAct;
-    QAction* m_pAddStepAct;
     QAction* m_pEditServerAct;
     QAction* m_pDeleteItemAct;
     QAction* m_pActiveServerAct;
+
+    QAction* m_pBrowserStepsAct;
 
     QMenu*	m_pCtxMenu;
     QMenu*	m_pItemCtxMenu;
