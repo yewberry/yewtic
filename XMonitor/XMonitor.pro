@@ -59,4 +59,4 @@ INCLUDEPATH += D:/yewberry/boost_1_45_0 \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/mingw32 \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/backward \
     ../TestLibssh2/lib/include
-LIBS += -LD:'../TestLibssh2/lib' -lpthread -lssh2dll
+LIBS += -L../TestLibssh2/lib -lpthread -lwsock32 -lssh2dll

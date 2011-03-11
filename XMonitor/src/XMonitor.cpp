@@ -47,19 +47,6 @@ void XMonitor::showReportView() {
 	m_pCentralWidgetLayout->setCurrentIndex(1);
 }
 
-/*
-void* XMonitor::serverMonitorThread(void *arg){
-	while(true) {
-		QSqlTableModel model;
-		model.setTable("server");
-		model.select();
-
-
-	}
-	return (void*)0;
-}
-*/
-
 void XMonitor::startBackgroundThread(){
 	m_pSvrThrd->start();
 }
