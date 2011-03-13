@@ -4,10 +4,13 @@
 #include "Comm.h"
 #include "TopHeader.h"
 #include "TitleBar.h"
+
 #include "ServerView.h"
 #include "ServerViewItem.h"
 #include "ServerForm.h"
 #include "ServerThread.h"
+
+#include "ReportView.h"
 
 XMonitor::XMonitor(QWidget *parent)
 	: QMainWindow(parent)
@@ -149,9 +152,8 @@ void XMonitor::drawCentralWidget() {
 	m_pServerView = new ServerView(central);
 	sLay->addWidget(m_pServerView);
 
-	textEdit = new QTextEdit(central);
-	textEdit->setObjectName(QString::fromUtf8("textEdit"));
-	sLay->addWidget(textEdit);
+	m_pReportView = new ReportView(central);
+	sLay->addWidget(m_pReportView);
 
 	lineEdit = new QLineEdit(central);
 	lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
