@@ -9,6 +9,7 @@ class QToolButton;
 class QStackedLayout;
 class ServerView;
 class ServerThread;
+class ReportView;
 
 class XMonitor : public QMainWindow
 {
@@ -50,6 +51,7 @@ private:
     QToolButton*	m_pHelpBtn;
 
     ServerView*		m_pServerView;
+    ReportView*		m_pReportView;
     QStackedLayout*	m_pCentralWidgetLayout;
 
     QString m_dbName;

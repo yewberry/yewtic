@@ -7,7 +7,8 @@ QT += core \
     opengl \
     webkit \
     script
-HEADERS += src/SSH2Utils.h \
+HEADERS += src/ReportView.h \
+    src/SSH2Utils.h \
     src/CodeEditor.h \
     src/StepScriptDialog.h \
     src/JsHighlighter.h \
@@ -24,7 +25,8 @@ HEADERS += src/SSH2Utils.h \
     src/MyQtLog.h \
     src/TopHeader.h \
     src/XMonitor.h
-SOURCES += src/SSH2Utils.cpp \
+SOURCES += src/ReportView.cpp \
+    src/SSH2Utils.cpp \
     src/CodeEditor.cpp \
     src/StepScriptDialog.cpp \
     src/JsHighlighter.cpp \
@@ -42,7 +44,8 @@ SOURCES += src/SSH2Utils.cpp \
     src/TopHeader.cpp \
     src/XMonitor.cpp \
     src/main.cpp
-FORMS += ui/ServerForm.ui \
+FORMS += ui/ReportView.ui \
+    ui/ServerForm.ui \
     ui/StepForm.ui \
     ui/StepScriptDialog.ui \
     ui/StepScriptDialog.ui \
@@ -59,4 +62,7 @@ INCLUDEPATH += D:/yewberry/boost_1_45_0 \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/mingw32 \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/backward \
     ../TestLibssh2/lib/include
-LIBS += -L../TestLibssh2/lib -lpthread -lwsock32 -lssh2dll
+LIBS += -L../TestLibssh2/lib \
+    -lpthread \
+    -lwsock32 \
+    -lssh2dll
