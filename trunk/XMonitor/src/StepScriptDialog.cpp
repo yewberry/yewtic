@@ -3,6 +3,7 @@
 #include <QtSql>
 #include "Comm.h"
 #include "StepForm.h"
+#include "StepModel.h"
 #include "CodeEditor.h"
 #include "JsHighlighter.h"
 #include "SSH2Utils.h"
@@ -194,11 +195,15 @@ void StepScriptDialog::onDelStep(){
 				tr("Confirm to delete \"%1\"?").arg(item->text()),
 				QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes) {
 
-			StepForm form(item->data(Qt::UserRole).toString(), StepForm::INQ);
-			form.delCurStep();
+			//StepForm form(item->data(Qt::UserRole).toString(), StepForm::INQ);
+			//form.delCurStep();
+			QString stepId = item->data(Qt::UserRole).toString();
+			QString stepNm = item->text();
+			yDEBUG(QString("Delete... Step: %1(%2)").arg(stepNm).arg(stepId));
+			StepModel model;
+			model.deleteRecordById(stepId);
 			int row = m_pStepList->row(item);
 			m_pStepList->takeItem(row);
-			yDEBUG(QString("Delete Step: %1(%2)").arg(form.getName()).arg(form.id()));
 			emit stepOrderChanged();
 		}
 	}
@@ -210,18 +215,20 @@ void StepScriptDialog::onStepOrderChanged(){
 	for(int i=0; i<count; ++i){
 		QString _id = m_pStepList->item(i)->data(Qt::UserRole).toString();
 		hm[_id] = i+1;
-		yDEBUG(QString("%1: %2").arg(_id).arg(hm[_id]));
 	}
 
-    for (int row = 0; row < m_pModel->rowCount(); ++row) {
-        QSqlRecord record = m_pModel->record(row);
-        QString stepId = record.value(StepForm::ID).toString();
-        int seq = hm[stepId];
-        yDEBUG(QString("Row %3|%1: %2").arg(stepId).arg(seq).arg(row));
-        record.setValue(StepForm::SEQ, seq);
-        m_pModel->setRecord(row, record);
-    }
-    m_pModel->submitAll();
+	StepModel model;
+	QVector<QSqlRecord> recs = model.getRecords();
+	for(int i=0; i<recs.count(); ++i){
+		QSqlRecord rec = recs.at(i);
+		QString stepId = rec.value(StepModel::ID).toString();
+		int seq = hm[stepId];
+		rec.setValue(StepModel::SEQ, seq);
+		//yDEBUG(QString("ROW %1, %2:%3").arg(i).arg(stepId).arg(rec.value(StepModel::SEQ).toInt()));
+		model.setRecord(i, rec);
+	}
+    model.submitAll();
+
 }
 
 /**************************** slots END ************************************/

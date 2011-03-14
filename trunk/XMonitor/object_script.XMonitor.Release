@@ -1,4 +1,6 @@
 INPUT(
+./release/StepModel.o
+./release/XModel.o
 ./release/ReportView.o
 ./release/SSH2Utils.o
 ./release/CodeEditor.o
@@ -18,6 +20,8 @@ INPUT(
 ./release/TopHeader.o
 ./release/XMonitor.o
 ./release/main.o
+./release/moc_StepModel.o
+./release/moc_XModel.o
 ./release/moc_ReportView.o
 ./release/moc_CodeEditor.o
 ./release/moc_StepScriptDialog.o
