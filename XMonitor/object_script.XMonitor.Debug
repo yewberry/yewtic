@@ -1,4 +1,6 @@
 INPUT(
+./debug/StepModel.o
+./debug/XModel.o
 ./debug/ReportView.o
 ./debug/SSH2Utils.o
 ./debug/CodeEditor.o
@@ -18,6 +20,8 @@ INPUT(
 ./debug/TopHeader.o
 ./debug/XMonitor.o
 ./debug/main.o
+./debug/moc_StepModel.o
+./debug/moc_XModel.o
 ./debug/moc_ReportView.o
 ./debug/moc_CodeEditor.o
 ./debug/moc_StepScriptDialog.o
