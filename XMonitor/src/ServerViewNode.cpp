@@ -17,9 +17,13 @@ ServerViewNode::ServerViewNode(QString id, NodeType t, QMenu *ctxMenu, ServerVie
 	m_bgColor(Qt::white), m_pContextMenu(ctxMenu), m_pServerView(servView)
 {
 	setFlags(ItemIsMovable | ItemIsSelectable);
-	ServerForm form(m_id, ServerForm::INQ);
-	m_text = QString("%1\n%2").arg(form.getIp()).arg(form.name());
-	m_storedPosition = form.uiScenePos();
+	ServerModel model;
+	QSqlRecord rec = model.getRecordById(m_id);
+	QString ip = rec.value(ServerModel::IP).toString();
+	QString name = rec.value(ServerModel::NAME).toString();
+
+	m_text = QString("%1\n%2").arg(ip).arg(name);
+	m_storedPosition = model.getUiScenePos();
 	setPos(m_storedPosition);
 
 	m_blinkTimer = startTimer(500);
@@ -99,7 +103,7 @@ void ServerViewNode::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
 void ServerViewNode::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	ServerForm form(m_id, ServerForm::EDIT);
 	form.exec();
-	m_text = QString("%1\n%2").arg(form.getIp()).arg(form.name());
+	m_text = QString("%1\n%2").arg(form.getIp()).arg(form.getName());
 	update(outlineRect());
 }
 
@@ -138,8 +142,8 @@ void ServerViewNode::timerEvent(QTimerEvent *event){
 }
 
 void ServerViewNode::saveNodePos(){
-	ServerForm form(m_id, ServerForm::EDIT);
-	form.uiScenePos( scenePos() );
+	ServerModel model(m_id, this);
+	model.uiScenePos(scenePos());
 }
 
 QString ServerViewNode::text() const {
@@ -151,6 +155,6 @@ QPointF ServerViewNode::storedPosition() const {
 }
 
 bool ServerViewNode::isActive(){
-	ServerForm form(m_id, ServerForm::INQ);
-	return form.isServerActive();
+	ServerModel model(m_id, this);
+	return model.isActive();
 }

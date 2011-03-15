@@ -2,7 +2,7 @@
 #define SERVERFORM_H
 
 #include <QDialog>
-#include <QtSql>
+#include "ServerModel.h"
 #include "../ui_ServerForm.h"
 
 class QDataWidgetMapper;
@@ -11,22 +11,15 @@ class ServerForm: public QDialog {
 	Q_OBJECT
 
 public:
-	enum OpType{INQ, ADD, EDIT};
-	enum { ID = 0, IP = 1, NAME = 2, DESC = 3, USR = 4, PWD = 5, ACTIVE = 6, UI_SCENE_POS = 7 };
-	ServerForm(QString id = "", OpType op = INQ, QWidget *parent = 0);
+	enum OpType{ADD, EDIT};
+	ServerForm(QString id = "", OpType op = ADD, QWidget *parent = 0);
 
-	QSqlTableModel* model();
-	QString id();
+	QString getId();
 	QString getIp();
-	QString name();
+	QString getName();
 	QString getUser();
 	QString getPwd();
 
-	QPointF uiScenePos();
-	void uiScenePos(QPointF pos);
-
-	bool isServerActive();
-	void setServerActive(bool c);
 
 public slots:
 	void save();
@@ -39,8 +32,7 @@ private:
 	Ui::ServerFormClass ui;
 
 	OpType 				m_opType;
-	QSqlTableModel*
-						m_pModel;
+	ServerModel*		m_pModel;
 	QDataWidgetMapper*	m_pMapper;
 	QString 			m_id;
 };

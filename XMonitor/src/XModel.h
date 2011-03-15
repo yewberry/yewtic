@@ -16,12 +16,13 @@ class XModel : public QSqlRelationalTableModel{
 	Q_OBJECT
 
 public:
-	XModel(QObject * parent = 0);
+	XModel(QString tbl, QObject * parent = 0);
 
 	void submitAll();
 	QVector<QSqlRecord> getRecords();
 	QSqlRecord getRecordById(QString id);
 	void deleteRecordById(QString id);
+	void editRecordById(QString id, QSqlRecord rec);
 
 protected:
 	QString m_tbl;
