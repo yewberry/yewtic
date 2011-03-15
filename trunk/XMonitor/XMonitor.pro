@@ -7,7 +7,8 @@ QT += core \
     opengl \
     webkit \
     script
-HEADERS += src/StepModel.h \
+HEADERS += src/ServerModel.h \
+    src/StepModel.h \
     src/XModel.h \
     src/ReportView.h \
     src/SSH2Utils.h \
@@ -27,7 +28,8 @@ HEADERS += src/StepModel.h \
     src/MyQtLog.h \
     src/TopHeader.h \
     src/XMonitor.h
-SOURCES += src/StepModel.cpp \
+SOURCES += src/ServerModel.cpp \
+    src/StepModel.cpp \
     src/XModel.cpp \
     src/ReportView.cpp \
     src/SSH2Utils.cpp \

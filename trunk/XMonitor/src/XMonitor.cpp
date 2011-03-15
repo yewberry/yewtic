@@ -1,5 +1,6 @@
 #include "XMonitor.h"
 #include <QtGui>
+#include <QtSql>
 
 #include "Comm.h"
 #include "TopHeader.h"

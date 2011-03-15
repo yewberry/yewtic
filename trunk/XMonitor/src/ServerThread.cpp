@@ -12,7 +12,7 @@
 #include "XMonitor.h"
 #include "ServerView.h"
 #include "ServerViewNode.h"
-#include "ServerForm.h"
+#include "ServerModel.h"
 
 ServerThread::ServerThread(QObject *parent, int inter)
 	: XThread(parent, inter)
@@ -21,19 +21,18 @@ ServerThread::ServerThread(QObject *parent, int inter)
 void ServerThread::run()
 {
     while (!m_stopped){
-		QSqlTableModel model;
-		model.setTable("server");
-		model.select();
+    	ServerModel model;
+    	QVector<QSqlRecord> recs = model.getRecords();
 
-		for (int row = 0; row < model.rowCount(); ++row) {
-			QSqlRecord record = model.record(row);
-			bool act = record.value(ServerForm::ACTIVE).toBool();
-			QString nm = record.value(ServerForm::NAME).toString();
+		for (int row = 0; row < recs.count(); ++row) {
+			QSqlRecord record = recs.at(row);
+			bool act = record.value(ServerModel::ACTIVE).toBool();
+			QString nm = record.value(ServerModel::NAME).toString();
 
-			//yTDEBUG(QString("Serv %1 is %2").arg(nm).arg(act));
+			yTDEBUG(QString("Serv %1 is %2").arg(nm).arg(act));
 			/*
 			if(act){
-				QString id = record.value(ServerForm::ID).toString();
+				QString id = record.value(ServerModel::ID).toString();
 				XMonitor *app = (XMonitor*)this->parent();
 				ServerViewNode *item = dynamic_cast<ServerViewNode *>(app->serverView()->getItemById(id));
 				if(item != 0){

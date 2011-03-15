@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'XModel.h'
 **
-** Created: Mon Mar 14 20:44:33 2011
+** Created: Tue Mar 15 15:03:42 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!

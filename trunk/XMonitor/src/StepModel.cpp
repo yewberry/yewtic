@@ -7,9 +7,9 @@
 
 #include "StepModel.h"
 
-StepModel::StepModel() {
-	m_tbl = "step";
-    setTable(m_tbl);
+StepModel::StepModel()
+	: XModel("step")
+{
     setRelation(SVR_ID, QSqlRelation("server", "id", "name"));
     select();
 }

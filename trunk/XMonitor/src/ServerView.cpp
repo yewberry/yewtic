@@ -41,21 +41,28 @@ void ServerView::contextMenuEvent(QContextMenuEvent * event) {
 
 void ServerView::activeServer(){
 	ServerViewNode *node = selectedNode();
-	ServerForm form(node->id());
-	if(form.isServerActive()){
-		yINFO( QString("De-Active server: %1(%2).").arg(form.name()).arg(form.getIp()) );
-		form.setServerActive(false);
+	ServerModel model;
+	QString svrId = node->id();
+	QSqlRecord rec = model.getRecordById( svrId );
+	QString name = rec.value(ServerModel::NAME).toString();
+	QString ip = rec.value(ServerModel::IP).toString();
+	bool isAct = rec.value(ServerModel::ACTIVE).toBool();
+
+	if(isAct){
+		yINFO( QString("De-Active server: %1(%2).").arg(name).arg(ip) );
+		rec.setValue(ServerModel::ACTIVE, false);
 
 	} else {
-		yINFO( QString("Active server: %1(%2).").arg(form.name()).arg(form.getIp()) );
-		form.setServerActive(true);
+		yINFO( QString("Active server: %1(%2).").arg(name).arg(ip) );
+		rec.setValue(ServerModel::ACTIVE, true);
 	}
+	model.editRecordById(svrId, rec);
 }
 
 void ServerView::addServer() {
 	ServerForm form("", ServerForm::ADD, this);
 	form.exec();
-	addItem( form.id() );
+	addItem( form.getId() );
 }
 
 void ServerView::browserSteps() {
@@ -166,11 +173,11 @@ void ServerView::updateActions() {
 
 void ServerView::loadFromDb() {
 	yDEBUG("Load server nodes...");
-	ServerForm form;
-	QSqlTableModel *model = form.model();
-	for (int row = 0; row < model->rowCount(); ++row) {
-		QSqlRecord record = model->record(row);
-		ServerViewNode *node = addItem( record.value(ServerForm::ID).toString() );
+	ServerModel model(this);
+	QVector<QSqlRecord> recs = model.getRecords();
+	for (int row = 0; row < recs.count(); ++row) {
+		QSqlRecord record = recs.at(row);
+		ServerViewNode *node = addItem( record.value(ServerModel::ID).toString() );
 	}
 }
 

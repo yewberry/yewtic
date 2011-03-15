@@ -7,7 +7,7 @@
 #include "CodeEditor.h"
 #include "JsHighlighter.h"
 #include "SSH2Utils.h"
-#include "ServerForm.h"
+#include "ServerModel.h"
 #include <iostream>
 
 StepScriptDialog::StepScriptDialog(OpType type, QString svrId, QString curStepId, QWidget *parent)
@@ -130,18 +130,22 @@ void StepScriptDialog::save(){
     accept();
 }
 void StepScriptDialog::runCmd(){
-	ServerForm svr(m_svrId, ServerForm::INQ);
-	//yDEBUG(QString("SvrId:%1, ip:%2, usr:%3, pwd:%4").arg(m_svrId).arg(svr.getIp()).arg(svr.getUser()).arg(svr.getPwd()));
+	ServerModel model;
+	QSqlRecord rec = model.getRecordById(m_svrId);
+	QString _ip = rec.value(ServerModel::IP).toString();
+	QString _ur = rec.value(ServerModel::USR).toString();
+	QString _pw = rec.value(ServerModel::PWD).toString();
+	yDEBUG(QString("SvrId:%1, ip:%2, usr:%3, pwd:%4").arg(m_svrId).arg(_ip).arg(_ur).arg(_pw));
+
 	SSH2Utils ssh2;
 	if( ssh2.init() < 0 ){
 		yERROR(ssh2.errMsg());
 		return;
 	}
 	int rc = 0;
-	QString s = svr.getIp();
-	std::string ip = svr.getIp().toStdString();
-	std::string usr = svr.getUser().toStdString();
-	std::string pwd = svr.getPwd().toStdString();
+	std::string ip = _ip.toStdString();
+	std::string usr = _ur.toStdString();
+	std::string pwd = _pw.toStdString();
 	yINFO(QString("Connect to %1@%2").arg(ip.c_str()).arg(usr.c_str()));
 	rc = ssh2.connect(ip.c_str(), usr.c_str(), pwd.c_str());
 
