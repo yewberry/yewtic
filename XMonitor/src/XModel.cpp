@@ -26,9 +26,8 @@ void XModel::submitAll(){
 QVector<QSqlRecord> XModel::getRecords(){
 	setFilter("1 = 1");
 	QVector<QSqlRecord> rtn;
-	int a = rowCount();
-    for (int row = 0; row < rowCount(); ++row) {
-        QSqlRecord rec = record(row);
+    for (int i = 0; i < rowCount(); ++i) {
+        QSqlRecord rec = record(i);
         rtn.append(rec);
     }
     return rtn;
@@ -36,7 +35,14 @@ QVector<QSqlRecord> XModel::getRecords(){
 
 QSqlRecord XModel::getRecordById(QString id){
 	setFilter(QString("%1.id = '%2'").arg(m_tbl).arg(id));
-	return record();
+	QSqlRecord r;
+	if (rowCount() == 1) {
+		r = record(0);
+
+	} else {
+		yERROR(QString("Can't find %1.").arg(id));
+	}
+	return r;
 }
 
 void XModel::deleteRecordById(QString id){

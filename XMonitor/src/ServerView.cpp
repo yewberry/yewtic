@@ -10,6 +10,7 @@
 #include "ServerForm.h"
 #include "StepForm.h"
 #include "StepScriptDialog.h"
+#include <iostream>
 
 ServerView::ServerView(QWidget *parent) :
 	QWidget(parent), m_pCtxMenu(0), m_itemCount(0) {
@@ -175,10 +176,13 @@ void ServerView::loadFromDb() {
 	yDEBUG("Load server nodes...");
 	ServerModel model(this);
 	QVector<QSqlRecord> recs = model.getRecords();
+	int a = recs.count();
 	for (int row = 0; row < recs.count(); ++row) {
 		QSqlRecord record = recs.at(row);
 		ServerViewNode *node = addItem( record.value(ServerModel::ID).toString() );
+		int c = 0;
 	}
+	int b = 0;
 }
 
 ServerViewNode* ServerView::selectedNode() const {

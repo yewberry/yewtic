@@ -14,33 +14,26 @@ ServerModel::ServerModel(QObject *parent)
     select();
 }
 
-ServerModel::ServerModel(QString id, QObject *parent)
-	: XModel("server", parent)
-{
-	getRecordById(id);
-    select();
-}
-
-bool ServerModel::isActive(){
-	QSqlRecord rec = record();
+bool ServerModel::isActive(QString id){
+	QSqlRecord rec = getRecordById(id);
 	return rec.value(ServerModel::ACTIVE).toBool();
 }
 
-QPointF ServerModel::getUiScenePos(){
-	QSqlRecord rec = record();
+QPointF ServerModel::getUiScenePos(QString id){
+	QSqlRecord rec = getRecordById(id);
 	QString s;
 	if(!rec.isEmpty()){
 		s = rec.value(UI_SCENE_POS).toString();
 	} else {
 		s = "0.0,0.0";
 	}
+	const char *bbb = s.toStdString().c_str();
 	QStringList ls = s.split(",");
 	return QPoint( ls[0].toFloat(), ls[1].toFloat() );
 }
 
-void ServerModel::uiScenePos(QPointF pos){
-	QSqlRecord rec = record();
-	QString id = rec.value(ID).toString();
+void ServerModel::uiScenePos(QString id, QPointF pos){
+	QSqlRecord rec = getRecordById(id);
 	rec.setValue( UI_SCENE_POS, QString("%1,%2").arg(pos.x()).arg(pos.y()) );
 	editRecordById(id, rec);
 }

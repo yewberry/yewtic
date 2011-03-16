@@ -16,12 +16,11 @@ class ServerModel : public XModel
 public:
 	enum { ID = 0, IP = 1, NAME = 2, DESC = 3, USR = 4, PWD = 5, ACTIVE = 6, UI_SCENE_POS = 7 };
 	ServerModel(QObject *parent = 0);
-	ServerModel(QString id, QObject *parent = 0);
 
-	bool isActive();
+	bool isActive(QString id);
 
-	QPointF getUiScenePos();
-	void uiScenePos(QPointF pos);
+	QPointF getUiScenePos(QString id);
+	void uiScenePos(QString id, QPointF pos);
 };
 
 #endif /* SERVERMODEL_H_ */

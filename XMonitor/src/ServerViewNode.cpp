@@ -23,7 +23,7 @@ ServerViewNode::ServerViewNode(QString id, NodeType t, QMenu *ctxMenu, ServerVie
 	QString name = rec.value(ServerModel::NAME).toString();
 
 	m_text = QString("%1\n%2").arg(ip).arg(name);
-	m_storedPosition = model.getUiScenePos();
+	m_storedPosition = model.getUiScenePos(m_id);
 	setPos(m_storedPosition);
 
 	m_blinkTimer = startTimer(500);
@@ -142,8 +142,8 @@ void ServerViewNode::timerEvent(QTimerEvent *event){
 }
 
 void ServerViewNode::saveNodePos(){
-	ServerModel model(m_id, this);
-	model.uiScenePos(scenePos());
+	ServerModel model(this);
+	model.uiScenePos(m_id, scenePos());
 }
 
 QString ServerViewNode::text() const {
@@ -155,6 +155,6 @@ QPointF ServerViewNode::storedPosition() const {
 }
 
 bool ServerViewNode::isActive(){
-	ServerModel model(m_id, this);
-	return model.isActive();
+	ServerModel model(this);
+	return model.isActive(m_id);
 }
