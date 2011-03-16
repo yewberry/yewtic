@@ -62,14 +62,15 @@ void ServerView::activeServer(){
 
 void ServerView::addServer() {
 	ServerForm form("", ServerForm::ADD, this);
-	form.exec();
-	addItem( form.getId() );
+	if( form.exec()  == QDialog::Accepted ){
+		addItem( form.getId() );
+	}
 }
 
 void ServerView::browserSteps() {
 	ServerViewNode *svr = selectedNode();
 	if(svr != 0){
-		StepScriptDialog dlg(StepScriptDialog::EDIT_SVR_STEPS, svr->id(), "", this);
+		StepScriptDialog dlg(StepScriptDialog::EDIT_SVR_STEPS, svr->id(), this);
 		dlg.exec();
 	}
 }
@@ -84,8 +85,14 @@ ServerViewNode* ServerView::addItem(QString id) {
 	return node;
 }
 
-void ServerView::deleteItem() {
+void ServerView::editItem() {
+	ServerViewItem *item = selectedItem();
+	item->editItem();
+}
 
+void ServerView::deleteItem() {
+	ServerViewItem *item = selectedItem();
+	item->deleteItem();
 	m_itemCount--;
 }
 
@@ -111,10 +118,10 @@ void ServerView::createActions() {
 	//m_pAddServerAct->setShortcut(tr("Ctrl+S"));
 	connect(m_pAddServerAct, SIGNAL(triggered()), this, SLOT(addServer()));
 
-	m_pEditServerAct = new QAction(tr("&Edit Server"), this);
+	m_pEditServerAct = new QAction(tr("&Edit"), this);
 	m_pEditServerAct->setIcon(QIcon(":/images/edit.png"));
 	m_pEditServerAct->setShortcut(tr("Ctrl+E"));
-	connect(m_pEditServerAct, SIGNAL(triggered()), this, SLOT(addServer()));
+	connect(m_pEditServerAct, SIGNAL(triggered()), this, SLOT(editItem()));
 
 	m_pDeleteItemAct = new QAction(tr("&Delete"), this);
 	m_pDeleteItemAct->setIcon(QIcon(":/images/delete.png"));
@@ -183,6 +190,15 @@ void ServerView::loadFromDb() {
 		int c = 0;
 	}
 	int b = 0;
+}
+
+ServerViewItem* ServerView::selectedItem() const {
+	QList<QGraphicsItem *> items = m_pScene->selectedItems();
+	if (items.count() == 1) {
+		return dynamic_cast<ServerViewItem *> (items.first());
+	} else {
+		return 0;
+	}
 }
 
 ServerViewNode* ServerView::selectedNode() const {

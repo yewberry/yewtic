@@ -38,10 +38,11 @@ protected:
 
 private slots:
     void addServer();
-    void deleteItem();
     void activeServer();
-
     void browserSteps();
+
+    void editItem();
+    void deleteItem();
 
     void updateActions();
     ServerViewNode* addItem(QString id);
@@ -51,6 +52,7 @@ private:
 	void createMenus();
 	void createItemMenus();
 
+	ServerViewItem* selectedItem() const;
 	ServerViewNode* selectedNode() const;
 
 private:

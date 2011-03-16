@@ -35,6 +35,22 @@ ServerViewNode::~ServerViewNode() {
 			delete link;
 }
 
+void ServerViewNode::editItem(){
+	ServerForm form(m_id, ServerForm::EDIT);
+	form.exec();
+	m_text = QString("%1\n%2").arg(form.getIp()).arg(form.getName());
+	update(outlineRect());
+}
+
+void ServerViewNode::deleteItem(){
+	if( QMessageBox::question(0, tr("Confirm?"), tr("Confirm to delete \"%1\"?").arg(text()),
+			QMessageBox::Yes|QMessageBox::Cancel, QMessageBox::Cancel) == QMessageBox::Yes ){
+		ServerModel model;
+		model.deleteRecordById(m_id);
+		delete this;
+	}
+}
+
 void ServerViewNode::addLink(ServerViewLink *link) {
 	m_links.insert(link);
 }
@@ -101,10 +117,7 @@ void ServerViewNode::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
 }
 
 void ServerViewNode::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-	ServerForm form(m_id, ServerForm::EDIT);
-	form.exec();
-	m_text = QString("%1\n%2").arg(form.getIp()).arg(form.getName());
-	update(outlineRect());
+	editItem();
 }
 
 QVariant ServerViewNode::itemChange(GraphicsItemChange change,

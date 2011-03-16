@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'StepScriptDialog.ui'
 **
-** Created: Sun Mar 13 19:47:09 2011
+** Created: Wed Mar 16 20:43:05 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -18,6 +18,7 @@
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
+#include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
@@ -35,6 +36,8 @@ public:
     QLabel *label_2;
     QPushButton *runCmdBtn;
     QLabel *label_3;
+    QLineEdit *svrId;
+    QLineEdit *stepId;
     QDialogButtonBox *buttonBox;
 
     void setupUi(QWidget *StepScriptDialogClass)
@@ -93,6 +96,16 @@ public:
         mainLayout->setStretch(0, 4);
 
         verticalLayout_2->addLayout(mainLayout);
+
+        svrId = new QLineEdit(StepScriptDialogClass);
+        svrId->setObjectName(QString::fromUtf8("svrId"));
+
+        verticalLayout_2->addWidget(svrId);
+
+        stepId = new QLineEdit(StepScriptDialogClass);
+        stepId->setObjectName(QString::fromUtf8("stepId"));
+
+        verticalLayout_2->addWidget(stepId);
 
         buttonBox = new QDialogButtonBox(StepScriptDialogClass);
         buttonBox->setObjectName(QString::fromUtf8("buttonBox"));

@@ -16,6 +16,8 @@ public:
 	~ServerViewItem();
 
 	QString id() const;
+	virtual void editItem() = 0;
+	virtual void deleteItem() = 0;
 
 protected:
 	QString m_id;

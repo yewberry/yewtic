@@ -24,15 +24,18 @@ QPointF ServerModel::getUiScenePos(QString id){
 	QString s;
 	if(!rec.isEmpty()){
 		s = rec.value(UI_SCENE_POS).toString();
-	} else {
+	}
+
+	if( s.isEmpty() ){
 		s = "0.0,0.0";
 	}
-	const char *bbb = s.toStdString().c_str();
+
 	QStringList ls = s.split(",");
 	return QPoint( ls[0].toFloat(), ls[1].toFloat() );
 }
 
 void ServerModel::uiScenePos(QString id, QPointF pos){
+	return;
 	QSqlRecord rec = getRecordById(id);
 	rec.setValue( UI_SCENE_POS, QString("%1,%2").arg(pos.x()).arg(pos.y()) );
 	editRecordById(id, rec);

@@ -2,17 +2,19 @@
 #include <QtGui>
 #include <QtSql>
 #include "Comm.h"
+
 #include "StepForm.h"
 #include "StepModel.h"
+#include "ServerModel.h"
+
 #include "CodeEditor.h"
 #include "JsHighlighter.h"
 #include "SSH2Utils.h"
-#include "ServerModel.h"
-#include <iostream>
 
-StepScriptDialog::StepScriptDialog(OpType type, QString svrId, QString curStepId, QWidget *parent)
-	: QDialog(parent), m_opType(type), m_svrId(svrId), m_initStepId(curStepId)
+StepScriptDialog::StepScriptDialog(OpType type, QString id, QWidget *parent)
+	: QDialog(parent), m_opType(type)
 {
+	init(id);
 	ui.setupUi(this);
 	drawUi();
 	mapping();
@@ -21,32 +23,36 @@ StepScriptDialog::StepScriptDialog(OpType type, QString svrId, QString curStepId
 	createMenus();
 }
 
+void StepScriptDialog::init(QString id){
+	switch(type){
+		case EDIT_STEP:{
+			setCurStep(id);
+			m_svrId = getSvrId();
+			break;
+		}
+		case EDIT_SVR_STEPS:{
+			m_svrId = id;
+			break;
+		}
+		default:
+			break;
+	}
+}
+
 void StepScriptDialog::mapping() {
-	m_pModel = new QSqlRelationalTableModel(this);
-	m_pModel->setTable("step");
-	m_pModel->setRelation(StepForm::SVR_ID, QSqlRelation("server", "id", "name"));
-	m_pModel->setSort(StepForm::SEQ, Qt::AscendingOrder);
-	if(!m_svrId.isEmpty())
-		m_pModel->setFilter(QString("svr_id='%1'").arg(m_svrId));
-	m_pModel->select();
+	m_pModel = new StepModel(this);
+	m_pModel->setFilter(QString("server.svr_id = %1").arg(m_svrId));
 
 	m_pMapper = new QDataWidgetMapper(this);
 	m_pMapper->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
 	m_pMapper->setModel(m_pModel);
 	m_pMapper->setItemDelegate(new QSqlRelationalDelegate(this));
-	m_pMapper->addMapping(m_pCmdEditor, StepForm::CMD);
-	m_pMapper->addMapping(m_pCmdResultViewer, StepForm::CMD_RESULT);
-	m_pMapper->addMapping(m_pScriptEditor, StepForm::SCRIPT);
+	m_pMapper->addMapping(m_pCmdEditor, StepModel::CMD);
+	m_pMapper->addMapping(m_pCmdResultViewer, StepModel::CMD_RESULT);
+	m_pMapper->addMapping(m_pScriptEditor, StepModel::SCRIPT);
 
-	if( !m_initStepId.isEmpty() ) {
-        for (int row = 0; row < m_pModel->rowCount(); ++row) {
-            QSqlRecord record = m_pModel->record(row);
-            if (record.value(StepForm::ID).toString() == m_initStepId) {
-                m_pMapper->setCurrentIndex(row);
-                break;
-            }
-        }
-    }
+	m_pMapper->addMapping(ui.stepId, StepModel::ID);
+	m_pMapper->addMapping(ui.svrId, StepModel::SVR_ID);
 }
 
 void StepScriptDialog::drawUi() {
@@ -166,9 +172,13 @@ void StepScriptDialog::runCmd(){
 
 void StepScriptDialog::onStepListClicked(QListWidgetItem *item){
 	QString stepId = item->data(Qt::UserRole).toString();
+	setCurStep(stepId);
+}
+
+void StepScriptDialog::setCurStep(QString stepId){
     for (int row = 0; row < m_pModel->rowCount(); ++row) {
         QSqlRecord record = m_pModel->record(row);
-        if (record.value(StepForm::ID).toString() == stepId) {
+        if (record.value(StepForm::ID).toString() == m_stepId) {
             m_pMapper->setCurrentIndex(row);
             break;
         }
@@ -178,7 +188,7 @@ void StepScriptDialog::onStepListClicked(QListWidgetItem *item){
 void StepScriptDialog::onStepListDoubleClicked(QListWidgetItem *item){
 	QString stepId = item->data(Qt::UserRole).toString();
 	StepForm form(stepId, StepForm::EDIT, this);
-	form.svrId(m_svrId);
+
 	if( form.exec() == QDialog::Accepted ){
 		item->setText(form.getName());
 		item->setData(Qt::ToolTipRole, QString(tr("Desc:\n%1")).arg(form.getDesc()));
@@ -187,7 +197,6 @@ void StepScriptDialog::onStepListDoubleClicked(QListWidgetItem *item){
 
 void StepScriptDialog::onAddStep() {
 	StepForm form("", StepForm::ADD, this);
-	form.svrId(m_svrId);
 	form.exec();
 }
 
@@ -250,7 +259,7 @@ void StepScriptDialog::script(QString s){
 }
 
 void StepScriptDialog::svrId(QString s){
-	m_svrId = s;
+	ui.svrId->setText(s);
 }
 
 QString StepScriptDialog::getCmd(){
@@ -263,4 +272,8 @@ QString StepScriptDialog::getCmdResult(){
 
 QString StepScriptDialog::getScript(){
 	return m_pScriptEditor->toPlainText();
+}
+
+QString StepScriptDialog::getSvrId(){
+	return ui.svrId->text();
 }

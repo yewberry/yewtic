@@ -18,7 +18,6 @@ public:
 	QSqlTableModel* model();
 	QString id();
 	QString getSvrId();
-	void svrId(QString sId);
 	QString getName();
 	QString getDesc();
 
