@@ -6,7 +6,8 @@
 #include <QMenu>
 #include "../ui_StepScriptDialog.h"
 
-class QSqlRelationalTableModel;
+class StepModel;
+
 class QDataWidgetMapper;
 class CodeEditor;
 class StepListWidget;
@@ -16,12 +17,12 @@ class StepScriptDialog: public QDialog {
 
 public:
 	enum OpType{EDIT_STEP, EDIT_SVR_STEPS};
-	StepScriptDialog(OpType type = EDIT_SVR_STEPS, QString svrId = "",
-			QString curStepId = "", QWidget *parent = 0);
+	StepScriptDialog(OpType type = EDIT_SVR_STEPS, QString id = "", QWidget *parent = 0);
 
 	QString getCmd();
 	QString getCmdResult();
 	QString getScript();
+	QString getSvrId();
 	void cmd(QString s);
 	void cmdResult(QString s);
 	void script(QString s);
@@ -44,8 +45,10 @@ private slots:
 
 
 private:
+	void init(QString id);
 	void drawUi();
 	void mapping();
+	void setCurStep(QString stepId);
 	void setStepListData();
 	void createActions();
 	void createMenus();
@@ -58,13 +61,11 @@ private:
 	CodeEditor*			m_pCmdResultViewer;
 	CodeEditor*			m_pScriptEditor;
 
-	QSqlRelationalTableModel*
-						m_pModel;
+	StepModel*			m_pModel;
 	QDataWidgetMapper*	m_pMapper;
 
 	OpType 				m_opType;
-	QString 			m_svrId;
-	QString				m_initStepId;
+	QString				m_svrId;
 
 	QMenu*				m_pStepListCtxMenu;
     QAction* 			m_pAddStepAct;

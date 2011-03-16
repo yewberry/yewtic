@@ -22,15 +22,18 @@ void ServerThread::run()
 {
     while (!m_stopped){
     	ServerModel model;
-    	QVector<QSqlRecord> recs = model.getRecords();
+    	//QVector<QSqlRecord> recs = model.getRecords();
 
+    	//yTDEBUG(QString("Serv count %1").arg(recs.count()));
+
+    	/*
 		for (int row = 0; row < recs.count(); ++row) {
 			QSqlRecord record = recs.at(row);
 			bool act = record.value(ServerModel::ACTIVE).toBool();
 			QString nm = record.value(ServerModel::NAME).toString();
 
 			yTDEBUG(QString("Serv %1 is %2").arg(nm).arg(act));
-			/*
+
 			if(act){
 				QString id = record.value(ServerModel::ID).toString();
 				XMonitor *app = (XMonitor*)this->parent();
@@ -39,9 +42,9 @@ void ServerThread::run()
 
 				}
 			}
-			*/
-		}
 
+		}
+    	*/
 
     	msleep(m_threadInter);
     }

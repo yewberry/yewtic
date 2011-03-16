@@ -66,7 +66,7 @@ void ServerForm::drawUi() {
 
 void ServerForm::save(){
 	m_pMapper->submit();
-	this->close();
+	accept();
 }
 
 QString ServerForm::getId(){

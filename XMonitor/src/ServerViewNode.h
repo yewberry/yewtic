@@ -25,14 +25,15 @@ public:
 	ServerViewNode(QString id, NodeType t = GeneralServer, QMenu *ctxMenu = 0,
 			ServerView *servView = 0);
 	~ServerViewNode();
+	void editItem();
+	void deleteItem();
 
 	void addLink(ServerViewLink *link);
 	void removeLink(ServerViewLink *link);
 
 	QRectF boundingRect() const;
 	QPainterPath shape() const;
-	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-			QWidget *widget);
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
 	void saveNodePos();
 

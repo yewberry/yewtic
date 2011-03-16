@@ -73,6 +73,12 @@
     </layout>
    </item>
    <item>
+    <widget class="QLineEdit" name="svrId"/>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="stepId"/>
+   </item>
+   <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>

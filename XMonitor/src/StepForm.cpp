@@ -42,6 +42,7 @@ void StepForm::mapping() {
             QSqlRecord record = m_pModel->record(row);
             if (record.value(ID).toString() == m_id) {
                 m_pMapper->setCurrentIndex(row);
+                ui.svrId->setText(record.value(SVR_ID).toString());
                 break;
             }
         }
@@ -84,11 +85,7 @@ void StepForm::delCurStep(){
 }
 
 void StepForm::editScript(){
-	StepScriptDialog dlg(StepScriptDialog::EDIT_STEP, "", "", this);
-	dlg.svrId(ui.svrId->text());
-	dlg.cmd(ui.cmd->text());
-	dlg.cmdResult(ui.cmdResult->text());
-	dlg.script(ui.script->text());
+	StepScriptDialog dlg(StepScriptDialog::EDIT_STEP, ui.id->text(), this);
 
 	if( dlg.exec() == QDialog::Accepted ){
 		ui.cmd->setText(dlg.getCmd());
@@ -107,10 +104,6 @@ QString StepForm::id(){
 
 QString StepForm::getSvrId(){
 	return ui.svrId->text();
-}
-
-void StepForm::svrId(QString sId){
-	ui.svrId->setText(sId);
 }
 
 QString StepForm::getName(){
