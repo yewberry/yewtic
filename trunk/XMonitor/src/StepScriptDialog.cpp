@@ -1,6 +1,7 @@
 #include "StepScriptDialog.h"
 #include <QtGui>
 #include <QtSql>
+#include <QtScript>
 #include "Comm.h"
 
 #include "StepForm.h"
@@ -12,9 +13,8 @@
 #include "SSH2Utils.h"
 
 StepScriptDialog::StepScriptDialog(OpType type, QString id, QWidget *parent)
-	: QDialog(parent), m_opType(type)
+	: QDialog(parent), m_opType(type),m_svrId(id)
 {
-	init(id);
 	ui.setupUi(this);
 	drawUi();
 	mapping();
@@ -23,25 +23,8 @@ StepScriptDialog::StepScriptDialog(OpType type, QString id, QWidget *parent)
 	createMenus();
 }
 
-void StepScriptDialog::init(QString id){
-	switch(type){
-		case EDIT_STEP:{
-			setCurStep(id);
-			m_svrId = getSvrId();
-			break;
-		}
-		case EDIT_SVR_STEPS:{
-			m_svrId = id;
-			break;
-		}
-		default:
-			break;
-	}
-}
-
 void StepScriptDialog::mapping() {
 	m_pModel = new StepModel(this);
-	m_pModel->setFilter(QString("server.svr_id = %1").arg(m_svrId));
 
 	m_pMapper = new QDataWidgetMapper(this);
 	m_pMapper->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
@@ -53,9 +36,21 @@ void StepScriptDialog::mapping() {
 
 	m_pMapper->addMapping(ui.stepId, StepModel::ID);
 	m_pMapper->addMapping(ui.svrId, StepModel::SVR_ID);
+
+	if(m_opType == EDIT_STEP){
+		QString stepId = m_svrId;
+		m_svrId = m_pModel->getSvrId(m_svrId);
+		m_pModel->setModelBySvrId(m_svrId);
+		setCurStep(stepId);
+	} else {
+		m_pModel->setModelBySvrId(m_svrId);
+	}
 }
 
 void StepScriptDialog::drawUi() {
+	ui.stepId->hide();
+	ui.svrId->hide();
+
 	m_pStepList = new StepListWidget(this);
 	m_pStepList->setDragEnabled(true);
 	m_pStepList->setDragDropMode(QAbstractItemView::InternalMove);
@@ -67,8 +62,7 @@ void StepScriptDialog::drawUi() {
 
 	m_pCmdEditor = new CodeEditor(this);
 	m_pCmdEditor->setReadOnly(false);
-	ui.editorLayout->insertWidget(1, m_pCmdEditor);
-	ui.editorLayout->setStretchFactor(m_pCmdEditor, 1);
+	ui.CmdLayout->insertWidget(0, m_pCmdEditor);
 
 	m_pCmdResultViewer = new CodeEditor(this);
 	m_pCmdResultViewer->setReadOnly(true);
@@ -105,9 +99,9 @@ void StepScriptDialog::setStepListData() {
 	for (int row = 0; row < m_pModel->rowCount(); ++row) {
 		QSqlRecord record = m_pModel->record(row);
 		QListWidgetItem *item = new QListWidgetItem(
-				record.value(StepForm::NAME).toString(), m_pStepList);
-		item->setData(Qt::ToolTipRole, QString(tr("Desc:\n%1")).arg(record.value(StepForm::DESC).toString()));
-		item->setData(Qt::UserRole, record.value(StepForm::ID).toString());
+				record.value(StepModel::NAME).toString(), m_pStepList);
+		item->setData(Qt::ToolTipRole, QString(tr("Desc:\n%1")).arg(record.value(StepModel::DESC).toString()));
+		item->setData(Qt::UserRole, record.value(StepModel::ID).toString());
 	}
 }
 
@@ -133,40 +127,46 @@ void StepScriptDialog::createMenus(){
 
 /**************************** slots START ************************************/
 void StepScriptDialog::save(){
+	m_pMapper->submit();
     accept();
 }
 void StepScriptDialog::runCmd(){
-	ServerModel model;
-	QSqlRecord rec = model.getRecordById(m_svrId);
-	QString _ip = rec.value(ServerModel::IP).toString();
-	QString _ur = rec.value(ServerModel::USR).toString();
-	QString _pw = rec.value(ServerModel::PWD).toString();
-	yDEBUG(QString("SvrId:%1, ip:%2, usr:%3, pwd:%4").arg(m_svrId).arg(_ip).arg(_ur).arg(_pw));
+	if(ui.useResultCache->isChecked()){
+		runScript();
 
-	SSH2Utils ssh2;
-	if( ssh2.init() < 0 ){
-		yERROR(ssh2.errMsg());
-		return;
-	}
-	int rc = 0;
-	std::string ip = _ip.toStdString();
-	std::string usr = _ur.toStdString();
-	std::string pwd = _pw.toStdString();
-	yINFO(QString("Connect to %1@%2").arg(ip.c_str()).arg(usr.c_str()));
-	rc = ssh2.connect(ip.c_str(), usr.c_str(), pwd.c_str());
+	} else {
+		ServerModel model;
+		QSqlRecord rec = model.getRecordById(m_svrId);
+		QString _ip = rec.value(ServerModel::IP).toString();
+		QString _ur = rec.value(ServerModel::USR).toString();
+		QString _pw = rec.value(ServerModel::PWD).toString();
+		yDEBUG(QString("SvrId:%1, ip:%2, usr:%3, pwd:%4").arg(m_svrId).arg(_ip).arg(_ur).arg(_pw));
 
-	if(rc < 0){
-		yERROR(ssh2.errMsg());
-		return;
-	}
+		SSH2Utils ssh2;
+		if( ssh2.init() < 0 ){
+			yERROR(ssh2.errMsg());
+			return;
+		}
+		int rc = 0;
+		std::string ip = _ip.toStdString();
+		std::string usr = _ur.toStdString();
+		std::string pwd = _pw.toStdString();
+		yINFO(QString("Connect to %1@%2").arg(ip.c_str()).arg(usr.c_str()));
+		rc = ssh2.connect(ip.c_str(), usr.c_str(), pwd.c_str());
 
-	if(rc == 0){
-		std::string cmdstr = m_pCmdEditor->toPlainText().toStdString();
-		yINFO(QString("Execute command: %1").arg(cmdstr.c_str()));
-		rc = ssh2.exec(cmdstr.c_str());
-		std::string str = ssh2.execResultStr();
-		m_pCmdResultViewer->clear();
-		m_pCmdResultViewer->setPlainText( QString::fromStdString(str) );
+		if(rc < 0){
+			yERROR(ssh2.errMsg());
+			return;
+		}
+
+		if(rc == 0){
+			std::string cmdstr = m_pCmdEditor->toPlainText().toStdString();
+			yINFO(QString("Execute command: %1").arg(cmdstr.c_str()));
+			rc = ssh2.exec(cmdstr.c_str());
+			std::string str = ssh2.execResultStr();
+			m_pCmdResultViewer->clear();
+			m_pCmdResultViewer->setPlainText( QString::fromStdString(str) );
+		}
 	}
 }
 
@@ -176,9 +176,10 @@ void StepScriptDialog::onStepListClicked(QListWidgetItem *item){
 }
 
 void StepScriptDialog::setCurStep(QString stepId){
+	m_pModel->select();
     for (int row = 0; row < m_pModel->rowCount(); ++row) {
         QSqlRecord record = m_pModel->record(row);
-        if (record.value(StepForm::ID).toString() == m_stepId) {
+        if (record.value(StepForm::ID).toString() == stepId) {
             m_pMapper->setCurrentIndex(row);
             break;
         }
@@ -196,8 +197,13 @@ void StepScriptDialog::onStepListDoubleClicked(QListWidgetItem *item){
 }
 
 void StepScriptDialog::onAddStep() {
-	StepForm form("", StepForm::ADD, this);
-	form.exec();
+	StepForm form(m_svrId, StepForm::ADD, this);
+	if( form.exec() == QDialog::Accepted ){
+		QListWidgetItem *item = new QListWidgetItem( form.getName(), m_pStepList);
+		item->setData( Qt::ToolTipRole, QString(tr("Desc:\n%1")).arg(form.getDesc()) );
+		item->setData( Qt::UserRole, form.id() );
+		emit stepOrderChanged();
+	}
 }
 
 void StepScriptDialog::onDelStep(){
@@ -243,8 +249,25 @@ void StepScriptDialog::onStepOrderChanged(){
     model.submitAll();
 
 }
-
 /**************************** slots END ************************************/
+
+void StepScriptDialog::runScript() {
+	QString result = m_pCmdResultViewer->toPlainText();
+	QString script = m_pScriptEditor->toPlainText();
+	QScriptEngine engine;
+
+	engine.globalObject().setProperty("xIn", result);
+    QScriptValue xLog = engine.newQObject(ui.scriptOutput);
+	engine.globalObject().setProperty("xLog", xLog);
+
+	QScriptValue res = engine.evaluate(script);
+	if (engine.hasUncaughtException()) {
+		yERROR(engine.uncaughtException().toString());
+		yERROR(engine.uncaughtExceptionBacktrace().join("\n"));
+	} else {
+		ui.scriptOutput->appendPlainText( "[RESULT] "+res.toString() );
+	}
+}
 
 void StepScriptDialog::cmd(QString s){
 	m_pCmdEditor->setPlainText(s);

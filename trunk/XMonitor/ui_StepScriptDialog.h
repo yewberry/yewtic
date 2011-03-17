@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'StepScriptDialog.ui'
 **
-** Created: Wed Mar 16 20:43:05 2011
+** Created: Thu Mar 17 15:46:53 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,11 +14,13 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QCheckBox>
 #include <QtGui/QDialogButtonBox>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
+#include <QtGui/QPlainTextEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
@@ -32,8 +34,11 @@ public:
     QHBoxLayout *mainLayout;
     QVBoxLayout *editorLayout;
     QLabel *label;
-    QHBoxLayout *horizontalLayout_2;
+    QHBoxLayout *CmdLayout;
+    QPlainTextEdit *scriptOutput;
+    QHBoxLayout *ResultLayout;
     QLabel *label_2;
+    QCheckBox *useResultCache;
     QPushButton *runCmdBtn;
     QLabel *label_3;
     QLineEdit *svrId;
@@ -65,23 +70,41 @@ public:
 
         editorLayout->addWidget(label);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        CmdLayout = new QHBoxLayout();
+        CmdLayout->setSpacing(6);
+        CmdLayout->setObjectName(QString::fromUtf8("CmdLayout"));
+        scriptOutput = new QPlainTextEdit(StepScriptDialogClass);
+        scriptOutput->setObjectName(QString::fromUtf8("scriptOutput"));
+        scriptOutput->setReadOnly(true);
+
+        CmdLayout->addWidget(scriptOutput);
+
+
+        editorLayout->addLayout(CmdLayout);
+
+        ResultLayout = new QHBoxLayout();
+        ResultLayout->setSpacing(6);
+        ResultLayout->setObjectName(QString::fromUtf8("ResultLayout"));
         label_2 = new QLabel(StepScriptDialogClass);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         sizePolicy.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
         label_2->setSizePolicy(sizePolicy);
 
-        horizontalLayout_2->addWidget(label_2);
+        ResultLayout->addWidget(label_2);
+
+        useResultCache = new QCheckBox(StepScriptDialogClass);
+        useResultCache->setObjectName(QString::fromUtf8("useResultCache"));
+        useResultCache->setChecked(true);
+
+        ResultLayout->addWidget(useResultCache);
 
         runCmdBtn = new QPushButton(StepScriptDialogClass);
         runCmdBtn->setObjectName(QString::fromUtf8("runCmdBtn"));
 
-        horizontalLayout_2->addWidget(runCmdBtn);
+        ResultLayout->addWidget(runCmdBtn);
 
 
-        editorLayout->addLayout(horizontalLayout_2);
+        editorLayout->addLayout(ResultLayout);
 
         label_3 = new QLabel(StepScriptDialogClass);
         label_3->setObjectName(QString::fromUtf8("label_3"));
@@ -90,6 +113,7 @@ public:
 
         editorLayout->addWidget(label_3);
 
+        editorLayout->setStretch(1, 1);
 
         mainLayout->addLayout(editorLayout);
 
@@ -124,6 +148,7 @@ public:
         StepScriptDialogClass->setWindowTitle(QApplication::translate("StepScriptDialogClass", "Step Script Dialog", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("StepScriptDialogClass", "Command:", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("StepScriptDialogClass", "Result:", 0, QApplication::UnicodeUTF8));
+        useResultCache->setText(QApplication::translate("StepScriptDialogClass", "Use result cache for script", 0, QApplication::UnicodeUTF8));
         runCmdBtn->setText(QApplication::translate("StepScriptDialogClass", "Run Command", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("StepScriptDialogClass", "Script:", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

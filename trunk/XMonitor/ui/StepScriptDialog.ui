@@ -17,7 +17,7 @@
    <item>
     <layout class="QHBoxLayout" name="mainLayout" stretch="4">
      <item>
-      <layout class="QVBoxLayout" name="editorLayout" stretch="0,0,0">
+      <layout class="QVBoxLayout" name="editorLayout" stretch="0,1,0,0">
        <item>
         <widget class="QLabel" name="label">
          <property name="sizePolicy">
@@ -32,7 +32,18 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <layout class="QHBoxLayout" name="CmdLayout">
+         <item>
+          <widget class="QPlainTextEdit" name="scriptOutput">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="ResultLayout">
          <item>
           <widget class="QLabel" name="label_2">
            <property name="sizePolicy">
@@ -43,6 +54,16 @@
            </property>
            <property name="text">
             <string>Result:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="useResultCache">
+           <property name="text">
+            <string>Use result cache for script</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>

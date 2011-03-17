@@ -36,6 +36,7 @@ void StepForm::mapping() {
         m_pModel->insertRow(row);
         m_pMapper->setCurrentIndex(row);
         ui.id->setText( QString::fromStdString(Comm::uuid()) );
+        ui.svrId->setText(m_id);
 
     } else if( !m_id.isEmpty() ) {
         for (int row = 0; row < m_pModel->rowCount(); ++row) {
