@@ -45,13 +45,14 @@ private slots:
 
 
 private:
-	void init(QString id);
 	void drawUi();
 	void mapping();
 	void setCurStep(QString stepId);
 	void setStepListData();
 	void createActions();
 	void createMenus();
+
+	void runScript();
 
 private:
 	Ui::StepScriptDialogClass ui;
