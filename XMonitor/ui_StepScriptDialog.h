@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'StepScriptDialog.ui'
 **
-** Created: Mon Mar 21 09:07:35 2011
+** Created: Mon Mar 21 14:21:43 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -133,7 +133,7 @@ public:
 
         buttonBox = new QDialogButtonBox(StepScriptDialogClass);
         buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Save);
 
         verticalLayout_2->addWidget(buttonBox);
 

@@ -71,7 +71,7 @@ void ServerThread::run()
 
 				QJson::Serializer serializer;
 				QString xCtx = QString(serializer.serialize(stepCtx));
-				yTDEBUG(xCtx);
+				yTDEBUG(QString("ALL STEPS: %1").arg(xCtx));
 				svr.setValue(ServerModel::STATUS, svrStat);
 				svr.setValue(ServerModel::STEP_STATUS, xCtx);
 				model.editRecordById(svrId, svr);
@@ -122,15 +122,17 @@ QVariantMap ServerThread::runStepScript(QSqlRecord stepRec, SSH2Utils* pSsh, QVa
 	QString script = stepRec.value(StepModel::SCRIPT).toString();
 
 	yTINFO( QString("Run step: %1...").arg(stepNm) );
-	std::string cmdstr = stepCmd.toStdString();
-	yTDEBUG( QString("Execute command: %1").arg(cmdstr.c_str()) );
+	std::string str = "";
+	if(!stepCmd.isEmpty()){
+		std::string cmdstr = stepCmd.toStdString();
+		yTDEBUG( QString("Execute command: %1").arg(cmdstr.c_str()) );
 #ifdef YDEBUG
-	std::string str = stepRec.value(StepModel::CMD_RESULT).toString().toStdString();
+		std::string str = stepRec.value(StepModel::CMD_RESULT).toString().toStdString();
 #else
-	int rc = pSsh->exec( cmdstr.c_str() );
-	std::string str = pSsh->execResultStr();
+		int rc = pSsh->exec( cmdstr.c_str() );
+		str = pSsh->execResultStr();
 #endif
-
+	}
 	QScriptEngine engine;
 
 	QJson::Serializer serializer;
@@ -138,7 +140,6 @@ QVariantMap ServerThread::runStepScript(QSqlRecord stepRec, SSH2Utils* pSsh, QVa
 	engine.globalObject().setProperty("xCtx", QString("var xCtx=%1").arg(xCtx));
 
 	QString result = QString::fromStdString(str);
-	yTDEBUG( QString("Cmd Result:%1").arg(result) );
 	engine.globalObject().setProperty("xIn", result);
 
 	QVariantMap rtn;

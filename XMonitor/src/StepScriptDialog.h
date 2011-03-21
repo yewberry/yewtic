@@ -6,9 +6,6 @@
 #include <QMenu>
 #include "../ui_StepScriptDialog.h"
 
-class StepModel;
-
-class QDataWidgetMapper;
 class CodeEditor;
 class StepListWidget;
 
@@ -33,12 +30,14 @@ signals:
 
 public slots:
 	void onStepOrderChanged();
+	void onStepDirty();
 
 private slots:
-	void save();
+	void save(QAbstractButton *btn);
 	void runCmd();
-	void onStepListClicked(QListWidgetItem *item);
+	void onStepListClicked(QListWidgetItem *current, QListWidgetItem *previous);
 	void onStepListDoubleClicked(QListWidgetItem *item);
+	void onUseCacheChanged(int state);
 
 	void onAddStep();
 	void onDelStep();
@@ -52,6 +51,8 @@ private:
 	void createActions();
 	void createMenus();
 
+	void save(QString stepId);
+
 	void runScript();
 
 private:
@@ -62,11 +63,14 @@ private:
 	CodeEditor*			m_pCmdResultViewer;
 	CodeEditor*			m_pScriptEditor;
 
+	/*
 	StepModel*			m_pModel;
 	QDataWidgetMapper*	m_pMapper;
+	*/
 
 	OpType 				m_opType;
 	QString				m_svrId;
+	QString				m_stepId;
 
 	QMenu*				m_pStepListCtxMenu;
     QAction* 			m_pAddStepAct;
