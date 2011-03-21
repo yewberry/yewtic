@@ -19,6 +19,7 @@ public:
 
 	bool isActive(QString id);
 	bool isWarning(QString id);
+	QString stepStatus(QString id);
 
 	QPointF getUiScenePos(QString id);
 	void uiScenePos(QString id, QPointF pos);

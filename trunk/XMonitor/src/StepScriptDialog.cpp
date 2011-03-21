@@ -15,15 +15,22 @@
 StepScriptDialog::StepScriptDialog(OpType type, QString id, QWidget *parent)
 	: QDialog(parent), m_opType(type),m_svrId(id)
 {
+	Qt::WindowFlags flags=Qt::Dialog;
+	flags |=Qt::WindowMinimizeButtonHint;
+	setWindowFlags(flags);
+
 	ui.setupUi(this);
 	drawUi();
 	mapping();
 	setStepListData();
 	createActions();
 	createMenus();
+
+	m_pStepList->setCurrentRow(0);
 }
 
 void StepScriptDialog::mapping() {
+	/*
 	m_pModel = new StepModel(this);
 
 	m_pMapper = new QDataWidgetMapper(this);
@@ -36,27 +43,27 @@ void StepScriptDialog::mapping() {
 
 	m_pMapper->addMapping(ui.stepId, StepModel::ID);
 	m_pMapper->addMapping(ui.svrId, StepModel::SVR_ID);
+	*/
 
+	StepModel model(this);
 	if(m_opType == EDIT_STEP){
-		QString stepId = m_svrId;
-		m_svrId = m_pModel->getSvrId(m_svrId);
-		m_pModel->setModelBySvrId(m_svrId);
-		setCurStep(stepId);
-	} else {
-		m_pModel->setModelBySvrId(m_svrId);
+		m_stepId = m_svrId;
+		m_svrId = model.getSvrId(m_stepId);
+		setCurStep(m_stepId);
 	}
 }
 
 void StepScriptDialog::drawUi() {
 	ui.stepId->hide();
 	ui.svrId->hide();
+	ui.buttonBox->button(QDialogButtonBox::Save)->setEnabled(false);
 
 	m_pStepList = new StepListWidget(this);
 	m_pStepList->setDragEnabled(true);
 	m_pStepList->setDragDropMode(QAbstractItemView::InternalMove);
 	ui.mainLayout->insertWidget(0, m_pStepList);
 	ui.mainLayout->setStretchFactor(m_pStepList, 1);
-	connect( m_pStepList, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onStepListClicked(QListWidgetItem*)) );
+	connect( m_pStepList, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), this, SLOT(onStepListClicked(QListWidgetItem*,QListWidgetItem*)) );
 	connect( m_pStepList, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(onStepListDoubleClicked(QListWidgetItem*)) );
 	connect( m_pStepList, SIGNAL(indexesMoved(const QModelIndexList&)), this, SLOT(onStepOrderChanged()) );
 
@@ -66,6 +73,7 @@ void StepScriptDialog::drawUi() {
 
 	m_pCmdResultViewer = new CodeEditor(this);
 	m_pCmdResultViewer->setReadOnly(true);
+	m_pCmdResultViewer->lineNumberMode(CodeEditor::ZERO_BASE);
 	ui.editorLayout->insertWidget(3, m_pCmdResultViewer);
 	ui.editorLayout->setStretchFactor(m_pCmdResultViewer, 1);
 
@@ -75,9 +83,15 @@ void StepScriptDialog::drawUi() {
 	ui.editorLayout->setStretchFactor(m_pScriptEditor, 5);
 
 	QDialogButtonBox *buttonBox = ui.buttonBox;
-	connect( buttonBox, SIGNAL(accepted()), this, SLOT(save()) );
+	connect( buttonBox, SIGNAL(clicked(QAbstractButton *)), this, SLOT(save(QAbstractButton *)) );
 	connect( buttonBox, SIGNAL(rejected()), this, SLOT(reject()) );
 	connect( ui.runCmdBtn, SIGNAL(clicked()), this, SLOT(runCmd()) );
+
+	connect( m_pCmdEditor, SIGNAL(textChanged()), this, SLOT(onStepDirty()) );
+	connect( m_pCmdResultViewer, SIGNAL(textChanged()), this, SLOT(onStepDirty()) );
+	connect( m_pScriptEditor, SIGNAL(textChanged()), this, SLOT(onStepDirty()) );
+	connect( ui.useResultCache, SIGNAL(stateChanged(int)), this, SLOT(onUseCacheChanged(int)) );
+
 
 	connect( this, SIGNAL(stepOrderChanged()), this, SLOT(onStepOrderChanged()) );
 
@@ -96,8 +110,10 @@ void StepScriptDialog::drawUi() {
 }
 
 void StepScriptDialog::setStepListData() {
-	for (int row = 0; row < m_pModel->rowCount(); ++row) {
-		QSqlRecord record = m_pModel->record(row);
+	StepModel model(this);
+	model.setModelBySvrId(m_svrId);
+	for (int row = 0; row < model.rowCount(); ++row) {
+		QSqlRecord record = model.record(row);
 		QListWidgetItem *item = new QListWidgetItem(
 				record.value(StepModel::NAME).toString(), m_pStepList);
 		item->setData(Qt::ToolTipRole, QString(tr("Desc:\n%1")).arg(record.value(StepModel::DESC).toString()));
@@ -126,10 +142,23 @@ void StepScriptDialog::createMenus(){
 }
 
 /**************************** slots START ************************************/
-void StepScriptDialog::save(){
-	m_pMapper->submit();
-    accept();
+void StepScriptDialog::save(QAbstractButton *btn){
+	if(!m_stepId.isEmpty()){
+		StepModel model(this);
+		QSqlRecord rec = model.getRecordById(m_stepId);
+		rec.setValue(StepModel::CMD, m_pCmdEditor->toPlainText());
+		rec.setValue(StepModel::CMD_RESULT, m_pCmdResultViewer->toPlainText());
+		rec.setValue(StepModel::SCRIPT, m_pScriptEditor->toPlainText());
+		model.editRecordById(m_stepId, rec);
+	}
+
+	if( ui.buttonBox->button(QDialogButtonBox::Ok) == btn ){
+	    accept();
+	} else if( ui.buttonBox->button(QDialogButtonBox::Save) == btn ){
+		btn->setEnabled(false);
+	}
 }
+
 void StepScriptDialog::runCmd(){
 	if(ui.useResultCache->isChecked()){
 		runScript();
@@ -170,20 +199,29 @@ void StepScriptDialog::runCmd(){
 	}
 }
 
-void StepScriptDialog::onStepListClicked(QListWidgetItem *item){
-	QString stepId = item->data(Qt::UserRole).toString();
-	setCurStep(stepId);
+void StepScriptDialog::onStepListClicked(QListWidgetItem *current, QListWidgetItem *previous){
+	QString curStepId = current->data(Qt::UserRole).toString();
+	QString preStepId;
+	if(previous != 0)
+		preStepId = previous->data(Qt::UserRole).toString();
+
+	bool isDirty = ui.buttonBox->button(QDialogButtonBox::Save)->isEnabled();
+	if( isDirty ){
+		save(preStepId);
+	}
+
+	m_stepId = curStepId;
+	setCurStep(m_stepId);
 }
 
 void StepScriptDialog::setCurStep(QString stepId){
-	m_pModel->select();
-    for (int row = 0; row < m_pModel->rowCount(); ++row) {
-        QSqlRecord record = m_pModel->record(row);
-        if (record.value(StepForm::ID).toString() == stepId) {
-            m_pMapper->setCurrentIndex(row);
-            break;
-        }
-    }
+	StepModel model;
+	QSqlRecord rec = model.getRecordById(stepId);
+	m_pCmdEditor->setPlainText(rec.value(StepModel::CMD).toString());
+	m_pCmdResultViewer->setPlainText(rec.value(StepModel::CMD_RESULT).toString());
+	m_pScriptEditor->setPlainText(rec.value(StepModel::SCRIPT).toString());
+
+    ui.buttonBox->button(QDialogButtonBox::Save)->setEnabled(false);
 }
 
 void StepScriptDialog::onStepListDoubleClicked(QListWidgetItem *item){
@@ -249,13 +287,39 @@ void StepScriptDialog::onStepOrderChanged(){
     model.submitAll();
 
 }
+
+void StepScriptDialog::onStepDirty(){
+	ui.buttonBox->button(QDialogButtonBox::Save)->setEnabled(true);
+}
+
+void StepScriptDialog::onUseCacheChanged(int state){
+	if(2 == state){
+		ui.runCmdBtn->setText(tr("Run Script"));
+	} else {
+		ui.runCmdBtn->setText(tr("Run Command"));
+	}
+}
 /**************************** slots END ************************************/
+
+void StepScriptDialog::save(QString stepId){
+	if(!stepId.isEmpty()){
+		StepModel model(this);
+		QSqlRecord rec = model.getRecordById(stepId);
+		rec.setValue(StepModel::CMD, m_pCmdEditor->toPlainText());
+		rec.setValue(StepModel::CMD_RESULT, m_pCmdResultViewer->toPlainText());
+		rec.setValue(StepModel::SCRIPT, m_pScriptEditor->toPlainText());
+		model.editRecordById(stepId, rec);
+	}
+
+	ui.buttonBox->button(QDialogButtonBox::Save)->setEnabled(false);
+}
 
 void StepScriptDialog::runScript() {
 	QString result = m_pCmdResultViewer->toPlainText();
 	QString script = m_pScriptEditor->toPlainText();
 	QScriptEngine engine;
 
+	engine.globalObject().setProperty("xCtx", "{}");
 	engine.globalObject().setProperty("xIn", result);
     QScriptValue xLog = engine.newQObject(ui.scriptOutput);
 	engine.globalObject().setProperty("xLog", xLog);

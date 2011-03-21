@@ -18,10 +18,13 @@ class CodeEditor : public QPlainTextEdit
     Q_OBJECT
 
 public:
+    enum LineNumMode{NORMAL = 1, ZERO_BASE = 2};
+
     CodeEditor(QWidget *parent = 0);
 
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
+    void lineNumberMode(LineNumMode mode);
 
 protected:
     void resizeEvent(QResizeEvent *event);
@@ -34,6 +37,7 @@ private slots:
 
 private:
     QWidget *lineNumberArea;
+    LineNumMode m_lineNumMode;
 };
 
 class LineNumberArea : public QWidget

@@ -60,7 +60,6 @@ FORMS += ui/ReportView.ui \
     ui/MyQtLog.ui \
     ui/XMonitor.ui
 RESOURCES += res.qrc
-RC_FILE = app.rc
 INCLUDEPATH += D:/yewberry/boost_1_45_0 \
     C:/MinGW/include \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include \

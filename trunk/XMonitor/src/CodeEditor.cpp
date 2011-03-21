@@ -3,7 +3,8 @@
 #include "CodeEditor.h"
 #include "Comm.h"
 
-CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
+CodeEditor::CodeEditor(QWidget *parent)
+	: QPlainTextEdit(parent), m_lineNumMode(NORMAL)
 {
     lineNumberArea = new LineNumberArea(this);
     setTabStopWidth(20);
@@ -28,6 +29,10 @@ int CodeEditor::lineNumberAreaWidth()
     int space = 3 + fontMetrics().width(QLatin1Char('9')) * digits;
 
     return space;
+}
+
+void CodeEditor::lineNumberMode(LineNumMode mode){
+	m_lineNumMode = mode;
 }
 
 void CodeEditor::updateLineNumberAreaWidth(int /* newBlockCount */)
@@ -79,7 +84,10 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
     painter.fillRect(event->rect(), Qt::lightGray);
 
     QTextBlock block = firstVisibleBlock();
-    int blockNumber = block.blockNumber();
+    int base = 0;
+    if(m_lineNumMode == ZERO_BASE)
+    	base = 1;
+    int blockNumber = block.blockNumber()-base;
     int top = (int) blockBoundingGeometry(block).translated(contentOffset()).top();
     int bottom = top + (int) blockBoundingRect(block).height();
 

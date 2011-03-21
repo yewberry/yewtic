@@ -13,7 +13,7 @@
 
 ServerViewNode::ServerViewNode(QString id, NodeType t, QMenu *ctxMenu, ServerView *servView) :
 	ServerViewItem(id),
-	m_txtColor(Qt::darkGreen), m_outlineColor(Qt::darkBlue),
+	m_txtColor(Qt::darkGreen), m_outlineColor(Qt::blue),
 	m_bgColor(Qt::white), m_pContextMenu(ctxMenu), m_pServerView(servView)
 {
 	setFlags(ItemIsMovable | ItemIsSelectable);
@@ -80,9 +80,8 @@ void ServerViewNode::paint(QPainter *painter,
 		pen.setWidth(2);
 	}
 	painter->setPen(pen);
-	painter->setBrush(m_bgColor);
-
 	QRectF rect = outlineRect();
+	painter->setBrush(m_bgColor);
 	painter->drawRoundRect(rect, roundness(rect.width()), roundness(
 			rect.height()));
 
@@ -153,6 +152,11 @@ void ServerViewNode::timerEvent(QTimerEvent *event){
 	}else if(m_bgColor != Qt::white){
 		m_bgColor = Qt::white;
 	}
+
+	if(warning){
+		setToolTip("Fc");
+	}
+
 	update(outlineRect());
 }
 

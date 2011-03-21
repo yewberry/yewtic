@@ -24,6 +24,11 @@ bool ServerModel::isWarning(QString id){
 	return rec.value(ServerModel::STATUS).toBool();
 }
 
+QString ServerModel::stepStatus(QString id){
+	QSqlRecord rec = getRecordById(id);
+	return rec.value(ServerModel::STEP_STATUS).toString();
+}
+
 QPointF ServerModel::getUiScenePos(QString id){
 	QSqlRecord rec = getRecordById(id);
 	QString s;

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'StepScriptDialog.h'
 **
-** Created: Mon Mar 21 09:11:40 2011
+** Created: Mon Mar 21 20:27:15 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_StepScriptDialog[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -35,22 +35,27 @@ static const uint qt_meta_data_StepScriptDialog[] = {
 
  // slots: signature, parameters, type, tag, flags
       37,   17,   17,   17, 0x0a,
-      58,   17,   17,   17, 0x08,
-      65,   17,   17,   17, 0x08,
-      79,   74,   17,   17, 0x08,
-     115,   74,   17,   17, 0x08,
-     157,   17,   17,   17, 0x08,
-     169,   17,   17,   17, 0x08,
+      58,   17,   17,   17, 0x0a,
+      76,   72,   17,   17, 0x08,
+      99,   17,   17,   17, 0x08,
+     125,  108,   17,   17, 0x08,
+     183,  178,   17,   17, 0x08,
+     231,  225,   17,   17, 0x08,
+     254,   17,   17,   17, 0x08,
+     266,   17,   17,   17, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_StepScriptDialog[] = {
     "StepScriptDialog\0\0stepOrderChanged()\0"
-    "onStepOrderChanged()\0save()\0runCmd()\0"
-    "item\0onStepListClicked(QListWidgetItem*)\0"
-    "onStepListDoubleClicked(QListWidgetItem*)\0"
-    "onAddStep()\0onDelStep()\0"
+    "onStepOrderChanged()\0onStepDirty()\0"
+    "btn\0save(QAbstractButton*)\0runCmd()\0"
+    "current,previous\0"
+    "onStepListClicked(QListWidgetItem*,QListWidgetItem*)\0"
+    "item\0onStepListDoubleClicked(QListWidgetItem*)\0"
+    "state\0onUseCacheChanged(int)\0onAddStep()\0"
+    "onDelStep()\0"
 };
 
 const QMetaObject StepScriptDialog::staticMetaObject = {
@@ -84,15 +89,17 @@ int StepScriptDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: stepOrderChanged(); break;
         case 1: onStepOrderChanged(); break;
-        case 2: save(); break;
-        case 3: runCmd(); break;
-        case 4: onStepListClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
-        case 5: onStepListDoubleClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
-        case 6: onAddStep(); break;
-        case 7: onDelStep(); break;
+        case 2: onStepDirty(); break;
+        case 3: save((*reinterpret_cast< QAbstractButton*(*)>(_a[1]))); break;
+        case 4: runCmd(); break;
+        case 5: onStepListClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1])),(*reinterpret_cast< QListWidgetItem*(*)>(_a[2]))); break;
+        case 6: onStepListDoubleClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 7: onUseCacheChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: onAddStep(); break;
+        case 9: onDelStep(); break;
         default: ;
         }
-        _id -= 8;
+        _id -= 10;
     }
     return _id;
 }
