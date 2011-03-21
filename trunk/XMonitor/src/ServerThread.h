@@ -9,6 +9,10 @@
 #define SERVERTHREAD_H_
 
 #include "XThread.h"
+#include <QVariantMap>
+#include <QSqlRecord>
+
+class SSH2Utils;
 
 class ServerThread : public XThread
 {
@@ -19,6 +23,8 @@ public:
 
 protected:
     void run();
+    SSH2Utils* getSsh(QString ip, QString usr, QString pwd);
+    QVariantMap runStepScript(QSqlRecord stepRec, SSH2Utils* ssh, QVariantMap &stepCtx);
 };
 
 #endif /* SERVERTHREAD_H_ */

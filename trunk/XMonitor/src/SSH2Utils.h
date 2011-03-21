@@ -8,9 +8,9 @@
 #ifndef SSH2UTILS_H_
 #define SSH2UTILS_H_
 
-#include <libssh2_config.h>
-#include <libssh2.h>
-#include <libssh2_sftp.h>
+#include "libssh2/libssh2_config.h"
+#include "libssh2/libssh2.h"
+#include "libssh2/libssh2_sftp.h"
 
 #ifdef HAVE_WINSOCK2_H
 # include <winsock2.h>

@@ -183,13 +183,10 @@ void ServerView::loadFromDb() {
 	yDEBUG("Load server nodes...");
 	ServerModel model(this);
 	QVector<QSqlRecord> recs = model.getRecords();
-	int a = recs.count();
 	for (int row = 0; row < recs.count(); ++row) {
 		QSqlRecord record = recs.at(row);
 		ServerViewNode *node = addItem( record.value(ServerModel::ID).toString() );
-		int c = 0;
 	}
-	int b = 0;
 }
 
 ServerViewItem* ServerView::selectedItem() const {

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'JsHighlighter.h'
 **
-** Created: Sun Mar 13 19:48:46 2011
+** Created: Mon Mar 21 09:11:46 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!

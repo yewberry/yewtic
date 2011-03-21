@@ -145,13 +145,15 @@ int ServerViewNode::roundness(double size) const {
 
 void ServerViewNode::timerEvent(QTimerEvent *event){
 	bool act = isActive();
-	if(act){
+	bool warning = isWarning();
+	if(act && warning){
+		m_bgColor == Qt::white ? m_bgColor = Qt::red : m_bgColor = Qt::white;
+	} else if(act){
 		m_bgColor == Qt::white ? m_bgColor = Qt::green : m_bgColor = Qt::white;
-		update(outlineRect());
-	} else if(m_bgColor != Qt::white){
+	}else if(m_bgColor != Qt::white){
 		m_bgColor = Qt::white;
-		update(outlineRect());
 	}
+	update(outlineRect());
 }
 
 void ServerViewNode::saveNodePos(){
@@ -170,4 +172,9 @@ QPointF ServerViewNode::storedPosition() const {
 bool ServerViewNode::isActive(){
 	ServerModel model(this);
 	return model.isActive(m_id);
+}
+
+bool ServerViewNode::isWarning(){
+	ServerModel model(this);
+	return model.isWarning(m_id);
 }

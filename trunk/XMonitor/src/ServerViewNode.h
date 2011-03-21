@@ -50,6 +50,7 @@ private:
 	QRectF outlineRect() const;
 	int roundness(double size) const;
 	bool isActive();
+	bool isWarning();
 
 	QSet<ServerViewLink *> m_links;
 
