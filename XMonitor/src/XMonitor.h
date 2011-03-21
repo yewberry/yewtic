@@ -53,6 +53,7 @@ private:
     ServerView*		m_pServerView;
     ReportView*		m_pReportView;
     QStackedLayout*	m_pCentralWidgetLayout;
+    QWidget*		m_pOutputView;
 
     QString m_dbName;
     QString m_dbUsr;

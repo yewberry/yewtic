@@ -19,6 +19,11 @@ bool ServerModel::isActive(QString id){
 	return rec.value(ServerModel::ACTIVE).toBool();
 }
 
+bool ServerModel::isWarning(QString id){
+	QSqlRecord rec = getRecordById(id);
+	return rec.value(ServerModel::STATUS).toBool();
+}
+
 QPointF ServerModel::getUiScenePos(QString id){
 	QSqlRecord rec = getRecordById(id);
 	QString s;
@@ -35,7 +40,6 @@ QPointF ServerModel::getUiScenePos(QString id){
 }
 
 void ServerModel::uiScenePos(QString id, QPointF pos){
-	return;
 	QSqlRecord rec = getRecordById(id);
 	rec.setValue( UI_SCENE_POS, QString("%1,%2").arg(pos.x()).arg(pos.y()) );
 	editRecordById(id, rec);

@@ -26,6 +26,10 @@ XMonitor::XMonitor(QWidget *parent)
 
 	m_pSvrThrd = new ServerThread(this, m_threadInter);
 	connect( m_pSvrThrd, SIGNAL(sendDebugLog(QString, char*, int)), MyQtLog::log, SLOT(d(QString, char*, int)) );
+	connect( m_pSvrThrd, SIGNAL(sendInfoLog(QString, char*, int)), MyQtLog::log, SLOT(i(QString, char*, int)) );
+	connect( m_pSvrThrd, SIGNAL(sendWarnLog(QString, char*, int)), MyQtLog::log, SLOT(w(QString, char*, int)) );
+	connect( m_pSvrThrd, SIGNAL(sendErrorLog(QString, char*, int)), MyQtLog::log, SLOT(e(QString, char*, int)) );
+	connect( m_pSvrThrd, SIGNAL(sendFatalLog(QString, char*, int)), MyQtLog::log, SLOT(f(QString, char*, int)) );
 
 	startBackgroundThread();
 }
@@ -44,10 +48,12 @@ void XMonitor::closeEvent(QCloseEvent *event) {
 }
 
 void XMonitor::showServerView() {
+	m_pOutputView->show();
 	m_pCentralWidgetLayout->setCurrentIndex(0);
 }
 
 void XMonitor::showReportView() {
+	m_pOutputView->hide();
 	m_pCentralWidgetLayout->setCurrentIndex(1);
 }
 
@@ -133,6 +139,7 @@ void XMonitor::drawUi() {
 	title->setTitleText(tr("Output"));
 	dock->setTitleBarWidget(title);
 	addDockWidget(Qt::BottomDockWidgetArea, dock);
+	m_pOutputView = dock;
 
 	drawCentralWidget();
 

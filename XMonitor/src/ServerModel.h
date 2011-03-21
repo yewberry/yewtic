@@ -14,10 +14,11 @@ class ServerModel : public XModel
 {
 	Q_OBJECT
 public:
-	enum { ID = 0, IP = 1, NAME = 2, DESC = 3, USR = 4, PWD = 5, ACTIVE = 6, UI_SCENE_POS = 7 };
+	enum { ID = 0, IP = 1, NAME = 2, DESC = 3, USR = 4, PWD = 5, ACTIVE = 6, UI_SCENE_POS = 7, STATUS = 8, STEP_STATUS = 9 };
 	ServerModel(QObject *parent = 0);
 
 	bool isActive(QString id);
+	bool isWarning(QString id);
 
 	QPointF getUiScenePos(QString id);
 	void uiScenePos(QString id, QPointF pos);

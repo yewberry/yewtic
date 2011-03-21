@@ -60,6 +60,7 @@ FORMS += ui/ReportView.ui \
     ui/MyQtLog.ui \
     ui/XMonitor.ui
 RESOURCES += res.qrc
+RC_FILE = app.rc
 INCLUDEPATH += D:/yewberry/boost_1_45_0 \
     C:/MinGW/include \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include \
@@ -67,8 +68,9 @@ INCLUDEPATH += D:/yewberry/boost_1_45_0 \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++ \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/mingw32 \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include/c++/backward \
-    ../TestLibssh2/lib/include
-LIBS += -L../TestLibssh2/lib \
+    ./lib/include
+LIBS += -L./lib \
     -lpthread \
     -lwsock32 \
-    -lssh2dll
+    -lssh2dll \
+    -lqjson.dll
