@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ReportView.ui'
 **
-** Created: Mon Mar 21 09:07:34 2011
+** Created: Tue Mar 22 15:34:27 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

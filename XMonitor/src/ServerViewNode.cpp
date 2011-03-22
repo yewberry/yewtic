@@ -10,6 +10,7 @@
 #include "ServerViewLink.h"
 #include "ServerForm.h"
 #include "Comm.h"
+#include "qjson/parser.h"
 
 ServerViewNode::ServerViewNode(QString id, NodeType t, QMenu *ctxMenu, ServerView *servView) :
 	ServerViewItem(id),
@@ -153,8 +154,31 @@ void ServerViewNode::timerEvent(QTimerEvent *event){
 		m_bgColor = Qt::white;
 	}
 
-	if(warning){
-		setToolTip("Fc");
+	ServerModel model(this);
+	QString jsonStr = model.stepStatus(m_id);
+	if(warning && !jsonStr.isEmpty()){
+		bool ok;
+		QJson::Parser parser;
+		QVariantMap stepStatus = parser.parse(jsonStr.toLocal8Bit(), &ok).toMap();
+		QString tip = "<ul>";
+
+		if (ok) {
+			QList<QString> keys = stepStatus.keys();
+			Q_FOREACH(QString key, keys){
+				QVariantMap hm = stepStatus[key].toMap();
+				if( hm.contains("status") && hm["status"].toBool() == false ){
+					QString stepNm = key;
+					QString msg = hm.contains("msg") ? hm["msg"].toString() : "";
+					tip.append( QString("<li>%1: %2</li>").arg(stepNm).arg(msg) );
+				}
+			}
+
+		} else {
+			yERROR( QString("An error occurred during parsing JSON: %1").arg(jsonStr) );
+		}
+
+		tip.append("</ul>");
+		setToolTip(tip);
 	}
 
 	update(outlineRect());

@@ -1,4 +1,6 @@
 INPUT(
+./release/sqlkeywords.o
+./release/tosqlparse.o
 ./release/ServerModel.o
 ./release/StepModel.o
 ./release/XModel.o

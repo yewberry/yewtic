@@ -39,6 +39,7 @@ private:
     void writeSettings();
     void openDatabase();
     void initDatabase();
+    void runSqlScript();
 
 private:
     Ui::XMonitorClass ui;
