@@ -1,4 +1,6 @@
 INPUT(
+./debug/sqlkeywords.o
+./debug/tosqlparse.o
 ./debug/ServerModel.o
 ./debug/StepModel.o
 ./debug/XModel.o

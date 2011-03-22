@@ -7,7 +7,9 @@ QT += core \
     opengl \
     webkit \
     script
-HEADERS += src/ServerModel.h \
+HEADERS += lib/sqlparser/sqlkeywords.h \
+    lib/sqlparser/tosqlparse.h \
+    src/ServerModel.h \
     src/StepModel.h \
     src/XModel.h \
     src/ReportView.h \
@@ -28,7 +30,9 @@ HEADERS += src/ServerModel.h \
     src/MyQtLog.h \
     src/TopHeader.h \
     src/XMonitor.h
-SOURCES += src/ServerModel.cpp \
+SOURCES += lib/sqlparser/sqlkeywords.cpp \
+    lib/sqlparser/tosqlparse.cpp \
+    src/ServerModel.cpp \
     src/StepModel.cpp \
     src/XModel.cpp \
     src/ReportView.cpp \
@@ -60,6 +64,7 @@ FORMS += ui/ReportView.ui \
     ui/MyQtLog.ui \
     ui/XMonitor.ui
 RESOURCES += res.qrc
+RC_FILE = app.rc
 INCLUDEPATH += D:/yewberry/boost_1_45_0 \
     C:/MinGW/include \
     C:/MinGW/lib/gcc/mingw32/4.5.2/include \

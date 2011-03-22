@@ -36,7 +36,7 @@ void ServerThread::run()
 		for (int i = 0; i < svrs.count(); ++i) {
 			QSqlRecord svr = svrs.at(i);
 			bool act = svr.value(ServerModel::ACTIVE).toBool();
-
+			//yTDEBUG(QString("Active: %1").arg(act));
 			if(!act) continue;
 
 			QString nm = svr.value(ServerModel::NAME).toString();

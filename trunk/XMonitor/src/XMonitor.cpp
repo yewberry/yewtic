@@ -6,6 +6,8 @@
 #include "TopHeader.h"
 #include "TitleBar.h"
 
+#include "lib/sqlparser/tosqlparse.h"
+
 #include "ServerView.h"
 #include "ServerViewItem.h"
 #include "ServerForm.h"
@@ -236,6 +238,28 @@ void XMonitor::initDatabase() {
 
 	QString sql = Comm::stringFromResource(":/script/db.sql");
 	QSqlQuery query;
+
+	int lines = sql.split('\n').length();
+	toSQLParse::stringTokenizer tokens(sql);
+
+	int line;
+	int pos;
+	bool ignore = true;
+
+	QString sqlsss;
+	bool isError = false;
+	QString ttt = tokens.getToken();
+	yDEBUG(ttt);
+	/*
+	do {
+		line = tokens.line();
+		pos = tokens.offset();
+		toSQLParse::parseStatement(tokens);
+
+
+	} while (tokens.line() < lines);
+	*/
+	/*
 	QStringList ls = sql.split("\n");
 
 	progress.setMaximum(ls.length() + 1);
@@ -249,10 +273,16 @@ void XMonitor::initDatabase() {
 	}
 	progress.setValue(progress.maximum());
 	qApp->processEvents();
+	*/
 	yINFO("Initialize Done.");
 
 }
 
 ServerView* XMonitor::serverView(){
 	return m_pServerView;
+}
+
+void XMonitor::runSqlScript() {
+
+
 }
