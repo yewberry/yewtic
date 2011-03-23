@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'StepScriptDialog.ui'
 **
-** Created: Mon Mar 21 14:21:43 2011
+** Created: Wed Mar 23 16:44:15 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -146,7 +146,7 @@ public:
     void retranslateUi(QWidget *StepScriptDialogClass)
     {
         StepScriptDialogClass->setWindowTitle(QApplication::translate("StepScriptDialogClass", "Step Script Dialog", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("StepScriptDialogClass", "Command:", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("StepScriptDialogClass", "Command:<b>\346\263\250\346\204\217\357\274\201\346\211\200\346\234\211\345\221\275\344\273\244\345\234\250\350\277\234\345\244\204\346\234\215\345\212\241\345\231\250\344\270\212\345\215\263\346\227\266\347\224\237\346\225\210\357\274\214\346\205\216\347\224\250\345\215\261\351\231\251\345\221\275\344\273\244</b>", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("StepScriptDialogClass", "Result:", 0, QApplication::UnicodeUTF8));
         useResultCache->setText(QApplication::translate("StepScriptDialogClass", "Use result cache for script", 0, QApplication::UnicodeUTF8));
         runCmdBtn->setText(QApplication::translate("StepScriptDialogClass", "Run Command", 0, QApplication::UnicodeUTF8));

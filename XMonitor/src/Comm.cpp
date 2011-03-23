@@ -28,3 +28,5 @@ std::string Comm::uuid(){
 
 	return str;
 }
+
+QMutex Comm::SVR_REC_MUTEX;

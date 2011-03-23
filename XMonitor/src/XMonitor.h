@@ -9,6 +9,7 @@ class QToolButton;
 class QStackedLayout;
 class ServerView;
 class ServerThread;
+class ReportThread;
 class ReportView;
 
 class XMonitor : public QMainWindow
@@ -61,6 +62,7 @@ private:
     QString m_dbPwd;
 
     ServerThread* m_pSvrThrd;
+    ReportThread* m_pRptThrd;
     int	m_threadInter;
 };
 

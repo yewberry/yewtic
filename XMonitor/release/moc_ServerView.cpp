@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ServerView.h'
 **
-** Created: Tue Mar 22 11:12:42 2011
+** Created: Wed Mar 23 18:02:32 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ServerView[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -34,16 +34,19 @@ static const uint qt_meta_data_ServerView[] = {
       12,   11,   11,   11, 0x08,
       24,   11,   11,   11, 0x08,
       39,   11,   11,   11, 0x08,
-      54,   11,   11,   11, 0x08,
-      65,   11,   11,   11, 0x08,
-      78,   11,   11,   11, 0x08,
-     113,  110,   94,   11, 0x08,
+      57,   11,   11,   11, 0x08,
+      77,   11,   11,   11, 0x08,
+      92,   11,   11,   11, 0x08,
+     103,   11,   11,   11, 0x08,
+     116,   11,   11,   11, 0x08,
+     151,  148,  132,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ServerView[] = {
     "ServerView\0\0addServer()\0activeServer()\0"
+    "activeAllServer()\0deActiveAllServer()\0"
     "browserSteps()\0editItem()\0deleteItem()\0"
     "updateActions()\0ServerViewNode*\0id\0"
     "addItem(QString)\0"
@@ -80,15 +83,17 @@ int ServerView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: addServer(); break;
         case 1: activeServer(); break;
-        case 2: browserSteps(); break;
-        case 3: editItem(); break;
-        case 4: deleteItem(); break;
-        case 5: updateActions(); break;
-        case 6: { ServerViewNode* _r = addItem((*reinterpret_cast< QString(*)>(_a[1])));
+        case 2: activeAllServer(); break;
+        case 3: deActiveAllServer(); break;
+        case 4: browserSteps(); break;
+        case 5: editItem(); break;
+        case 6: deleteItem(); break;
+        case 7: updateActions(); break;
+        case 8: { ServerViewNode* _r = addItem((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< ServerViewNode**>(_a[0]) = _r; }  break;
         default: ;
         }
-        _id -= 7;
+        _id -= 9;
     }
     return _id;
 }

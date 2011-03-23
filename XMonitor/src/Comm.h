@@ -16,6 +16,7 @@ class Comm {
 public:
 	static QString stringFromResource(const QString &resName);
 	static std::string uuid();
+	static QMutex SVR_REC_MUTEX;
 
 };
 

@@ -92,22 +92,17 @@ void ServerViewNode::paint(QPainter *painter,
 
 void ServerViewNode::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
 	QList<QAction*> acts = m_pServerView->getActions();
-	QAction *act = 0;
-	Q_FOREACH(QAction *p, acts){
-		int s = p->data().toInt();
-		if(s != 0){
-			act = p;
+	Q_FOREACH(QAction *act, acts){
+		int s = act->data().toInt();
+		if(s == ServerView::ACTIVE_SVR_ACT){
+			if(isActive()){
+				act->setText( tr("Stop monitor") );
+				act->setIcon(QIcon(":/images/desable_server.png"));
+			} else {
+				act->setText( tr("Start monitor") );
+				act->setIcon(QIcon(":/images/enable_server.png"));
+			}
 			break;
-		}
-	}
-
-	if(act != 0){
-		if(isActive()){
-			act->setText( tr("Stop monitor") );
-			act->setIcon(QIcon(":/images/desable_server.png"));
-		} else {
-			act->setText( tr("Start monitor") );
-			act->setIcon(QIcon(":/images/enable_server.png"));
 		}
 	}
 

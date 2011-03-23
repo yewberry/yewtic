@@ -23,6 +23,7 @@ public:
 	QSqlRecord getRecordById(QString id);
 	void deleteRecordById(QString id);
 	void editRecordById(QString id, QSqlRecord rec);
+	void editRecFldById(QString id, int fldIdx, QVariant value);
 
 protected:
 	QString m_tbl;

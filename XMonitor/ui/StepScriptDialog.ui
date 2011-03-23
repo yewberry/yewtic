@@ -27,7 +27,7 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Command:</string>
+          <string>Command:&lt;b&gt;注意！所有命令在远处服务器上即时生效，慎用危险命令&lt;/b&gt;</string>
          </property>
         </widget>
        </item>
