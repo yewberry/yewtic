@@ -27,6 +27,7 @@ StepScriptDialog::StepScriptDialog(OpType type, QString id, QWidget *parent)
 	createMenus();
 
 	m_pStepList->setCurrentRow(0);
+	onUseCacheChanged(ui.useResultCache->checkState());
 }
 
 void StepScriptDialog::mapping() {
@@ -275,6 +276,7 @@ void StepScriptDialog::onStepOrderChanged(){
 	}
 
 	StepModel model;
+	model.setModelBySvrId(m_svrId);
 	QVector<QSqlRecord> recs = model.getRecords();
 	for(int i=0; i<recs.count(); ++i){
 		QSqlRecord rec = recs.at(i);

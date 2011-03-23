@@ -1,4 +1,5 @@
 INPUT(
+./debug/ReportThread.o
 ./debug/sqlkeywords.o
 ./debug/tosqlparse.o
 ./debug/ServerModel.o
@@ -23,6 +24,7 @@ INPUT(
 ./debug/TopHeader.o
 ./debug/XMonitor.o
 ./debug/main.o
+./debug/moc_ReportThread.o
 ./debug/moc_ServerModel.o
 ./debug/moc_StepModel.o
 ./debug/moc_XModel.o

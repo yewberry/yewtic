@@ -51,13 +51,32 @@ void ServerView::activeServer(){
 
 	if(isAct){
 		yINFO( QString("De-Active server: %1(%2).").arg(name).arg(ip) );
-		rec.setValue(ServerModel::ACTIVE, false);
+		model.editRecFldById(svrId, ServerModel::ACTIVE, false);
 
 	} else {
 		yINFO( QString("Active server: %1(%2).").arg(name).arg(ip) );
-		rec.setValue(ServerModel::ACTIVE, true);
+		model.editRecFldById(svrId, ServerModel::ACTIVE, true);
 	}
-	model.editRecordById(svrId, rec);
+}
+
+void ServerView::activeAllServer(){
+	ServerModel model;
+	QVector<QSqlRecord> recs = model.getRecords();
+	Q_FOREACH(QSqlRecord rec, recs){
+		QString svrId = rec.value(ServerModel::ID).toString();
+		model.editRecFldById(svrId, ServerModel::ACTIVE, true);
+	}
+	yINFO("All Server monitor started.");
+}
+
+void ServerView::deActiveAllServer(){
+	ServerModel model;
+	QVector<QSqlRecord> recs = model.getRecords();
+	Q_FOREACH(QSqlRecord rec, recs){
+		QString svrId = rec.value(ServerModel::ID).toString();
+		model.editRecFldById(svrId, ServerModel::ACTIVE, false);
+	}
+	yINFO("All Server monitor stopped.");
 }
 
 void ServerView::addServer() {
@@ -133,6 +152,14 @@ void ServerView::createActions() {
 	m_pActiveServerAct->setData(ACTIVE_SVR_ACT);
 	connect(m_pActiveServerAct, SIGNAL(triggered()), this, SLOT(activeServer()));
 
+	m_pActiveAllServerAct = new QAction(tr("Active All"), this);
+	//m_pActiveAllServerAct->setShortcut(tr("Ctrl+M"));
+	connect(m_pActiveAllServerAct, SIGNAL(triggered()), this, SLOT(activeAllServer()));
+
+	m_pDeActiveAllServerAct = new QAction(tr("De-Active All"), this);
+	//m_pDeActiveAllServerAct->setShortcut(tr("Ctrl+M"));
+	connect(m_pDeActiveAllServerAct, SIGNAL(triggered()), this, SLOT(deActiveAllServer()));
+
 	m_pBrowserStepsAct = new QAction(tr("Browser Steps"), this);
 	m_pBrowserStepsAct->setIcon(QIcon(":/images/browser.png"));
 	//m_pBrowserStepsAct->setShortcut(tr("Ctrl+S"));
@@ -142,6 +169,8 @@ void ServerView::createActions() {
 void ServerView::createMenus() {
 	m_pCtxMenu = new QMenu(this);
 	m_pCtxMenu->addAction(m_pAddServerAct);
+	m_pCtxMenu->addAction(m_pActiveAllServerAct);
+	m_pCtxMenu->addAction(m_pDeActiveAllServerAct);
 
 	m_pItemCtxMenu = new QMenu(this);
 	m_pItemCtxMenu->addAction(m_pEditServerAct);

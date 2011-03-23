@@ -7,7 +7,8 @@ QT += core \
     opengl \
     webkit \
     script
-HEADERS += lib/sqlparser/sqlkeywords.h \
+HEADERS += src/ReportThread.h \
+    lib/sqlparser/sqlkeywords.h \
     lib/sqlparser/tosqlparse.h \
     src/ServerModel.h \
     src/StepModel.h \
@@ -30,7 +31,8 @@ HEADERS += lib/sqlparser/sqlkeywords.h \
     src/MyQtLog.h \
     src/TopHeader.h \
     src/XMonitor.h
-SOURCES += lib/sqlparser/sqlkeywords.cpp \
+SOURCES += src/ReportThread.cpp \
+    lib/sqlparser/sqlkeywords.cpp \
     lib/sqlparser/tosqlparse.cpp \
     src/ServerModel.cpp \
     src/StepModel.cpp \

@@ -24,7 +24,7 @@ void XModel::submitAll(){
 }
 
 QVector<QSqlRecord> XModel::getRecords(){
-	setFilter("1 = 1");
+	select();
 	QVector<QSqlRecord> rtn;
     for (int i = 0; i < rowCount(); ++i) {
         QSqlRecord rec = record(i);
@@ -63,6 +63,20 @@ void XModel::editRecordById(QString id, QSqlRecord rec){
 	setFilter(QString("%1.id = '%2'").arg(m_tbl).arg(id));
 	if (rowCount() == 1) {
 		bool b = setRecord(0, rec);
+	    if(b == false){
+	    	QSqlError err = lastError();
+	    	yERROR(err.text());
+	    }
+	    submit();
+	} else {
+		yERROR(QString("Can't find %1 to edit.").arg(id));
+	}
+}
+
+void XModel::editRecFldById(QString id, int fldIdx, QVariant value){
+	setFilter(QString("%1.id = '%2'").arg(m_tbl).arg(id));
+	if (rowCount() == 1) {
+	    bool b = setData(index(0, fldIdx), value);
 	    if(b == false){
 	    	QSqlError err = lastError();
 	    	yERROR(err.text());

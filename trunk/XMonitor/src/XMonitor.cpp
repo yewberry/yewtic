@@ -12,6 +12,7 @@
 #include "ServerViewItem.h"
 #include "ServerForm.h"
 #include "ServerThread.h"
+#include "ReportThread.h"
 
 #include "ReportView.h"
 
@@ -32,6 +33,13 @@ XMonitor::XMonitor(QWidget *parent)
 	connect( m_pSvrThrd, SIGNAL(sendWarnLog(QString, char*, int)), MyQtLog::log, SLOT(w(QString, char*, int)) );
 	connect( m_pSvrThrd, SIGNAL(sendErrorLog(QString, char*, int)), MyQtLog::log, SLOT(e(QString, char*, int)) );
 	connect( m_pSvrThrd, SIGNAL(sendFatalLog(QString, char*, int)), MyQtLog::log, SLOT(f(QString, char*, int)) );
+
+	m_pRptThrd = new ReportThread(this, m_threadInter);
+	connect( m_pRptThrd, SIGNAL(sendDebugLog(QString, char*, int)), MyQtLog::log, SLOT(d(QString, char*, int)) );
+	connect( m_pRptThrd, SIGNAL(sendInfoLog(QString, char*, int)), MyQtLog::log, SLOT(i(QString, char*, int)) );
+	connect( m_pRptThrd, SIGNAL(sendWarnLog(QString, char*, int)), MyQtLog::log, SLOT(w(QString, char*, int)) );
+	connect( m_pRptThrd, SIGNAL(sendErrorLog(QString, char*, int)), MyQtLog::log, SLOT(e(QString, char*, int)) );
+	connect( m_pRptThrd, SIGNAL(sendFatalLog(QString, char*, int)), MyQtLog::log, SLOT(f(QString, char*, int)) );
 
 	startBackgroundThread();
 }
@@ -61,10 +69,12 @@ void XMonitor::showReportView() {
 
 void XMonitor::startBackgroundThread(){
 	m_pSvrThrd->start();
+	m_pRptThrd->start();
 }
 
 void XMonitor::stopBackgroundThread(){
 	m_pSvrThrd->stop();
+	m_pRptThrd->stop();
 }
 
 void XMonitor::drawUi() {
@@ -239,29 +249,7 @@ void XMonitor::initDatabase() {
 	QString sql = Comm::stringFromResource(":/script/db.sql");
 	QSqlQuery query;
 
-	int lines = sql.split('\n').length();
-	toSQLParse::stringTokenizer tokens(sql);
-
-	int line;
-	int pos;
-	bool ignore = true;
-
-	QString sqlsss;
-	bool isError = false;
-	QString ttt = tokens.getToken();
-	yDEBUG(ttt);
-	/*
-	do {
-		line = tokens.line();
-		pos = tokens.offset();
-		toSQLParse::parseStatement(tokens);
-
-
-	} while (tokens.line() < lines);
-	*/
-	/*
 	QStringList ls = sql.split("\n");
-
 	progress.setMaximum(ls.length() + 1);
 	progress.setValue(1);
 
@@ -273,7 +261,6 @@ void XMonitor::initDatabase() {
 	}
 	progress.setValue(progress.maximum());
 	qApp->processEvents();
-	*/
 	yINFO("Initialize Done.");
 
 }

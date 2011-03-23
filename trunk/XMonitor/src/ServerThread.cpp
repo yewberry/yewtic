@@ -29,7 +29,7 @@ ServerThread::ServerThread(QObject *parent, int inter)
 void ServerThread::run()
 {
     while (!m_stopped){
-    	ServerModel model;
+    	ServerModel model(this);
     	QVector<QSqlRecord> svrs = model.getRecords();
 
     	//yTDEBUG(QString("Serv count %1").arg(recs.count()));
@@ -72,9 +72,8 @@ void ServerThread::run()
 				QJson::Serializer serializer;
 				QString xCtx = QString(serializer.serialize(stepCtx));
 				yTDEBUG(QString("ALL STEPS: %1").arg(xCtx));
-				svr.setValue(ServerModel::STATUS, svrStat);
-				svr.setValue(ServerModel::STEP_STATUS, xCtx);
-				model.editRecordById(svrId, svr);
+				model.editRecFldById(svrId, ServerModel::STATUS, svrStat);
+				model.editRecFldById(svrId, ServerModel::STEP_STATUS, xCtx);
 			}
 			delete pSsh;
 		}//SERVERS END

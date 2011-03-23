@@ -39,6 +39,8 @@ protected:
 private slots:
     void addServer();
     void activeServer();
+    void activeAllServer();
+    void deActiveAllServer();
     void browserSteps();
 
     void editItem();
@@ -63,6 +65,8 @@ private:
     QAction* m_pEditServerAct;
     QAction* m_pDeleteItemAct;
     QAction* m_pActiveServerAct;
+    QAction* m_pActiveAllServerAct;
+    QAction* m_pDeActiveAllServerAct;
 
     QAction* m_pBrowserStepsAct;
 
