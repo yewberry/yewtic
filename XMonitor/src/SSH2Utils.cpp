@@ -231,7 +231,6 @@ int SSH2Utils::exec(const char *cmd) {
 	}
 	for (;;) {
 		/* loop until we block */
-		int rc;
 		do {
 			char buffer[BUF_SIZE];
 			memset(buffer, 0, BUF_SIZE);
@@ -255,7 +254,7 @@ int SSH2Utils::exec(const char *cmd) {
 	}
 	libssh2_channel_free(channel);
 	channel = NULL;
-	return 0;
+	return rc;
 }
 
 int SSH2Utils::waitsocket(void) {

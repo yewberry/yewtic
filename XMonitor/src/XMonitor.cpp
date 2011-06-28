@@ -68,8 +68,8 @@ void XMonitor::showReportView() {
 }
 
 void XMonitor::startBackgroundThread(){
-	m_pSvrThrd->start();
-	m_pRptThrd->start();
+	if(m_enableServerThread)m_pSvrThrd->start();
+	if(m_enableReportThread)m_pRptThrd->start();
 }
 
 void XMonitor::stopBackgroundThread(){
@@ -204,6 +204,11 @@ void XMonitor::readSettings() {
 	m_dbUsr = st.value("usr", "xpa").toString();
 	m_dbPwd = st.value("pwd", "xpa").toString();
 	st.endGroup();
+
+	st.beginGroup("SERVERS");
+	m_enableServerThread = st.value("enableServerThread", true).toBool();
+	m_enableReportThread = st.value("enableReportThread", true).toBool();
+	st.endGroup();
 }
 
 void XMonitor::writeSettings() {
@@ -217,6 +222,11 @@ void XMonitor::writeSettings() {
 	st.setValue("name", m_dbName);
 	st.setValue("usr", m_dbUsr);
 	st.setValue("pwd", m_dbPwd);
+	st.endGroup();
+
+	st.beginGroup("SERVERS");
+	st.setValue("enableServerThread", m_enableServerThread);
+	st.setValue("enableReportThread", m_enableReportThread);
 	st.endGroup();
 
 	m_pServerView->saveScene();

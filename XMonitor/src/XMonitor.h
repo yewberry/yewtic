@@ -60,6 +60,8 @@ private:
     QString m_dbName;
     QString m_dbUsr;
     QString m_dbPwd;
+    bool	m_enableServerThread;
+    bool	m_enableReportThread;
 
     ServerThread* m_pSvrThrd;
     ReportThread* m_pRptThrd;
