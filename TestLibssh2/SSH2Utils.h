@@ -48,8 +48,8 @@ public:
 	int connect(const char *hostname, const char *username,
 			const char *password);
 	void deconnect(void);
-	int reconnect(char *hostname, char *username, char *password);
-	int exec(char *cmd);
+	int reconnect(const char *hostname, const char *username, const char *password);
+	int exec(const char *cmd);
 
 public:
 	~SSH2Utils(void);

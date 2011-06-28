@@ -48,6 +48,7 @@ void SSH2Utils::kbd_callback(const char *name, int name_len,
 } /* kbd_callback */
 
 int SSH2Utils::init(void) {
+
 	m_errCode = 0;
 	m_sock = 0;
 	m_session = 0;
@@ -65,6 +66,7 @@ int SSH2Utils::init(void) {
 		m_errCode = 1;
 		return -1;
 	}
+
 	return 0;
 }
 int SSH2Utils::connect(const char *hostname, const char *username,
@@ -181,6 +183,7 @@ int SSH2Utils::connect(const char *hostname, const char *username,
     return 0;
 
 shutdown:
+	return -1;
     deconnect();
 }
 
@@ -193,19 +196,19 @@ void SSH2Utils::deconnect() {
 #else
 	close(m_sock);
 #endif
-
+	libssh2_exit();
 	m_session = 0;
 	m_sock = 0;
 }
 
-int SSH2Utils::reconnect(char *hostname, char *username, char *password) {
+int SSH2Utils::reconnect(const char *hostname, const char *username, const char *password) {
 	deconnect();
 	return connect(hostname, username, password);
 }
 
-int SSH2Utils::exec(char *cmd) {
+int SSH2Utils::exec(const char *cmd) {
 	m_execResultStr.clear();
-	int rc;
+	int rc = -1;
 	LIBSSH2_CHANNEL *channel;
 	/* Exec non-blocking on the remove host */
 	while ((channel = libssh2_channel_open_session(m_session)) == NULL
@@ -218,41 +221,41 @@ int SSH2Utils::exec(char *cmd) {
 		m_errCode = 9;
 		return -1;
 	}
-	while ((rc = libssh2_channel_exec(channel, cmd)) == LIBSSH2_ERROR_EAGAIN) {
-		waitsocket();
+
+    /* Request a terminal with 'vanilla' terminal emulation
+     * See /etc/termcap for more options
+     */
+    if (libssh2_channel_request_pty(channel, "vanilla")) {
+        fprintf(stderr, "Failed requesting pty\n");
+    }
+
+    /* Open a SHELL on that pty */
+    if (libssh2_channel_shell(channel)) {
+        fprintf(stderr, "Unable to request shell on allocated pty\n");
+    }
+
+    libssh2_channel_write(channel, cmd, strlen(cmd));
+    libssh2_channel_send_eof(channel);
+	char buffer[BUF_SIZE];
+	memset(buffer, 0, BUF_SIZE);
+	rc = libssh2_channel_read(channel, buffer, BUF_SIZE);
+	if (rc > 0) {
+		m_execResultStr.append(buffer);
 	}
-	if (rc != 0) {
-		fprintf(stderr, "Exec command line Error\n");
-		m_errCode = 10;
-		return -1;
-	}
-	for (;;) {
-		/* loop until we block */
-		int rc;
-		do {
-			char buffer[BUF_SIZE];
-			memset(buffer, 0, BUF_SIZE);
-			rc = libssh2_channel_read(channel, buffer, sizeof(buffer));
-			if (rc > 0) {
-				m_execResultStr.append(buffer);
-			}
-		} while (rc > 0);
-		/* this is due to blocking that would occur otherwise so we loop on
-		 this condition */
-		if (rc == LIBSSH2_ERROR_EAGAIN) {
-			waitsocket();
-		} else
-			break;
-	}
+
 	m_channelExitCode = 127;
 	while ((rc = libssh2_channel_close(channel)) == LIBSSH2_ERROR_EAGAIN)
 		waitsocket();
 	if (rc == 0) {
 		m_channelExitCode = libssh2_channel_get_exit_status(channel);
 	}
-	libssh2_channel_free(channel);
-	channel = NULL;
-	return 0;
+
+skip_shell:
+	if (channel) {
+		libssh2_channel_free(channel);
+		channel = NULL;
+	}
+	return rc;
 }
 
 int SSH2Utils::waitsocket(void) {
