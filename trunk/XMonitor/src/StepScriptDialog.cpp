@@ -193,6 +193,7 @@ void StepScriptDialog::runCmd(){
 			std::string cmdstr = m_pCmdEditor->toPlainText().toStdString();
 			yINFO(QString("Execute command: %1").arg(cmdstr.c_str()));
 			rc = ssh2.exec(cmdstr.c_str());
+			if(rc < 0)yERROR(ssh2.errMsg());
 			std::string str = ssh2.execResultStr();
 			m_pCmdResultViewer->clear();
 			m_pCmdResultViewer->setPlainText( QString::fromStdString(str) );
