@@ -4,6 +4,10 @@
 #include <pjsip.h>
 #include <pjlib-util.h>
 #include <pjlib.h>
+#include <pjmedia.h>
+#include <pjmedia-codec.h>
+#include <pjsip_ua.h>
+#include <pjsip_simple.h>
 
 /* Options */
 struct global_struct
@@ -20,6 +24,14 @@ struct global_struct
 
     unsigned		 name_cnt;
     pjsip_host_port	 name[16];
+
+    pjmedia_sdp_session *dummy_sdp;
+};
+
+struct call
+{
+    pjsip_inv_session	*inv;
+    pj_timer_entry	 ans_timer;
 };
 
 static void app_perror(const char *msg, pj_status_t status)
