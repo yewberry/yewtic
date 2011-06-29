@@ -432,10 +432,10 @@ static pj_status_t proxy_calculate_target(pjsip_rx_data *rdata,
      * set as the only target, and the element MUST proceed to the task of
      * Request Forwarding (Section 16.6).
      */
-    if (!is_uri_local(target)) {
-		proxy_postprocess(tdata);
-		return PJ_SUCCESS;
-    }
+//    if (!is_uri_local(target)) {
+//		proxy_postprocess(tdata);
+//		return PJ_SUCCESS;
+//    }
 
     /* If the target set for the request has not been predetermined as
      * described above, this implies that the element is responsible for the
@@ -448,8 +448,7 @@ static pj_status_t proxy_calculate_target(pjsip_rx_data *rdata,
     }
 
     if (rdata->msg_info.msg->line.req.method.id == PJSIP_INVITE_METHOD) {
-    	tdata->tp_info.dst_port = 60712;
-
+    	target->port = 1915;
     	return PJ_SUCCESS;
     }
 
