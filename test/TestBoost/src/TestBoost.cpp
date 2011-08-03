@@ -8,6 +8,8 @@
 
 #include <string>
 #include <iostream>
+#include <boost/foreach.hpp>
+
 using namespace std;
 
 /*
@@ -16,10 +18,16 @@ using namespace std;
 #include <boost/array.hpp>
 void testArray();
 
+/*
+ * boost::circular_buffer
+ */
+#include <boost/unordered_map.hpp>
+void testUnordered();
 
 
 int main() {
-	testArray();
+	//testArray();
+	testUnordered();
 	return 0;
 }
 
@@ -128,4 +136,22 @@ void testArray(){
 }
 /*****************************************************************************
  * Test array END
+ *****************************************************************************/
+
+/*****************************************************************************
+ * Test unordered START
+ *****************************************************************************/
+void testUnordered(){
+	typedef boost::unordered_map<std::string, int> HashMap;
+	HashMap hm;
+	hm["one"] = 1;
+	hm["two"] = 2;
+	hm["three"] = 3;
+	BOOST_FOREACH(HashMap::value_type i, hm) {
+	    std::cout<<i.first<<","<<i.second<<"\n";
+	}
+
+}
+/*****************************************************************************
+ * Test unordered START
  *****************************************************************************/
