@@ -342,6 +342,69 @@ void testICL() {
  * Test ICL END
  *****************************************************************************/
 
+/*****************************************************************************
+ * Test lexical_cast START
+ *****************************************************************************/
+#include <boost/lexical_cast.hpp>
+void testLexicalCast(void) {
+	cout << setw(60) << setfill('=') << ">testLexicalCast" << endl;
+	using namespace boost;
+	// To char
+	assert('1' == lexical_cast<char>(1));
+	assert('9' == lexical_cast<char>(9));
+	try {
+		lexical_cast<char>(10);
+	} catch (bad_lexical_cast&) {
+		cout << "Only can convert 1 digital to char! \n";
+	}
+	assert('A' == lexical_cast<char>("A"));
+	assert('A' == lexical_cast<char>(std::string("A")));
+	assert('1' == lexical_cast<char>(true));
+	assert('0' == lexical_cast<char>(false));
+	try {
+		lexical_cast<char>("Test");
+	} catch (bad_lexical_cast&) {
+		cout << "Only can convert 1 char string to char! \n";
+	}
+
+	// To string
+	assert("A" == lexical_cast<std::string>('A'));
+	assert("Test" == lexical_cast<std::string>("Test"));
+	assert("123" == lexical_cast<std::string>(123));
+	assert("1.23" == lexical_cast<std::string>(1.23));
+	assert("1" == lexical_cast<std::string>(true));
+
+	// To number
+	assert(123 == lexical_cast<int>("123"));
+	try {
+		lexical_cast<char>("1.23");
+	} catch (bad_lexical_cast&) {
+		cout << "Only can convert int string to int! \n";
+	}
+	try {
+		lexical_cast<char>(" 123");
+	} catch (bad_lexical_cast&) {
+		cout << "Don't like space bef or aft! \n";
+	}
+	assert(1.23 == lexical_cast<double>("1.23"));
+
+	// To bool
+	assert(true == lexical_cast<bool>("+1"));
+	assert(false == lexical_cast<bool>("+0"));
+	assert(false == lexical_cast<bool>("-0"));
+	try {
+		lexical_cast<bool>("--0");
+	} catch (bad_lexical_cast&) {
+		cout << "Only can convert simple int to bool, --0 seems not that simple! \n";
+	}
+
+
+}
+/*****************************************************************************
+ * Test lexical_cast END
+ *****************************************************************************/
+
+
 int main() {
 	testArray();
 	testUnordered();
@@ -349,7 +412,7 @@ int main() {
 	testDate();
 	testTime();
 	testICL();
-
+	testLexicalCast();
 	return 0;
 }
 
