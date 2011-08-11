@@ -178,7 +178,6 @@ void testICL() {
 	using namespace boost::icl;
 	typedef std::set<string> GuestSetT;
 
-
     GuestSetT mary_harry;
     mary_harry.insert("Mary");
     mary_harry.insert("Harry");

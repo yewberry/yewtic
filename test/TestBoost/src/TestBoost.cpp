@@ -10,6 +10,7 @@ extern void testTime();
 
 extern void testLexicalCast();
 extern void testFormat();
+extern void testStrAlgo();
 
 int main() {
 	testArray();
@@ -20,11 +21,7 @@ int main() {
 	testICL();
 	testLexicalCast();
 	testFormat();
+	testStrAlgo();
 
 	return 0;
 }
-
-
-
-
-
